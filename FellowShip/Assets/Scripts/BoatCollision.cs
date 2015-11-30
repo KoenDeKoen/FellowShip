@@ -24,7 +24,6 @@ public class BoatCollision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("lol");
         spawnnext = true;
     }
 }
