@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
     public Rigidbody boat;
 
 	float speed;
+	float direction;
 
 
 	// Use this for initialization
