@@ -3,18 +3,13 @@ using System.Collections;
 
 public class Movement : MonoBehaviour
 {
-    public Rigidbody boat;
-
 	float speed;
 	float rotationSpeed;
 	float rotation;
-	float move;
-	float force;
 
 	// Use this for initialization
 	void Start ()
     {
-		boat = GetComponent<Rigidbody>();
 		rotationSpeed = 5f;
 		speed = 5f;
 	}
