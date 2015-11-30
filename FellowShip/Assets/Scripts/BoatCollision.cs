@@ -24,6 +24,9 @@ public class BoatCollision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        spawnnext = true;
+        if (other.tag == "Pickup")
+        {
+            spawnnext = true;
+        }
     }
 }
