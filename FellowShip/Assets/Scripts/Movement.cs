@@ -6,53 +6,38 @@ public class Movement : MonoBehaviour
     public Rigidbody boat;
 
 	float speed;
-	float direction;
-
+	float rotationSpeed;
+	float rotation;
+	float move;
+	float force;
 
 	// Use this for initialization
 	void Start ()
     {
 		boat = GetComponent<Rigidbody>();
-		speed = 0;
+		rotationSpeed = 5f;
+		speed = 5f;
 	}
-	
+
 	// Update is called once per frame
 	void Update ()
 	{
-		if(Input.GetKeyDown(KeyCode.A))
+		if(Input.GetKey("a"))
 		{
-			boat.velocity = new Vector3(-10,0,0);
-		}
-		else if(Input.GetKeyUp(KeyCode.A))
-		{
-			boat.velocity = new Vector3(0,0,0);
+			rotation = speed * rotationSpeed;
+			rotation *= Time.deltaTime;
+
+			transform.Translate(0, 0, rotation);
+			transform.Rotate(0, -rotation * 5, 0);
 		}
 
-		if(Input.GetKeyDown(KeyCode.D))
+		if(Input.GetKey("d"))
 		{
-			boat.velocity = new Vector3(10,0,0);
-		}
-		else if(Input.GetKeyUp(KeyCode.D))
-		{
-			boat.velocity = new Vector3(0,0,0);
-		}
-
-		if(Input.GetKeyDown(KeyCode.W))
-		{
-			boat.velocity = new Vector3(0,0,10);
-		}
-		else if(Input.GetKeyUp(KeyCode.W))
-		{
-			boat.velocity = new Vector3(0,0,0);
-		}
-		
-		if(Input.GetKeyDown(KeyCode.S))
-		{
-			boat.velocity = new Vector3(0,0,-10);
-		}
-		else if(Input.GetKeyUp(KeyCode.S))
-		{
-			boat.velocity = new Vector3(0,0,0);
+			rotation = speed * rotationSpeed;
+			rotation *= Time.deltaTime;
+			
+			transform.Translate(0, 0, rotation);
+			transform.Rotate(0, rotation * 5, 0);
 		}
 	}
 }
