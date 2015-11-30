@@ -6,9 +6,11 @@ public class MenuControl : MonoBehaviour
 {
     private int state;
     public Button startbtn, optionsbtn, calibrationbtn, quitbtn;
-	// Use this for initialization
-	void Start ()
+    private float time;
+    // Use this for initialization
+    void Start ()
     {
+        time = 1;
         state = 1;
         startbtn.Select();
 	}
@@ -16,49 +18,33 @@ public class MenuControl : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown("a") && Input.GetKeyDown("d"))
+        if (Input.GetKey("a"))
         {
-            switch (state)
+            time -= Time.deltaTime;
+            if (time <= 0)
             {
-                case 1:
-                    startbtn.Select();
-                    
-                    break;
-
-                case 2:
-                    //load options
-                    break;
-
-                case 3:
-                    //load calibration
-                    break;
-
-                case 4:
-                    //quit
-                    break;
+                if (state < 4)
+                {
+                    changeState(1);
+                }
+                else
+                {
+                    changeState(-3);
+                }
+                time = 1;
             }
         }
-        else if (Input.GetKeyDown("a"))
+        else if (Input.GetKey("d"))
         {
-            if (state < 4)
-            {
-                changeState(1);
-            }
-            else
-            {
-                changeState(-3);
-            }
-        }
-        else if (Input.GetKeyDown("d"))
-        {
-            if (state > 1)
+            time -= Time.deltaTime;
+            if (time <= 0)
             {
                 changeState(-1);
             }
-            else
-            {
-                changeState(3);
-            }
+        }
+        else
+        {
+            time = 1;
         }
         
     }
@@ -70,21 +56,39 @@ public class MenuControl : MonoBehaviour
         {
             case 1:
                 startbtn.Select();
-
                 break;
 
             case 2:
                 optionsbtn.Select();
-                //load options
                 break;
 
             case 3:
                 calibrationbtn.Select();
-                //load calibration
                 break;
 
             case 4:
                 quitbtn.Select();
+                break;
+        }
+    }
+
+    private void selectButton()
+    {
+        switch (state)
+        {
+            case 1:
+
+                break;
+
+            case 2:
+                //load options
+                break;
+
+            case 3:
+                //load calibration
+                break;
+
+            case 4:
                 //quit
                 break;
         }
