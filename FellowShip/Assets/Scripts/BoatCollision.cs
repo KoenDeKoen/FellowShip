@@ -5,11 +5,13 @@ using System.Collections;
 public class BoatCollision : MonoBehaviour
 {
     private PickUpSpawning pickupspawner;
+    private MenuControl menucontrols;
     private bool spawnnext;
 
     void Start()
     {
         pickupspawner = FindObjectOfType<PickUpSpawning>().GetComponent<PickUpSpawning>();
+        menucontrols = FindObjectOfType<MenuControl>().GetComponent<MenuControl>();
     }
 
     void Update()
@@ -27,6 +29,14 @@ public class BoatCollision : MonoBehaviour
         if (other.tag == "Pickup")
         {
             spawnnext = true;
+        }
+        if (other.tag == "NormalMode")
+        {
+            menucontrols.startNormalMode();
+        }
+        if (other.tag == "TimeTrialMode")
+        {
+            menucontrols.startTimeTrial();
         }
     }
 }

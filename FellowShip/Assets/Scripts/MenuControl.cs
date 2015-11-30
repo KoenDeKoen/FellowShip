@@ -6,7 +6,10 @@ public class MenuControl : MonoBehaviour
 {
     private int state;
     public Button startbtn, optionsbtn, calibrationbtn, quitbtn;
+    public GameObject mainmenupanel, modeselectpanel;
     private float time;
+    public Movement movement;
+    public PickUpSpawning pickupspawning;
     // Use this for initialization
     void Start ()
     {
@@ -39,7 +42,7 @@ public class MenuControl : MonoBehaviour
             time -= Time.deltaTime;
             if (time <= 0)
             {
-                changeState(-1);
+                selectButton();
             }
         }
         else
@@ -77,7 +80,8 @@ public class MenuControl : MonoBehaviour
         switch (state)
         {
             case 1:
-
+                movement.onMenuStart();
+                mainmenupanel.SetActive(false);
                 break;
 
             case 2:
@@ -92,5 +96,16 @@ public class MenuControl : MonoBehaviour
                 //quit
                 break;
         }
+    }
+
+    public void startTimeTrial()
+    {
+
+    }
+
+    public void startNormalMode()
+    {
+        modeselectpanel.SetActive(false);
+        pickupspawning.spawnNextPickup();
     }
 }

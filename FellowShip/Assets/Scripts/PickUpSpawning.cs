@@ -32,7 +32,7 @@ public class PickUpSpawning : MonoBehaviour {
             }
             locations.Add(new Vector3(posx, 0, posz ));
         }
-        pickup.instPickup(locations[0]);
+        //pickup.instPickup(locations[0]);
     }
 
     public void spawnNextPickup()
