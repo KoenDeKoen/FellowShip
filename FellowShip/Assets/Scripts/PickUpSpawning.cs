@@ -27,7 +27,7 @@ public class PickUpSpawning : MonoBehaviour {
         pickup.destroyPickup();
         if (pickupscollected < maxpickups)
         {
-            pickup.instPickup(locations[pickupscollected]);
+            pickup.instPickup(locations[0]);
             pickupscollected++;
             //UPGRADEEEE
             hasspawnednext = true;
@@ -74,5 +74,13 @@ public class PickUpSpawning : MonoBehaviour {
             }
             locations.Add(new Vector3(posx, 0, posz));
         }
+    }
+
+    public void improveSpawnRange(float borderxmax, float borderxmin, float borderymin, float borderymax)
+    {
+        locations = new List<Vector3>();
+        float posx = Random.Range(borderxmin, borderxmax);
+        float posz = Random.Range(borderymin, borderymax);
+        locations.Add(new Vector3(posx, 0, posz));
     }
 }

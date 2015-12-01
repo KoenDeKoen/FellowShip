@@ -12,6 +12,7 @@ public class MenuControl : MonoBehaviour
     public PickUpSpawning pickupspawning;
     private bool inmenu;
     public TimeTrial tt;
+    public LevelManager lvlm;
     // Use this for initialization
     void Start ()
     {
