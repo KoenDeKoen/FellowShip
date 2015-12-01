@@ -11,7 +11,7 @@ public class TimeTrial : MonoBehaviour
 	public Highscore hs;
 	void Start ()
     {
-        start = true;
+        start = false;
 	    time = 0;
 	}
 	
