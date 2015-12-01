@@ -10,9 +10,11 @@ public class MenuControl : MonoBehaviour
     private float time;
     public Movement movement;
     public PickUpSpawning pickupspawning;
+    private bool inmenu;
     // Use this for initialization
     void Start ()
     {
+        inmenu = true;
         time = 1;
         state = 1;
         startbtn.Select();
@@ -23,12 +25,18 @@ public class MenuControl : MonoBehaviour
     {
         if (pickupspawning.checkForDone())
         {
+            state = 1;
+            startbtn.Select();
+            pickupspawning.resetGame();
             mainmenupanel.SetActive(true);
             movement.resetBoatPos();
-
+            movement.onMenuStart();
+            inmenu = true;
         }
-        
-        checkForPresses();
+        if (inmenu)
+        {
+            checkForPresses();
+        }
     }
 
     private void checkForPresses()
@@ -55,6 +63,7 @@ public class MenuControl : MonoBehaviour
             if (time <= 0)
             {
                 selectButton();
+                time = 1;
             }
         }
         else
@@ -91,8 +100,9 @@ public class MenuControl : MonoBehaviour
         switch (state)
         {
             case 1:
-                movement.onMenuStart();
+                movement.onMenuEnd();
                 mainmenupanel.SetActive(false);
+                modeselectpanel.SetActive(true);
                 break;
 
             case 2:
@@ -119,5 +129,6 @@ public class MenuControl : MonoBehaviour
         modeselectpanel.SetActive(false);
         pickupspawning.resetGame();
         pickupspawning.spawnFirstPickup();
+        inmenu = false;
     }
 }
