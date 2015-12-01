@@ -6,12 +6,14 @@ public class BoatCollision : MonoBehaviour
 {
     private PickUpSpawning pickupspawner;
     private MenuControl menucontrols;
+    private LevelManager lvlm;
     private bool spawnnext;
 
     void Start()
     {
         pickupspawner = FindObjectOfType<PickUpSpawning>().GetComponent<PickUpSpawning>();
         menucontrols = FindObjectOfType<MenuControl>().GetComponent<MenuControl>();
+        lvlm = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
     }
 
     void Update()
@@ -19,6 +21,7 @@ public class BoatCollision : MonoBehaviour
         if (spawnnext && !pickupspawner.hasSpawnedNext())
         {
             spawnnext = false;
+            lvlm.increaseLevel();
             pickupspawner.spawnNextPickup();
             pickupspawner.setDoneSpawn();
         }  
@@ -29,7 +32,6 @@ public class BoatCollision : MonoBehaviour
         if (other.tag == "Pickup")
         {
             spawnnext = true;
-            //Debug.Log("huh");
         }
         if (other.tag == "NormalMode")
         {

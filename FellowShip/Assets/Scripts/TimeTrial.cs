@@ -7,9 +7,10 @@ public class TimeTrial : MonoBehaviour
     // Use this for initialization
     private float time;
     private bool start;
+
 	void Start ()
     {
-        start = true;
+        start = false;
 	    time = 0;
 	}
 	
