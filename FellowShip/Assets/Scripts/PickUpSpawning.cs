@@ -6,6 +6,7 @@ public class PickUpSpawning : MonoBehaviour {
 
     // Use this for initialization
     public Pickup pickup;
+	public Highscore hs;
     private List<Vector3> locations;
     private float borderxmin, borderxmax, borderzmin, borderzmax;
     private int pickupscollected, maxpickups;
@@ -34,6 +35,7 @@ public class PickUpSpawning : MonoBehaviour {
         }
         else
         {
+			hs.ended = true;
             done = true;
         }
     }
