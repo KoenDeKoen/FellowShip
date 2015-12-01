@@ -9,17 +9,17 @@ public class PickUpSpawning : MonoBehaviour {
     private List<Vector3> locations;
     private float borderxmin, borderxmax, borderzmin, borderzmax;
     private int pickupscollected, maxpickups;
-    private bool hasspawnednext;
+    private bool hasspawnednext, done;
 
     void Start ()
     {
-        locations = new List<Vector3>();
+        //locations = new List<Vector3>();
         maxpickups = 5;
         borderxmax = 45;
         borderzmax = 45;
         borderzmin = -45;
         borderxmin = -45;
-        //resetGame();
+        resetGame();
     }
 
     public void spawnNextPickup()
@@ -31,6 +31,10 @@ public class PickUpSpawning : MonoBehaviour {
             pickupscollected++;
             //UPGRADEEEE
             hasspawnednext = true;
+        }
+        else
+        {
+            done = true;
         }
     }
 
@@ -50,20 +54,15 @@ public class PickUpSpawning : MonoBehaviour {
     }
     public bool checkForDone()
     {
-        if (pickupscollected >= maxpickups)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return done;
     }
 
     public void resetGame()
     {
+        locations = new List<Vector3>();
         pickupscollected = 0;
         hasspawnednext = false;
+        done = false;
         for (int i = 0; i < maxpickups; i++)
         {
             float posx = Random.Range(borderxmin, borderxmax);
