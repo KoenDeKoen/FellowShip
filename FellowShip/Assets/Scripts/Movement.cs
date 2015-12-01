@@ -50,4 +50,10 @@ public class Movement : MonoBehaviour
     {
         finishedmenu = true;
     }
+
+    public void resetBoatPos()
+    {
+        transform.position = new Vector3(-45,transform.position.y, -45);
+        transform.rotation = Quaternion.identity;
+    }
 }

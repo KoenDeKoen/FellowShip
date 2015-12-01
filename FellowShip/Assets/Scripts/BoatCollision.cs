@@ -29,6 +29,7 @@ public class BoatCollision : MonoBehaviour
         if (other.tag == "Pickup")
         {
             spawnnext = true;
+            //Debug.Log("huh");
         }
         if (other.tag == "NormalMode")
         {

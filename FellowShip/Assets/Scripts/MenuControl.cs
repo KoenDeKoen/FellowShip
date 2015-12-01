@@ -21,6 +21,18 @@ public class MenuControl : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if (pickupspawning.checkForDone())
+        {
+            mainmenupanel.SetActive(true);
+            movement.resetBoatPos();
+
+        }
+        
+        checkForPresses();
+    }
+
+    private void checkForPresses()
+    {
         if (Input.GetKey("a"))
         {
             time -= Time.deltaTime;
@@ -49,7 +61,6 @@ public class MenuControl : MonoBehaviour
         {
             time = 1;
         }
-        
     }
 
     private void changeState(int amount)
@@ -106,6 +117,7 @@ public class MenuControl : MonoBehaviour
     public void startNormalMode()
     {
         modeselectpanel.SetActive(false);
-        pickupspawning.spawnNextPickup();
+        pickupspawning.resetGame();
+        pickupspawning.spawnFirstPickup();
     }
 }
