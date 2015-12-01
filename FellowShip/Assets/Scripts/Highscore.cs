@@ -4,21 +4,20 @@ using UnityEngine.UI;
 
 public class Highscore : MonoBehaviour {
 
-	public float timescore;
-	public float highscore;
+	public float timescore, highscore;
+	public float second, third;
 
 	public GameObject highscorepanel;
 	public bool ended;
 
 	public Text currentscore, score1, score2, score3;
 
-	string highScoreKey = "HighScore";
-	
 	void Start()
 	{
-		timescore = 30f;
 		ended = true;
-		highscore = PlayerPrefs.GetInt(highScoreKey,0);
+		highscore = PlayerPrefs.GetFloat("HighScore",0);
+		second = PlayerPrefs.GetFloat("Second",0);
+		third = PlayerPrefs.GetFloat("Third",0);
 	}
 	
 	void Update(){
@@ -27,14 +26,34 @@ public class Highscore : MonoBehaviour {
 		{
 			highscorepanel.gameObject.SetActive(true);
 
-			currentscore.text = "Score:" + timescore.ToString();
-			score1.text = "Score: " + highscore.ToString();
-
-			if(timescore > highscore)
+			if(timescore > PlayerPrefs.GetFloat("HighScore"))
 			{
-				PlayerPrefs.SetFloat(highScoreKey, timescore);
+				PlayerPrefs.SetFloat("HighScore", timescore);
 				PlayerPrefs.Save();
 			}
+
+			if(timescore < PlayerPrefs.GetFloat("HighScore"))
+			{
+				if(timescore > PlayerPrefs.GetFloat("Second"))
+				{
+					PlayerPrefs.SetFloat("Second", timescore);
+					PlayerPrefs.Save();
+				}
+			}
+
+			if(timescore < PlayerPrefs.GetFloat("Second"))
+			{
+				if(timescore > PlayerPrefs.GetFloat("Third"))
+				{
+					PlayerPrefs.SetFloat("Third", timescore);
+					PlayerPrefs.Save();
+				}
+			}
+
+			currentscore.text = "Score:" + timescore.ToString();
+			score1.text = "Score: " + PlayerPrefs.GetFloat("HighScore",0);
+			score2.text = "Score: " + PlayerPrefs.GetFloat("Second",0);
+			score3.text = "Score: " + PlayerPrefs.GetFloat("Third",0);
 		}
 	}
 
