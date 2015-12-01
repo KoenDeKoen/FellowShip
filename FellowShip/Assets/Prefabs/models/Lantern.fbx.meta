@@ -1,20 +1,25 @@
 fileFormatVersion: 2
-guid: 763efcbab2159f242bc74dd3a347e0f0
-timeCreated: 1448907681
+guid: 5abb53ed2c6018a4ba7bc6430e991c77
+timeCreated: 1448960886
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: eiland strand
-    100002: //RootNode
-    400000: eiland strand
-    400002: //RootNode
-    2300000: eiland strand
-    2300002: //RootNode
-    3300000: eiland strand
-    3300002: //RootNode
-    4300000: eiland base
-    4300002: eiland strand
+    100000: //RootNode
+    100002: Lantern_Glass
+    100004: Lantern_toppiece
+    400000: //RootNode
+    400002: Lantern_Glass
+    400004: Lantern_toppiece
+    2300000: //RootNode
+    2300002: Lantern_Glass
+    2300004: Lantern_toppiece
+    3300000: //RootNode
+    3300002: Lantern_Glass
+    3300004: Lantern_toppiece
+    4300000: Latern
+    4300002: Lantern_Glass
+    4300004: Lantern_toppiece
     9500000: //RootNode
   materials:
     importMaterials: 1

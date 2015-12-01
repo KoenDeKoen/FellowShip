@@ -46,9 +46,14 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public void onMenuStart()
+    public void onMenuEnd()
     {
         finishedmenu = true;
+    }
+
+    public void onMenuStart()
+    {
+        finishedmenu = false;
     }
 
     public void resetBoatPos()

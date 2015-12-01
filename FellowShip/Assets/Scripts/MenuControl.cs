@@ -4,15 +4,19 @@ using UnityEngine.UI;
 
 public class MenuControl : MonoBehaviour
 {
-    private int state;
+    private int state, mode;
     public Button startbtn, optionsbtn, calibrationbtn, quitbtn;
-    public GameObject mainmenupanel, modeselectpanel;
+    public GameObject mainmenupanel, modeselectpanel, highscorepanel;
     private float time;
     public Movement movement;
     public PickUpSpawning pickupspawning;
+    private bool inmenu;
+    public TimeTrial tt;
     // Use this for initialization
     void Start ()
     {
+        mode = 0;
+        inmenu = true;
         time = 1;
         state = 1;
         startbtn.Select();
@@ -23,12 +27,28 @@ public class MenuControl : MonoBehaviour
     {
         if (pickupspawning.checkForDone())
         {
-            mainmenupanel.SetActive(true);
-            movement.resetBoatPos();
+            if (mode == 1)
+            {
+                state = 1;
+                startbtn.Select();
+                pickupspawning.resetGame();
+                mainmenupanel.SetActive(true);
+                movement.resetBoatPos();
+                movement.onMenuStart();
+                inmenu = true;
+            }
 
+            if (mode == 2)
+            {
+                tt.stopCounting();
+                highscorepanel.SetActive(true);
+                highscorepanel.GetComponentInChildren<Text>().text = tt.returnTimeInString();
+            }
         }
-        
-        checkForPresses();
+        if (inmenu)
+        {
+            checkForPresses();
+        }
     }
 
     private void checkForPresses()
@@ -55,6 +75,7 @@ public class MenuControl : MonoBehaviour
             if (time <= 0)
             {
                 selectButton();
+                time = 1;
             }
         }
         else
@@ -91,8 +112,9 @@ public class MenuControl : MonoBehaviour
         switch (state)
         {
             case 1:
-                movement.onMenuStart();
+                movement.onMenuEnd();
                 mainmenupanel.SetActive(false);
+                modeselectpanel.SetActive(true);
                 break;
 
             case 2:
@@ -111,13 +133,20 @@ public class MenuControl : MonoBehaviour
 
     public void startTimeTrial()
     {
-
+        mode = 2;
+        modeselectpanel.SetActive(false);
+        pickupspawning.resetGame();
+        pickupspawning.spawnFirstPickup();
+        inmenu = false;
+        tt.startCounting();
     }
 
     public void startNormalMode()
     {
+        mode = 1;
         modeselectpanel.SetActive(false);
         pickupspawning.resetGame();
         pickupspawning.spawnFirstPickup();
+        inmenu = false;
     }
 }
