@@ -8,12 +8,22 @@ ModelImporter:
     100000: LowPolyOcean
     100002: //RootNode
     100004: LowPolyOcean1_0
+    100006: LowPolyOcean1_0_MeshPart0
+    100008: LowPolyOcean1_0_MeshPart1
     400000: LowPolyOcean
     400002: //RootNode
     400004: LowPolyOcean1_0
+    400006: LowPolyOcean1_0_MeshPart0
+    400008: LowPolyOcean1_0_MeshPart1
     2300000: LowPolyOcean1_0
+    2300002: LowPolyOcean1_0_MeshPart0
+    2300004: LowPolyOcean1_0_MeshPart1
     3300000: LowPolyOcean1_0
+    3300002: LowPolyOcean1_0_MeshPart0
+    3300004: LowPolyOcean1_0_MeshPart1
     4300000: LowPolyOcean1_0
+    4300002: LowPolyOcean1_0_MeshPart0
+    4300004: LowPolyOcean1_0_MeshPart1
     9500000: //RootNode
   materials:
     importMaterials: 1
