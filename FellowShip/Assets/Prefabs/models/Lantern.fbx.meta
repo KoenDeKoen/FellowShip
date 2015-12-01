@@ -1,42 +1,25 @@
 fileFormatVersion: 2
-guid: 28fde79a3e6ac5d4d96eb52c710a7588
-timeCreated: 1448958846
+guid: 5abb53ed2c6018a4ba7bc6430e991c77
+timeCreated: 1448960886
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: Barrel
-    100002: //RootNode
-    100004: Barrel_metal
-    100006: Lantern_Glass
-    100008: Lantern_top
-    100010: Lantern_toppiece
-    100012: Latern
-    400000: Barrel
-    400002: //RootNode
-    400004: Barrel_metal
-    400006: Lantern_Glass
-    400008: Lantern_top
-    400010: Lantern_toppiece
-    400012: Latern
-    2300000: Barrel
-    2300002: Barrel_metal
-    2300004: Lantern_Glass
-    2300006: Lantern_top
-    2300008: Lantern_toppiece
-    2300010: Latern
-    3300000: Barrel
-    3300002: Barrel_metal
-    3300004: Lantern_Glass
-    3300006: Lantern_top
-    3300008: Lantern_toppiece
-    3300010: Latern
-    4300000: Barrel
-    4300002: Barrel_metal
-    4300004: Latern
-    4300006: Lantern_top
-    4300008: Lantern_toppiece
-    4300010: Lantern_Glass
+    100000: //RootNode
+    100002: Lantern_Glass
+    100004: Lantern_toppiece
+    400000: //RootNode
+    400002: Lantern_Glass
+    400004: Lantern_toppiece
+    2300000: //RootNode
+    2300002: Lantern_Glass
+    2300004: Lantern_toppiece
+    3300000: //RootNode
+    3300002: Lantern_Glass
+    3300004: Lantern_toppiece
+    4300000: Latern
+    4300002: Lantern_Glass
+    4300004: Lantern_toppiece
     9500000: //RootNode
   materials:
     importMaterials: 1
