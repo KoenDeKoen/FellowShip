@@ -1,0 +1,324 @@
+fileFormatVersion: 2
+guid: e7a1c1aa4d22af04cb6beb8a4f4474d9
+timeCreated: 1448979900
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: BackRailing
+    100002: BackrailingBot
+    100004: BackrailingTop
+    100006: Black
+    100008: black
+    100010: //RootNode
+    100012: Cannons
+    100014: Door
+    100016: DoorFront
+    100018: DoorOuter
+    100020: flag
+    100022: flag1
+    100024: FloorBot
+    100026: FloorTop
+    100028: Hatch_Bot
+    100030: Hatch_Inner
+    100032: Hatch_Top
+    100034: InnerWindows
+    100036: LanternHolder1
+    100038: LanternHolder2
+    100040: Mast
+    100042: Mast 1
+    100044: Mast_Back
+    100046: Mast_Base
+    100048: Mast_Base1
+    100050: Mast_Base2
+    100052: Mast_Base3
+    100054: Mast_Front
+    100056: Mast_Front 1
+    100058: Mast_horizontal
+    100060: Mast_horizontal 1
+    100062: Mast_horizontal 2
+    100064: Mast_horizontal1
+    100066: Mast_horizontal1 1
+    100068: Mast_horizontal2
+    100070: Mast_horizontal2 1
+    100072: Mast_horizontal2 2
+    100074: Mast_Nest
+    100076: Mast_Nest_O
+    100078: Railing
+    100080: Ribs
+    100082: Sail1
+    100084: Sail_03
+    100086: Sail_04
+    100088: Sail_04 1
+    100090: Sail_05
+    100092: Sail_06
+    100094: Sail_Front
+    100096: Stairs
+    100098: SteeringWheel
+    100100: Windows
+    400000: BackRailing
+    400002: BackrailingBot
+    400004: BackrailingTop
+    400006: Black
+    400008: black
+    400010: //RootNode
+    400012: Cannons
+    400014: Door
+    400016: DoorFront
+    400018: DoorOuter
+    400020: flag
+    400022: flag1
+    400024: FloorBot
+    400026: FloorTop
+    400028: Hatch_Bot
+    400030: Hatch_Inner
+    400032: Hatch_Top
+    400034: InnerWindows
+    400036: LanternHolder1
+    400038: LanternHolder2
+    400040: Mast
+    400042: Mast 1
+    400044: Mast_Back
+    400046: Mast_Base
+    400048: Mast_Base1
+    400050: Mast_Base2
+    400052: Mast_Base3
+    400054: Mast_Front
+    400056: Mast_Front 1
+    400058: Mast_horizontal
+    400060: Mast_horizontal 1
+    400062: Mast_horizontal 2
+    400064: Mast_horizontal1
+    400066: Mast_horizontal1 1
+    400068: Mast_horizontal2
+    400070: Mast_horizontal2 1
+    400072: Mast_horizontal2 2
+    400074: Mast_Nest
+    400076: Mast_Nest_O
+    400078: Railing
+    400080: Ribs
+    400082: Sail1
+    400084: Sail_03
+    400086: Sail_04
+    400088: Sail_04 1
+    400090: Sail_05
+    400092: Sail_06
+    400094: Sail_Front
+    400096: Stairs
+    400098: SteeringWheel
+    400100: Windows
+    2300000: BackRailing
+    2300002: BackrailingBot
+    2300004: BackrailingTop
+    2300006: Black
+    2300008: black
+    2300010: //RootNode
+    2300012: Cannons
+    2300014: Door
+    2300016: DoorFront
+    2300018: DoorOuter
+    2300020: flag
+    2300022: flag1
+    2300024: FloorBot
+    2300026: FloorTop
+    2300028: Hatch_Bot
+    2300030: Hatch_Inner
+    2300032: Hatch_Top
+    2300034: InnerWindows
+    2300036: LanternHolder1
+    2300038: LanternHolder2
+    2300040: Mast
+    2300042: Mast 1
+    2300044: Mast_Back
+    2300046: Mast_Base
+    2300048: Mast_Base1
+    2300050: Mast_Base2
+    2300052: Mast_Base3
+    2300054: Mast_Front
+    2300056: Mast_Front 1
+    2300058: Mast_horizontal
+    2300060: Mast_horizontal 1
+    2300062: Mast_horizontal 2
+    2300064: Mast_horizontal1
+    2300066: Mast_horizontal1 1
+    2300068: Mast_horizontal2
+    2300070: Mast_horizontal2 1
+    2300072: Mast_horizontal2 2
+    2300074: Mast_Nest
+    2300076: Mast_Nest_O
+    2300078: Railing
+    2300080: Ribs
+    2300082: Sail1
+    2300084: Sail_03
+    2300086: Sail_04
+    2300088: Sail_04 1
+    2300090: Sail_05
+    2300092: Sail_06
+    2300094: Sail_Front
+    2300096: Stairs
+    2300098: SteeringWheel
+    2300100: Windows
+    3300000: BackRailing
+    3300002: BackrailingBot
+    3300004: BackrailingTop
+    3300006: Black
+    3300008: black
+    3300010: //RootNode
+    3300012: Cannons
+    3300014: Door
+    3300016: DoorFront
+    3300018: DoorOuter
+    3300020: flag
+    3300022: flag1
+    3300024: FloorBot
+    3300026: FloorTop
+    3300028: Hatch_Bot
+    3300030: Hatch_Inner
+    3300032: Hatch_Top
+    3300034: InnerWindows
+    3300036: LanternHolder1
+    3300038: LanternHolder2
+    3300040: Mast
+    3300042: Mast 1
+    3300044: Mast_Back
+    3300046: Mast_Base
+    3300048: Mast_Base1
+    3300050: Mast_Base2
+    3300052: Mast_Base3
+    3300054: Mast_Front
+    3300056: Mast_Front 1
+    3300058: Mast_horizontal
+    3300060: Mast_horizontal 1
+    3300062: Mast_horizontal 2
+    3300064: Mast_horizontal1
+    3300066: Mast_horizontal1 1
+    3300068: Mast_horizontal2
+    3300070: Mast_horizontal2 1
+    3300072: Mast_horizontal2 2
+    3300074: Mast_Nest
+    3300076: Mast_Nest_O
+    3300078: Railing
+    3300080: Ribs
+    3300082: Sail1
+    3300084: Sail_03
+    3300086: Sail_04
+    3300088: Sail_04 1
+    3300090: Sail_05
+    3300092: Sail_06
+    3300094: Sail_Front
+    3300096: Stairs
+    3300098: SteeringWheel
+    3300100: Windows
+    4300000: Boat_06
+    4300002: FloorBot
+    4300004: FloorTop
+    4300006: SteeringWheel
+    4300008: Railing
+    4300010: Ribs
+    4300012: BackrailingTop
+    4300014: BackRailing
+    4300016: BackrailingBot
+    4300018: LanternHolder1
+    4300020: LanternHolder2
+    4300022: Windows
+    4300024: InnerWindows
+    4300026: black
+    4300028: Cannons
+    4300030: Hatch_Bot
+    4300032: Hatch_Top
+    4300034: Hatch_Inner
+    4300036: Black
+    4300038: Stairs
+    4300040: DoorOuter
+    4300042: Door
+    4300044: DoorFront
+    4300046: Mast_Front
+    4300048: Sail_Front
+    4300050: Mast_Base
+    4300052: Mast_horizontal2
+    4300054: Mast_horizontal
+    4300056: Mast_horizontal1
+    4300058: Sail_06
+    4300060: Sail_03
+    4300062: Mast_Front
+    4300064: Mast_Base1
+    4300066: Sail1
+    4300068: Mast_Back
+    4300070: Mast_Base2
+    4300072: Mast_horizontal2
+    4300074: Mast_horizontal
+    4300076: Mast_horizontal1
+    4300078: Sail_04
+    4300080: Sail_05
+    4300082: flag
+    4300084: Mast
+    4300086: flag1
+    4300088: Mast_Nest
+    4300090: Mast_Nest_O
+    4300092: Mast_Base3
+    4300094: Mast_horizontal2
+    4300096: Mast_horizontal
+    4300098: Sail_04
+    4300100: Mast
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
