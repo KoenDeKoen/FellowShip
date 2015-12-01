@@ -9,7 +9,7 @@ public class TimeTrial : MonoBehaviour
     private bool start;
 	void Start ()
     {
-        start = true;
+        start = false;
 	    time = 0;
 	}
 	
