@@ -1,25 +1,75 @@
 fileFormatVersion: 2
-guid: b3b0cdc397606a4488cbeb5388cec538
-timeCreated: 1448961774
+guid: daf95c583c0c6a24fb1a420b949d9724
+timeCreated: 1448963248
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: canon_wheel_l
-    100004: canon_wheel_r
-    400000: //RootNode
-    400002: canon_wheel_l
-    400004: canon_wheel_r
-    2300000: //RootNode
-    2300002: canon_wheel_l
-    2300004: canon_wheel_r
-    3300000: //RootNode
-    3300002: canon_wheel_l
-    3300004: canon_wheel_r
-    4300000: canon_shaft
-    4300002: canon_wheel_l
-    4300004: canon_wheel_r
+    100000: Back_Piece
+    100002: //RootNode
+    100004: Crate02
+    100006: Front_Piece
+    100008: Interior
+    100010: Lantern_Glass
+    100012: Lantern_toppiece
+    100014: Latern
+    100016: Planks
+    100018: rope_coil
+    100020: Seat_B
+    100022: Seat_F
+    100024: sidepieces
+    400000: Back_Piece
+    400002: //RootNode
+    400004: Crate02
+    400006: Front_Piece
+    400008: Interior
+    400010: Lantern_Glass
+    400012: Lantern_toppiece
+    400014: Latern
+    400016: Planks
+    400018: rope_coil
+    400020: Seat_B
+    400022: Seat_F
+    400024: sidepieces
+    2300000: Back_Piece
+    2300002: //RootNode
+    2300004: Crate02
+    2300006: Front_Piece
+    2300008: Interior
+    2300010: Lantern_Glass
+    2300012: Lantern_toppiece
+    2300014: Latern
+    2300016: Planks
+    2300018: rope_coil
+    2300020: Seat_B
+    2300022: Seat_F
+    2300024: sidepieces
+    3300000: Back_Piece
+    3300002: //RootNode
+    3300004: Crate02
+    3300006: Front_Piece
+    3300008: Interior
+    3300010: Lantern_Glass
+    3300012: Lantern_toppiece
+    3300014: Latern
+    3300016: Planks
+    3300018: rope_coil
+    3300020: Seat_B
+    3300022: Seat_F
+    3300024: sidepieces
+    4300000: Boat_02
+    4300002: Seat_F
+    4300004: Front_Piece
+    4300006: Seat_B
+    4300008: sidepieces
+    4300010: Back_Piece
+    4300012: Latern
+    4300014: Lantern_Glass
+    4300016: Lantern_toppiece
+    4300018: rope_coil
+    4300020: Crate02
+    4300022: Interior
+    4300024: Planks
     9500000: //RootNode
   materials:
     importMaterials: 1

@@ -1,26 +1,20 @@
 fileFormatVersion: 2
-guid: b3b0cdc397606a4488cbeb5388cec538
-timeCreated: 1448961774
+guid: 885363e6576bb3b429bf75a88b5b01f4
+timeCreated: 1448962260
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: canon_wheel_l
-    100004: canon_wheel_r
-    400000: //RootNode
-    400002: canon_wheel_l
-    400004: canon_wheel_r
-    2300000: //RootNode
-    2300002: canon_wheel_l
-    2300004: canon_wheel_r
-    3300000: //RootNode
-    3300002: canon_wheel_l
-    3300004: canon_wheel_r
-    4300000: canon_shaft
-    4300002: canon_wheel_l
-    4300004: canon_wheel_r
-    9500000: //RootNode
+    100000: Beach_sand
+    100002: //RootNode
+    400000: Beach_sand
+    400002: //RootNode
+    2300000: Beach_sand
+    2300002: //RootNode
+    3300000: Beach_sand
+    3300002: //RootNode
+    4300000: Island_2_grass
+    4300002: Beach_sand
   materials:
     importMaterials: 1
     materialName: 0
@@ -78,7 +72,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

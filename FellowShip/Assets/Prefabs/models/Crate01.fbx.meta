@@ -1,25 +1,20 @@
 fileFormatVersion: 2
-guid: b3b0cdc397606a4488cbeb5388cec538
-timeCreated: 1448961774
+guid: 02c68903286f2ba4b91edb0601d0a0a1
+timeCreated: 1448962227
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
-    100002: canon_wheel_l
-    100004: canon_wheel_r
+    100002: Crate01_Frame
     400000: //RootNode
-    400002: canon_wheel_l
-    400004: canon_wheel_r
+    400002: Crate01_Frame
     2300000: //RootNode
-    2300002: canon_wheel_l
-    2300004: canon_wheel_r
+    2300002: Crate01_Frame
     3300000: //RootNode
-    3300002: canon_wheel_l
-    3300004: canon_wheel_r
-    4300000: canon_shaft
-    4300002: canon_wheel_l
-    4300004: canon_wheel_r
+    3300002: Crate01_Frame
+    4300000: Crate01
+    4300002: Crate01_Frame
     9500000: //RootNode
   materials:
     importMaterials: 1

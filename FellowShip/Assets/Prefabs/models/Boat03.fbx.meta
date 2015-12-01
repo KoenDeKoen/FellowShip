@@ -1,0 +1,147 @@
+fileFormatVersion: 2
+guid: 664e236415a32bf4d90b1dfefbe99f94
+timeCreated: 1448964402
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Anchor
+    100002: Barrel
+    100004: //RootNode
+    100006: Front_Deck
+    100008: Front_Piece
+    100010: Latern
+    100012: Mast_B
+    100014: Mast_Base
+    100016: Mast_T
+    100018: Sail
+    100020: Seat
+    100022: Side_Pieces
+    100024: SidePieace_BL
+    100026: SidePiece_LF
+    100028: SidePiece_RB
+    100030: SidePiece_RF
+    400000: Anchor
+    400002: Barrel
+    400004: //RootNode
+    400006: Front_Deck
+    400008: Front_Piece
+    400010: Latern
+    400012: Mast_B
+    400014: Mast_Base
+    400016: Mast_T
+    400018: Sail
+    400020: Seat
+    400022: Side_Pieces
+    400024: SidePieace_BL
+    400026: SidePiece_LF
+    400028: SidePiece_RB
+    400030: SidePiece_RF
+    2300000: Anchor
+    2300002: Barrel
+    2300004: //RootNode
+    2300006: Front_Deck
+    2300008: Front_Piece
+    2300010: Latern
+    2300012: Mast_B
+    2300014: Mast_Base
+    2300016: Mast_T
+    2300018: Sail
+    2300020: Seat
+    2300022: SidePieace_BL
+    2300024: SidePiece_LF
+    2300026: SidePiece_RB
+    2300028: SidePiece_RF
+    3300000: Anchor
+    3300002: Barrel
+    3300004: //RootNode
+    3300006: Front_Deck
+    3300008: Front_Piece
+    3300010: Latern
+    3300012: Mast_B
+    3300014: Mast_Base
+    3300016: Mast_T
+    3300018: Sail
+    3300020: Seat
+    3300022: SidePieace_BL
+    3300024: SidePiece_LF
+    3300026: SidePiece_RB
+    3300028: SidePiece_RF
+    4300000: Boat_03
+    4300002: Front_Piece
+    4300004: Seat
+    4300006: Front_Deck
+    4300008: Sail
+    4300010: Mast_B
+    4300012: Mast_T
+    4300014: Mast_Base
+    4300016: Latern
+    4300018: Anchor
+    4300020: Barrel
+    4300022: SidePiece_RB
+    4300024: SidePiece_RF
+    4300026: SidePieace_BL
+    4300028: SidePiece_LF
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

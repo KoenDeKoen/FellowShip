@@ -1,26 +1,35 @@
 fileFormatVersion: 2
-guid: b3b0cdc397606a4488cbeb5388cec538
-timeCreated: 1448961774
+guid: b4ae942ce98cdb949bf5bd2ade784609
+timeCreated: 1448965294
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: canon_wheel_l
-    100004: canon_wheel_r
-    400000: //RootNode
-    400002: canon_wheel_l
-    400004: canon_wheel_r
-    2300000: //RootNode
-    2300002: canon_wheel_l
-    2300004: canon_wheel_r
-    3300000: //RootNode
-    3300002: canon_wheel_l
-    3300004: canon_wheel_r
-    4300000: canon_shaft
-    4300002: canon_wheel_l
-    4300004: canon_wheel_r
-    9500000: //RootNode
+    100000: Bands_iron
+    100002: //RootNode
+    100004: Mid_wood2
+    100006: Mob_wood
+    100008: Strings_lightgrey
+    400000: Bands_iron
+    400002: //RootNode
+    400004: Mid_wood2
+    400006: Mob_wood
+    400008: Strings_lightgrey
+    2300000: Bands_iron
+    2300002: //RootNode
+    2300004: Mid_wood2
+    2300006: Mob_wood
+    2300008: Strings_lightgrey
+    3300000: Bands_iron
+    3300002: //RootNode
+    3300004: Mid_wood2
+    3300006: Mob_wood
+    3300008: Strings_lightgrey
+    4300000: Bucket_wood
+    4300002: Bands_iron
+    4300004: Mob_wood
+    4300006: Mid_wood2
+    4300008: Strings_lightgrey
   materials:
     importMaterials: 1
     materialName: 0
@@ -78,7 +87,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

@@ -1,0 +1,295 @@
+fileFormatVersion: 2
+guid: ebcbb3d6f77e30149a3c4d17a5a5fd86
+timeCreated: 1448963248
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: BackRailingBot
+    100002: BackRailingTop1
+    100004: //RootNode
+    100006: canon_shaft10
+    100008: canon_shaft11
+    100010: canon_shaft8
+    100012: canon_shaft9
+    100014: canon_wheel_l
+    100016: canon_wheel_l 1
+    100018: canon_wheel_l 2
+    100020: canon_wheel_l 3
+    100022: canon_wheel_r
+    100024: canon_wheel_r 1
+    100026: canon_wheel_r 2
+    100028: canon_wheel_r 3
+    100030: flag
+    100032: FloorBot
+    100034: FloorTop
+    100036: Hatch_Bot2
+    100038: Hatch_Top
+    100040: Mast
+    100042: Mast_Back
+    100044: Mast_Base6
+    100046: Mast_Base7
+    100048: Mast_Base8
+    100050: Mast_Front
+    100052: Mast_Front2
+    100054: Mast_horizontal
+    100056: Mast_horizontal 1
+    100058: Mast_horizontal1
+    100060: Mast_horizontal1 1
+    100062: Mast_horizontal2
+    100064: Mast_horizontal2 1
+    100066: Mast_Nest
+    100068: Mast_Nest_O
+    100070: Ribs4
+    100072: Sail1
+    100074: Sail_03
+    100076: Sail_04
+    100078: Sail_05
+    100080: Sail_06
+    100082: Sail_Front
+    100084: Stairs1
+    100086: SteeringWheel2
+    100088: Windows1
+    400000: BackRailingBot
+    400002: BackRailingTop1
+    400004: //RootNode
+    400006: canon_shaft10
+    400008: canon_shaft11
+    400010: canon_shaft8
+    400012: canon_shaft9
+    400014: canon_wheel_l
+    400016: canon_wheel_l 1
+    400018: canon_wheel_l 2
+    400020: canon_wheel_l 3
+    400022: canon_wheel_r
+    400024: canon_wheel_r 1
+    400026: canon_wheel_r 2
+    400028: canon_wheel_r 3
+    400030: flag
+    400032: FloorBot
+    400034: FloorTop
+    400036: Hatch_Bot2
+    400038: Hatch_Top
+    400040: Mast
+    400042: Mast_Back
+    400044: Mast_Base6
+    400046: Mast_Base7
+    400048: Mast_Base8
+    400050: Mast_Front
+    400052: Mast_Front2
+    400054: Mast_horizontal
+    400056: Mast_horizontal 1
+    400058: Mast_horizontal1
+    400060: Mast_horizontal1 1
+    400062: Mast_horizontal2
+    400064: Mast_horizontal2 1
+    400066: Mast_Nest
+    400068: Mast_Nest_O
+    400070: Ribs4
+    400072: Sail1
+    400074: Sail_03
+    400076: Sail_04
+    400078: Sail_05
+    400080: Sail_06
+    400082: Sail_Front
+    400084: Stairs1
+    400086: SteeringWheel2
+    400088: Windows1
+    2300000: BackRailingBot
+    2300002: BackRailingTop1
+    2300004: //RootNode
+    2300006: canon_shaft10
+    2300008: canon_shaft11
+    2300010: canon_shaft8
+    2300012: canon_shaft9
+    2300014: canon_wheel_l
+    2300016: canon_wheel_l 1
+    2300018: canon_wheel_l 2
+    2300020: canon_wheel_l 3
+    2300022: canon_wheel_r
+    2300024: canon_wheel_r 1
+    2300026: canon_wheel_r 2
+    2300028: canon_wheel_r 3
+    2300030: flag
+    2300032: FloorBot
+    2300034: FloorTop
+    2300036: Hatch_Bot2
+    2300038: Hatch_Top
+    2300040: Mast
+    2300042: Mast_Back
+    2300044: Mast_Base6
+    2300046: Mast_Base7
+    2300048: Mast_Base8
+    2300050: Mast_Front
+    2300052: Mast_Front2
+    2300054: Mast_horizontal
+    2300056: Mast_horizontal 1
+    2300058: Mast_horizontal1
+    2300060: Mast_horizontal1 1
+    2300062: Mast_horizontal2
+    2300064: Mast_horizontal2 1
+    2300066: Mast_Nest
+    2300068: Mast_Nest_O
+    2300070: Ribs4
+    2300072: Sail1
+    2300074: Sail_03
+    2300076: Sail_04
+    2300078: Sail_05
+    2300080: Sail_06
+    2300082: Sail_Front
+    2300084: Stairs1
+    2300086: SteeringWheel2
+    2300088: Windows1
+    3300000: BackRailingBot
+    3300002: BackRailingTop1
+    3300004: //RootNode
+    3300006: canon_shaft10
+    3300008: canon_shaft11
+    3300010: canon_shaft8
+    3300012: canon_shaft9
+    3300014: canon_wheel_l
+    3300016: canon_wheel_l 1
+    3300018: canon_wheel_l 2
+    3300020: canon_wheel_l 3
+    3300022: canon_wheel_r
+    3300024: canon_wheel_r 1
+    3300026: canon_wheel_r 2
+    3300028: canon_wheel_r 3
+    3300030: flag
+    3300032: FloorBot
+    3300034: FloorTop
+    3300036: Hatch_Bot2
+    3300038: Hatch_Top
+    3300040: Mast
+    3300042: Mast_Back
+    3300044: Mast_Base6
+    3300046: Mast_Base7
+    3300048: Mast_Base8
+    3300050: Mast_Front
+    3300052: Mast_Front2
+    3300054: Mast_horizontal
+    3300056: Mast_horizontal 1
+    3300058: Mast_horizontal1
+    3300060: Mast_horizontal1 1
+    3300062: Mast_horizontal2
+    3300064: Mast_horizontal2 1
+    3300066: Mast_Nest
+    3300068: Mast_Nest_O
+    3300070: Ribs4
+    3300072: Sail1
+    3300074: Sail_03
+    3300076: Sail_04
+    3300078: Sail_05
+    3300080: Sail_06
+    3300082: Sail_Front
+    3300084: Stairs1
+    3300086: SteeringWheel2
+    3300088: Windows1
+    4300000: Boat_05
+    4300002: FloorBot
+    4300004: FloorTop
+    4300006: Mast_Front2
+    4300008: Sail_Front
+    4300010: BackRailingTop1
+    4300012: BackRailingBot
+    4300014: Ribs4
+    4300016: Windows1
+    4300018: Stairs1
+    4300020: canon_shaft8
+    4300022: canon_wheel_r
+    4300024: canon_wheel_l
+    4300026: canon_shaft9
+    4300028: canon_wheel_r
+    4300030: canon_wheel_l
+    4300032: SteeringWheel2
+    4300034: canon_shaft10
+    4300036: canon_wheel_r
+    4300038: canon_wheel_l
+    4300040: canon_shaft11
+    4300042: canon_wheel_r
+    4300044: canon_wheel_l
+    4300046: Hatch_Bot2
+    4300048: Hatch_Top
+    4300050: Mast_Base6
+    4300052: Mast_horizontal2
+    4300054: Mast_horizontal
+    4300056: Mast_horizontal1
+    4300058: Sail_06
+    4300060: Sail_03
+    4300062: Mast_Front
+    4300064: Mast_Base7
+    4300066: Sail1
+    4300068: Mast_Back
+    4300070: Mast_Base8
+    4300072: Mast_horizontal2
+    4300074: Mast_horizontal
+    4300076: Mast_horizontal1
+    4300078: Sail_04
+    4300080: Sail_05
+    4300082: Mast_Nest
+    4300084: Mast_Nest_O
+    4300086: flag
+    4300088: Mast
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

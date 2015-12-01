@@ -1,0 +1,155 @@
+fileFormatVersion: 2
+guid: 1a277520722728b48877920157af47af
+timeCreated: 1448963248
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: flag
+    100004: FloorBot
+    100006: FloorTop
+    100008: Front_Piece
+    100010: Hatch_Bot
+    100012: Hatch_Top
+    100014: Mast_Back
+    100016: Mast_Base
+    100018: Mast_Base1
+    100020: Mast_Front
+    100022: Mast_Nest
+    100024: Mast_Nest_O
+    100026: Sail
+    100028: Sail1
+    100030: Stairs
+    100032: SteeringWheel
+    400000: //RootNode
+    400002: flag
+    400004: FloorBot
+    400006: FloorTop
+    400008: Front_Piece
+    400010: Hatch_Bot
+    400012: Hatch_Top
+    400014: Mast_Back
+    400016: Mast_Base
+    400018: Mast_Base1
+    400020: Mast_Front
+    400022: Mast_Nest
+    400024: Mast_Nest_O
+    400026: Sail
+    400028: Sail1
+    400030: Stairs
+    400032: SteeringWheel
+    2300000: //RootNode
+    2300002: flag
+    2300004: FloorBot
+    2300006: FloorTop
+    2300008: Front_Piece
+    2300010: Hatch_Bot
+    2300012: Hatch_Top
+    2300014: Mast_Back
+    2300016: Mast_Base
+    2300018: Mast_Base1
+    2300020: Mast_Front
+    2300022: Mast_Nest
+    2300024: Mast_Nest_O
+    2300026: Sail
+    2300028: Sail1
+    2300030: Stairs
+    2300032: SteeringWheel
+    3300000: //RootNode
+    3300002: flag
+    3300004: FloorBot
+    3300006: FloorTop
+    3300008: Front_Piece
+    3300010: Hatch_Bot
+    3300012: Hatch_Top
+    3300014: Mast_Back
+    3300016: Mast_Base
+    3300018: Mast_Base1
+    3300020: Mast_Front
+    3300022: Mast_Nest
+    3300024: Mast_Nest_O
+    3300026: Sail
+    3300028: Sail1
+    3300030: Stairs
+    3300032: SteeringWheel
+    4300000: Boat_04
+    4300002: FloorBot
+    4300004: FloorTop
+    4300006: Front_Piece
+    4300008: Hatch_Bot
+    4300010: Hatch_Top
+    4300012: Mast_Base
+    4300014: Sail
+    4300016: Mast_Front
+    4300018: Mast_Base1
+    4300020: Sail1
+    4300022: Mast_Nest_O
+    4300024: Mast_Nest
+    4300026: Mast_Back
+    4300028: flag
+    4300030: Stairs
+    4300032: SteeringWheel
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
