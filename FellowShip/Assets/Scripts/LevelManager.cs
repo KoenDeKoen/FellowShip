@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour
     private bool hastolerpcamera;
     private Vector3 newcamerapos, startwallL, startwallR, startwallU, startwallD, startscalewallL, 
         startscalewallR, startscalewallU, startscalewallD, startscaleseafloor, startcamerapos;
+    public SpawnableSpots ss;
 
 	void Start ()
     {
@@ -62,7 +63,8 @@ public class LevelManager : MonoBehaviour
         wallD.transform.localScale = new Vector3(wallD.transform.localScale.x * multiplier, wallD.transform.localScale.y, wallD.transform.localScale.z * multiplier);
         wallU.transform.localScale = new Vector3(wallU.transform.localScale.x * multiplier, wallU.transform.localScale.y, wallU.transform.localScale.z * multiplier);
         wallR.transform.localScale = new Vector3(wallR.transform.localScale.x * multiplier, wallR.transform.localScale.y, wallR.transform.localScale.z * multiplier);
-        pickupspawning.improveSpawnRange(wallL.transform.localPosition.x + 10, wallD.transform.localPosition.x - 10, wallU.transform.localPosition.z - 10, wallD.transform.localPosition.z + 10);
+        ss.improveSpawnRange( (int)wallR.transform.localPosition.x - 10, (int)wallL.transform.localPosition.z + 10, (int)wallU.transform.localPosition.z - 10, (int)wallD.transform.localPosition.x + 10);
+        
     }
 
     public void resetSize()

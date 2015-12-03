@@ -1,21 +1,20 @@
-﻿using UnityEngine;
+﻿//Made by Koen Brouwers
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
 public class PickUpSpawning : MonoBehaviour {
 
-    // Use this for initialization
     public Pickup pickup;
 	public Highscore hs;
-    public SpawnableSpots nss;
-    private List<Vector3> locations;
+    public SpawnableSpots ss;
     private float borderxmin, borderxmax, borderzmin, borderzmax;
     private int pickupscollected, maxpickups;
     private bool hasspawnednext, done;
 
     void Start ()
     {
-        //locations = new List<Vector3>();
         maxpickups = 5;
         borderxmax = 45;
         borderzmax = 45;
@@ -25,11 +24,14 @@ public class PickUpSpawning : MonoBehaviour {
     }
 
     public void spawnNextPickup()
-    {
+    {   
+        int posx = ss.returnXSpots()[Random.Range(0, ss.returnXSpots().Count)];
+        int posz = ss.returnZSpots()[Random.Range(0, ss.returnZSpots().Count)];
+        Vector3 newpos = new Vector3(posx, 0, posz);
         pickup.destroyPickup();
         if (pickupscollected < maxpickups)
         {
-            pickup.instPickup(locations[0]);
+            pickup.instPickup(newpos);
             pickupscollected++;
             //UPGRADEEEE
             hasspawnednext = true;
@@ -43,7 +45,10 @@ public class PickUpSpawning : MonoBehaviour {
 
     public void spawnFirstPickup()
     {
-        pickup.instPickup(locations[0]);
+        int posx = ss.returnXSpots()[Random.Range(0, ss.returnXSpots().Count)];
+        int posz = ss.returnZSpots()[Random.Range(0, ss.returnZSpots().Count)];
+        Vector3 newpos = new Vector3(posx, 0, posz);
+        pickup.instPickup(newpos);
     }
 
     public bool hasSpawnedNext()
@@ -62,33 +67,10 @@ public class PickUpSpawning : MonoBehaviour {
 
     public void resetGame()
     {
-        locations = new List<Vector3>();
         pickupscollected = 0;
         hasspawnednext = false;
         done = false;
-        for (int i = 0; i < maxpickups; i++)
-        {
-            float posx = Random.Range(borderxmin, borderxmax);
-            float posz = Random.Range(borderzmin, borderzmax);
-            if (posx == 0 && posz == 0)
-            {
-                posx = Random.Range(5, borderzmax);
-                posz = Random.Range(5, borderzmax);
-            }
-            locations.Add(new Vector3(posx, 0, posz));
-        }
-    }
-
-    public void improveSpawnRange(float borderxmax, float borderxmin, float borderymin, float borderymax)
-    {
-        locations = new List<Vector3>();
-        float posx = Random.Range(borderxmin, borderxmax);
-        float posz = Random.Range(borderymin, borderymax);
-    
-        /*for (int i = 0; i < nss.returnNonSpawnableSpots().Count; i++)
-        {
-            //if()
-        }*/
-        locations.Add(new Vector3(posx, 0, posz));
+        float posx = ss.returnXSpots()[Random.Range(0, ss.returnXSpots().Count)];
+        float posz = ss.returnZSpots()[Random.Range(0, ss.returnZSpots().Count)];
     }
 }

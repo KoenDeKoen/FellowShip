@@ -5,11 +5,11 @@ using System.Collections.Generic;
 public class SpawnObstacles : MonoBehaviour
 {
     public Obstacles obstacles;
-    private List<Vector3> spawnedobstacles;
+    private List<GameObject> spawnedobstacles;
 	// Use this for initialization
 	void Start ()
     {
-        spawnNextObstacle();
+        spawnedobstacles = new List<GameObject>();
 	}
 	
 	// Update is called once per frame
@@ -20,7 +20,17 @@ public class SpawnObstacles : MonoBehaviour
 
     public void spawnNextObstacle()
     {
-        GameObject spawnedobstacle = Instantiate(obstacles.returnObstacles()[Random.Range(0, obstacles.returnObstacles().Count)]);
+        GameObject spawnedobstacle = new GameObject();
+        spawnedobstacle = Instantiate(obstacles.returnObstacles()[Random.Range(0, obstacles.returnObstacles().Count)]);
+        spawnedobstacles.Add(spawnedobstacle);
+    }
 
+    public void resetObstacles()
+    {
+        for (int i = 0; i < spawnedobstacles.Count; i++)
+        {
+            Destroy(spawnedobstacles[i]);
+            spawnedobstacles.RemoveAt(i);
+        }
     }
 }

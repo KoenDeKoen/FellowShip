@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//Made by Koen Brouwers
+
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -13,6 +15,8 @@ public class MenuControl : MonoBehaviour
     private bool inmenu;
     public TimeTrial tt;
     public LevelManager lvlm;
+    public SpawnObstacles so;
+    public SpawnableSpots ss;
     // Use this for initialization
     void Start ()
     {
@@ -38,6 +42,8 @@ public class MenuControl : MonoBehaviour
                 movement.onMenuStart();
                 inmenu = true;
                 lvlm.resetSize();
+                so.resetObstacles();
+                ss.resetSize();
             }
 
             if (mode == 2)
@@ -147,6 +153,7 @@ public class MenuControl : MonoBehaviour
     {
         mode = 1;
         modeselectpanel.SetActive(false);
+        so.spawnNextObstacle();
         pickupspawning.resetGame();
         pickupspawning.spawnFirstPickup();
         inmenu = false;
