@@ -7,6 +7,7 @@ public class PickUpSpawning : MonoBehaviour {
     // Use this for initialization
     public Pickup pickup;
 	public Highscore hs;
+    public SpawnableSpots nss;
     private List<Vector3> locations;
     private float borderxmin, borderxmax, borderzmin, borderzmax;
     private int pickupscollected, maxpickups;
@@ -83,6 +84,11 @@ public class PickUpSpawning : MonoBehaviour {
         locations = new List<Vector3>();
         float posx = Random.Range(borderxmin, borderxmax);
         float posz = Random.Range(borderymin, borderymax);
+    
+        /*for (int i = 0; i < nss.returnNonSpawnableSpots().Count; i++)
+        {
+            //if()
+        }*/
         locations.Add(new Vector3(posx, 0, posz));
     }
 }
