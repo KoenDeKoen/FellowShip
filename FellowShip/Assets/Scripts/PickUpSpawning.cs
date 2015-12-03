@@ -35,7 +35,7 @@ public class PickUpSpawning : MonoBehaviour {
         }
         else
         {
-			hs.ended = true;
+			//hs.ended = true;
             done = true;
         }
     }
