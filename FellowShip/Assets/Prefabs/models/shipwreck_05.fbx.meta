@@ -1,0 +1,239 @@
+fileFormatVersion: 2
+guid: 513070e3b2ebaff4893e4e62a5514181
+timeCreated: 1449234176
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: BackRailingBot
+    100002: BackRailingTop1
+    100004: flag
+    100006: FloorBot
+    100008: FloorBot1
+    100010: FloorBot2
+    100012: FloorTop
+    100014: Hatch_Bot2
+    100016: Hatch_Top
+    100018: Mast
+    100020: Mast_Back
+    100022: Mast_Base6
+    100024: Mast_Base7
+    100026: Mast_Base8
+    100028: Mast_Front
+    100030: Mast_Front2
+    100032: Mast_horizontal
+    100034: Mast_horizontal 1
+    100036: Mast_horizontal1
+    100038: Mast_horizontal1 1
+    100040: Mast_horizontal2
+    100042: Mast_horizontal2 1
+    100044: Mast_Nest
+    100046: Mast_Nest_O
+    100048: Ribs4
+    100050: Sail1
+    100052: Sail_03
+    100054: Sail_04
+    100056: Sail_05
+    100058: Sail_06
+    100060: //RootNode
+    100062: Stairs1
+    100064: SteeringWheel2
+    100066: Windows1
+    400000: BackRailingBot
+    400002: BackRailingTop1
+    400004: flag
+    400006: FloorBot
+    400008: FloorBot1
+    400010: FloorBot2
+    400012: FloorTop
+    400014: Hatch_Bot2
+    400016: Hatch_Top
+    400018: Mast
+    400020: Mast_Back
+    400022: Mast_Base6
+    400024: Mast_Base7
+    400026: Mast_Base8
+    400028: Mast_Front
+    400030: Mast_Front2
+    400032: Mast_horizontal
+    400034: Mast_horizontal 1
+    400036: Mast_horizontal1
+    400038: Mast_horizontal1 1
+    400040: Mast_horizontal2
+    400042: Mast_horizontal2 1
+    400044: Mast_Nest
+    400046: Mast_Nest_O
+    400048: Ribs4
+    400050: Sail1
+    400052: Sail_03
+    400054: Sail_04
+    400056: Sail_05
+    400058: Sail_06
+    400060: //RootNode
+    400062: Stairs1
+    400064: SteeringWheel2
+    400066: Windows1
+    2300000: BackRailingBot
+    2300002: BackRailingTop1
+    2300004: flag
+    2300006: FloorBot
+    2300008: FloorBot1
+    2300010: FloorBot2
+    2300012: FloorTop
+    2300014: Hatch_Bot2
+    2300016: Hatch_Top
+    2300018: Mast
+    2300020: Mast_Back
+    2300022: Mast_Base6
+    2300024: Mast_Base7
+    2300026: Mast_Base8
+    2300028: Mast_Front
+    2300030: Mast_Front2
+    2300032: Mast_horizontal
+    2300034: Mast_horizontal 1
+    2300036: Mast_horizontal1
+    2300038: Mast_horizontal1 1
+    2300040: Mast_horizontal2
+    2300042: Mast_horizontal2 1
+    2300044: Mast_Nest
+    2300046: Mast_Nest_O
+    2300048: Ribs4
+    2300050: Sail1
+    2300052: Sail_03
+    2300054: Sail_04
+    2300056: Sail_05
+    2300058: Sail_06
+    2300060: //RootNode
+    2300062: Stairs1
+    2300064: SteeringWheel2
+    2300066: Windows1
+    3300000: BackRailingBot
+    3300002: BackRailingTop1
+    3300004: flag
+    3300006: FloorBot
+    3300008: FloorBot1
+    3300010: FloorBot2
+    3300012: FloorTop
+    3300014: Hatch_Bot2
+    3300016: Hatch_Top
+    3300018: Mast
+    3300020: Mast_Back
+    3300022: Mast_Base6
+    3300024: Mast_Base7
+    3300026: Mast_Base8
+    3300028: Mast_Front
+    3300030: Mast_Front2
+    3300032: Mast_horizontal
+    3300034: Mast_horizontal 1
+    3300036: Mast_horizontal1
+    3300038: Mast_horizontal1 1
+    3300040: Mast_horizontal2
+    3300042: Mast_horizontal2 1
+    3300044: Mast_Nest
+    3300046: Mast_Nest_O
+    3300048: Ribs4
+    3300050: Sail1
+    3300052: Sail_03
+    3300054: Sail_04
+    3300056: Sail_05
+    3300058: Sail_06
+    3300060: //RootNode
+    3300062: Stairs1
+    3300064: SteeringWheel2
+    3300066: Windows1
+    4300000: Boat_05
+    4300002: FloorBot
+    4300004: FloorTop
+    4300006: Mast_Front2
+    4300008: BackRailingTop1
+    4300010: BackRailingBot
+    4300012: Ribs4
+    4300014: Windows1
+    4300016: Stairs1
+    4300018: SteeringWheel2
+    4300020: Hatch_Bot2
+    4300022: Hatch_Top
+    4300024: Mast_Base6
+    4300026: Mast_horizontal2
+    4300028: Mast_horizontal
+    4300030: Mast_horizontal1
+    4300032: Sail_06
+    4300034: Sail_03
+    4300036: Mast_Front
+    4300038: Mast_Base7
+    4300040: Sail1
+    4300042: Mast_Back
+    4300044: Mast_Base8
+    4300046: Mast_horizontal2
+    4300048: Mast_horizontal
+    4300050: Mast_horizontal1
+    4300052: Sail_04
+    4300054: Sail_05
+    4300056: Mast_Nest
+    4300058: Mast_Nest_O
+    4300060: flag
+    4300062: Mast
+    4300064: FloorBot1
+    4300066: FloorBot2
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

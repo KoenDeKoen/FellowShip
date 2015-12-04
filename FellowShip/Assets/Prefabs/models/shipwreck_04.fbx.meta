@@ -1,0 +1,176 @@
+fileFormatVersion: 2
+guid: 4c05d1b5952be694e99d655309ed5c96
+timeCreated: 1449222517
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Boat_05
+    100002: flag
+    100004: FloorBot
+    100006: FloorBot1
+    100008: FloorTop
+    100010: Front_Piece
+    100012: Hatch_Bot
+    100014: Hatch_Top
+    100016: iron_band
+    100018: kraaiennest
+    100020: Mast_Back
+    100022: Mast_Base
+    100024: Mast_Base1
+    100026: Mast_Front
+    100028: pole
+    100030: polySurface1
+    100032: polySurface3
+    100034: Sail1
+    100036: Sail2
+    100038: //RootNode
+    100040: Stairs
+    100042: SteeringWheel
+    400000: Boat_05
+    400002: flag
+    400004: FloorBot
+    400006: FloorBot1
+    400008: FloorTop
+    400010: Front_Piece
+    400012: Hatch_Bot
+    400014: Hatch_Top
+    400016: iron_band
+    400018: kraaiennest
+    400020: Mast_Back
+    400022: Mast_Base
+    400024: Mast_Base1
+    400026: Mast_Front
+    400028: pole
+    400030: polySurface1
+    400032: polySurface3
+    400034: Sail1
+    400036: Sail2
+    400038: //RootNode
+    400040: Stairs
+    400042: SteeringWheel
+    2300000: Boat_05
+    2300002: flag
+    2300004: FloorBot
+    2300006: FloorBot1
+    2300008: FloorTop
+    2300010: Front_Piece
+    2300012: Hatch_Bot
+    2300014: Hatch_Top
+    2300016: iron_band
+    2300018: kraaiennest
+    2300020: Mast_Base
+    2300022: Mast_Base1
+    2300024: Mast_Front
+    2300026: pole
+    2300028: polySurface1
+    2300030: polySurface3
+    2300032: Sail1
+    2300034: Sail2
+    2300036: //RootNode
+    2300038: Stairs
+    2300040: SteeringWheel
+    3300000: Boat_05
+    3300002: flag
+    3300004: FloorBot
+    3300006: FloorBot1
+    3300008: FloorTop
+    3300010: Front_Piece
+    3300012: Hatch_Bot
+    3300014: Hatch_Top
+    3300016: iron_band
+    3300018: kraaiennest
+    3300020: Mast_Base
+    3300022: Mast_Base1
+    3300024: Mast_Front
+    3300026: pole
+    3300028: polySurface1
+    3300030: polySurface3
+    3300032: Sail1
+    3300034: Sail2
+    3300036: //RootNode
+    3300038: Stairs
+    3300040: SteeringWheel
+    4300000: Boat_04
+    4300002: FloorBot
+    4300004: FloorTop
+    4300006: Front_Piece
+    4300008: Hatch_Bot
+    4300010: Hatch_Top
+    4300012: Mast_Base
+    4300014: Mast_Front
+    4300016: Mast_Base1
+    4300018: Sail1
+    4300020: polySurface1
+    4300022: polySurface3
+    4300024: Sail2
+    4300026: Stairs
+    4300028: SteeringWheel
+    4300030: FloorBot1
+    4300032: Boat_05
+    4300034: kraaiennest
+    4300036: iron_band
+    4300038: pole
+    4300040: flag
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
