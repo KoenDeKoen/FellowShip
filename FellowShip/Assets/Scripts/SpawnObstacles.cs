@@ -9,9 +9,30 @@ public class SpawnObstacles : MonoBehaviour
     public Obstacles obstacles;
     private List<GameObject> spawnedobstacles;
     public SpawnableSpots ss;
+    public GameObject place1, place2, place3, place4, place5, place6, place7, 
+        place8, place9, place10, place11, place12, place13, place14, place15, place16;
+    private List<Vector3> places;
 	// Use this for initialization
 	void Start ()
     {
+        places = new List<Vector3>();
+        places.Add(place1.transform.position);
+        places.Add(place2.transform.position);
+        places.Add(place3.transform.position);
+        places.Add(place4.transform.position);
+        places.Add(place5.transform.position);
+        places.Add(place6.transform.position);
+        places.Add(place7.transform.position);
+        places.Add(place8.transform.position);
+        places.Add(place9.transform.position);
+        places.Add(place10.transform.position);
+        places.Add(place11.transform.position);
+        places.Add(place12.transform.position);
+        places.Add(place13.transform.position);
+        places.Add(place14.transform.position);
+        places.Add(place15.transform.position);
+        places.Add(place16.transform.position);
+        //Debug.Log(place1.transform.position);
         spawnedobstacles = new List<GameObject>();
 	}
 	
@@ -23,6 +44,8 @@ public class SpawnObstacles : MonoBehaviour
 
     public void spawnNextObstacle()
     {
+        GameObject spawnedobstacle = new GameObject();
+        spawnedobstacle = Instantiate(obstacles.returnObstacles()[Random.Range(0, obstacles.returnObstacles().Count)]);
         /*GameObject spawnedobstacle = new GameObject();
         spawnedobstacle = Instantiate(obstacles.returnObstacles()[Random.Range(0, obstacles.returnObstacles().Count)]);
         spawnedobstacle.transform.localPosition = ss.returnSpotForObject((int)spawnedobstacle.GetComponent<Renderer>().bounds.size.x

@@ -53,7 +53,7 @@ public class LevelManager : MonoBehaviour
 
     public void increaseLevel()
     {
-        float multiplier = 1.2F;
+        float multiplier = 1.35F;
         hastolerpcamera = true;
         newcamerapos = new Vector3(maincamera.transform.localPosition.x, maincamera.transform.localPosition.y * multiplier, maincamera.transform.localPosition.z * multiplier);
         wallL.transform.localPosition = new Vector3(wallL.transform.position.x * multiplier, wallL.transform.position.y, wallL.transform.position.z);

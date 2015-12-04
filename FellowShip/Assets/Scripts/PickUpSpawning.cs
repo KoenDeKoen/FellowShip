@@ -12,9 +12,29 @@ public class PickUpSpawning : MonoBehaviour {
     private float borderxmin, borderxmax, borderzmin, borderzmax;
     private int pickupscollected, maxpickups;
     private bool hasspawnednext, done;
+    public GameObject place1, place2, place3, place4, place5, place6, place7,
+        place8, place9, place10, place11, place12, place13, place14, place15, place16;
+    public List<Vector3> places;
 
     void Start ()
     {
+        places = new List<Vector3>();
+        places.Add(place1.transform.position);
+        places.Add(place2.transform.position);
+        places.Add(place3.transform.position);
+        places.Add(place4.transform.position);
+        places.Add(place5.transform.position);
+        places.Add(place6.transform.position);
+        places.Add(place7.transform.position);
+        places.Add(place8.transform.position);
+        places.Add(place9.transform.position);
+        places.Add(place10.transform.position);
+        places.Add(place11.transform.position);
+        places.Add(place12.transform.position);
+        places.Add(place13.transform.position);
+        places.Add(place14.transform.position);
+        places.Add(place15.transform.position);
+        places.Add(place16.transform.position);
         maxpickups = 5;
         borderxmax = 45;
         borderzmax = 45;
