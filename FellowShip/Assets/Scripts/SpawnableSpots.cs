@@ -9,6 +9,9 @@ public class SpawnableSpots : MonoBehaviour
     private List<int> xspots;
     private List<int> zspots;
     private int borderxmin, borderxmax, borderzmin, borderzmax;
+    private List<Vector3> takenSpots;
+    public int size;
+    private List<Vector3> availableSpots;
 
     void Start()
     {
@@ -40,7 +43,7 @@ public class SpawnableSpots : MonoBehaviour
         int prevxmax = borderxmax;
         int prevxmin = borderxmin;
         int prevzmax = borderzmax;
-        int prevzmin = borderzmini;
+        int prevzmin = borderzmin;
         borderxmax = borderxmaxi;
         borderxmin = borderxmini;
         borderzmax = borderzmaxi;
@@ -63,10 +66,17 @@ public class SpawnableSpots : MonoBehaviour
         }
     }
 
+    public Vector3 returnPos()
+    {
+        return availableSpots[Random.Range(0, availableSpots.Count)];
+    }
+
     public void resetSize()
     {
         xspots = new List<int>();
         zspots = new List<int>();
+        takenSpots = new List<Vector3>();
+        availableSpots = new List<Vector3>();
         borderxmax = 45;
         borderzmax = 45;
         borderzmin = -45;
@@ -79,5 +89,40 @@ public class SpawnableSpots : MonoBehaviour
         {
             zspots.Add(i);
         }
+        for (int i = borderxmin; i <= borderxmax; i++)
+        {
+            for (int i2 = borderzmin; i2 <= borderzmax; i2++)
+            {
+                availableSpots.Add(new Vector3(i, 0, i2));
+            }
+        }
+        size = availableSpots.Count;
+    }
+
+    public void removeSpawnableSpot(Vector3 spot)
+    {
+        for (int i = 0; i < availableSpots.Count; i++)
+        {
+            if (spot == availableSpots[i])
+            {
+                availableSpots.Remove(spot);
+                size = availableSpots.Count;
+                return;
+            }
+        }
+        //availableSpots.Remove(spot);
+    }
+
+    public Vector3 returnSpotForObject(int xboundary, int zboundary)
+    {
+        //Debug.Log(xboundary + "," + zboundary);
+        int tempxmax = borderxmax - xboundary;
+        int tempxmin = borderxmin + xboundary;
+        int tempzmax = borderzmax - zboundary;
+        int tempzmin = borderzmin + zboundary;
+
+        int xval = Random.Range(tempxmin, tempxmax);
+        int zval = Random.Range(tempzmin, tempzmax);
+        return new Vector3(xval, 0, zval);
     }
 }

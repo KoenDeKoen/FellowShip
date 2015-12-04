@@ -9,6 +9,7 @@ public class BoatCollision : MonoBehaviour
     private PickUpSpawning pickupspawner;
     private MenuControl menucontrols;
     private LevelManager lvlm;
+    private SpawnObstacles so;
     private bool spawnnext;
 
     void Start()
@@ -16,6 +17,7 @@ public class BoatCollision : MonoBehaviour
         pickupspawner = FindObjectOfType<PickUpSpawning>().GetComponent<PickUpSpawning>();
         menucontrols = FindObjectOfType<MenuControl>().GetComponent<MenuControl>();
         lvlm = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
+        so = FindObjectOfType<SpawnObstacles>().GetComponent<SpawnObstacles>();
     }
 
     void Update()
@@ -26,6 +28,7 @@ public class BoatCollision : MonoBehaviour
             lvlm.increaseLevel();
             pickupspawner.spawnNextPickup();
             pickupspawner.setDoneSpawn();
+            so.spawnNextObstacle();
         }  
     }
 

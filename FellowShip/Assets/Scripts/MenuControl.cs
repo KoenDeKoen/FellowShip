@@ -41,9 +41,10 @@ public class MenuControl : MonoBehaviour
                 movement.resetBoatPos();
                 movement.onMenuStart();
                 inmenu = true;
+                //ss.resetSize();
                 lvlm.resetSize();
                 so.resetObstacles();
-                ss.resetSize();
+                //ss.resetSize();
             }
 
             if (mode == 2)

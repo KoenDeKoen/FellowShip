@@ -67,6 +67,7 @@ public class PickUpSpawning : MonoBehaviour {
 
     public void resetGame()
     {
+        ss.resetSize();
         pickupscollected = 0;
         hasspawnednext = false;
         done = false;
