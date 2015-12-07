@@ -14,7 +14,7 @@ public class Obstacles : MonoBehaviour
     public GameObject obstacle5;
     public GameObject obstacle6;
     // Use this for initialization
-    void Start ()
+    public void Init ()
     {
         obstacles = new List<GameObject>();
         if (obstacle1 != null)

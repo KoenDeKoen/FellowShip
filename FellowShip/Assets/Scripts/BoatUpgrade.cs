@@ -5,44 +5,56 @@ public class BoatUpgrade : MonoBehaviour
 {
 
     // Use this for initialization
-    public GameObject model1, model2, model3, model4, model5;
+    public GameObject model0, model1, model2, model3, model4, model5;
     public GameObject currentboat;
     private int state;
 
     void Start ()
     {
-        state = 1;
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-	    
+        state = 0;
 	}
 
     public void upgradeShip()
     {
+        state++;
+        GameObject newmodel = new GameObject();
         switch (state)
         {
             case 1:
-
+                newmodel = Instantiate(model1);
                 break;
 
             case 2:
-
+                newmodel = Instantiate(model2);
                 break;
 
             case 3:
-
+                newmodel = Instantiate(model3);
                 break;
 
             case 4:
-
+                newmodel = Instantiate(model4);
                 break;
 
             case 5:
-
+                newmodel = Instantiate(model5);
                 break;
         }
+        newmodel.transform.position = currentboat.transform.position;
+        newmodel.transform.rotation = currentboat.transform.rotation;
+        Destroy(currentboat);
+        currentboat = newmodel;
+        newmodel.GetComponent<Movement>().onMenuEnd();
+    }
+
+    public void resetShipModel()
+    {
+        GameObject newmodel = new GameObject();
+        newmodel = Instantiate(model0);
+        newmodel.transform.position = currentboat.transform.position;
+        newmodel.transform.rotation = currentboat.transform.rotation;
+        Destroy(currentboat);
+        currentboat = newmodel;
+        newmodel.GetComponent<Movement>().onMenuEnd();
     }
 }

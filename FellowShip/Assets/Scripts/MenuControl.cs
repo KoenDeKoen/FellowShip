@@ -154,9 +154,9 @@ public class MenuControl : MonoBehaviour
     {
         mode = 1;
         modeselectpanel.SetActive(false);
-        so.spawnNextObstacle();
         pickupspawning.resetGame();
         pickupspawning.spawnFirstPickup();
+        //pickupspawning.spawnNextPickup();
         inmenu = false;
     }
 }

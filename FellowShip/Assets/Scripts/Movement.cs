@@ -9,20 +9,24 @@ public class Movement : MonoBehaviour
 	float rotationSpeed;
 	float rotation;
     private bool finishedmenu;
+    private BoatUpgrade boatupgrade;
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
         finishedmenu = false;
 		rotationSpeed = 5f;
 		speed = 5f;
+        boatupgrade = FindObjectOfType<BoatUpgrade>().GetComponent<BoatUpgrade>();
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
+        //Debug.Log("hoi");
         if (finishedmenu)
         {
+            //Debug.Log("hoi2");
             Move();
         }
 	}
@@ -50,16 +54,19 @@ public class Movement : MonoBehaviour
 
     public void onMenuEnd()
     {
+        Debug.Log("meh");
         finishedmenu = true;
     }
 
     public void onMenuStart()
     {
+        Debug.Log("meh2");
         finishedmenu = false;
     }
 
     public void resetBoatPos()
     {
+        boatupgrade.resetShipModel();
         transform.position = new Vector3(-45,transform.position.y, -45);
         transform.rotation = Quaternion.identity;
     }
