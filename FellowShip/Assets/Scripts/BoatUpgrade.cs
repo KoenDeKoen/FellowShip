@@ -49,12 +49,15 @@ public class BoatUpgrade : MonoBehaviour
 
     public void resetShipModel()
     {
+        state = 0;
         GameObject newmodel = new GameObject();
         newmodel = Instantiate(model0);
-        newmodel.transform.position = currentboat.transform.position;
-        newmodel.transform.rotation = currentboat.transform.rotation;
+        //newmodel.transform.position = currentboat.transform.position;
+        //newmodel.transform.rotation = currentboat.transform.rotation;
         Destroy(currentboat);
         currentboat = newmodel;
-        newmodel.GetComponent<Movement>().onMenuEnd();
+        newmodel.GetComponent<Movement>().onMenuStart();
+        newmodel.transform.localPosition = new Vector3(-45, 0, -45);
+        newmodel.transform.rotation = Quaternion.identity;
     }
 }

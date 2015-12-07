@@ -10,13 +10,14 @@ public class MenuControl : MonoBehaviour
     public Button startbtn, optionsbtn, calibrationbtn, quitbtn;
     public GameObject mainmenupanel, modeselectpanel, highscorepanel;
     private float time;
-    public Movement movement;
+    private Movement movement;
     public PickUpSpawning pickupspawning;
     private bool inmenu;
     public TimeTrial tt;
     public LevelManager lvlm;
     public SpawnObstacles so;
     public SpawnableSpots ss;
+    public BoatUpgrade boatupgrade;
     // Use this for initialization
     void Start ()
     {
@@ -38,7 +39,8 @@ public class MenuControl : MonoBehaviour
                 startbtn.Select();
                 pickupspawning.resetGame();
                 mainmenupanel.SetActive(true);
-                movement.resetBoatPos();
+                //movement.resetBoatPos();
+                boatupgrade.resetShipModel();
                 movement.onMenuStart();
                 inmenu = true;
                 //ss.resetSize();
@@ -56,6 +58,7 @@ public class MenuControl : MonoBehaviour
         }
         if (inmenu)
         {
+            
             checkForPresses();
         }
     }
@@ -118,6 +121,7 @@ public class MenuControl : MonoBehaviour
 
     private void selectButton()
     {
+        movement = FindObjectOfType<Movement>().GetComponent<Movement>();
         switch (state)
         {
             case 1:
@@ -142,6 +146,7 @@ public class MenuControl : MonoBehaviour
 
     public void startTimeTrial()
     {
+        movement = FindObjectOfType<Movement>().GetComponent<Movement>();
         mode = 2;
         modeselectpanel.SetActive(false);
         pickupspawning.resetGame();
@@ -152,10 +157,12 @@ public class MenuControl : MonoBehaviour
 
     public void startNormalMode()
     {
+        movement = FindObjectOfType<Movement>().GetComponent<Movement>();
         mode = 1;
         modeselectpanel.SetActive(false);
         pickupspawning.resetGame();
         pickupspawning.spawnFirstPickup();
+        movement.onMenuEnd();
         //pickupspawning.spawnNextPickup();
         inmenu = false;
     }
