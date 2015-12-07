@@ -12,6 +12,8 @@ public class Highscore : MonoBehaviour {
 
 	public Text text1, text2, text3, text4, text5, text6, text7, text8, text9, text10;
 
+	public TimeTrial tt;
+	//returnTimeInString()
 	void Start()
 	{
 		ended = false;
@@ -31,59 +33,39 @@ public class Highscore : MonoBehaviour {
 	}
 	
 	void Update(){
-
 		if(ended)
 		{
-//			if(timescore > PlayerPrefs.GetFloat("HighScore"))
+//			if(timescore < PlayerPrefs.GetFloat("t10"))
 //			{
-//				PlayerPrefs.SetFloat("HighScore", timescore);
+//				PlayerPrefs.SetFloat("t10", timescore);
 //				PlayerPrefs.Save();
 //			}
-//
-//			if(timescore < PlayerPrefs.GetFloat("HighScore"))
-//			{
-//				if(timescore > PlayerPrefs.GetFloat("Second"))
-//				{
-//					PlayerPrefs.SetFloat("Second", timescore);
-//					PlayerPrefs.Save();
-//				}
-//			}
-//
-//			if(timescore < PlayerPrefs.GetFloat("Second"))
-//			{
-//				if(timescore > PlayerPrefs.GetFloat("Third"))
-//				{
-//					PlayerPrefs.SetFloat("Third", timescore);
-//					PlayerPrefs.Save();
-//				}
-//			}
 
-			if(timescore > PlayerPrefs.GetFloat("t10"))
+			for(int i = 10; i > 1; i--)
 			{
-				PlayerPrefs.SetFloat("t10", timescore);
-				PlayerPrefs.Save();
+				SaveTime("t"+i, "t"+(i-1));
 			}
 
-			SaveTime("t10", "t9");
-			SaveTime("t9", "t8");
-			SaveTime("t8", "t7");
-			SaveTime("t7", "t6");
-			SaveTime("t6", "t5");
-			SaveTime("t5", "t4");
-			SaveTime("t4", "t3");
-			SaveTime("t3", "t2");
-			SaveTime("t2", "t1");
+//			SaveTime("t10", "t9");
+//			SaveTime("t9", "t8");
+//			SaveTime("t8", "t7");
+//			SaveTime("t7", "t6");
+//			SaveTime("t6", "t5");
+//			SaveTime("t5", "t4");
+//			SaveTime("t4", "t3");
+//			SaveTime("t3", "t2");
+//			SaveTime("t2", "t1");
 
-			text1.text = "Score: " + PlayerPrefs.GetFloat("t1",0);
-			text2.text = "Score: " + PlayerPrefs.GetFloat("t2",0);
-			text3.text = "Score: " + PlayerPrefs.GetFloat("t3",0);
-			text4.text = "Score: " + PlayerPrefs.GetFloat("t4",0);
-			text5.text = "Score: " + PlayerPrefs.GetFloat("t5",0);
-			text6.text = "Score: " + PlayerPrefs.GetFloat("t6",0);
-			text7.text = "Score: " + PlayerPrefs.GetFloat("t7",0);
-			text8.text = "Score: " + PlayerPrefs.GetFloat("t8",0);
-			text9.text = "Score: " + PlayerPrefs.GetFloat("t9",0);
-			text10.text = "Score: " + PlayerPrefs.GetFloat("t10",0);
+			text1.text = "Score: " + t1;
+			text2.text = "Score: " + t2;
+			text3.text = "Score: " + t3;
+			text4.text = "Score: " + t4;
+			text5.text = "Score: " + t5;
+			text6.text = "Score: " + t6;
+			text7.text = "Score: " + t7;
+			text8.text = "Score: " + t8;
+			text9.text = "Score: " + t9;
+			text10.text = "Score: " + t10;
 		}
 	}
 
@@ -94,9 +76,9 @@ public class Highscore : MonoBehaviour {
 
 	public void SaveTime(string place, string compare)
 	{
-		if(timescore < PlayerPrefs.GetFloat(place))
+		if(timescore > PlayerPrefs.GetFloat(place))
 		{
-			if(timescore > PlayerPrefs.GetFloat(compare))
+			if(timescore <= PlayerPrefs.GetFloat(compare))
 			{
 				PlayerPrefs.SetFloat(compare, timescore);
 				PlayerPrefs.Save();
