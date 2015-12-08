@@ -1,0 +1,214 @@
+fileFormatVersion: 2
+guid: e72615e412cbd444db5207ff7b5ce57c
+timeCreated: 1449566931
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: cannons
+    100002: dek
+    100004: Door
+    100006: Door_1
+    100008: Door_2
+    100010: hout_bij_railing
+    100012: Hout_dat_het_schip_bij_elkaar_houd
+    100014: Kraaiennest
+    100016: kraaiennest_band
+    100018: Luik_Voor
+    100020: Luik_voor2
+    100022: Luik_voor_plane
+    100024: Luik_voor_spijlen
+    100026: masten_wood
+    100028: masthouder
+    100030: Muur_klein_achter_deck
+    100032: raampjes
+    100034: Raampjes_kannonraam
+    100036: railing_trap
+    100038: sails
+    100040: Schipranden
+    100042: //RootNode
+    100044: Smalldeck_back
+    100046: smallfrontdeck
+    100048: stuurwiel
+    100050: Traptreden
+    100052: Vlaggen_mast
+    100054: wiel_houder
+    100056: wood_achter
+    400000: cannons
+    400002: dek
+    400004: Door
+    400006: Door_1
+    400008: Door_2
+    400010: hout_bij_railing
+    400012: Hout_dat_het_schip_bij_elkaar_houd
+    400014: Kraaiennest
+    400016: kraaiennest_band
+    400018: Luik_Voor
+    400020: Luik_voor2
+    400022: Luik_voor_plane
+    400024: Luik_voor_spijlen
+    400026: masten_wood
+    400028: masthouder
+    400030: Muur_klein_achter_deck
+    400032: raampjes
+    400034: Raampjes_kannonraam
+    400036: railing_trap
+    400038: sails
+    400040: Schipranden
+    400042: //RootNode
+    400044: Smalldeck_back
+    400046: smallfrontdeck
+    400048: stuurwiel
+    400050: Traptreden
+    400052: Vlaggen_mast
+    400054: wiel_houder
+    400056: wood_achter
+    2300000: cannons
+    2300002: dek
+    2300004: Door
+    2300006: Door_1
+    2300008: Door_2
+    2300010: hout_bij_railing
+    2300012: Hout_dat_het_schip_bij_elkaar_houd
+    2300014: Kraaiennest
+    2300016: kraaiennest_band
+    2300018: Luik_Voor
+    2300020: Luik_voor2
+    2300022: Luik_voor_plane
+    2300024: Luik_voor_spijlen
+    2300026: masten_wood
+    2300028: masthouder
+    2300030: Muur_klein_achter_deck
+    2300032: raampjes
+    2300034: Raampjes_kannonraam
+    2300036: railing_trap
+    2300038: sails
+    2300040: Schipranden
+    2300042: //RootNode
+    2300044: Smalldeck_back
+    2300046: smallfrontdeck
+    2300048: stuurwiel
+    2300050: Traptreden
+    2300052: Vlaggen_mast
+    2300054: wiel_houder
+    2300056: wood_achter
+    3300000: cannons
+    3300002: dek
+    3300004: Door
+    3300006: Door_1
+    3300008: Door_2
+    3300010: hout_bij_railing
+    3300012: Hout_dat_het_schip_bij_elkaar_houd
+    3300014: Kraaiennest
+    3300016: kraaiennest_band
+    3300018: Luik_Voor
+    3300020: Luik_voor2
+    3300022: Luik_voor_plane
+    3300024: Luik_voor_spijlen
+    3300026: masten_wood
+    3300028: masthouder
+    3300030: Muur_klein_achter_deck
+    3300032: raampjes
+    3300034: Raampjes_kannonraam
+    3300036: railing_trap
+    3300038: sails
+    3300040: Schipranden
+    3300042: //RootNode
+    3300044: Smalldeck_back
+    3300046: smallfrontdeck
+    3300048: stuurwiel
+    3300050: Traptreden
+    3300052: Vlaggen_mast
+    3300054: wiel_houder
+    3300056: wood_achter
+    4300000: schipwreck_7
+    4300002: Vlaggen_mast
+    4300004: Luik_voor_spijlen
+    4300006: stuurwiel
+    4300008: wiel_houder
+    4300010: dek
+    4300012: Kraaiennest
+    4300014: kraaiennest_band
+    4300016: Luik_voor_plane
+    4300018: Luik_Voor
+    4300020: Luik_voor2
+    4300022: smallfrontdeck
+    4300024: Door
+    4300026: Door_1
+    4300028: Door_2
+    4300030: Muur_klein_achter_deck
+    4300032: Smalldeck_back
+    4300034: railing_trap
+    4300036: hout_bij_railing
+    4300038: Traptreden
+    4300040: masten_wood
+    4300042: sails
+    4300044: Raampjes_kannonraam
+    4300046: Schipranden
+    4300048: wood_achter
+    4300050: masthouder
+    4300052: Hout_dat_het_schip_bij_elkaar_houd
+    4300054: cannons
+    4300056: raampjes
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
