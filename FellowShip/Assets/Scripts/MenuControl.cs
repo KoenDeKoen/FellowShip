@@ -18,6 +18,7 @@ public class MenuControl : MonoBehaviour
     public SpawnObstacles so;
     public SpawnableSpots ss;
     public BoatUpgrade boatupgrade;
+	public NewHighscore nhs;
     // Use this for initialization
     void Start ()
     {
@@ -54,6 +55,7 @@ public class MenuControl : MonoBehaviour
                 tt.stopCounting();
                 highscorepanel.SetActive(true);
                 highscorepanel.GetComponentInChildren<Text>().text = tt.returnTimeInString();
+				nhs.ended = true;
             }
         }
         if (inmenu)

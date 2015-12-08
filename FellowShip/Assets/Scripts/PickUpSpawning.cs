@@ -7,7 +7,6 @@ using System.Collections.Generic;
 public class PickUpSpawning : MonoBehaviour {
 
     public Pickup pickup;
-	public NewHighscore nhs;
     public SpawnableSpots ss;
     //private float borderxmin, borderxmax, borderzmin, borderzmax;
     private int pickupscollected, maxpickups;
@@ -15,6 +14,7 @@ public class PickUpSpawning : MonoBehaviour {
     public GameObject round1spots, round2spots, round3spots, round4spots, round5spots;
     private List<Vector3> round1children, round2children, round3children, round4children, round5children;
     private Vector3 lastpos;
+	public NewHighscore nhs;
 
     void Start ()
     {
@@ -143,7 +143,7 @@ public class PickUpSpawning : MonoBehaviour {
         }
         else
         {
-			nhs.ended = true;
+			nhs.ended = false;
             done = true;
         }
     }
