@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
     private Vector3 newcamerapos, startwallL, startwallR, startwallU, startwallD, startscalewallL, 
         startscalewallR, startscalewallU, startscalewallD, startscaleseafloor, startcamerapos;
     public SpawnableSpots ss;
+    private float time;
 
 	void Start ()
     {
@@ -31,6 +32,7 @@ public class LevelManager : MonoBehaviour
         startscalewallD = wallD.transform.localScale;
         startscaleseafloor = seafloor.transform.localScale;
         startcamerapos = maincamera.transform.position;
+        time = 5;
     }
 	
 	// Update is called once per frame
@@ -38,10 +40,12 @@ public class LevelManager : MonoBehaviour
     {
 	    if(hastolerpcamera)
         {
-            maincamera.transform.localPosition = Vector3.MoveTowards(maincamera.transform.localPosition, newcamerapos, Time.deltaTime * 8);
-            if (maincamera.transform.localPosition.x >= newcamerapos.x && maincamera.transform.localPosition.z <= newcamerapos.z)
+            time -= Time.deltaTime;
+            maincamera.transform.localPosition = Vector3.MoveTowards(maincamera.transform.localPosition, newcamerapos, Time.deltaTime * 25);
+            if (time <= 0)
             {
                 hastolerpcamera = false;
+                time = 5;
             }
         }
 	}
@@ -53,9 +57,10 @@ public class LevelManager : MonoBehaviour
 
     public void increaseLevel()
     {
+        time = 5;
         float multiplier = 1.35F;
         hastolerpcamera = true;
-        newcamerapos = new Vector3(maincamera.transform.localPosition.x, maincamera.transform.localPosition.y * multiplier, maincamera.transform.localPosition.z * multiplier);
+        newcamerapos = new Vector3(maincamera.transform.localPosition.x * multiplier, maincamera.transform.localPosition.y * multiplier * 1.1f, maincamera.transform.localPosition.z * multiplier * 1.1f);
         wallL.transform.localPosition = new Vector3(wallL.transform.position.x * multiplier, wallL.transform.position.y, wallL.transform.position.z);
         wallR.transform.localPosition = new Vector3(wallR.transform.position.x * multiplier, wallR.transform.position.y, wallR.transform.position.z);
         wallU.transform.localPosition = new Vector3(wallU.transform.position.x, wallU.transform.position.y, wallU.transform.position.z * multiplier);

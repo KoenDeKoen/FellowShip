@@ -54,13 +54,11 @@ public class Movement : MonoBehaviour
 
     public void onMenuEnd()
     {
-        Debug.Log("meh");
         finishedmenu = true;
     }
 
     public void onMenuStart()
     {
-        Debug.Log("meh2");
         finishedmenu = false;
     }
 

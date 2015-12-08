@@ -31,7 +31,6 @@ public class BoatCollision : MonoBehaviour
             lvlm.increaseLevel();
             pickupspawner.spawnNextPickup();
             pickupspawner.setDoneSpawn();
-            //so.spawnNextObstacle();
             boatupgrade.upgradeShip();
             
 

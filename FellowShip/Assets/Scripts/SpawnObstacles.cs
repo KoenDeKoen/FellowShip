@@ -30,13 +30,13 @@ public class SpawnObstacles : MonoBehaviour
         foreach (Transform child in spawnparent.transform)
         {
             places.Add(child.position);
-            Debug.Log(child.position);
+            //Debug.Log(child.position);
         }
 
         int randomnumber = Random.Range(5, places.Count);
         for (int i = 0; i < randomnumber; i++)
         {
-            GameObject spawnedobstacle = new GameObject();
+            GameObject spawnedobstacle;
             spawnedobstacle = Instantiate(obstacles.returnObstacles()[Random.Range(0, obstacles.returnObstacles().Count)]);
             int randomplace = Random.Range(0, places.Count);
             spawnedobstacle.transform.position = places[randomplace];

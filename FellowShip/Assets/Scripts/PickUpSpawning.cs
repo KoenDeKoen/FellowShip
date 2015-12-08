@@ -81,7 +81,7 @@ public class PickUpSpawning : MonoBehaviour {
                 break;*/
 
             case 1:
-                Debug.Log("1");
+                //Debug.Log("1");
                 newpos = round1children[Random.Range(0, round1children.Count)];
                 while (newpos == lastpos)
                 {
@@ -91,7 +91,7 @@ public class PickUpSpawning : MonoBehaviour {
                 break;
 
             case 2:
-                Debug.Log("2");
+                //Debug.Log("2");
                 newpos = round2children[Random.Range(0, round2children.Count)];
                 while (newpos == lastpos)
                 {
@@ -101,7 +101,7 @@ public class PickUpSpawning : MonoBehaviour {
                 break;
 
             case 3:
-                Debug.Log("3");
+                //Debug.Log("3");
                 newpos = round3children[Random.Range(0, round3children.Count)];
                 while (newpos == lastpos)
                 {
@@ -111,7 +111,7 @@ public class PickUpSpawning : MonoBehaviour {
                 break;
 
             case 4:
-                Debug.Log("4");
+                //Debug.Log("4");
                 newpos = round4children[Random.Range(0, round4children.Count)];
                 while (newpos == lastpos)
                 {
@@ -121,7 +121,7 @@ public class PickUpSpawning : MonoBehaviour {
                 break;
 
             case 5:
-                Debug.Log("5");
+                //Debug.Log("5");
                 newpos = round5children[Random.Range(0, round5children.Count)];
                 while (newpos == lastpos)
                 {
@@ -172,6 +172,7 @@ public class PickUpSpawning : MonoBehaviour {
     public void resetGame()
     {
         lastpos = new Vector3();
+        pickup.destroyPickup();
         ss.resetSize();
         pickupscollected = 0;
         hasspawnednext = false;

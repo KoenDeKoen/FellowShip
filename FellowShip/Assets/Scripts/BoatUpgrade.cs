@@ -17,7 +17,7 @@ public class BoatUpgrade : MonoBehaviour
     public void upgradeShip()
     {
         state++;
-        GameObject newmodel = new GameObject();
+        GameObject newmodel = null;
         switch (state)
         {
             case 1:
@@ -50,10 +50,8 @@ public class BoatUpgrade : MonoBehaviour
     public void resetShipModel()
     {
         state = 0;
-        GameObject newmodel = new GameObject();
+        GameObject newmodel;
         newmodel = Instantiate(model0);
-        //newmodel.transform.position = currentboat.transform.position;
-        //newmodel.transform.rotation = currentboat.transform.rotation;
         Destroy(currentboat);
         currentboat = newmodel;
         newmodel.GetComponent<Movement>().onMenuStart();
