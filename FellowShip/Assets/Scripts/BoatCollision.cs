@@ -20,7 +20,6 @@ public class BoatCollision : MonoBehaviour
         lvlm = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
         so = FindObjectOfType<SpawnObstacles>().GetComponent<SpawnObstacles>();
         boatupgrade = FindObjectOfType<BoatUpgrade>().GetComponent<BoatUpgrade>();
-        
     }
 
     void Update()
@@ -32,8 +31,6 @@ public class BoatCollision : MonoBehaviour
             pickupspawner.spawnNextPickup();
             pickupspawner.setDoneSpawn();
             boatupgrade.upgradeShip();
-            
-
         }  
     }
 
@@ -43,6 +40,10 @@ public class BoatCollision : MonoBehaviour
         {
             spawnnext = true;
         }
+		if (other.tag == "Wall")
+		{
+			Debug.Log("Wall hit");
+		}
         if (other.tag == "NormalMode")
         {
             menucontrols.startNormalMode();

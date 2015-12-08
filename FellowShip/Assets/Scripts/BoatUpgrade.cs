@@ -45,6 +45,8 @@ public class BoatUpgrade : MonoBehaviour
         Destroy(currentboat);
         currentboat = newmodel;
         newmodel.GetComponent<Movement>().onMenuEnd();
+		newmodel.AddComponent<BoxCollider>();
+		newmodel.AddComponent<Rigidbody>();
     }
 
     public void resetShipModel()
