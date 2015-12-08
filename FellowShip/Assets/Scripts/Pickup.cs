@@ -9,7 +9,7 @@ public class Pickup : MonoBehaviour
     void Start()
     {
         float randomrotation = Random.Range(0f, 360f);
-        print(randomrotation);
+        //print(randomrotation);
     }
 
     public void instPickup(Vector3 pos)
@@ -21,7 +21,7 @@ public class Pickup : MonoBehaviour
         currentpickup.transform.localPosition = new Vector3(pos.x, pickupmodel.transform.position.y, pos.z);
         float randomrotation = Random.Range(0f, 360f);
         currentpickup.transform.localRotation =  Quaternion.Euler(new Vector3(0, randomrotation, 0));
-        Debug.Log(randomrotation);
+        //Debug.Log(randomrotation);
     }
 
     public void destroyPickup()
