@@ -56,6 +56,19 @@ public class MenuControl : MonoBehaviour
                 highscorepanel.SetActive(true);
                 highscorepanel.GetComponentInChildren<Text>().text = tt.returnTimeInString();
 				nhs.ended = true;
+//				if(nhs.finished == true)
+//				{
+//					highscorepanel.SetActive(false);
+//					startbtn.Select();
+//					pickupspawning.resetGame();
+//					mainmenupanel.SetActive(true);
+//					boatupgrade.resetShipModel();
+//					movement.onMenuStart();
+//					inmenu = true;
+//					lvlm.resetSize();
+//					so.resetObstacles();
+//					nhs.finished = false;
+//				}
             }
         }
         if (inmenu)
