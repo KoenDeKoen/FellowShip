@@ -45,11 +45,6 @@ public class BoatUpgrade : MonoBehaviour
         Destroy(currentboat);
         currentboat = newmodel;
         newmodel.GetComponent<Movement>().onMenuEnd();
-		newmodel.AddComponent<BoxCollider>();
-		newmodel.AddComponent<Rigidbody>();
-		newmodel.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
-		newmodel.GetComponent<Rigidbody>().useGravity = false;
-		newmodel.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.Continuous;
     }
 
     public void resetShipModel()

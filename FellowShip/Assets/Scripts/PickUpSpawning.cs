@@ -174,7 +174,7 @@ public class PickUpSpawning : MonoBehaviour {
         lastpos = new Vector3();
         pickup.destroyPickup();
         ss.resetSize();
-        pickupscollected = 0;
+        pickupscollected = 1;
         hasspawnednext = false;
         done = false;
         //float posx = ss.returnXSpots()[Random.Range(0, ss.returnXSpots().Count)];
