@@ -18,7 +18,7 @@ public class PickUpSpawning : MonoBehaviour {
 
     void Start ()
     {
-        maxpickups = 5;
+        maxpickups = 6;
         /*borderxmax = 45;
         borderzmax = 45;
         borderzmin = -45;
@@ -128,6 +128,10 @@ public class PickUpSpawning : MonoBehaviour {
                     newpos = round5children[Random.Range(0, round5children.Count)];
                 }
                 lastpos = newpos;
+                break;
+
+            case 6:
+                Debug.Log("huehue");
                 break;
         }
         //int posx = ss.returnXSpots()[Random.Range(0, ss.returnXSpots().Count)];
