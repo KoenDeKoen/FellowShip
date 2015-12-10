@@ -1,35 +1,432 @@
 fileFormatVersion: 2
 guid: 7731b6ed9f00c274b8d0da9024877524
-timeCreated: 1449155715
+timeCreated: 1449740585
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: InnerEyes
-    100002: InnerSuckers
+    100002: Kraken
     100004: //RootNode
-    100006: OuterEyes
-    100008: OuterSuckers
+    100006: Kraken 1
+    100008: KrakenAnimatedTentacle01:InnerSuckers
+    100010: KrakenAnimatedTentacle01:joint15
+    100012: KrakenAnimatedTentacle01:joint16
+    100014: KrakenAnimatedTentacle01:joint17
+    100016: KrakenAnimatedTentacle01:joint18
+    100018: KrakenAnimatedTentacle01:joint19
+    100020: KrakenAnimatedTentacle01:joint20
+    100022: KrakenAnimatedTentacle01:joint21
+    100024: KrakenAnimatedTentacle01:joint22
+    100026: KrakenAnimatedTentacle01:joint23
+    100028: KrakenAnimatedTentacle01:joint24
+    100030: KrakenAnimatedTentacle01:OuterSuckers
+    100032: KrakenAnimatedTentacle01:TentacleStart_01
+    100034: KrakenAnimatedTentacle02:InnerSuckers
+    100036: KrakenAnimatedTentacle02:joint15
+    100038: KrakenAnimatedTentacle02:joint16
+    100040: KrakenAnimatedTentacle02:joint17
+    100042: KrakenAnimatedTentacle02:joint18
+    100044: KrakenAnimatedTentacle02:joint19
+    100046: KrakenAnimatedTentacle02:joint20
+    100048: KrakenAnimatedTentacle02:joint21
+    100050: KrakenAnimatedTentacle02:joint22
+    100052: KrakenAnimatedTentacle02:joint23
+    100054: KrakenAnimatedTentacle02:joint24
+    100056: KrakenAnimatedTentacle02:OuterSuckers
+    100058: KrakenAnimatedTentacle02:TentacleStart_01
+    100060: KrakenAnimatedTentacle03:InnerSuckers
+    100062: KrakenAnimatedTentacle03:joint15
+    100064: KrakenAnimatedTentacle03:joint16
+    100066: KrakenAnimatedTentacle03:joint17
+    100068: KrakenAnimatedTentacle03:joint18
+    100070: KrakenAnimatedTentacle03:joint19
+    100072: KrakenAnimatedTentacle03:joint20
+    100074: KrakenAnimatedTentacle03:joint21
+    100076: KrakenAnimatedTentacle03:joint22
+    100078: KrakenAnimatedTentacle03:joint23
+    100080: KrakenAnimatedTentacle03:joint24
+    100082: KrakenAnimatedTentacle03:OuterSuckers
+    100084: KrakenAnimatedTentacle03:TentacleStart_01
+    100086: KrakenAnimatedTentacle04:InnerSuckers
+    100088: KrakenAnimatedTentacle04:joint15
+    100090: KrakenAnimatedTentacle04:joint16
+    100092: KrakenAnimatedTentacle04:joint17
+    100094: KrakenAnimatedTentacle04:joint18
+    100096: KrakenAnimatedTentacle04:joint19
+    100098: KrakenAnimatedTentacle04:joint20
+    100100: KrakenAnimatedTentacle04:joint21
+    100102: KrakenAnimatedTentacle04:joint22
+    100104: KrakenAnimatedTentacle04:joint23
+    100106: KrakenAnimatedTentacle04:joint24
+    100108: KrakenAnimatedTentacle04:OuterSuckers
+    100110: KrakenAnimatedTentacle04:TentacleStart_01
+    100112: KrakenAnimatedTentacle05:InnerSuckers
+    100114: KrakenAnimatedTentacle05:joint15
+    100116: KrakenAnimatedTentacle05:joint16
+    100118: KrakenAnimatedTentacle05:joint17
+    100120: KrakenAnimatedTentacle05:joint18
+    100122: KrakenAnimatedTentacle05:joint19
+    100124: KrakenAnimatedTentacle05:joint20
+    100126: KrakenAnimatedTentacle05:joint21
+    100128: KrakenAnimatedTentacle05:joint22
+    100130: KrakenAnimatedTentacle05:joint23
+    100132: KrakenAnimatedTentacle05:joint24
+    100134: KrakenAnimatedTentacle05:OuterSuckers
+    100136: KrakenAnimatedTentacle05:TentacleStart_01
+    100138: KrakenAnimatedTentacle06:InnerSuckers
+    100140: KrakenAnimatedTentacle06:joint15
+    100142: KrakenAnimatedTentacle06:joint16
+    100144: KrakenAnimatedTentacle06:joint17
+    100146: KrakenAnimatedTentacle06:joint18
+    100148: KrakenAnimatedTentacle06:joint19
+    100150: KrakenAnimatedTentacle06:joint20
+    100152: KrakenAnimatedTentacle06:joint21
+    100154: KrakenAnimatedTentacle06:joint22
+    100156: KrakenAnimatedTentacle06:joint23
+    100158: KrakenAnimatedTentacle06:joint24
+    100160: KrakenAnimatedTentacle06:OuterSuckers
+    100162: KrakenAnimatedTentacle06:TentacleStart_01
+    100164: KrakenAnimatedTentacle07:InnerSuckers
+    100166: KrakenAnimatedTentacle07:joint15
+    100168: KrakenAnimatedTentacle07:joint16
+    100170: KrakenAnimatedTentacle07:joint17
+    100172: KrakenAnimatedTentacle07:joint18
+    100174: KrakenAnimatedTentacle07:joint19
+    100176: KrakenAnimatedTentacle07:joint20
+    100178: KrakenAnimatedTentacle07:joint21
+    100180: KrakenAnimatedTentacle07:joint22
+    100182: KrakenAnimatedTentacle07:joint23
+    100184: KrakenAnimatedTentacle07:joint24
+    100186: KrakenAnimatedTentacle07:OuterSuckers
+    100188: KrakenAnimatedTentacle07:TentacleStart_01
+    100190: KrakenAnimatedTentacle08:InnerSuckers
+    100192: KrakenAnimatedTentacle08:joint15
+    100194: KrakenAnimatedTentacle08:joint16
+    100196: KrakenAnimatedTentacle08:joint17
+    100198: KrakenAnimatedTentacle08:joint18
+    100200: KrakenAnimatedTentacle08:joint19
+    100202: KrakenAnimatedTentacle08:joint20
+    100204: KrakenAnimatedTentacle08:joint21
+    100206: KrakenAnimatedTentacle08:joint22
+    100208: KrakenAnimatedTentacle08:joint23
+    100210: KrakenAnimatedTentacle08:joint24
+    100212: KrakenAnimatedTentacle08:OuterSuckers
+    100214: KrakenAnimatedTentacle08:TentacleStart_01
+    100216: KrakenTentacle_01
+    100218: KrakenTentacle_02
+    100220: KrakenTentacle_03
+    100222: KrakenTentacle_04
+    100224: KrakenTentacle_05
+    100226: KrakenTentacle_06
+    100228: KrakenTentacle_07
+    100230: KrakenTentacle_08
+    100232: OuterEyes
+    100234: Root
+    100236: RootCTRL
+    100238: Tentacle_01
+    100240: Tentacle_02
+    100242: Tentacle_03
+    100244: Tentacle_04
+    100246: Tentacle_05
+    100248: Tentacle_06
+    100250: Tentacle_07
+    100252: Tentacle_08
+    100254: TentacleJNT_01_1
+    100256: TentacleJNT_01_2
+    100258: TentacleJNT_01_3
+    100260: TentacleJNT_01_4
+    100262: TentacleJNT_01_5
+    100264: TentacleJNT_01_6
+    100266: TentacleJNT_01_7
+    100268: TentacleJNT_02_1
+    100270: TentacleJNT_02_2
+    100272: TentacleJNT_02_3
+    100274: TentacleJNT_02_4
+    100276: TentacleJNT_02_5
+    100278: TentacleJNT_02_6
+    100280: TentacleJNT_02_7
+    100282: TentacleJNT_03_1
+    100284: TentacleJNT_03_2
+    100286: TentacleJNT_03_3
+    100288: TentacleJNT_03_4
+    100290: TentacleJNT_03_5
+    100292: TentacleJNT_03_6
+    100294: TentacleJNT_03_7
+    100296: TentacleJNT_04_1
+    100298: TentacleJNT_04_2
+    100300: TentacleJNT_04_3
+    100302: TentacleJNT_04_4
+    100304: TentacleJNT_04_5
+    100306: TentacleJNT_04_6
+    100308: TentacleJNT_04_7
+    100310: TentacleJNT_05_1
+    100312: TentacleJNT_05_2
+    100314: TentacleJNT_05_3
+    100316: TentacleJNT_05_4
+    100318: TentacleJNT_05_5
+    100320: TentacleJNT_05_6
+    100322: TentacleJNT_05_7
+    100324: TentacleJNT_06_1
+    100326: TentacleJNT_06_2
+    100328: TentacleJNT_06_3
+    100330: TentacleJNT_06_4
+    100332: TentacleJNT_06_5
+    100334: TentacleJNT_06_6
+    100336: TentacleJNT_06_7
+    100338: TentacleJNT_07_1
+    100340: TentacleJNT_07_2
+    100342: TentacleJNT_07_3
+    100344: TentacleJNT_07_4
+    100346: TentacleJNT_07_5
+    100348: TentacleJNT_07_6
+    100350: TentacleJNT_07_7
+    100352: TentacleJNT_08_1
+    100354: TentacleJNT_08_2
+    100356: TentacleJNT_08_3
+    100358: TentacleJNT_08_4
+    100360: TentacleJNT_08_5
+    100362: TentacleJNT_08_6
+    100364: TentacleJNT_08_7
     400000: InnerEyes
-    400002: InnerSuckers
-    400004: //RootNode
-    400006: OuterEyes
-    400008: OuterSuckers
-    2300000: InnerEyes
-    2300002: InnerSuckers
-    2300004: //RootNode
-    2300006: OuterEyes
-    2300008: OuterSuckers
-    3300000: InnerEyes
-    3300002: InnerSuckers
-    3300004: //RootNode
-    3300006: OuterEyes
-    3300008: OuterSuckers
+    400002: //RootNode
+    400004: Kraken
+    400006: Kraken 1
+    400008: KrakenAnimatedTentacle01:InnerSuckers
+    400010: KrakenAnimatedTentacle01:joint15
+    400012: KrakenAnimatedTentacle01:joint16
+    400014: KrakenAnimatedTentacle01:joint17
+    400016: KrakenAnimatedTentacle01:joint18
+    400018: KrakenAnimatedTentacle01:joint19
+    400020: KrakenAnimatedTentacle01:joint20
+    400022: KrakenAnimatedTentacle01:joint21
+    400024: KrakenAnimatedTentacle01:joint22
+    400026: KrakenAnimatedTentacle01:joint23
+    400028: KrakenAnimatedTentacle01:joint24
+    400030: KrakenAnimatedTentacle01:OuterSuckers
+    400032: KrakenAnimatedTentacle01:TentacleStart_01
+    400034: KrakenAnimatedTentacle02:InnerSuckers
+    400036: KrakenAnimatedTentacle02:joint15
+    400038: KrakenAnimatedTentacle02:joint16
+    400040: KrakenAnimatedTentacle02:joint17
+    400042: KrakenAnimatedTentacle02:joint18
+    400044: KrakenAnimatedTentacle02:joint19
+    400046: KrakenAnimatedTentacle02:joint20
+    400048: KrakenAnimatedTentacle02:joint21
+    400050: KrakenAnimatedTentacle02:joint22
+    400052: KrakenAnimatedTentacle02:joint23
+    400054: KrakenAnimatedTentacle02:joint24
+    400056: KrakenAnimatedTentacle02:OuterSuckers
+    400058: KrakenAnimatedTentacle02:TentacleStart_01
+    400060: KrakenAnimatedTentacle03:InnerSuckers
+    400062: KrakenAnimatedTentacle03:joint15
+    400064: KrakenAnimatedTentacle03:joint16
+    400066: KrakenAnimatedTentacle03:joint17
+    400068: KrakenAnimatedTentacle03:joint18
+    400070: KrakenAnimatedTentacle03:joint19
+    400072: KrakenAnimatedTentacle03:joint20
+    400074: KrakenAnimatedTentacle03:joint21
+    400076: KrakenAnimatedTentacle03:joint22
+    400078: KrakenAnimatedTentacle03:joint23
+    400080: KrakenAnimatedTentacle03:joint24
+    400082: KrakenAnimatedTentacle03:OuterSuckers
+    400084: KrakenAnimatedTentacle03:TentacleStart_01
+    400086: KrakenAnimatedTentacle04:InnerSuckers
+    400088: KrakenAnimatedTentacle04:joint15
+    400090: KrakenAnimatedTentacle04:joint16
+    400092: KrakenAnimatedTentacle04:joint17
+    400094: KrakenAnimatedTentacle04:joint18
+    400096: KrakenAnimatedTentacle04:joint19
+    400098: KrakenAnimatedTentacle04:joint20
+    400100: KrakenAnimatedTentacle04:joint21
+    400102: KrakenAnimatedTentacle04:joint22
+    400104: KrakenAnimatedTentacle04:joint23
+    400106: KrakenAnimatedTentacle04:joint24
+    400108: KrakenAnimatedTentacle04:OuterSuckers
+    400110: KrakenAnimatedTentacle04:TentacleStart_01
+    400112: KrakenAnimatedTentacle05:InnerSuckers
+    400114: KrakenAnimatedTentacle05:joint15
+    400116: KrakenAnimatedTentacle05:joint16
+    400118: KrakenAnimatedTentacle05:joint17
+    400120: KrakenAnimatedTentacle05:joint18
+    400122: KrakenAnimatedTentacle05:joint19
+    400124: KrakenAnimatedTentacle05:joint20
+    400126: KrakenAnimatedTentacle05:joint21
+    400128: KrakenAnimatedTentacle05:joint22
+    400130: KrakenAnimatedTentacle05:joint23
+    400132: KrakenAnimatedTentacle05:joint24
+    400134: KrakenAnimatedTentacle05:OuterSuckers
+    400136: KrakenAnimatedTentacle05:TentacleStart_01
+    400138: KrakenAnimatedTentacle06:InnerSuckers
+    400140: KrakenAnimatedTentacle06:joint15
+    400142: KrakenAnimatedTentacle06:joint16
+    400144: KrakenAnimatedTentacle06:joint17
+    400146: KrakenAnimatedTentacle06:joint18
+    400148: KrakenAnimatedTentacle06:joint19
+    400150: KrakenAnimatedTentacle06:joint20
+    400152: KrakenAnimatedTentacle06:joint21
+    400154: KrakenAnimatedTentacle06:joint22
+    400156: KrakenAnimatedTentacle06:joint23
+    400158: KrakenAnimatedTentacle06:joint24
+    400160: KrakenAnimatedTentacle06:OuterSuckers
+    400162: KrakenAnimatedTentacle06:TentacleStart_01
+    400164: KrakenAnimatedTentacle07:InnerSuckers
+    400166: KrakenAnimatedTentacle07:joint15
+    400168: KrakenAnimatedTentacle07:joint16
+    400170: KrakenAnimatedTentacle07:joint17
+    400172: KrakenAnimatedTentacle07:joint18
+    400174: KrakenAnimatedTentacle07:joint19
+    400176: KrakenAnimatedTentacle07:joint20
+    400178: KrakenAnimatedTentacle07:joint21
+    400180: KrakenAnimatedTentacle07:joint22
+    400182: KrakenAnimatedTentacle07:joint23
+    400184: KrakenAnimatedTentacle07:joint24
+    400186: KrakenAnimatedTentacle07:OuterSuckers
+    400188: KrakenAnimatedTentacle07:TentacleStart_01
+    400190: KrakenAnimatedTentacle08:InnerSuckers
+    400192: KrakenAnimatedTentacle08:joint15
+    400194: KrakenAnimatedTentacle08:joint16
+    400196: KrakenAnimatedTentacle08:joint17
+    400198: KrakenAnimatedTentacle08:joint18
+    400200: KrakenAnimatedTentacle08:joint19
+    400202: KrakenAnimatedTentacle08:joint20
+    400204: KrakenAnimatedTentacle08:joint21
+    400206: KrakenAnimatedTentacle08:joint22
+    400208: KrakenAnimatedTentacle08:joint23
+    400210: KrakenAnimatedTentacle08:joint24
+    400212: KrakenAnimatedTentacle08:OuterSuckers
+    400214: KrakenAnimatedTentacle08:TentacleStart_01
+    400216: KrakenTentacle_01
+    400218: KrakenTentacle_02
+    400220: KrakenTentacle_03
+    400222: KrakenTentacle_04
+    400224: KrakenTentacle_05
+    400226: KrakenTentacle_06
+    400228: KrakenTentacle_07
+    400230: KrakenTentacle_08
+    400232: OuterEyes
+    400234: Root
+    400236: RootCTRL
+    400238: Tentacle_01
+    400240: Tentacle_02
+    400242: Tentacle_03
+    400244: Tentacle_04
+    400246: Tentacle_05
+    400248: Tentacle_06
+    400250: Tentacle_07
+    400252: Tentacle_08
+    400254: TentacleJNT_01_1
+    400256: TentacleJNT_01_2
+    400258: TentacleJNT_01_3
+    400260: TentacleJNT_01_4
+    400262: TentacleJNT_01_5
+    400264: TentacleJNT_01_6
+    400266: TentacleJNT_01_7
+    400268: TentacleJNT_02_1
+    400270: TentacleJNT_02_2
+    400272: TentacleJNT_02_3
+    400274: TentacleJNT_02_4
+    400276: TentacleJNT_02_5
+    400278: TentacleJNT_02_6
+    400280: TentacleJNT_02_7
+    400282: TentacleJNT_03_1
+    400284: TentacleJNT_03_2
+    400286: TentacleJNT_03_3
+    400288: TentacleJNT_03_4
+    400290: TentacleJNT_03_5
+    400292: TentacleJNT_03_6
+    400294: TentacleJNT_03_7
+    400296: TentacleJNT_04_1
+    400298: TentacleJNT_04_2
+    400300: TentacleJNT_04_3
+    400302: TentacleJNT_04_4
+    400304: TentacleJNT_04_5
+    400306: TentacleJNT_04_6
+    400308: TentacleJNT_04_7
+    400310: TentacleJNT_05_1
+    400312: TentacleJNT_05_2
+    400314: TentacleJNT_05_3
+    400316: TentacleJNT_05_4
+    400318: TentacleJNT_05_5
+    400320: TentacleJNT_05_6
+    400322: TentacleJNT_05_7
+    400324: TentacleJNT_06_1
+    400326: TentacleJNT_06_2
+    400328: TentacleJNT_06_3
+    400330: TentacleJNT_06_4
+    400332: TentacleJNT_06_5
+    400334: TentacleJNT_06_6
+    400336: TentacleJNT_06_7
+    400338: TentacleJNT_07_1
+    400340: TentacleJNT_07_2
+    400342: TentacleJNT_07_3
+    400344: TentacleJNT_07_4
+    400346: TentacleJNT_07_5
+    400348: TentacleJNT_07_6
+    400350: TentacleJNT_07_7
+    400352: TentacleJNT_08_1
+    400354: TentacleJNT_08_2
+    400356: TentacleJNT_08_3
+    400358: TentacleJNT_08_4
+    400360: TentacleJNT_08_5
+    400362: TentacleJNT_08_6
+    400364: TentacleJNT_08_7
     4300000: Kraken
-    4300002: OuterSuckers
-    4300004: InnerSuckers
-    4300006: OuterEyes
-    4300008: InnerEyes
+    4300002: OuterEyes
+    4300004: InnerEyes
+    4300006: KrakenTentacle_01
+    4300008: KrakenAnimatedTentacle08:OuterSuckers
+    4300010: KrakenAnimatedTentacle08:InnerSuckers
+    4300012: KrakenTentacle_02
+    4300014: KrakenAnimatedTentacle01:OuterSuckers
+    4300016: KrakenAnimatedTentacle01:InnerSuckers
+    4300018: KrakenTentacle_03
+    4300020: KrakenAnimatedTentacle02:OuterSuckers
+    4300022: KrakenAnimatedTentacle02:InnerSuckers
+    4300024: KrakenTentacle_04
+    4300026: KrakenAnimatedTentacle03:OuterSuckers
+    4300028: KrakenAnimatedTentacle03:InnerSuckers
+    4300030: KrakenTentacle_05
+    4300032: KrakenAnimatedTentacle04:OuterSuckers
+    4300034: KrakenAnimatedTentacle04:InnerSuckers
+    4300036: KrakenTentacle_06
+    4300038: KrakenAnimatedTentacle05:OuterSuckers
+    4300040: KrakenAnimatedTentacle05:InnerSuckers
+    4300042: KrakenTentacle_07
+    4300044: KrakenAnimatedTentacle06:OuterSuckers
+    4300046: KrakenAnimatedTentacle06:InnerSuckers
+    4300048: KrakenTentacle_08
+    4300050: KrakenAnimatedTentacle07:OuterSuckers
+    4300052: KrakenAnimatedTentacle07:InnerSuckers
+    7400000: kraken anim
+    9500000: //RootNode
+    13700000: InnerEyes
+    13700002: Kraken 1
+    13700004: KrakenAnimatedTentacle01:InnerSuckers
+    13700006: KrakenAnimatedTentacle01:OuterSuckers
+    13700008: KrakenAnimatedTentacle02:InnerSuckers
+    13700010: KrakenAnimatedTentacle02:OuterSuckers
+    13700012: KrakenAnimatedTentacle03:InnerSuckers
+    13700014: KrakenAnimatedTentacle03:OuterSuckers
+    13700016: KrakenAnimatedTentacle04:InnerSuckers
+    13700018: KrakenAnimatedTentacle04:OuterSuckers
+    13700020: KrakenAnimatedTentacle05:InnerSuckers
+    13700022: KrakenAnimatedTentacle05:OuterSuckers
+    13700024: KrakenAnimatedTentacle06:InnerSuckers
+    13700026: KrakenAnimatedTentacle06:OuterSuckers
+    13700028: KrakenAnimatedTentacle07:InnerSuckers
+    13700030: KrakenAnimatedTentacle07:OuterSuckers
+    13700032: KrakenAnimatedTentacle08:InnerSuckers
+    13700034: KrakenAnimatedTentacle08:OuterSuckers
+    13700036: KrakenTentacle_01
+    13700038: KrakenTentacle_02
+    13700040: KrakenTentacle_03
+    13700042: KrakenTentacle_04
+    13700044: KrakenTentacle_05
+    13700046: KrakenTentacle_06
+    13700048: KrakenTentacle_07
+    13700050: KrakenTentacle_08
+    13700052: OuterEyes
   materials:
     importMaterials: 1
     materialName: 0
@@ -49,7 +446,399 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: kraken anim
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Kraken
+        weight: 1
+      - path: Kraken/InnerEyes
+        weight: 1
+      - path: Kraken/Kraken 1
+        weight: 1
+      - path: Kraken/KrakenAnimatedTentacle01:InnerSuckers
+        weight: 1
+      - path: Kraken/KrakenAnimatedTentacle01:OuterSuckers
+        weight: 1
+      - path: Kraken/KrakenAnimatedTentacle02:InnerSuckers
+        weight: 1
+      - path: Kraken/KrakenAnimatedTentacle02:OuterSuckers
+        weight: 1
+      - path: Kraken/KrakenAnimatedTentacle03:InnerSuckers
+        weight: 1
+      - path: Kraken/KrakenAnimatedTentacle03:OuterSuckers
+        weight: 1
+      - path: Kraken/KrakenAnimatedTentacle04:InnerSuckers
+        weight: 1
+      - path: Kraken/KrakenAnimatedTentacle04:OuterSuckers
+        weight: 1
+      - path: Kraken/KrakenAnimatedTentacle05:InnerSuckers
+        weight: 1
+      - path: Kraken/KrakenAnimatedTentacle05:OuterSuckers
+        weight: 1
+      - path: Kraken/KrakenAnimatedTentacle06:InnerSuckers
+        weight: 1
+      - path: Kraken/KrakenAnimatedTentacle06:OuterSuckers
+        weight: 1
+      - path: Kraken/KrakenAnimatedTentacle07:InnerSuckers
+        weight: 1
+      - path: Kraken/KrakenAnimatedTentacle07:OuterSuckers
+        weight: 1
+      - path: Kraken/KrakenAnimatedTentacle08:InnerSuckers
+        weight: 1
+      - path: Kraken/KrakenAnimatedTentacle08:OuterSuckers
+        weight: 1
+      - path: Kraken/KrakenTentacle_01
+        weight: 1
+      - path: Kraken/KrakenTentacle_02
+        weight: 1
+      - path: Kraken/KrakenTentacle_03
+        weight: 1
+      - path: Kraken/KrakenTentacle_04
+        weight: 1
+      - path: Kraken/KrakenTentacle_05
+        weight: 1
+      - path: Kraken/KrakenTentacle_06
+        weight: 1
+      - path: Kraken/KrakenTentacle_07
+        weight: 1
+      - path: Kraken/KrakenTentacle_08
+        weight: 1
+      - path: Kraken/OuterEyes
+        weight: 1
+      - path: Kraken/RootCTRL
+        weight: 1
+      - path: Kraken/RootCTRL/Root
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_01_1
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_01_1/TentacleJNT_01_2
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_01_1/TentacleJNT_01_2/TentacleJNT_01_3
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_01_1/TentacleJNT_01_2/TentacleJNT_01_3/TentacleJNT_01_4
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_01_1/TentacleJNT_01_2/TentacleJNT_01_3/TentacleJNT_01_4/TentacleJNT_01_5
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_01_1/TentacleJNT_01_2/TentacleJNT_01_3/TentacleJNT_01_4/TentacleJNT_01_5/TentacleJNT_01_6
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_01_1/TentacleJNT_01_2/TentacleJNT_01_3/TentacleJNT_01_4/TentacleJNT_01_5/TentacleJNT_01_6/TentacleJNT_01_7
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_02_1
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_02_1/TentacleJNT_02_2
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_02_1/TentacleJNT_02_2/TentacleJNT_02_3
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_02_1/TentacleJNT_02_2/TentacleJNT_02_3/TentacleJNT_02_4
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_02_1/TentacleJNT_02_2/TentacleJNT_02_3/TentacleJNT_02_4/TentacleJNT_02_5
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_02_1/TentacleJNT_02_2/TentacleJNT_02_3/TentacleJNT_02_4/TentacleJNT_02_5/TentacleJNT_02_6
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_02_1/TentacleJNT_02_2/TentacleJNT_02_3/TentacleJNT_02_4/TentacleJNT_02_5/TentacleJNT_02_6/TentacleJNT_02_7
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_03_1
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_03_1/TentacleJNT_03_2
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_03_1/TentacleJNT_03_2/TentacleJNT_03_3
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_03_1/TentacleJNT_03_2/TentacleJNT_03_3/TentacleJNT_03_4
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_03_1/TentacleJNT_03_2/TentacleJNT_03_3/TentacleJNT_03_4/TentacleJNT_03_5
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_03_1/TentacleJNT_03_2/TentacleJNT_03_3/TentacleJNT_03_4/TentacleJNT_03_5/TentacleJNT_03_6
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_03_1/TentacleJNT_03_2/TentacleJNT_03_3/TentacleJNT_03_4/TentacleJNT_03_5/TentacleJNT_03_6/TentacleJNT_03_7
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_04_1
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_04_1/TentacleJNT_04_2
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_04_1/TentacleJNT_04_2/TentacleJNT_04_3
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_04_1/TentacleJNT_04_2/TentacleJNT_04_3/TentacleJNT_04_4
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_04_1/TentacleJNT_04_2/TentacleJNT_04_3/TentacleJNT_04_4/TentacleJNT_04_5
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_04_1/TentacleJNT_04_2/TentacleJNT_04_3/TentacleJNT_04_4/TentacleJNT_04_5/TentacleJNT_04_6
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_04_1/TentacleJNT_04_2/TentacleJNT_04_3/TentacleJNT_04_4/TentacleJNT_04_5/TentacleJNT_04_6/TentacleJNT_04_7
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_05_1
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_05_1/TentacleJNT_05_2
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_05_1/TentacleJNT_05_2/TentacleJNT_05_3
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_05_1/TentacleJNT_05_2/TentacleJNT_05_3/TentacleJNT_05_4
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_05_1/TentacleJNT_05_2/TentacleJNT_05_3/TentacleJNT_05_4/TentacleJNT_05_5
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_05_1/TentacleJNT_05_2/TentacleJNT_05_3/TentacleJNT_05_4/TentacleJNT_05_5/TentacleJNT_05_6
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_05_1/TentacleJNT_05_2/TentacleJNT_05_3/TentacleJNT_05_4/TentacleJNT_05_5/TentacleJNT_05_6/TentacleJNT_05_7
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_06_1
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_06_1/TentacleJNT_06_2
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_06_1/TentacleJNT_06_2/TentacleJNT_06_3
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_06_1/TentacleJNT_06_2/TentacleJNT_06_3/TentacleJNT_06_4
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_06_1/TentacleJNT_06_2/TentacleJNT_06_3/TentacleJNT_06_4/TentacleJNT_06_5
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_06_1/TentacleJNT_06_2/TentacleJNT_06_3/TentacleJNT_06_4/TentacleJNT_06_5/TentacleJNT_06_6
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_06_1/TentacleJNT_06_2/TentacleJNT_06_3/TentacleJNT_06_4/TentacleJNT_06_5/TentacleJNT_06_6/TentacleJNT_06_7
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_07_1
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_07_1/TentacleJNT_07_2
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_07_1/TentacleJNT_07_2/TentacleJNT_07_3
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_07_1/TentacleJNT_07_2/TentacleJNT_07_3/TentacleJNT_07_4
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_07_1/TentacleJNT_07_2/TentacleJNT_07_3/TentacleJNT_07_4/TentacleJNT_07_5
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_07_1/TentacleJNT_07_2/TentacleJNT_07_3/TentacleJNT_07_4/TentacleJNT_07_5/TentacleJNT_07_6
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_07_1/TentacleJNT_07_2/TentacleJNT_07_3/TentacleJNT_07_4/TentacleJNT_07_5/TentacleJNT_07_6/TentacleJNT_07_7
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_08_1
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_08_1/TentacleJNT_08_2
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_08_1/TentacleJNT_08_2/TentacleJNT_08_3
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_08_1/TentacleJNT_08_2/TentacleJNT_08_3/TentacleJNT_08_4
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_08_1/TentacleJNT_08_2/TentacleJNT_08_3/TentacleJNT_08_4/TentacleJNT_08_5
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_08_1/TentacleJNT_08_2/TentacleJNT_08_3/TentacleJNT_08_4/TentacleJNT_08_5/TentacleJNT_08_6
+        weight: 1
+      - path: Kraken/RootCTRL/Root/TentacleJNT_08_1/TentacleJNT_08_2/TentacleJNT_08_3/TentacleJNT_08_4/TentacleJNT_08_5/TentacleJNT_08_6/TentacleJNT_08_7
+        weight: 1
+      - path: Tentacle_01
+        weight: 1
+      - path: Tentacle_01/KrakenAnimatedTentacle08:TentacleStart_01
+        weight: 1
+      - path: Tentacle_01/KrakenAnimatedTentacle08:TentacleStart_01/KrakenAnimatedTentacle08:joint15
+        weight: 1
+      - path: Tentacle_01/KrakenAnimatedTentacle08:TentacleStart_01/KrakenAnimatedTentacle08:joint15/KrakenAnimatedTentacle08:joint16
+        weight: 1
+      - path: Tentacle_01/KrakenAnimatedTentacle08:TentacleStart_01/KrakenAnimatedTentacle08:joint15/KrakenAnimatedTentacle08:joint16/KrakenAnimatedTentacle08:joint17
+        weight: 1
+      - path: Tentacle_01/KrakenAnimatedTentacle08:TentacleStart_01/KrakenAnimatedTentacle08:joint15/KrakenAnimatedTentacle08:joint16/KrakenAnimatedTentacle08:joint17/KrakenAnimatedTentacle08:joint18
+        weight: 1
+      - path: Tentacle_01/KrakenAnimatedTentacle08:TentacleStart_01/KrakenAnimatedTentacle08:joint15/KrakenAnimatedTentacle08:joint16/KrakenAnimatedTentacle08:joint17/KrakenAnimatedTentacle08:joint18/KrakenAnimatedTentacle08:joint19
+        weight: 1
+      - path: Tentacle_01/KrakenAnimatedTentacle08:TentacleStart_01/KrakenAnimatedTentacle08:joint15/KrakenAnimatedTentacle08:joint16/KrakenAnimatedTentacle08:joint17/KrakenAnimatedTentacle08:joint18/KrakenAnimatedTentacle08:joint19/KrakenAnimatedTentacle08:joint20
+        weight: 1
+      - path: Tentacle_01/KrakenAnimatedTentacle08:TentacleStart_01/KrakenAnimatedTentacle08:joint15/KrakenAnimatedTentacle08:joint16/KrakenAnimatedTentacle08:joint17/KrakenAnimatedTentacle08:joint18/KrakenAnimatedTentacle08:joint19/KrakenAnimatedTentacle08:joint20/KrakenAnimatedTentacle08:joint21
+        weight: 1
+      - path: Tentacle_01/KrakenAnimatedTentacle08:TentacleStart_01/KrakenAnimatedTentacle08:joint15/KrakenAnimatedTentacle08:joint16/KrakenAnimatedTentacle08:joint17/KrakenAnimatedTentacle08:joint18/KrakenAnimatedTentacle08:joint19/KrakenAnimatedTentacle08:joint20/KrakenAnimatedTentacle08:joint21/KrakenAnimatedTentacle08:joint22
+        weight: 1
+      - path: Tentacle_01/KrakenAnimatedTentacle08:TentacleStart_01/KrakenAnimatedTentacle08:joint15/KrakenAnimatedTentacle08:joint16/KrakenAnimatedTentacle08:joint17/KrakenAnimatedTentacle08:joint18/KrakenAnimatedTentacle08:joint19/KrakenAnimatedTentacle08:joint20/KrakenAnimatedTentacle08:joint21/KrakenAnimatedTentacle08:joint22/KrakenAnimatedTentacle08:joint23
+        weight: 1
+      - path: Tentacle_01/KrakenAnimatedTentacle08:TentacleStart_01/KrakenAnimatedTentacle08:joint15/KrakenAnimatedTentacle08:joint16/KrakenAnimatedTentacle08:joint17/KrakenAnimatedTentacle08:joint18/KrakenAnimatedTentacle08:joint19/KrakenAnimatedTentacle08:joint20/KrakenAnimatedTentacle08:joint21/KrakenAnimatedTentacle08:joint22/KrakenAnimatedTentacle08:joint23/KrakenAnimatedTentacle08:joint24
+        weight: 1
+      - path: Tentacle_02
+        weight: 1
+      - path: Tentacle_02/KrakenAnimatedTentacle01:TentacleStart_01
+        weight: 1
+      - path: Tentacle_02/KrakenAnimatedTentacle01:TentacleStart_01/KrakenAnimatedTentacle01:joint15
+        weight: 1
+      - path: Tentacle_02/KrakenAnimatedTentacle01:TentacleStart_01/KrakenAnimatedTentacle01:joint15/KrakenAnimatedTentacle01:joint16
+        weight: 1
+      - path: Tentacle_02/KrakenAnimatedTentacle01:TentacleStart_01/KrakenAnimatedTentacle01:joint15/KrakenAnimatedTentacle01:joint16/KrakenAnimatedTentacle01:joint17
+        weight: 1
+      - path: Tentacle_02/KrakenAnimatedTentacle01:TentacleStart_01/KrakenAnimatedTentacle01:joint15/KrakenAnimatedTentacle01:joint16/KrakenAnimatedTentacle01:joint17/KrakenAnimatedTentacle01:joint18
+        weight: 1
+      - path: Tentacle_02/KrakenAnimatedTentacle01:TentacleStart_01/KrakenAnimatedTentacle01:joint15/KrakenAnimatedTentacle01:joint16/KrakenAnimatedTentacle01:joint17/KrakenAnimatedTentacle01:joint18/KrakenAnimatedTentacle01:joint19
+        weight: 1
+      - path: Tentacle_02/KrakenAnimatedTentacle01:TentacleStart_01/KrakenAnimatedTentacle01:joint15/KrakenAnimatedTentacle01:joint16/KrakenAnimatedTentacle01:joint17/KrakenAnimatedTentacle01:joint18/KrakenAnimatedTentacle01:joint19/KrakenAnimatedTentacle01:joint20
+        weight: 1
+      - path: Tentacle_02/KrakenAnimatedTentacle01:TentacleStart_01/KrakenAnimatedTentacle01:joint15/KrakenAnimatedTentacle01:joint16/KrakenAnimatedTentacle01:joint17/KrakenAnimatedTentacle01:joint18/KrakenAnimatedTentacle01:joint19/KrakenAnimatedTentacle01:joint20/KrakenAnimatedTentacle01:joint21
+        weight: 1
+      - path: Tentacle_02/KrakenAnimatedTentacle01:TentacleStart_01/KrakenAnimatedTentacle01:joint15/KrakenAnimatedTentacle01:joint16/KrakenAnimatedTentacle01:joint17/KrakenAnimatedTentacle01:joint18/KrakenAnimatedTentacle01:joint19/KrakenAnimatedTentacle01:joint20/KrakenAnimatedTentacle01:joint21/KrakenAnimatedTentacle01:joint22
+        weight: 1
+      - path: Tentacle_02/KrakenAnimatedTentacle01:TentacleStart_01/KrakenAnimatedTentacle01:joint15/KrakenAnimatedTentacle01:joint16/KrakenAnimatedTentacle01:joint17/KrakenAnimatedTentacle01:joint18/KrakenAnimatedTentacle01:joint19/KrakenAnimatedTentacle01:joint20/KrakenAnimatedTentacle01:joint21/KrakenAnimatedTentacle01:joint22/KrakenAnimatedTentacle01:joint23
+        weight: 1
+      - path: Tentacle_02/KrakenAnimatedTentacle01:TentacleStart_01/KrakenAnimatedTentacle01:joint15/KrakenAnimatedTentacle01:joint16/KrakenAnimatedTentacle01:joint17/KrakenAnimatedTentacle01:joint18/KrakenAnimatedTentacle01:joint19/KrakenAnimatedTentacle01:joint20/KrakenAnimatedTentacle01:joint21/KrakenAnimatedTentacle01:joint22/KrakenAnimatedTentacle01:joint23/KrakenAnimatedTentacle01:joint24
+        weight: 1
+      - path: Tentacle_03
+        weight: 1
+      - path: Tentacle_03/KrakenAnimatedTentacle02:TentacleStart_01
+        weight: 1
+      - path: Tentacle_03/KrakenAnimatedTentacle02:TentacleStart_01/KrakenAnimatedTentacle02:joint15
+        weight: 1
+      - path: Tentacle_03/KrakenAnimatedTentacle02:TentacleStart_01/KrakenAnimatedTentacle02:joint15/KrakenAnimatedTentacle02:joint16
+        weight: 1
+      - path: Tentacle_03/KrakenAnimatedTentacle02:TentacleStart_01/KrakenAnimatedTentacle02:joint15/KrakenAnimatedTentacle02:joint16/KrakenAnimatedTentacle02:joint17
+        weight: 1
+      - path: Tentacle_03/KrakenAnimatedTentacle02:TentacleStart_01/KrakenAnimatedTentacle02:joint15/KrakenAnimatedTentacle02:joint16/KrakenAnimatedTentacle02:joint17/KrakenAnimatedTentacle02:joint18
+        weight: 1
+      - path: Tentacle_03/KrakenAnimatedTentacle02:TentacleStart_01/KrakenAnimatedTentacle02:joint15/KrakenAnimatedTentacle02:joint16/KrakenAnimatedTentacle02:joint17/KrakenAnimatedTentacle02:joint18/KrakenAnimatedTentacle02:joint19
+        weight: 1
+      - path: Tentacle_03/KrakenAnimatedTentacle02:TentacleStart_01/KrakenAnimatedTentacle02:joint15/KrakenAnimatedTentacle02:joint16/KrakenAnimatedTentacle02:joint17/KrakenAnimatedTentacle02:joint18/KrakenAnimatedTentacle02:joint19/KrakenAnimatedTentacle02:joint20
+        weight: 1
+      - path: Tentacle_03/KrakenAnimatedTentacle02:TentacleStart_01/KrakenAnimatedTentacle02:joint15/KrakenAnimatedTentacle02:joint16/KrakenAnimatedTentacle02:joint17/KrakenAnimatedTentacle02:joint18/KrakenAnimatedTentacle02:joint19/KrakenAnimatedTentacle02:joint20/KrakenAnimatedTentacle02:joint21
+        weight: 1
+      - path: Tentacle_03/KrakenAnimatedTentacle02:TentacleStart_01/KrakenAnimatedTentacle02:joint15/KrakenAnimatedTentacle02:joint16/KrakenAnimatedTentacle02:joint17/KrakenAnimatedTentacle02:joint18/KrakenAnimatedTentacle02:joint19/KrakenAnimatedTentacle02:joint20/KrakenAnimatedTentacle02:joint21/KrakenAnimatedTentacle02:joint22
+        weight: 1
+      - path: Tentacle_03/KrakenAnimatedTentacle02:TentacleStart_01/KrakenAnimatedTentacle02:joint15/KrakenAnimatedTentacle02:joint16/KrakenAnimatedTentacle02:joint17/KrakenAnimatedTentacle02:joint18/KrakenAnimatedTentacle02:joint19/KrakenAnimatedTentacle02:joint20/KrakenAnimatedTentacle02:joint21/KrakenAnimatedTentacle02:joint22/KrakenAnimatedTentacle02:joint23
+        weight: 1
+      - path: Tentacle_03/KrakenAnimatedTentacle02:TentacleStart_01/KrakenAnimatedTentacle02:joint15/KrakenAnimatedTentacle02:joint16/KrakenAnimatedTentacle02:joint17/KrakenAnimatedTentacle02:joint18/KrakenAnimatedTentacle02:joint19/KrakenAnimatedTentacle02:joint20/KrakenAnimatedTentacle02:joint21/KrakenAnimatedTentacle02:joint22/KrakenAnimatedTentacle02:joint23/KrakenAnimatedTentacle02:joint24
+        weight: 1
+      - path: Tentacle_04
+        weight: 1
+      - path: Tentacle_04/KrakenAnimatedTentacle03:TentacleStart_01
+        weight: 1
+      - path: Tentacle_04/KrakenAnimatedTentacle03:TentacleStart_01/KrakenAnimatedTentacle03:joint15
+        weight: 1
+      - path: Tentacle_04/KrakenAnimatedTentacle03:TentacleStart_01/KrakenAnimatedTentacle03:joint15/KrakenAnimatedTentacle03:joint16
+        weight: 1
+      - path: Tentacle_04/KrakenAnimatedTentacle03:TentacleStart_01/KrakenAnimatedTentacle03:joint15/KrakenAnimatedTentacle03:joint16/KrakenAnimatedTentacle03:joint17
+        weight: 1
+      - path: Tentacle_04/KrakenAnimatedTentacle03:TentacleStart_01/KrakenAnimatedTentacle03:joint15/KrakenAnimatedTentacle03:joint16/KrakenAnimatedTentacle03:joint17/KrakenAnimatedTentacle03:joint18
+        weight: 1
+      - path: Tentacle_04/KrakenAnimatedTentacle03:TentacleStart_01/KrakenAnimatedTentacle03:joint15/KrakenAnimatedTentacle03:joint16/KrakenAnimatedTentacle03:joint17/KrakenAnimatedTentacle03:joint18/KrakenAnimatedTentacle03:joint19
+        weight: 1
+      - path: Tentacle_04/KrakenAnimatedTentacle03:TentacleStart_01/KrakenAnimatedTentacle03:joint15/KrakenAnimatedTentacle03:joint16/KrakenAnimatedTentacle03:joint17/KrakenAnimatedTentacle03:joint18/KrakenAnimatedTentacle03:joint19/KrakenAnimatedTentacle03:joint20
+        weight: 1
+      - path: Tentacle_04/KrakenAnimatedTentacle03:TentacleStart_01/KrakenAnimatedTentacle03:joint15/KrakenAnimatedTentacle03:joint16/KrakenAnimatedTentacle03:joint17/KrakenAnimatedTentacle03:joint18/KrakenAnimatedTentacle03:joint19/KrakenAnimatedTentacle03:joint20/KrakenAnimatedTentacle03:joint21
+        weight: 1
+      - path: Tentacle_04/KrakenAnimatedTentacle03:TentacleStart_01/KrakenAnimatedTentacle03:joint15/KrakenAnimatedTentacle03:joint16/KrakenAnimatedTentacle03:joint17/KrakenAnimatedTentacle03:joint18/KrakenAnimatedTentacle03:joint19/KrakenAnimatedTentacle03:joint20/KrakenAnimatedTentacle03:joint21/KrakenAnimatedTentacle03:joint22
+        weight: 1
+      - path: Tentacle_04/KrakenAnimatedTentacle03:TentacleStart_01/KrakenAnimatedTentacle03:joint15/KrakenAnimatedTentacle03:joint16/KrakenAnimatedTentacle03:joint17/KrakenAnimatedTentacle03:joint18/KrakenAnimatedTentacle03:joint19/KrakenAnimatedTentacle03:joint20/KrakenAnimatedTentacle03:joint21/KrakenAnimatedTentacle03:joint22/KrakenAnimatedTentacle03:joint23
+        weight: 1
+      - path: Tentacle_04/KrakenAnimatedTentacle03:TentacleStart_01/KrakenAnimatedTentacle03:joint15/KrakenAnimatedTentacle03:joint16/KrakenAnimatedTentacle03:joint17/KrakenAnimatedTentacle03:joint18/KrakenAnimatedTentacle03:joint19/KrakenAnimatedTentacle03:joint20/KrakenAnimatedTentacle03:joint21/KrakenAnimatedTentacle03:joint22/KrakenAnimatedTentacle03:joint23/KrakenAnimatedTentacle03:joint24
+        weight: 1
+      - path: Tentacle_05
+        weight: 1
+      - path: Tentacle_05/KrakenAnimatedTentacle04:TentacleStart_01
+        weight: 1
+      - path: Tentacle_05/KrakenAnimatedTentacle04:TentacleStart_01/KrakenAnimatedTentacle04:joint15
+        weight: 1
+      - path: Tentacle_05/KrakenAnimatedTentacle04:TentacleStart_01/KrakenAnimatedTentacle04:joint15/KrakenAnimatedTentacle04:joint16
+        weight: 1
+      - path: Tentacle_05/KrakenAnimatedTentacle04:TentacleStart_01/KrakenAnimatedTentacle04:joint15/KrakenAnimatedTentacle04:joint16/KrakenAnimatedTentacle04:joint17
+        weight: 1
+      - path: Tentacle_05/KrakenAnimatedTentacle04:TentacleStart_01/KrakenAnimatedTentacle04:joint15/KrakenAnimatedTentacle04:joint16/KrakenAnimatedTentacle04:joint17/KrakenAnimatedTentacle04:joint18
+        weight: 1
+      - path: Tentacle_05/KrakenAnimatedTentacle04:TentacleStart_01/KrakenAnimatedTentacle04:joint15/KrakenAnimatedTentacle04:joint16/KrakenAnimatedTentacle04:joint17/KrakenAnimatedTentacle04:joint18/KrakenAnimatedTentacle04:joint19
+        weight: 1
+      - path: Tentacle_05/KrakenAnimatedTentacle04:TentacleStart_01/KrakenAnimatedTentacle04:joint15/KrakenAnimatedTentacle04:joint16/KrakenAnimatedTentacle04:joint17/KrakenAnimatedTentacle04:joint18/KrakenAnimatedTentacle04:joint19/KrakenAnimatedTentacle04:joint20
+        weight: 1
+      - path: Tentacle_05/KrakenAnimatedTentacle04:TentacleStart_01/KrakenAnimatedTentacle04:joint15/KrakenAnimatedTentacle04:joint16/KrakenAnimatedTentacle04:joint17/KrakenAnimatedTentacle04:joint18/KrakenAnimatedTentacle04:joint19/KrakenAnimatedTentacle04:joint20/KrakenAnimatedTentacle04:joint21
+        weight: 1
+      - path: Tentacle_05/KrakenAnimatedTentacle04:TentacleStart_01/KrakenAnimatedTentacle04:joint15/KrakenAnimatedTentacle04:joint16/KrakenAnimatedTentacle04:joint17/KrakenAnimatedTentacle04:joint18/KrakenAnimatedTentacle04:joint19/KrakenAnimatedTentacle04:joint20/KrakenAnimatedTentacle04:joint21/KrakenAnimatedTentacle04:joint22
+        weight: 1
+      - path: Tentacle_05/KrakenAnimatedTentacle04:TentacleStart_01/KrakenAnimatedTentacle04:joint15/KrakenAnimatedTentacle04:joint16/KrakenAnimatedTentacle04:joint17/KrakenAnimatedTentacle04:joint18/KrakenAnimatedTentacle04:joint19/KrakenAnimatedTentacle04:joint20/KrakenAnimatedTentacle04:joint21/KrakenAnimatedTentacle04:joint22/KrakenAnimatedTentacle04:joint23
+        weight: 1
+      - path: Tentacle_05/KrakenAnimatedTentacle04:TentacleStart_01/KrakenAnimatedTentacle04:joint15/KrakenAnimatedTentacle04:joint16/KrakenAnimatedTentacle04:joint17/KrakenAnimatedTentacle04:joint18/KrakenAnimatedTentacle04:joint19/KrakenAnimatedTentacle04:joint20/KrakenAnimatedTentacle04:joint21/KrakenAnimatedTentacle04:joint22/KrakenAnimatedTentacle04:joint23/KrakenAnimatedTentacle04:joint24
+        weight: 1
+      - path: Tentacle_06
+        weight: 1
+      - path: Tentacle_06/KrakenAnimatedTentacle05:TentacleStart_01
+        weight: 1
+      - path: Tentacle_06/KrakenAnimatedTentacle05:TentacleStart_01/KrakenAnimatedTentacle05:joint15
+        weight: 1
+      - path: Tentacle_06/KrakenAnimatedTentacle05:TentacleStart_01/KrakenAnimatedTentacle05:joint15/KrakenAnimatedTentacle05:joint16
+        weight: 1
+      - path: Tentacle_06/KrakenAnimatedTentacle05:TentacleStart_01/KrakenAnimatedTentacle05:joint15/KrakenAnimatedTentacle05:joint16/KrakenAnimatedTentacle05:joint17
+        weight: 1
+      - path: Tentacle_06/KrakenAnimatedTentacle05:TentacleStart_01/KrakenAnimatedTentacle05:joint15/KrakenAnimatedTentacle05:joint16/KrakenAnimatedTentacle05:joint17/KrakenAnimatedTentacle05:joint18
+        weight: 1
+      - path: Tentacle_06/KrakenAnimatedTentacle05:TentacleStart_01/KrakenAnimatedTentacle05:joint15/KrakenAnimatedTentacle05:joint16/KrakenAnimatedTentacle05:joint17/KrakenAnimatedTentacle05:joint18/KrakenAnimatedTentacle05:joint19
+        weight: 1
+      - path: Tentacle_06/KrakenAnimatedTentacle05:TentacleStart_01/KrakenAnimatedTentacle05:joint15/KrakenAnimatedTentacle05:joint16/KrakenAnimatedTentacle05:joint17/KrakenAnimatedTentacle05:joint18/KrakenAnimatedTentacle05:joint19/KrakenAnimatedTentacle05:joint20
+        weight: 1
+      - path: Tentacle_06/KrakenAnimatedTentacle05:TentacleStart_01/KrakenAnimatedTentacle05:joint15/KrakenAnimatedTentacle05:joint16/KrakenAnimatedTentacle05:joint17/KrakenAnimatedTentacle05:joint18/KrakenAnimatedTentacle05:joint19/KrakenAnimatedTentacle05:joint20/KrakenAnimatedTentacle05:joint21
+        weight: 1
+      - path: Tentacle_06/KrakenAnimatedTentacle05:TentacleStart_01/KrakenAnimatedTentacle05:joint15/KrakenAnimatedTentacle05:joint16/KrakenAnimatedTentacle05:joint17/KrakenAnimatedTentacle05:joint18/KrakenAnimatedTentacle05:joint19/KrakenAnimatedTentacle05:joint20/KrakenAnimatedTentacle05:joint21/KrakenAnimatedTentacle05:joint22
+        weight: 1
+      - path: Tentacle_06/KrakenAnimatedTentacle05:TentacleStart_01/KrakenAnimatedTentacle05:joint15/KrakenAnimatedTentacle05:joint16/KrakenAnimatedTentacle05:joint17/KrakenAnimatedTentacle05:joint18/KrakenAnimatedTentacle05:joint19/KrakenAnimatedTentacle05:joint20/KrakenAnimatedTentacle05:joint21/KrakenAnimatedTentacle05:joint22/KrakenAnimatedTentacle05:joint23
+        weight: 1
+      - path: Tentacle_06/KrakenAnimatedTentacle05:TentacleStart_01/KrakenAnimatedTentacle05:joint15/KrakenAnimatedTentacle05:joint16/KrakenAnimatedTentacle05:joint17/KrakenAnimatedTentacle05:joint18/KrakenAnimatedTentacle05:joint19/KrakenAnimatedTentacle05:joint20/KrakenAnimatedTentacle05:joint21/KrakenAnimatedTentacle05:joint22/KrakenAnimatedTentacle05:joint23/KrakenAnimatedTentacle05:joint24
+        weight: 1
+      - path: Tentacle_07
+        weight: 1
+      - path: Tentacle_07/KrakenAnimatedTentacle06:TentacleStart_01
+        weight: 1
+      - path: Tentacle_07/KrakenAnimatedTentacle06:TentacleStart_01/KrakenAnimatedTentacle06:joint15
+        weight: 1
+      - path: Tentacle_07/KrakenAnimatedTentacle06:TentacleStart_01/KrakenAnimatedTentacle06:joint15/KrakenAnimatedTentacle06:joint16
+        weight: 1
+      - path: Tentacle_07/KrakenAnimatedTentacle06:TentacleStart_01/KrakenAnimatedTentacle06:joint15/KrakenAnimatedTentacle06:joint16/KrakenAnimatedTentacle06:joint17
+        weight: 1
+      - path: Tentacle_07/KrakenAnimatedTentacle06:TentacleStart_01/KrakenAnimatedTentacle06:joint15/KrakenAnimatedTentacle06:joint16/KrakenAnimatedTentacle06:joint17/KrakenAnimatedTentacle06:joint18
+        weight: 1
+      - path: Tentacle_07/KrakenAnimatedTentacle06:TentacleStart_01/KrakenAnimatedTentacle06:joint15/KrakenAnimatedTentacle06:joint16/KrakenAnimatedTentacle06:joint17/KrakenAnimatedTentacle06:joint18/KrakenAnimatedTentacle06:joint19
+        weight: 1
+      - path: Tentacle_07/KrakenAnimatedTentacle06:TentacleStart_01/KrakenAnimatedTentacle06:joint15/KrakenAnimatedTentacle06:joint16/KrakenAnimatedTentacle06:joint17/KrakenAnimatedTentacle06:joint18/KrakenAnimatedTentacle06:joint19/KrakenAnimatedTentacle06:joint20
+        weight: 1
+      - path: Tentacle_07/KrakenAnimatedTentacle06:TentacleStart_01/KrakenAnimatedTentacle06:joint15/KrakenAnimatedTentacle06:joint16/KrakenAnimatedTentacle06:joint17/KrakenAnimatedTentacle06:joint18/KrakenAnimatedTentacle06:joint19/KrakenAnimatedTentacle06:joint20/KrakenAnimatedTentacle06:joint21
+        weight: 1
+      - path: Tentacle_07/KrakenAnimatedTentacle06:TentacleStart_01/KrakenAnimatedTentacle06:joint15/KrakenAnimatedTentacle06:joint16/KrakenAnimatedTentacle06:joint17/KrakenAnimatedTentacle06:joint18/KrakenAnimatedTentacle06:joint19/KrakenAnimatedTentacle06:joint20/KrakenAnimatedTentacle06:joint21/KrakenAnimatedTentacle06:joint22
+        weight: 1
+      - path: Tentacle_07/KrakenAnimatedTentacle06:TentacleStart_01/KrakenAnimatedTentacle06:joint15/KrakenAnimatedTentacle06:joint16/KrakenAnimatedTentacle06:joint17/KrakenAnimatedTentacle06:joint18/KrakenAnimatedTentacle06:joint19/KrakenAnimatedTentacle06:joint20/KrakenAnimatedTentacle06:joint21/KrakenAnimatedTentacle06:joint22/KrakenAnimatedTentacle06:joint23
+        weight: 1
+      - path: Tentacle_07/KrakenAnimatedTentacle06:TentacleStart_01/KrakenAnimatedTentacle06:joint15/KrakenAnimatedTentacle06:joint16/KrakenAnimatedTentacle06:joint17/KrakenAnimatedTentacle06:joint18/KrakenAnimatedTentacle06:joint19/KrakenAnimatedTentacle06:joint20/KrakenAnimatedTentacle06:joint21/KrakenAnimatedTentacle06:joint22/KrakenAnimatedTentacle06:joint23/KrakenAnimatedTentacle06:joint24
+        weight: 1
+      - path: Tentacle_08
+        weight: 1
+      - path: Tentacle_08/KrakenAnimatedTentacle07:TentacleStart_01
+        weight: 1
+      - path: Tentacle_08/KrakenAnimatedTentacle07:TentacleStart_01/KrakenAnimatedTentacle07:joint15
+        weight: 1
+      - path: Tentacle_08/KrakenAnimatedTentacle07:TentacleStart_01/KrakenAnimatedTentacle07:joint15/KrakenAnimatedTentacle07:joint16
+        weight: 1
+      - path: Tentacle_08/KrakenAnimatedTentacle07:TentacleStart_01/KrakenAnimatedTentacle07:joint15/KrakenAnimatedTentacle07:joint16/KrakenAnimatedTentacle07:joint17
+        weight: 1
+      - path: Tentacle_08/KrakenAnimatedTentacle07:TentacleStart_01/KrakenAnimatedTentacle07:joint15/KrakenAnimatedTentacle07:joint16/KrakenAnimatedTentacle07:joint17/KrakenAnimatedTentacle07:joint18
+        weight: 1
+      - path: Tentacle_08/KrakenAnimatedTentacle07:TentacleStart_01/KrakenAnimatedTentacle07:joint15/KrakenAnimatedTentacle07:joint16/KrakenAnimatedTentacle07:joint17/KrakenAnimatedTentacle07:joint18/KrakenAnimatedTentacle07:joint19
+        weight: 1
+      - path: Tentacle_08/KrakenAnimatedTentacle07:TentacleStart_01/KrakenAnimatedTentacle07:joint15/KrakenAnimatedTentacle07:joint16/KrakenAnimatedTentacle07:joint17/KrakenAnimatedTentacle07:joint18/KrakenAnimatedTentacle07:joint19/KrakenAnimatedTentacle07:joint20
+        weight: 1
+      - path: Tentacle_08/KrakenAnimatedTentacle07:TentacleStart_01/KrakenAnimatedTentacle07:joint15/KrakenAnimatedTentacle07:joint16/KrakenAnimatedTentacle07:joint17/KrakenAnimatedTentacle07:joint18/KrakenAnimatedTentacle07:joint19/KrakenAnimatedTentacle07:joint20/KrakenAnimatedTentacle07:joint21
+        weight: 1
+      - path: Tentacle_08/KrakenAnimatedTentacle07:TentacleStart_01/KrakenAnimatedTentacle07:joint15/KrakenAnimatedTentacle07:joint16/KrakenAnimatedTentacle07:joint17/KrakenAnimatedTentacle07:joint18/KrakenAnimatedTentacle07:joint19/KrakenAnimatedTentacle07:joint20/KrakenAnimatedTentacle07:joint21/KrakenAnimatedTentacle07:joint22
+        weight: 1
+      - path: Tentacle_08/KrakenAnimatedTentacle07:TentacleStart_01/KrakenAnimatedTentacle07:joint15/KrakenAnimatedTentacle07:joint16/KrakenAnimatedTentacle07:joint17/KrakenAnimatedTentacle07:joint18/KrakenAnimatedTentacle07:joint19/KrakenAnimatedTentacle07:joint20/KrakenAnimatedTentacle07:joint21/KrakenAnimatedTentacle07:joint22/KrakenAnimatedTentacle07:joint23
+        weight: 1
+      - path: Tentacle_08/KrakenAnimatedTentacle07:TentacleStart_01/KrakenAnimatedTentacle07:joint15/KrakenAnimatedTentacle07:joint16/KrakenAnimatedTentacle07:joint17/KrakenAnimatedTentacle07:joint18/KrakenAnimatedTentacle07:joint19/KrakenAnimatedTentacle07:joint20/KrakenAnimatedTentacle07:joint21/KrakenAnimatedTentacle07:joint22/KrakenAnimatedTentacle07:joint23/KrakenAnimatedTentacle07:joint24
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -87,7 +876,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   additionalBone: 0
   userData: 
   assetBundleName: 
