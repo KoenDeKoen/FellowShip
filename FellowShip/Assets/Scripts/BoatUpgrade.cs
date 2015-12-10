@@ -40,11 +40,14 @@ public class BoatUpgrade : MonoBehaviour
                 newmodel = Instantiate(model5);
                 break;
         }
-        newmodel.transform.position = currentboat.transform.position;
-        newmodel.transform.rotation = currentboat.transform.rotation;
-        Destroy(currentboat);
-        currentboat = newmodel;
-        newmodel.GetComponent<Movement>().onMenuEnd();
+        if (state < 6)
+        {
+            newmodel.transform.position = currentboat.transform.position;
+            newmodel.transform.rotation = currentboat.transform.rotation;
+            Destroy(currentboat);
+            currentboat = newmodel;
+            newmodel.GetComponent<Movement>().onMenuEnd();
+        }
     }
 
     public void resetShipModel()

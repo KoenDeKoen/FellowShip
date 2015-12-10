@@ -33,7 +33,7 @@ public class SpawnObstacles : MonoBehaviour
             //Debug.Log(child.position);
         }
 
-        int randomnumber = Random.Range(places.Count - 5, places.Count);
+        int randomnumber = Random.Range(places.Count, places.Count);
         for (int i = 0; i < randomnumber; i++)
         {
             GameObject spawnedobstacle;

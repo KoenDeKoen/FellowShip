@@ -11,14 +11,14 @@ public class PickUpSpawning : MonoBehaviour {
     //private float borderxmin, borderxmax, borderzmin, borderzmax;
     private int pickupscollected, maxpickups;
     private bool hasspawnednext, done;
-    public GameObject round1spots, round2spots, round3spots, round4spots, round5spots;
-    private List<Vector3> round1children, round2children, round3children, round4children, round5children;
+    public GameObject round1spots, round2spots, round3spots, round4spots, round5spots, round6spots;
+    private List<Vector3> round1children, round2children, round3children, round4children, round5children, round6children;
     private Vector3 lastpos;
 	public NewHighscore nhs;
 
     void Start ()
     {
-        maxpickups = 6;
+        maxpickups = 7;
         /*borderxmax = 45;
         borderzmax = 45;
         borderzmin = -45;
@@ -28,6 +28,7 @@ public class PickUpSpawning : MonoBehaviour {
         round3children = new List<Vector3>();
         round4children = new List<Vector3>();
         round5children = new List<Vector3>();
+        round6children = new List<Vector3>();
         foreach (Transform child in round1spots.transform)
         {
             if (child.tag == "Pickup")
@@ -66,6 +67,14 @@ public class PickUpSpawning : MonoBehaviour {
                 round5children.Add(child.position);
             }
             
+        }
+        foreach (Transform child in round6spots.transform)
+        {
+            if (child.tag == "Pickup")
+            {
+                round6children.Add(child.position);
+            }
+
         }
         resetGame();
     }
@@ -131,7 +140,12 @@ public class PickUpSpawning : MonoBehaviour {
                 break;
 
             case 6:
-                Debug.Log("Need more places to spawn in PickUpSpawning for case 6");
+                newpos = round6children[Random.Range(0, round6children.Count)];
+                while (newpos == lastpos)
+                {
+                    newpos = round6children[Random.Range(0, round6children.Count)];
+                }
+                lastpos = newpos;
                 break;
         }
         //int posx = ss.returnXSpots()[Random.Range(0, ss.returnXSpots().Count)];
