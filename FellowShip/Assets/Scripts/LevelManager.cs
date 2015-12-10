@@ -71,7 +71,6 @@ public class LevelManager : MonoBehaviour
         wallU.transform.localScale = new Vector3(wallU.transform.localScale.x * multiplier, wallU.transform.localScale.y, wallU.transform.localScale.z * multiplier);
         wallR.transform.localScale = new Vector3(wallR.transform.localScale.x * multiplier, wallR.transform.localScale.y, wallR.transform.localScale.z * multiplier);
         ss.improveSpawnRange( (int)wallR.transform.localPosition.x - 10, (int)wallL.transform.localPosition.z + 10, (int)wallU.transform.localPosition.z - 10, (int)wallD.transform.localPosition.x + 10);
-        
     }
 
     public void resetSize()
