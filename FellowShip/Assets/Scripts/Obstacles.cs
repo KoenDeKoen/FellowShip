@@ -7,12 +7,7 @@ using System.Collections.Generic;
 public class Obstacles : MonoBehaviour
 {
     private List<GameObject> obstacles;
-    public GameObject obstacle1;
-    public GameObject obstacle2;
-    public GameObject obstacle3;
-    public GameObject obstacle4;
-    public GameObject obstacle5;
-    public GameObject obstacle6;
+    public GameObject obstacle1, obstacle2, obstacle3, obstacle4, obstacle5, obstacle6, obstacle7, obstacle8, obstacle9;
     // Use this for initialization
     public void Init ()
     {
@@ -40,6 +35,18 @@ public class Obstacles : MonoBehaviour
         if (obstacle6 != null)
         {
             obstacles.Add(obstacle6);
+        }
+        if (obstacle7 != null)
+        {
+            obstacles.Add(obstacle7);
+        }
+        if (obstacle8 != null)
+        {
+            obstacles.Add(obstacle8);
+        }
+        if (obstacle9 != null)
+        {
+            obstacles.Add(obstacle9);
         }
     }
 	
