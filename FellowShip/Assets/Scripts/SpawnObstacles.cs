@@ -11,7 +11,7 @@ public class SpawnObstacles : MonoBehaviour
     public SpawnableSpots ss;
     public GameObject spawnparent;
     private List<Vector3> places;
-	// Use this for initialization
+	
 	void Start ()
     {
         obstacles.Init();
@@ -30,7 +30,6 @@ public class SpawnObstacles : MonoBehaviour
         foreach (Transform child in spawnparent.transform)
         {
             places.Add(child.position);
-            //Debug.Log(child.position);
         }
 
         int randomnumber = Random.Range(places.Count, places.Count);

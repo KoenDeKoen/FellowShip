@@ -8,7 +8,6 @@ public class PickUpSpawning : MonoBehaviour {
 
     public Pickup pickup;
     public SpawnableSpots ss;
-    //private float borderxmin, borderxmax, borderzmin, borderzmax;
     private int pickupscollected, maxpickups;
     private bool hasspawnednext, done;
     public GameObject round1spots, round2spots, round3spots, round4spots, round5spots, round6spots;
@@ -19,10 +18,6 @@ public class PickUpSpawning : MonoBehaviour {
     void Start ()
     {
         maxpickups = 7;
-        /*borderxmax = 45;
-        borderzmax = 45;
-        borderzmin = -45;
-        borderxmin = -45;*/
         round1children = new List<Vector3>();
         round2children = new List<Vector3>();
         round3children = new List<Vector3>();
@@ -85,12 +80,7 @@ public class PickUpSpawning : MonoBehaviour {
         Vector3 newpos = new Vector3();
         switch (pickupscollected)
         {
-            /*case 1:
-                newpos = round1children[Random.Range(0, round1children.Count)];
-                break;*/
-
             case 1:
-                //Debug.Log("1");
                 newpos = round1children[Random.Range(0, round1children.Count)];
                 while (newpos == lastpos)
                 {
@@ -100,7 +90,6 @@ public class PickUpSpawning : MonoBehaviour {
                 break;
 
             case 2:
-                //Debug.Log("2");
                 newpos = round2children[Random.Range(0, round2children.Count)];
                 while (newpos == lastpos)
                 {
@@ -110,7 +99,6 @@ public class PickUpSpawning : MonoBehaviour {
                 break;
 
             case 3:
-                //Debug.Log("3");
                 newpos = round3children[Random.Range(0, round3children.Count)];
                 while (newpos == lastpos)
                 {
@@ -120,7 +108,6 @@ public class PickUpSpawning : MonoBehaviour {
                 break;
 
             case 4:
-                //Debug.Log("4");
                 newpos = round4children[Random.Range(0, round4children.Count)];
                 while (newpos == lastpos)
                 {
@@ -130,7 +117,6 @@ public class PickUpSpawning : MonoBehaviour {
                 break;
 
             case 5:
-                //Debug.Log("5");
                 newpos = round5children[Random.Range(0, round5children.Count)];
                 while (newpos == lastpos)
                 {
@@ -148,15 +134,10 @@ public class PickUpSpawning : MonoBehaviour {
                 lastpos = newpos;
                 break;
         }
-        //int posx = ss.returnXSpots()[Random.Range(0, ss.returnXSpots().Count)];
-        //int posz = ss.returnZSpots()[Random.Range(0, ss.returnZSpots().Count)];
-        //Vector3 newpos = new Vector3(posx, 0, posz);
         pickup.destroyPickup();    
         if (pickupscollected < maxpickups)
         {
             pickup.instPickup(newpos);
-            
-            //UPGRADEEEE
             hasspawnednext = true;
         }
         else
@@ -195,7 +176,5 @@ public class PickUpSpawning : MonoBehaviour {
         pickupscollected = 1;
         hasspawnednext = false;
         done = false;
-        //float posx = ss.returnXSpots()[Random.Range(0, ss.returnXSpots().Count)];
-        //float posz = ss.returnZSpots()[Random.Range(0, ss.returnZSpots().Count)];
     }
 }

@@ -12,7 +12,6 @@ public class Movement : MonoBehaviour
     private bool finishedmenu;
     private BoatUpgrade boatupgrade;
 
-	// Use this for initialization
 	void Awake ()
     {
         finishedmenu = false;
@@ -21,13 +20,10 @@ public class Movement : MonoBehaviour
         boatupgrade = FindObjectOfType<BoatUpgrade>().GetComponent<BoatUpgrade>();
 	}
 
-	// Update is called once per frame
 	void Update ()
 	{
-        //Debug.Log("hoi");
         if (finishedmenu)
         {
-            //Debug.Log("hoi2");
             Move();
         }
 	}

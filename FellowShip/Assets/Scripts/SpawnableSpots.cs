@@ -9,7 +9,6 @@ public class SpawnableSpots : MonoBehaviour
     private List<int> xspots;
     private List<int> zspots;
     private int borderxmin, borderxmax, borderzmin, borderzmax;
-    //private List<Vector3> takenSpots;
     public int size;
     private List<Vector3> availableSpots;
 
@@ -75,7 +74,6 @@ public class SpawnableSpots : MonoBehaviour
     {
         xspots = new List<int>();
         zspots = new List<int>();
-        //takenSpots = new List<Vector3>();
         availableSpots = new List<Vector3>();
         borderxmax = 45;
         borderzmax = 45;
@@ -110,12 +108,10 @@ public class SpawnableSpots : MonoBehaviour
                 return;
             }
         }
-        //availableSpots.Remove(spot);
     }
 
     public Vector3 returnSpotForObject(int xboundary, int zboundary)
     {
-        //Debug.Log(xboundary + "," + zboundary);
         int tempxmax = borderxmax - xboundary;
         int tempxmin = borderxmin + xboundary;
         int tempzmax = borderzmax - zboundary;
