@@ -131,7 +131,7 @@ public class PickUpSpawning : MonoBehaviour {
                 break;
 
             case 6:
-                Debug.Log("huehue");
+                Debug.Log("Need more places to spawn in PickUpSpawning for case 6");
                 break;
         }
         //int posx = ss.returnXSpots()[Random.Range(0, ss.returnXSpots().Count)];
