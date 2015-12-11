@@ -57,20 +57,24 @@ public class LevelManager : MonoBehaviour
 
     public void increaseLevel()
     {
-        time = 5;
-        float multiplier = 1.4F;
-        hastolerpcamera = true;
-        newcamerapos = new Vector3(maincamera.transform.localPosition.x * multiplier, maincamera.transform.localPosition.y * multiplier, maincamera.transform.localPosition.z * multiplier);
-        wallL.transform.localPosition = new Vector3(wallL.transform.position.x * multiplier, wallL.transform.position.y, wallL.transform.position.z);
-        wallR.transform.localPosition = new Vector3(wallR.transform.position.x * multiplier, wallR.transform.position.y, wallR.transform.position.z);
-        wallU.transform.localPosition = new Vector3(wallU.transform.position.x, wallU.transform.position.y, wallU.transform.position.z * multiplier);
-        wallD.transform.localPosition = new Vector3(wallD.transform.position.x, wallD.transform.position.y, wallD.transform.position.z * multiplier);
-        seafloor.transform.localScale = new Vector3(seafloor.transform.localScale.x * multiplier, seafloor.transform.localScale.y, seafloor.transform.localScale.z * multiplier);
-        wallL.transform.localScale = new Vector3(wallL.transform.localScale.x * multiplier, wallL.transform.localScale.y, wallL.transform.localScale.z * multiplier);
-        wallD.transform.localScale = new Vector3(wallD.transform.localScale.x * multiplier, wallD.transform.localScale.y, wallD.transform.localScale.z * multiplier);
-        wallU.transform.localScale = new Vector3(wallU.transform.localScale.x * multiplier, wallU.transform.localScale.y, wallU.transform.localScale.z * multiplier);
-        wallR.transform.localScale = new Vector3(wallR.transform.localScale.x * multiplier, wallR.transform.localScale.y, wallR.transform.localScale.z * multiplier);
-        ss.improveSpawnRange( (int)wallR.transform.localPosition.x - 10, (int)wallL.transform.localPosition.z + 10, (int)wallU.transform.localPosition.z - 10, (int)wallD.transform.localPosition.x + 10);
+        sizestate++;
+        if(sizestate < 7)
+        {
+            time = 5;
+            float multiplier = 1.4F;
+            hastolerpcamera = true;
+            newcamerapos = new Vector3(maincamera.transform.localPosition.x * multiplier, maincamera.transform.localPosition.y * multiplier, maincamera.transform.localPosition.z * multiplier);
+            wallL.transform.localPosition = new Vector3(wallL.transform.position.x * multiplier, wallL.transform.position.y, wallL.transform.position.z);
+            wallR.transform.localPosition = new Vector3(wallR.transform.position.x * multiplier, wallR.transform.position.y, wallR.transform.position.z);
+            wallU.transform.localPosition = new Vector3(wallU.transform.position.x, wallU.transform.position.y, wallU.transform.position.z * multiplier);
+            wallD.transform.localPosition = new Vector3(wallD.transform.position.x, wallD.transform.position.y, wallD.transform.position.z * multiplier);
+            seafloor.transform.localScale = new Vector3(seafloor.transform.localScale.x * multiplier, seafloor.transform.localScale.y, seafloor.transform.localScale.z * multiplier);
+            wallL.transform.localScale = new Vector3(wallL.transform.localScale.x * multiplier, wallL.transform.localScale.y, wallL.transform.localScale.z * multiplier);
+            wallD.transform.localScale = new Vector3(wallD.transform.localScale.x * multiplier, wallD.transform.localScale.y, wallD.transform.localScale.z * multiplier);
+            wallU.transform.localScale = new Vector3(wallU.transform.localScale.x * multiplier, wallU.transform.localScale.y, wallU.transform.localScale.z * multiplier);
+            wallR.transform.localScale = new Vector3(wallR.transform.localScale.x * multiplier, wallR.transform.localScale.y, wallR.transform.localScale.z * multiplier);
+            ss.improveSpawnRange((int)wallR.transform.localPosition.x - 10, (int)wallL.transform.localPosition.z + 10, (int)wallU.transform.localPosition.z - 10, (int)wallD.transform.localPosition.x + 10);
+        }
     }
 
     public void resetSize()

@@ -11,13 +11,17 @@ public class BoatCollision : MonoBehaviour
     private LevelManager lvlm;
     //private SpawnObstacles so;
     private BoatUpgrade boatupgrade;
+    private KrakenSpawn krakenspawner;
     private bool spawnnext;
+    private bool hashitkraken;
 
     void Start()
     {
+        hashitkraken = true;
         pickupspawner = FindObjectOfType<PickUpSpawning>().GetComponent<PickUpSpawning>();
         menucontrols = FindObjectOfType<MenuControl>().GetComponent<MenuControl>();
         lvlm = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
+        krakenspawner = FindObjectOfType<KrakenSpawn>().GetComponent<KrakenSpawn>();
         //so = FindObjectOfType<SpawnObstacles>().GetComponent<SpawnObstacles>();
         boatupgrade = FindObjectOfType<BoatUpgrade>().GetComponent<BoatUpgrade>();
     }
@@ -31,15 +35,25 @@ public class BoatCollision : MonoBehaviour
             pickupspawner.spawnNextPickup();
             pickupspawner.setDoneSpawn();
             boatupgrade.upgradeShip();
-        }  
+        }
+        if (hashitkraken && !krakenspawner.krakenState())
+        {
+            //Debug.Log(hashitkraken + ", " + krakenspawner.krakenState());
+            hashitkraken = false;
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
         {
-            boatupgrade.downgradeShip();
-            pickupspawner.shipGotOuchie();
+            if (!hashitkraken)
+            {
+                //Debug.Log("wtf");
+                hashitkraken = true;
+                boatupgrade.downgradeShip();
+                pickupspawner.shipGotOuchie();
+            }
         }
         if (other.tag == "Pickup")
         {
