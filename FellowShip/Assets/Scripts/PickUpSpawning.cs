@@ -182,4 +182,9 @@ public class PickUpSpawning : MonoBehaviour {
     {
         pickupscollected--;
     }
+
+    public int getMaxPickups()
+    {
+        return maxpickups;
+    }
 }
