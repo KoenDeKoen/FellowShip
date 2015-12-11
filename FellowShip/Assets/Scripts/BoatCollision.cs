@@ -9,7 +9,7 @@ public class BoatCollision : MonoBehaviour
     private PickUpSpawning pickupspawner;
     private MenuControl menucontrols;
     private LevelManager lvlm;
-    private SpawnObstacles so;
+    //private SpawnObstacles so;
     private BoatUpgrade boatupgrade;
     private bool spawnnext;
 
@@ -18,7 +18,7 @@ public class BoatCollision : MonoBehaviour
         pickupspawner = FindObjectOfType<PickUpSpawning>().GetComponent<PickUpSpawning>();
         menucontrols = FindObjectOfType<MenuControl>().GetComponent<MenuControl>();
         lvlm = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
-        so = FindObjectOfType<SpawnObstacles>().GetComponent<SpawnObstacles>();
+        //so = FindObjectOfType<SpawnObstacles>().GetComponent<SpawnObstacles>();
         boatupgrade = FindObjectOfType<BoatUpgrade>().GetComponent<BoatUpgrade>();
     }
 
@@ -36,6 +36,11 @@ public class BoatCollision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Enemy")
+        {
+            boatupgrade.downgradeShip();
+            pickupspawner.shipGotOuchie();
+        }
         if (other.tag == "Pickup")
         {
             spawnnext = true;
