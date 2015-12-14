@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//Made by Martijn Koekkoek
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +14,7 @@ public class NewHighscore : MonoBehaviour {
 		
 	public bool doneName;
 	public bool ended;
-	//public bool finished;
+	public bool finished;
 
 	float pct1;
 	float pct2;
@@ -29,21 +31,19 @@ public class NewHighscore : MonoBehaviour {
 		playerName = "";
 		DisplayHighscore();
 		scores = new Dictionary<string, float>();
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i<text.Length; i++)
 		{
 			float score = PlayerPrefs.GetFloat("PScore"+i);
 			string name = PlayerPrefs.GetString("PName"+i);
 			scores.Add(name, score);
 		}
-
-//		pct1 = PilloController.GetSensor (Pillo.PilloID.Pillo1);
-//		pct2 = PilloController.GetSensor (Pillo.PilloID.Pillo2);
 	}
 		
-		// Update is called once per frame
+	// Update is called once per frame
 	void Update () 
 	{
-
+		pct1 = PilloController.GetSensor (Pillo.PilloID.Pillo1);
+		pct2 = PilloController.GetSensor (Pillo.PilloID.Pillo2);
 	}
 		
 	void OnGUI()
@@ -56,10 +56,23 @@ public class NewHighscore : MonoBehaviour {
 			{
 				EnterNewScore();
 				DisplayHighscore();
-//				if(pct1 >= 0.05 && pct2 >= 0.05)
-//				{
-//					finished = true;
-//				}
+				if((Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.D)) ||pct1 >= 0.05 && pct2 >= 0.05)
+				{
+					finished = true;
+				}
+			}
+		}
+	}
+
+	public void Check()
+	{
+		for(int i=0; i<text.Length; i++)
+		{
+			float currentScore = float.Parse(tt.returnTimeInString());
+			string score = "PScore"+i.ToString();
+			if(currentScore > PlayerPrefs.GetFloat("PScore9"))
+			{
+				doneName = true;
 			}
 		}
 	}
@@ -70,7 +83,7 @@ public class NewHighscore : MonoBehaviour {
 		{
 			string name = "PName"+i.ToString();
 			string score = "PScore"+i.ToString();
-			text[i].text = (i+1)+": "+ PlayerPrefs.GetString(name)+" "+ PlayerPrefs.GetFloat(score);
+			text[i].text = (i)+": "+ PlayerPrefs.GetString(name)+" "+ PlayerPrefs.GetFloat(score);
 		}
 	}
 		
@@ -84,6 +97,7 @@ public class NewHighscore : MonoBehaviour {
 		{
 			scores.Add (playername, currentScore);
 		}
+
 		// Loop through keys.
 		scores = scores.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
 		List<string> keyList = new List<string>(scores.Keys);
