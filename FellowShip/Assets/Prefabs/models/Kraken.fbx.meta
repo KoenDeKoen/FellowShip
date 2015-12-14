@@ -400,6 +400,7 @@ ModelImporter:
     4300052: KrakenAnimatedTentacle07:InnerSuckers
     7400000: kraken anim
     9500000: //RootNode
+    11100000: //RootNode
     13700000: InnerEyes
     13700002: Kraken 1
     13700004: KrakenAnimatedTentacle01:InnerSuckers
@@ -450,14 +451,14 @@ ModelImporter:
     - serializedVersion: 16
       name: kraken anim
       takeName: Take 001
-      firstFrame: 1
-      lastFrame: 120
+      firstFrame: 12
+      lastFrame: 135
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -875,8 +876,10 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
+    hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
+  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

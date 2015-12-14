@@ -177,4 +177,14 @@ public class PickUpSpawning : MonoBehaviour {
         hasspawnednext = false;
         done = false;
     }
+
+    public void shipGotOuchie()
+    {
+        pickupscollected--;
+    }
+
+    public int getMaxPickups()
+    {
+        return maxpickups;
+    }
 }
