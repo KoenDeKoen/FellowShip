@@ -12,6 +12,9 @@ public class Movement : MonoBehaviour
     private bool finishedmenu;
     private BoatUpgrade boatupgrade;
 
+	float pct1;
+	float pct2;
+
 	void Awake ()
     {
         finishedmenu = false;
@@ -22,6 +25,9 @@ public class Movement : MonoBehaviour
 
 	void Update ()
 	{
+		pct1 = PilloController.GetSensor (Pillo.PilloID.Pillo1);
+		pct2 = PilloController.GetSensor (Pillo.PilloID.Pillo2);
+
         if (finishedmenu)
         {
             Move();
@@ -30,7 +36,7 @@ public class Movement : MonoBehaviour
 
     private void Move()
     {
-        if (Input.GetKey("a"))
+		if (Input.GetKey("a") || pct1 >= 0.05f)
         {
             rotation = speed * rotationSpeed;
             rotation *= Time.deltaTime;
@@ -39,7 +45,7 @@ public class Movement : MonoBehaviour
             transform.Rotate(0, -rotation * 5, 0);
         }
 
-        if (Input.GetKey("d"))
+		if (Input.GetKey("d") || pct2 >= 0.05f)
         {
             rotation = speed * rotationSpeed;
             rotation *= Time.deltaTime;

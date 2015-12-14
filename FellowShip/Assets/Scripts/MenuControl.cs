@@ -3,6 +3,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Pillo;
 
 public class MenuControl : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class MenuControl : MonoBehaviour
     public SpawnableSpots ss;
     public BoatUpgrade boatupgrade;
 	public NewHighscore nhs;
+
+	float pct1;
+	float pct2;
     // Use this for initialization
     void Start ()
     {
@@ -32,6 +36,9 @@ public class MenuControl : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+		pct1 = PilloController.GetSensor (Pillo.PilloID.Pillo1);
+		pct2 = PilloController.GetSensor (Pillo.PilloID.Pillo2);
+
         if (pickupspawning.checkForDone())
         {
             if (mode == 1)
@@ -56,19 +63,22 @@ public class MenuControl : MonoBehaviour
                 highscorepanel.SetActive(true);
                 highscorepanel.GetComponentInChildren<Text>().text = tt.returnTimeInString();
 				nhs.ended = true;
-//				if(nhs.finished == true)
-//				{
-//					highscorepanel.SetActive(false);
-//					startbtn.Select();
-//					pickupspawning.resetGame();
-//					mainmenupanel.SetActive(true);
-//					boatupgrade.resetShipModel();
-//					movement.onMenuStart();
-//					inmenu = true;
-//					lvlm.resetSize();
-//					so.resetObstacles();
-//					nhs.finished = false;
-//				}
+				if(nhs.finished == true)
+				{
+					state = 1;
+					highscorepanel.SetActive(false);
+					startbtn.Select();
+					pickupspawning.resetGame();
+					mainmenupanel.SetActive(true);
+					boatupgrade.resetShipModel();
+					movement.onMenuStart();
+					inmenu = true;
+					lvlm.resetSize();
+					so.resetObstacles();
+					nhs.finished = false;
+					nhs.doneName = false;
+					nhs.ended = false;
+				}
             }
         }
         if (inmenu)
@@ -80,7 +90,7 @@ public class MenuControl : MonoBehaviour
 
     private void checkForPresses()
     {
-        if (Input.GetKey("a"))
+        if (Input.GetKey("a") || pct1 >= 0.05f)
         {
             time -= Time.deltaTime;
             if (time <= 0)
@@ -96,7 +106,7 @@ public class MenuControl : MonoBehaviour
                 time = 1;
             }
         }
-        else if (Input.GetKey("d"))
+		else if (Input.GetKey("d") || pct2 >= 0.05f)
         {
             time -= Time.deltaTime;
             if (time <= 0)
