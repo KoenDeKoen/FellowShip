@@ -41,7 +41,7 @@ public class KrakenSpawn : MonoBehaviour {
             spawnchecktimer -= Time.deltaTime;
             if (spawnchecktimer <= 0)
             {
-                if (Random.Range(0, 3) == 2)
+                if (Random.Range(0, 2) == 1)
                 {
                     spawnKraken();
                     spawnchecktimer = 5;
