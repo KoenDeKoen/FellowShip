@@ -89,6 +89,7 @@ public class LevelManager : MonoBehaviour
         wallU.transform.localScale = startscalewallU;
         wallR.transform.localScale = startscalewallD;
         maincamera.transform.localPosition = startcamerapos;
+        sizestate = 1;
         hastolerpcamera = false;
     }
 }
