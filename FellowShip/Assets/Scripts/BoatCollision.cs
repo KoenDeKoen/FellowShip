@@ -9,6 +9,7 @@ public class BoatCollision : MonoBehaviour
     private PickUpSpawning pickupspawner;
     private MenuControl menucontrols;
     private LevelManager lvlm;
+	private PirateShip ps;
     //private SpawnObstacles so;
     private BoatUpgrade boatupgrade;
     private KrakenSpawn krakenspawner;
@@ -55,6 +56,12 @@ public class BoatCollision : MonoBehaviour
                 pickupspawner.shipGotOuchie();
             }
         }
+		if(other.tag == "Pirate")
+		{
+			PirateShip.state = 3;
+			boatupgrade.downgradeShip();
+			pickupspawner.shipGotOuchie();
+		}
         if (other.tag == "Pickup")
         {
             spawnnext = true;

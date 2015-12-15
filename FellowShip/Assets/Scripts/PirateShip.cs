@@ -6,20 +6,25 @@ using System.Collections.Generic;
 public class PirateShip : MonoBehaviour {
 	
 	public Transform enemyShip;
-	public Transform targetPlayer;
+	//public Transform targetPlayer;
 
 	public PirateshipSpawn pss;
+	public PickUpSpawning pus;
+	public BoatUpgrade bu;
 
 	float distance;
 	float moveSpeed;
 	float friction;
 	//float attackRange;
+
+	bool shipspawned;
 	public static int state;
 
 	// Use this for initialization
 	void Start ()
 	{
-		//attackRange = 200f;
+		shipspawned = false;
+//		attackRange = 200f;
 		pss.Init();
 		moveSpeed = 20.0f;
 		friction = 5.0f;
@@ -29,26 +34,35 @@ public class PirateShip : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		distance = Vector3.Distance(targetPlayer.position, enemyShip.position);
+		if(!shipspawned){
+			if (pus.getCurrentPickups() == 3)
+			{
+				state = 1;
+			}
+		}
 
 		switch(state)
 		{
 		case 1:
+			shipspawned = true;
 			SpawnPirateShip();
 			state = 2;
 			break;
 			
 		case 2:
-			LookAt(targetPlayer);
+			distance = Vector3.Distance(bu.currentboat.transform.position, enemyShip.position);
+			LookAt(bu.currentboat.transform);
 			Attack();
 			break;
 			
 		case 3:
-			LookAt(pss.returnSpawnPointPirate()[Random.Range(0, pss.returnSpawnPointPirate().Count)]);
+			LookAt(pss.returnSpawnPointPirate()[2]);
 			Attack();
 			if(distance < 5.0F)
 			{
 				Destroy(enemyShip);
+				state = 0;
+				shipspawned = false;
 			}
 			break;
 		}
@@ -69,7 +83,8 @@ public class PirateShip : MonoBehaviour {
 	{
 		int placePos = Random.Range (0, pss.returnSpawnPointPirate().Count);
 
-		Transform clone = Instantiate(enemyShip, pss.returnSpawnPointPirate()[placePos].transform.position, Quaternion.identity) as Transform;
+		Transform clone;
+		clone = Instantiate(enemyShip, pss.returnSpawnPointPirate()[placePos].transform.position, Quaternion.identity) as Transform;
 	}
 
 
