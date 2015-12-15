@@ -17,7 +17,7 @@ public class PickUpSpawning : MonoBehaviour {
 
     void Start ()
     {
-        maxpickups = 5;
+        maxpickups = 6;
         round1children = new List<Vector3>();
         round2children = new List<Vector3>();
         round3children = new List<Vector3>();
@@ -155,6 +155,7 @@ public class PickUpSpawning : MonoBehaviour {
         Vector3 newpos = new Vector3();
         newpos = round1children[Random.Range(0, round1children.Count)];
         pickup.instPickup(newpos);
+        pickupscollected++;
     }
 
     public bool hasSpawnedNext()

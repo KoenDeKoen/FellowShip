@@ -58,7 +58,7 @@ public class LevelManager : MonoBehaviour
     public void increaseLevel()
     {
         sizestate++;
-        if(sizestate <= pickupspawning.getMaxPickups())
+        if(sizestate < pickupspawning.getMaxPickups())
         {
             time = 5;
             float multiplier = 1.4F;
