@@ -12,12 +12,14 @@ public class KrakenSpawn : MonoBehaviour {
     private bool krakenisspawned;
     private float spawnchecktimer;
     private float despawntimer;
+    private int chance;
 
     void Start ()
     {
         krakenisspawned = false;
         spawnchecktimer = 5;
         despawntimer = 5;
+        chance = 0;
         krakenpositions = new List<Vector3>();
         foreach (Transform child in krakenpositionsparent.transform)
         {
@@ -37,16 +39,48 @@ public class KrakenSpawn : MonoBehaviour {
                 despawntimer = 5;
             }
         }
-        else if(pickupspawner.getCurrentPickups() >= 3)
+        if(chance > 0)
         {
             //Debug.Log("meh");
             spawnchecktimer -= Time.deltaTime;
+            
             if (spawnchecktimer <= 0)
             {
-                if (Random.Range(0, 2) == 1)
+                if (chance == 1)
                 {
+                    Debug.Log(1);
+                    if (Random.Range(0, 3) == 0)
+                    {
+                        spawnKraken();
+                        spawnchecktimer = 5;
+                    }
+                }
+                if (chance == 2)
+                {
+                    Debug.Log(2);
+                    if (Random.Range(0, 3) == 0 || Random.Range(0, 3) == 1)
+                    {
+                        spawnKraken();
+                        spawnchecktimer = 5;
+                    }
+                }
+                if (chance == 3)
+                {
+                    Debug.Log(3);
+                    if (Random.Range(0, 3) == 0 || Random.Range(0, 3) == 1 || Random.Range(0, 3) == 2)
+                    {
+                        spawnKraken();
+                        spawnchecktimer = 5;
+                    }
+                }
+                if (chance == 4)
+                {
+                    Debug.Log(4);
+                    //if (Random.Range(0, 3) == 0 || Random.Range(0, 3) == 1 || Random.Range(0, 3) == 2 || Random.Range(0, 3) == 3)
+                    //{
                     spawnKraken();
-                    spawnchecktimer = 5;
+                        spawnchecktimer = 5;
+                    //}
                 }
                 else
                 {
@@ -54,7 +88,27 @@ public class KrakenSpawn : MonoBehaviour {
                 }
             }
         }
-	}
+        if (pickupspawner.getCurrentPickups() == 3)
+        {
+            chance = 1;
+        }
+        if (pickupspawner.getCurrentPickups() == 4)
+        {
+            chance = 2;
+        }
+        if (pickupspawner.getCurrentPickups() == 5)
+        {
+            chance = 3;
+        }
+        if (pickupspawner.getCurrentPickups() == 6)
+        {
+            chance = 4;
+        }
+        if (pickupspawner.getCurrentPickups() < 3)
+        {
+            chance = 0;
+        }
+    }
 
     public void spawnKraken()
     {
