@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour
 	void Start ()
     {
         hastolerpcamera = false;
-        sizestate = 1;
+        sizestate = 0;
         startwallL = wallL.transform.localPosition;
         startwallR = wallR.transform.localPosition;
         startwallU = wallU.transform.localPosition;
@@ -58,7 +58,7 @@ public class LevelManager : MonoBehaviour
     public void increaseLevel()
     {
         sizestate++;
-        if(sizestate < pickupspawning.getMaxPickups())
+        if(sizestate <= pickupspawning.getMaxPickups())
         {
             time = 5;
             float multiplier = 1.4F;
@@ -89,7 +89,7 @@ public class LevelManager : MonoBehaviour
         wallU.transform.localScale = startscalewallU;
         wallR.transform.localScale = startscalewallD;
         maincamera.transform.localPosition = startcamerapos;
-        sizestate = 1;
+        sizestate = 0;
         hastolerpcamera = false;
     }
 }

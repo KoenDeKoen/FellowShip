@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class KrakenSpawn : MonoBehaviour {
 
+    public PickUpSpawning pickupspawner;
     // Use this for initialization
     public GameObject kraken, krakenpositionsparent;
     private GameObject currentlyspawnedkraken;
@@ -36,8 +37,9 @@ public class KrakenSpawn : MonoBehaviour {
                 despawntimer = 5;
             }
         }
-        else
+        else if(pickupspawner.getCurrentPickups() >= 3)
         {
+            //Debug.Log("meh");
             spawnchecktimer -= Time.deltaTime;
             if (spawnchecktimer <= 0)
             {
