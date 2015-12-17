@@ -56,6 +56,7 @@ public class MenuControl : MonoBehaviour
                 //ss.resetSize();
                 lvlm.resetSize();
                 so.resetObstacles();
+                //changeState(0);
                 //ss.resetSize();
             }
 
