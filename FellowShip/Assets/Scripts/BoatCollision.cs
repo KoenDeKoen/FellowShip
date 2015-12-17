@@ -56,12 +56,6 @@ public class BoatCollision : MonoBehaviour
                 pickupspawner.shipGotOuchie();
             }
         }
-		if(other.tag == "Pirate")
-		{
-			PirateShip.state = 3;
-			boatupgrade.downgradeShip();
-			pickupspawner.shipGotOuchie();
-		}
         if (other.tag == "Pickup")
         {
             spawnnext = true;
@@ -79,4 +73,15 @@ public class BoatCollision : MonoBehaviour
             menucontrols.startTimeTrial();
         }
     }
+
+	void OnCollisionEnter(Collision col)
+	{
+		if(col.collider.tag  == "Pirate")
+		{
+			PirateShip.state = 3;
+			boatupgrade.downgradeShip();
+			pickupspawner.shipGotOuchie();
+			Debug.Log("Pirate");
+		}
+	}
 }
