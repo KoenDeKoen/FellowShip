@@ -31,6 +31,8 @@ public class MenuControl : MonoBehaviour
         time = 1;
         state = 1;
         startbtn.Select();
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
 	}
 	
 	// Update is called once per frame
