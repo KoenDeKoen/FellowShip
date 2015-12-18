@@ -6,7 +6,6 @@ using System.Collections.Generic;
 public class PirateShip : MonoBehaviour {
 	
 	public GameObject enemyShip;
-	//public Transform targetPlayer;
 	GameObject currentBoat;
 
 	public PirateshipSpawn pss;
@@ -16,7 +15,6 @@ public class PirateShip : MonoBehaviour {
 	float distance;
 	float moveSpeed;
 	float friction;
-	//float attackRange;
 
 	bool shipspawned;
 	public static int state;
@@ -25,24 +23,26 @@ public class PirateShip : MonoBehaviour {
 	void Start ()
 	{
 		shipspawned = false;
-//		attackRange = 200f;
 		pss.Init();
 		moveSpeed = 20.0f;
 		friction = 5.0f;
 		state = 0;
 
 		currentBoat = bu.currentboat;
+		Physics.IgnoreLayerCollision(8,9);
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
+
 		if(!shipspawned){
 			if (pus.getCurrentPickups() == 3)
 			{
 				state = 1;
 			}
 		}
+
 
 		if(currentBoat == null)
 		{
@@ -55,12 +55,12 @@ public class PirateShip : MonoBehaviour {
 			shipspawned = true;
 			SpawnPirateShip();
 			state = 2;
-			break;
+		break;
 			
 		case 2:
 			LookAt(currentBoat);
 			Attack();
-			break;
+		break;
 			
 		case 3:
 			LookAt(pss.returnSpawnPointPirate()[2]);
@@ -68,8 +68,8 @@ public class PirateShip : MonoBehaviour {
 			if(distance <= 10F)
 			{
 				Destroy(enemyShip);
+				shipspawned = true;
 				state = 0;
-				shipspawned = false;
 			}
 			break;
 		}
@@ -96,5 +96,10 @@ public class PirateShip : MonoBehaviour {
 		clone = Instantiate(enemyShip, pss.returnSpawnPointPirate()[placePos].transform.position, Quaternion.identity) as GameObject;
 		enemyShip = clone;
 		enemyShip.tag = "Pirate";
+	}
+
+	public void DestoryShip()
+	{
+		Destroy(enemyShip);
 	}
 }

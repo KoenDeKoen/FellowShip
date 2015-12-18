@@ -20,6 +20,7 @@ public class MenuControl : MonoBehaviour
     public SpawnableSpots ss;
     public BoatUpgrade boatupgrade;
 	public NewHighscore nhs;
+	public PirateShip ps;
 
 	float pct1;
 	float pct2;
@@ -56,6 +57,7 @@ public class MenuControl : MonoBehaviour
                 //ss.resetSize();
                 lvlm.resetSize();
                 so.resetObstacles();
+				ps.DestoryShip();
                 //changeState(0);
                 //ss.resetSize();
             }
