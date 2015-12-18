@@ -63,7 +63,7 @@ public class LevelManager : MonoBehaviour
             time = 5;
             float multiplier = 1.4F;
             hastolerpcamera = true;
-            newcamerapos = new Vector3(maincamera.transform.localPosition.x * multiplier, maincamera.transform.localPosition.y * multiplier, maincamera.transform.localPosition.z * multiplier);
+            newcamerapos = new Vector3(maincamera.transform.localPosition.x * multiplier, maincamera.transform.localPosition.y * (multiplier), maincamera.transform.localPosition.z * (multiplier));
             wallL.transform.localPosition = new Vector3(wallL.transform.position.x * multiplier, wallL.transform.position.y, wallL.transform.position.z);
             wallR.transform.localPosition = new Vector3(wallR.transform.position.x * multiplier, wallR.transform.position.y, wallR.transform.position.z);
             wallU.transform.localPosition = new Vector3(wallU.transform.position.x, wallU.transform.position.y, wallU.transform.position.z * multiplier);

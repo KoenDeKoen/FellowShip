@@ -47,13 +47,14 @@ public class Movement : MonoBehaviour
             switch (turnstate)
             {
                 case 1:
-                    transform.GetChild(0).GetComponent<Animator>().Play("BoatBackL");
+                    
+                    transform.GetChild(0).GetComponent<Animator>().Play("BoatBackR");
                     //Debug.Log(1);
                     turnstate = 0;
                     break;
 
                 case 2:
-                    transform.GetChild(0).GetComponent<Animator>().Play("BoatBackR");
+                    transform.GetChild(0).GetComponent<Animator>().Play("BoatBackL");
                     //Debug.Log(2);
                     turnstate = 0;
                     break;
@@ -69,11 +70,12 @@ public class Movement : MonoBehaviour
             turnstate = 1;
             if (turnstate == 2)
             {
-                transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltLR");
+                transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltRL");
+                
             }
             else
             {
-                transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltL");
+                transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltR");
             }
         }
 
@@ -87,11 +89,12 @@ public class Movement : MonoBehaviour
             turnstate = 2;
             if (turnstate == 1)
             {
-                transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltRL");
+                transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltLR");
             }
             else
             {
-                transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltR");
+                transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltL");
+                
                 //Debug.Log("L");
                 
             }
@@ -104,12 +107,13 @@ public class Movement : MonoBehaviour
             switch (turnstate)
             {
                 case 1:
-                    transform.GetChild(0).GetComponent<Animator>().Play("BoatBackL");
+                    transform.GetChild(0).GetComponent<Animator>().Play("BoatBackR");
+                    
                     turnstate = 0;
                     break;
 
                 case 2:
-                    transform.GetChild(0).GetComponent<Animator>().Play("BoatBackR");
+                    transform.GetChild(0).GetComponent<Animator>().Play("BoatBackL");
                     //Debug.Log("R");
                     turnstate = 0;
                     break;
