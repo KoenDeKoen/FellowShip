@@ -38,7 +38,7 @@ public class Movement : MonoBehaviour
 
     private void Move()
     {
-        if (Input.GetKey("a") && Input.GetKey("d"))
+        if ((Input.GetKey("a") && Input.GetKey("d")))// || (pct1 >= 0.05f && pct2 >= 0.05f))
         {
             rotation = speed * rotationSpeed * 1.5f;
             rotation *= Time.deltaTime;
@@ -60,7 +60,7 @@ public class Movement : MonoBehaviour
                     break;
             }
         }
-		if ((Input.GetKey("a") || pct1 >= 0.05f) && !Input.GetKey("d"))
+		if ((Input.GetKey("a")/* || pct1 >= 0.05f*/) && (!Input.GetKey("d") /*|| pct2 <= 0.002f*/))
         {
             rotation = speed * rotationSpeed;
             rotation *= Time.deltaTime;
@@ -79,7 +79,7 @@ public class Movement : MonoBehaviour
             }
         }
 
-        if ((Input.GetKey("d") || pct2 >= 0.05f) && !Input.GetKey("a"))
+        if ((Input.GetKey("d") /*|| pct2 >= 0.05f*/) && (!Input.GetKey("a") /*|| pct1 >= 0.05f*/))
         {
             rotation = speed * rotationSpeed;
             rotation *= Time.deltaTime;
@@ -101,7 +101,7 @@ public class Movement : MonoBehaviour
             
             
         }
-        else if((!Input.GetKey("a") && !Input.GetKey("d")))// || (pct1 <=0.002f && pct2 <= 0.002f))
+        else if((!Input.GetKey("a") && !Input.GetKey("d")) /*|| (pct1 <= 0.002f && pct2 <= 0.002f)*/)
         {
             //transform.GetChild(0).transform.Rotate(0, 0, 0);
             switch (turnstate)
