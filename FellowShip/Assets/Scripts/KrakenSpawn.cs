@@ -48,7 +48,7 @@ public class KrakenSpawn : MonoBehaviour {
             {
                 if (chance == 1)
                 {
-                    Debug.Log(1);
+                    //Debug.Log(1);
                     if (Random.Range(0, 3) == 0)
                     {
                         spawnKraken();
@@ -57,7 +57,7 @@ public class KrakenSpawn : MonoBehaviour {
                 }
                 if (chance == 2)
                 {
-                    Debug.Log(2);
+                    //Debug.Log(2);
                     if (Random.Range(0, 3) == 0 || Random.Range(0, 3) == 1)
                     {
                         spawnKraken();
@@ -66,7 +66,7 @@ public class KrakenSpawn : MonoBehaviour {
                 }
                 if (chance == 3)
                 {
-                    Debug.Log(3);
+                    //Debug.Log(3);
                     if (Random.Range(0, 3) == 0 || Random.Range(0, 3) == 1 || Random.Range(0, 3) == 2)
                     {
                         spawnKraken();

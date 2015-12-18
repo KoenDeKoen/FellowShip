@@ -38,36 +38,73 @@ public class Movement : MonoBehaviour
 
     private void Move()
     {
-		if (Input.GetKey("a") || pct1 >= 0.05f)
+        if (Input.GetKey("a") && Input.GetKey("d"))
+        {
+            rotation = speed * rotationSpeed * 1.5f;
+            rotation *= Time.deltaTime;
+            transform.Translate(0, 0, rotation);
+            //transform.Rotate(0, -rotation * 5, 0);
+            switch (turnstate)
+            {
+                case 1:
+                    transform.GetChild(0).GetComponent<Animator>().Play("BoatBackL");
+                    //Debug.Log(1);
+                    turnstate = 0;
+                    break;
+
+                case 2:
+                    transform.GetChild(0).GetComponent<Animator>().Play("BoatBackR");
+                    //Debug.Log(2);
+                    turnstate = 0;
+                    break;
+            }
+        }
+		if ((Input.GetKey("a") || pct1 >= 0.05f) && !Input.GetKey("d"))
         {
             rotation = speed * rotationSpeed;
             rotation *= Time.deltaTime;
-
+            //Debug.Log(3);
             transform.Translate(0, 0, rotation);
             transform.Rotate(0, -rotation * 5, 0);
-            transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltL");
             turnstate = 1;
+            if (turnstate == 2)
+            {
+                transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltLR");
+            }
+            else
+            {
+                transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltL");
+            }
         }
 
-        if (Input.GetKey("d") || pct2 >= 0.05f)
+        if ((Input.GetKey("d") || pct2 >= 0.05f) && !Input.GetKey("a"))
         {
             rotation = speed * rotationSpeed;
             rotation *= Time.deltaTime;
-
+            //Debug.Log(4);
             transform.Translate(0, 0, rotation);
-            transform.Rotate(0, rotation * 5,0);
-            transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltR");
-            //Debug.Log("L");
+            transform.Rotate(0, rotation * 5, 0);
             turnstate = 2;
+            if (turnstate == 1)
+            {
+                transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltRL");
+            }
+            else
+            {
+                transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltR");
+                //Debug.Log("L");
+                
+            }
+            
+            
         }
-        else if(!Input.GetKey("a") && !Input.GetKey("d"))
+        else if((!Input.GetKey("a") && !Input.GetKey("d")))// || (pct1 <=0.002f && pct2 <= 0.002f))
         {
             //transform.GetChild(0).transform.Rotate(0, 0, 0);
             switch (turnstate)
             {
                 case 1:
                     transform.GetChild(0).GetComponent<Animator>().Play("BoatBackL");
-                    
                     turnstate = 0;
                     break;
 
