@@ -81,7 +81,7 @@ public class PickUpSpawning : MonoBehaviour {
         switch (pickupscollected)
         {
             case 1:
-                Debug.Log(1);
+                //Debug.Log(1);
                 newpos = round1children[Random.Range(0, round1children.Count)];
                 while (newpos == lastpos)
                 {
@@ -91,7 +91,7 @@ public class PickUpSpawning : MonoBehaviour {
                 break;
 
             case 2:
-                Debug.Log(2);
+                //Debug.Log(2);
                 newpos = round2children[Random.Range(0, round2children.Count)];
                 while (newpos == lastpos)
                 {
@@ -101,7 +101,7 @@ public class PickUpSpawning : MonoBehaviour {
                 break;
 
             case 3:
-                Debug.Log(3);
+                //Debug.Log(3);
                 newpos = round3children[Random.Range(0, round3children.Count)];
                 while (newpos == lastpos)
                 {

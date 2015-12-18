@@ -57,7 +57,7 @@ public class Movement : MonoBehaviour
             transform.Translate(0, 0, rotation);
             transform.Rotate(0, rotation * 5,0);
             transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltR");
-            Debug.Log("L");
+            //Debug.Log("L");
             turnstate = 2;
         }
         else if(!Input.GetKey("a") && !Input.GetKey("d"))
