@@ -45,7 +45,7 @@ public class Movement : MonoBehaviour
 
             transform.Translate(0, 0, rotation);
             transform.Rotate(0, -rotation * 5, 0);
-            //GetComponent<Animator>().Play("BoatTiltL");
+            transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltL");
             turnstate = 1;
         }
 
@@ -56,21 +56,24 @@ public class Movement : MonoBehaviour
 
             transform.Translate(0, 0, rotation);
             transform.Rotate(0, rotation * 5,0);
-            //GetComponent<Animator>().Play("BoatTiltR");
+            transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltR");
+            Debug.Log("L");
             turnstate = 2;
         }
-        else
+        else if(!Input.GetKey("a") && !Input.GetKey("d"))
         {
-            transform.GetChild(0).transform.Rotate(0, 0, 0);
+            //transform.GetChild(0).transform.Rotate(0, 0, 0);
             switch (turnstate)
             {
                 case 1:
-                    //GetComponent<Animator>().Play("BoatBackL");
+                    transform.GetChild(0).GetComponent<Animator>().Play("BoatBackL");
+                    
                     turnstate = 0;
                     break;
 
                 case 2:
-                    //GetComponent<Animator>().Play("BoatBackR");
+                    transform.GetChild(0).GetComponent<Animator>().Play("BoatBackR");
+                    //Debug.Log("R");
                     turnstate = 0;
                     break;
             }
