@@ -26,6 +26,7 @@ public class NewHighscore : MonoBehaviour {
 		// Use this for initialization
 	void Start ()
 	{
+        //PlayerPrefs.DeleteAll();
 		ended = false;
 		doneName = false;
 		playerName = "";
@@ -132,7 +133,12 @@ public class NewHighscore : MonoBehaviour {
 				
 			if(e.type == EventType.KeyDown && e.keyCode.ToString() != "None" && e.keyCode.ToString() == "Backspace")
 			{
-				playerName = playerName.Substring(0,playerName.Length-1);
+                //Debug.Log(playerName.Length);
+                if (playerName.Length - 1 != -1)
+                {
+                    
+                    playerName = playerName.Substring(0, playerName.Length - 1);
+                }
 			}
 				
 			if(e.type == EventType.KeyDown && e.keyCode.ToString() != "None" && e.keyCode.ToString() == "Space")
