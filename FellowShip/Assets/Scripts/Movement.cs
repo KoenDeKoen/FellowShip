@@ -43,19 +43,16 @@ public class Movement : MonoBehaviour
             rotation = speed * rotationSpeed * 1.5f;
             rotation *= Time.deltaTime;
             transform.Translate(0, 0, rotation);
-            //transform.Rotate(0, -rotation * 5, 0);
             switch (turnstate)
             {
                 case 1:
                     
                     transform.GetChild(0).GetComponent<Animator>().Play("BoatBackR");
-                    //Debug.Log(1);
                     turnstate = 0;
                     break;
 
                 case 2:
                     transform.GetChild(0).GetComponent<Animator>().Play("BoatBackL");
-                    //Debug.Log(2);
                     turnstate = 0;
                     break;
             }
@@ -64,7 +61,6 @@ public class Movement : MonoBehaviour
         {
             rotation = speed * rotationSpeed;
             rotation *= Time.deltaTime;
-            //Debug.Log(3);
             transform.Translate(0, 0, rotation);
             transform.Rotate(0, -rotation * 5, 0);
             turnstate = 1;
@@ -83,7 +79,6 @@ public class Movement : MonoBehaviour
         {
             rotation = speed * rotationSpeed;
             rotation *= Time.deltaTime;
-            //Debug.Log(4);
             transform.Translate(0, 0, rotation);
             transform.Rotate(0, rotation * 5, 0);
             turnstate = 2;
@@ -95,15 +90,12 @@ public class Movement : MonoBehaviour
             {
                 transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltL");
                 
-                //Debug.Log("L");
-                
             }
             
             
         }
         else if((!Input.GetKey("a") && !Input.GetKey("d")) /*|| (pct1 <= 0.002f && pct2 <= 0.002f)*/)
         {
-            //transform.GetChild(0).transform.Rotate(0, 0, 0);
             switch (turnstate)
             {
                 case 1:
@@ -114,7 +106,6 @@ public class Movement : MonoBehaviour
 
                 case 2:
                     transform.GetChild(0).GetComponent<Animator>().Play("BoatBackL");
-                    //Debug.Log("R");
                     turnstate = 0;
                     break;
             }
