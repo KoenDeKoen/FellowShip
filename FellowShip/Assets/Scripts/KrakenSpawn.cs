@@ -9,16 +9,16 @@ public class KrakenSpawn : MonoBehaviour {
     public GameObject kraken, krakenpositionsparent;
     private GameObject currentlyspawnedkraken;
     private List<Vector3> krakenpositions;
-    private bool krakenisspawned;
+    private bool krakenisspawned, hastodespawn;
     private float spawnchecktimer;
-    private float despawntimer;
+    private float despawntimer, submergetimer;
     private int chance;
 
     void Start ()
     {
         krakenisspawned = false;
         spawnchecktimer = 5;
-        despawntimer = 5;
+        despawntimer = 7;
         chance = 0;
         krakenpositions = new List<Vector3>();
         foreach (Transform child in krakenpositionsparent.transform)
@@ -33,6 +33,11 @@ public class KrakenSpawn : MonoBehaviour {
         if (krakenisspawned)
         {
             despawntimer -= Time.deltaTime;
+            /*if (despawntimer <= 2)
+            {
+                //currentlyspawnedkraken.transform.GetChild(0).GetComponent<Animator>().Play("RIPKraken");
+                
+            }*/
             if (despawntimer <= 0)
             {
                 destroyKraken();

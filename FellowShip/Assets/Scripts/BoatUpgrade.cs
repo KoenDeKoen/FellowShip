@@ -71,6 +71,10 @@ public class BoatUpgrade : MonoBehaviour
     public void downgradeShip()
     {
         state--;
+        if (state < 0)
+        {
+            state = 0;
+        }
         GameObject newmodel = null;
         switch (state)
         {
