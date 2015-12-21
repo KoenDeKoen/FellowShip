@@ -26,7 +26,7 @@ public class Movement : MonoBehaviour
 		speed = 5f;
         boatupgrade = FindObjectOfType<BoatUpgrade>().GetComponent<BoatUpgrade>();
         turningspeed = boatupgrade.getTurningSpeed();
-        Debug.Log(turningspeed);
+        //Debug.Log(turningspeed);
     }
 
 	void Update ()

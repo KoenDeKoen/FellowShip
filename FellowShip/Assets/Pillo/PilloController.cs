@@ -336,24 +336,24 @@ public class PilloController : MonoBehaviour
 		if (Debugging_Enabled) {
 			switch (m_state) {
 			case 0:
-				print ("Started Example project...");
+				//print ("Started Example project...");
 				m_state = 1;
 				break;
 			case 1:
 				if (m_receiver.FoundPillo) {
-					print ("Found PILLO Game Controller!");
+					//print ("Found PILLO Game Controller!");
 					m_state = 2;
 				}
 				break;
 			case 2:
 				if (m_receiver.ConnectedToPillo) {
-					print ("Connected to PILLO Game Controller!");
+					//print ("Connected to PILLO Game Controller!");
 					m_state = 3;
 				}
 				break;
 			case 3:
 				if (!m_receiver.ConnectedToPillo) {
-					print ("Disconnected from PILLO Game Controller?");
+					//print ("Disconnected from PILLO Game Controller?");
 					m_state = 1;
 				}
 				break;
