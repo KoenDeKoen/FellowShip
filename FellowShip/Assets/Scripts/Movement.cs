@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
 	float rotation;
     private bool finishedmenu;
     private BoatUpgrade boatupgrade;
+    private float turningspeed;
 
 	float pct1;
 	float pct2;
@@ -18,12 +19,15 @@ public class Movement : MonoBehaviour
 
 	void Awake ()
     {
+        
         turnstate = 0;
         finishedmenu = false;
 		rotationSpeed = 5f;
 		speed = 5f;
         boatupgrade = FindObjectOfType<BoatUpgrade>().GetComponent<BoatUpgrade>();
-	}
+        turningspeed = boatupgrade.getTurningSpeed();
+        Debug.Log(turningspeed);
+    }
 
 	void Update ()
 	{
@@ -62,7 +66,7 @@ public class Movement : MonoBehaviour
             rotation = speed * rotationSpeed;
             rotation *= Time.deltaTime;
             transform.Translate(0, 0, rotation);
-            transform.Rotate(0, -rotation * 5, 0);
+            transform.Rotate(0, (-rotation * 5) * turningspeed, 0);
             turnstate = 1;
             if (turnstate == 2)
             {
@@ -80,7 +84,7 @@ public class Movement : MonoBehaviour
             rotation = speed * rotationSpeed;
             rotation *= Time.deltaTime;
             transform.Translate(0, 0, rotation);
-            transform.Rotate(0, rotation * 5, 0);
+            transform.Rotate(0, (rotation * 5) * turningspeed, 0);
             turnstate = 2;
             if (turnstate == 1)
             {
