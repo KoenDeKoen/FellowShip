@@ -193,6 +193,7 @@ public class MenuControl : MonoBehaviour
         pickupspawning.resetGame();
         pickupspawning.spawnFirstPickup();
         movement.onMenuEnd();
+        //movement.setTurningSpeedBegin(1);
         //pickupspawning.spawnNextPickup();
         inmenu = false;
 		ps.shipspawned = false;

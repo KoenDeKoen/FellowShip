@@ -75,7 +75,7 @@ public class KrakenSpawn : MonoBehaviour {
                 }
                 if (chance == 4)
                 {
-                    Debug.Log(4);
+                   //Debug.Log(4);
                     //if (Random.Range(0, 3) == 0 || Random.Range(0, 3) == 1 || Random.Range(0, 3) == 2 || Random.Range(0, 3) == 3)
                     //{
                     spawnKraken();

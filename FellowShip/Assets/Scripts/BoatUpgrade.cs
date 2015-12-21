@@ -10,9 +10,11 @@ public class BoatUpgrade : MonoBehaviour
     public GameObject model0, model1, model2, model3, model4, model5;
     public GameObject currentboat;
     private int state;
+    private float turningspeed;
 
     void Start ()
     {
+        turningspeed = 1;
         state = 0;
 	}
 
@@ -44,6 +46,7 @@ public class BoatUpgrade : MonoBehaviour
         }
         if (state < 6)
         {
+            lowerTurningSpeed();
             newmodel.transform.position = currentboat.transform.position;
             newmodel.transform.rotation = currentboat.transform.rotation;
             Destroy(currentboat);
@@ -54,6 +57,7 @@ public class BoatUpgrade : MonoBehaviour
 
     public void resetShipModel()
     {
+        turningspeed = 1;
         state = 0;
         GameObject newmodel;
         newmodel = Instantiate(model0);
@@ -70,6 +74,10 @@ public class BoatUpgrade : MonoBehaviour
         GameObject newmodel = null;
         switch (state)
         {
+            case 0:
+                newmodel = Instantiate(model0);
+                break;
+
             case 1:
                 newmodel = Instantiate(model1);
                 break;
@@ -90,13 +98,33 @@ public class BoatUpgrade : MonoBehaviour
                 newmodel = Instantiate(model5);
                 break;
         }
-        if (state < 6 && state > 0)
+        if (state < 6 && state >= 0)
         {
+            raiseTurningSpeed();
             newmodel.transform.position = currentboat.transform.position;
             newmodel.transform.rotation = currentboat.transform.rotation;
             Destroy(currentboat);
             currentboat = newmodel;
             newmodel.GetComponent<Movement>().onMenuEnd();
         }
+    }
+
+    public void lowerTurningSpeed()
+    {
+        turningspeed -= 0.15f;
+    }
+
+    public void raiseTurningSpeed()
+    {
+        turningspeed += 0.15f;
+    }
+
+    public float getTurningSpeed()
+    {
+        if (turningspeed <= 0)
+        {
+            turningspeed = 1;
+        }
+        return turningspeed;
     }
 }
