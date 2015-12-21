@@ -195,5 +195,6 @@ public class MenuControl : MonoBehaviour
         movement.onMenuEnd();
         //pickupspawning.spawnNextPickup();
         inmenu = false;
+		ps.shipspawned = false;
     }
 }

@@ -26,7 +26,7 @@ public class NewHighscore : MonoBehaviour {
 		// Use this for initialization
 	void Start ()
 	{
-        //PlayerPrefs.DeleteAll();
+		//PlayerPrefs.DeleteAll();
 		ended = false;
 		doneName = false;
 		playerName = "";
@@ -35,7 +35,7 @@ public class NewHighscore : MonoBehaviour {
 		for (int i = 0; i<text.Length; i++)
 		{
 			float score = PlayerPrefs.GetFloat("PScore"+i);
-			string name = PlayerPrefs.GetString("PName"+i);
+			string name = PlayerPrefs.GetString("PName"+i,"xxx");
 			scores.Add(name, score);
 		}
 	}

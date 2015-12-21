@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class PirateShip : MonoBehaviour {
 	
 	public GameObject enemyShip;
+	private GameObject spawnedenemyship;
 	GameObject currentBoat;
 
 	public PirateshipSpawn pss;
@@ -16,7 +17,7 @@ public class PirateShip : MonoBehaviour {
 	float moveSpeed;
 	float friction;
 
-	bool shipspawned;
+	public bool shipspawned;
 	public static int state;
 
 	// Use this for initialization
@@ -37,7 +38,7 @@ public class PirateShip : MonoBehaviour {
 	{
 
 		if(!shipspawned){
-			if (pus.getCurrentPickups() == 3)
+			if (pus.getCurrentPickups() >= 3)
 			{
 				state = 1;
 			}
@@ -67,8 +68,8 @@ public class PirateShip : MonoBehaviour {
 			Attack();
 			if(distance <= 10F)
 			{
-				Destroy(enemyShip);
-				shipspawned = true;
+				Destroy(spawnedenemyship);
+				shipspawned = false;
 				state = 0;
 			}
 			break;
@@ -77,15 +78,16 @@ public class PirateShip : MonoBehaviour {
 
 	public void LookAt(GameObject target)
 	{
-		distance = Vector3.Distance(target.transform.position, enemyShip.transform.position);
+		distance = Vector3.Distance(target.transform.position, spawnedenemyship.transform.position);
 
-		Quaternion rotation = Quaternion.LookRotation(target.transform.position - enemyShip.transform.position);
-		enemyShip.transform.rotation = Quaternion.Slerp(enemyShip.transform.rotation, rotation, Time.deltaTime * friction);
+		Quaternion rotation = Quaternion.LookRotation(target.transform.position - spawnedenemyship.transform.position);
+		spawnedenemyship.transform.rotation = Quaternion.Slerp(spawnedenemyship.transform.rotation, rotation, Time.deltaTime * friction);
+
 	}
 
 	public void Attack()
 	{
-		enemyShip.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+		spawnedenemyship.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
 	}
 
 	public void SpawnPirateShip()
@@ -94,12 +96,14 @@ public class PirateShip : MonoBehaviour {
 
 		GameObject clone;
 		clone = Instantiate(enemyShip, pss.returnSpawnPointPirate()[placePos].transform.position, Quaternion.identity) as GameObject;
-		enemyShip = clone;
-		enemyShip.tag = "Pirate";
+		spawnedenemyship = clone;
+		spawnedenemyship.tag = "Pirate";
 	}
 
 	public void DestoryShip()
 	{
-		Destroy(enemyShip);
+		Destroy(spawnedenemyship);
+		shipspawned = true;
+		state = 0;
 	}
 }
