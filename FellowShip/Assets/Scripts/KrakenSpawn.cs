@@ -115,6 +115,7 @@ public class KrakenSpawn : MonoBehaviour {
         currentlyspawnedkraken = Instantiate(kraken);
         currentlyspawnedkraken.transform.position = krakenpositions[Random.Range(0, krakenpositions.Count)];
         currentlyspawnedkraken.transform.rotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
+        currentlyspawnedkraken.transform.GetChild(0).GetComponent<Animator>().Play("ReleaseTheKraken");
         krakenisspawned = true;
     }
 
