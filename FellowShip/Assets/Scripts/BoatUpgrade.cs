@@ -8,7 +8,7 @@ public class BoatUpgrade : MonoBehaviour
 
     // Use this for initialization
     public GameObject model0, model1, model2, model3, model4, model5;
-    public GameObject currentboat;
+    public GameObject currentboat, upgradeparticle;
     private int state;
     private float turningspeed;
 
@@ -52,6 +52,10 @@ public class BoatUpgrade : MonoBehaviour
             Destroy(currentboat);
             currentboat = newmodel;
             newmodel.GetComponent<Movement>().onMenuEnd();
+            GameObject poofpang;
+            poofpang = Instantiate(upgradeparticle);
+            poofpang.transform.parent = newmodel.transform;
+            poofpang.transform.localPosition = new Vector3(0, 1, 0);
         }
     }
 
