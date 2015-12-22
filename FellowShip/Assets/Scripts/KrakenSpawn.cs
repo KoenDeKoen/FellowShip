@@ -4,8 +4,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class KrakenSpawn : MonoBehaviour {
-
+public class KrakenSpawn : MonoBehaviour
+{
     public PickUpSpawning pickupspawner;
     public GameObject kraken, krakenpositionsparent, bubbles;
     private GameObject currentlyspawnedkraken;
@@ -75,8 +75,6 @@ public class KrakenSpawn : MonoBehaviour {
                     {
                         spawnpos = krakenpositions[Random.Range(0, krakenpositions.Count)];
                         hastospawn = true;
-                        //spawnKraken();
-                        //spawnchecktimer = 5;
                     }
                 }
                 if (chance == 2)
@@ -85,8 +83,6 @@ public class KrakenSpawn : MonoBehaviour {
                     {
                         spawnpos = krakenpositions[Random.Range(0, krakenpositions.Count)];
                         hastospawn = true;
-                        //spawnKraken();
-                        //spawnchecktimer = 5;
                     }
                 }
                 if (chance == 3)
@@ -95,16 +91,12 @@ public class KrakenSpawn : MonoBehaviour {
                     {
                         spawnpos = krakenpositions[Random.Range(0, krakenpositions.Count)];
                         hastospawn = true;
-                        //spawnKraken();
-                        //spawnchecktimer = 5;
                     }
                 }
                 if (chance == 4)
                 {
                     spawnpos = krakenpositions[Random.Range(0, krakenpositions.Count)];
                     hastospawn = true;
-                    //spawnKraken();
-                    //spawnchecktimer = 5;
                 }
                 else
                 {
