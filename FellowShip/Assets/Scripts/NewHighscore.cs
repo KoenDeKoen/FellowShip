@@ -35,7 +35,7 @@ public class NewHighscore : MonoBehaviour {
 		for (int i = 0; i<text.Length; i++)
 		{
 			float score = PlayerPrefs.GetFloat("PScore"+i);
-			string name = PlayerPrefs.GetString("PName"+i,"xxx");
+			string name = PlayerPrefs.GetString("PName"+i);
 			scores.Add(name, score);
 		}
 	}
@@ -65,26 +65,39 @@ public class NewHighscore : MonoBehaviour {
 		}
 	}
 
-	public void Check()
-	{
-		for(int i=0; i<text.Length; i++)
-		{
-			float currentScore = float.Parse(tt.returnTimeInString());
-			string score = "PScore"+i.ToString();
-			if(currentScore > PlayerPrefs.GetFloat("PScore9"))
-			{
-				doneName = true;
-			}
-		}
-	}
+//	public void Check()
+//	{
+//		for(int i=0; i<11; i++)
+//		{
+//			float currentScore = float.Parse(tt.returnTimeInString());
+//			string score = "PScore"+i.ToString();
+//			if(currentScore > PlayerPrefs.GetFloat("PScore9"))
+//			{
+//				doneName = true;
+//			}
+//		}
+//	}
 		
 	public void DisplayHighscore()
 	{
 		for(int i=0; i<text.Length; i++)
 		{
-			string name = "PName"+i.ToString();
-			string score = "PScore"+i.ToString();
-			text[i].text = (i)+": "+ PlayerPrefs.GetString(name)+" "+ PlayerPrefs.GetFloat(score);
+			float score = PlayerPrefs.GetFloat("PScore"+i);
+			string name = PlayerPrefs.GetString("PName"+i);
+
+//			if(string.IsNullOrEmpty(name))
+//			{
+//				name = "xxx";
+//
+//			}
+//			
+//			if(score == 0f)
+//			{
+//				score = 1000f;
+//
+//			}
+			
+			text[i].text = (i)+": "+ name +" "+ score;
 		}
 	}
 		
@@ -110,6 +123,7 @@ public class NewHighscore : MonoBehaviour {
 //		if(oldScore < score)
 //		{
 			string name = "PName"+i.ToString();
+
 		//string tmpName = PlayerPrefs.GetString(name);
 		//float tmpScore = score;
 			PlayerPrefs.SetString(name, keyList[i]);
