@@ -15,6 +15,7 @@ public class NewHighscore : MonoBehaviour {
 	public bool doneName;
 	public bool ended;
 	public bool finished;
+    private bool finishednewscore;
 
 	float pct1;
 	float pct2;
@@ -26,7 +27,8 @@ public class NewHighscore : MonoBehaviour {
 		// Use this for initialization
 	void Start ()
 	{
-		//PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
+        finishednewscore = false;
 		ended = false;
 		doneName = false;
 		playerName = "";
@@ -51,17 +53,24 @@ public class NewHighscore : MonoBehaviour {
 	{
 		if(ended)
 		{
-			WriteName();
-
-			if(doneName)
-			{
-				EnterNewScore();
-				DisplayHighscore();
-				if((Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.D)) ||pct1 >= 0.05 && pct2 >= 0.05)
-				{
-					finished = true;
-				}
-			}
+            if (doneName)
+            {
+                if (!finishednewscore)
+                {
+                    EnterNewScore();
+                }
+                
+                DisplayHighscore();
+                if ((Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.D)) || pct1 >= 0.05 && pct2 >= 0.05)
+                {
+                    finished = true;
+                    
+                }
+            }
+            else
+            {
+                WriteName();
+            }
 		}
 	}
 
@@ -109,13 +118,13 @@ public class NewHighscore : MonoBehaviour {
 			
 		if (!scores.ContainsKey(playername))
 		{
+            Debug.Log(playername);
 			scores.Add (playername, currentScore);
 		}
 
 		// Loop through keys.
 		scores = scores.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
 		List<string> keyList = new List<string>(scores.Keys);
-
 		for(int i=0; i<text.Length; i++)
 		{
 			string scoreKey = "PScore"+i.ToString();
@@ -124,10 +133,16 @@ public class NewHighscore : MonoBehaviour {
 //		{
 			string name = "PName"+i.ToString();
 
-		//string tmpName = PlayerPrefs.GetString(name);
-		//float tmpScore = score;
-			PlayerPrefs.SetString(name, keyList[i]);
-			PlayerPrefs.SetFloat(scoreKey, scores[keyList[i]]);
+            //string tmpName = PlayerPrefs.GetString(name);
+            //float tmpScore = score;
+            //Debug.Log(keyList[i]);
+            if (PlayerPrefs.GetString(name) != "")
+            {
+                PlayerPrefs.SetString(name, keyList[i]);
+                PlayerPrefs.SetFloat(scoreKey, scores[keyList[i]]);
+            }
+			
+            finishednewscore = true;
 		//oldScore = score;
 		//playername = tmpName;
 //				}
@@ -164,7 +179,8 @@ public class NewHighscore : MonoBehaviour {
 			{
 				doneName = true;
 				nameText.text = playerName;
-			}
+                finishednewscore = false;
+            }
 
 			if(nameText != null)
 			{
