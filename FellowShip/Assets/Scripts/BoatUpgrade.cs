@@ -1,4 +1,4 @@
-﻿// Made by Koen Brouwers
+﻿//Made by Koen Brouwers
 
 using UnityEngine;
 using System.Collections;
@@ -6,7 +6,7 @@ using System.Collections;
 public class BoatUpgrade : MonoBehaviour
 {
 
-    // Use this for initialization
+    // Use this for initialization and anal bleach
     public GameObject model0, model1, model2, model3, model4, model5;
     public GameObject currentboat, upgradeparticle;
     private int state;
@@ -17,6 +17,11 @@ public class BoatUpgrade : MonoBehaviour
         turningspeed = 1;
         state = 0;
 	}
+
+    void Update()
+    {
+        //Debug.Log(state);
+    }
 
     public void upgradeShip()
     {
@@ -58,7 +63,7 @@ public class BoatUpgrade : MonoBehaviour
             poofpang.transform.localPosition = new Vector3(0, 1, 0);
         }
     }
-
+    // le code is false
     public void resetShipModel()
     {
         turningspeed = 1;
@@ -75,10 +80,6 @@ public class BoatUpgrade : MonoBehaviour
     public void downgradeShip()
     {
         state--;
-        if (state < 0)
-        {
-            state = 0;
-        }
         GameObject newmodel = null;
         switch (state)
         {
@@ -102,11 +103,11 @@ public class BoatUpgrade : MonoBehaviour
                 newmodel = Instantiate(model4);
                 break;
 
-            case 5:
+            /*case 5:
                 newmodel = Instantiate(model5);
-                break;
+                break;*/
         }
-        if (state < 6 && state >= 0)
+        if (state <= 4 && state >= 0)
         {
             raiseTurningSpeed();
             newmodel.transform.position = currentboat.transform.position;
@@ -114,6 +115,10 @@ public class BoatUpgrade : MonoBehaviour
             Destroy(currentboat);
             currentboat = newmodel;
             newmodel.GetComponent<Movement>().onMenuEnd();
+        }
+        if (state < 0)
+        {
+            state = 0;
         }
     }
 
@@ -135,4 +140,10 @@ public class BoatUpgrade : MonoBehaviour
         }
         return turningspeed;
     }
+
+    public int returnState()
+    {
+        return state;
+    }
 }
+// wow such code  much brackets very csharp

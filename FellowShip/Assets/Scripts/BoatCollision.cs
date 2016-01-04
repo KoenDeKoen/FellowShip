@@ -32,10 +32,13 @@ public class BoatCollision : MonoBehaviour
         if (spawnnext && !pickupspawner.hasSpawnedNext())
         {
             spawnnext = false;
-            lvlm.increaseLevel();
-            pickupspawner.spawnNextPickup();
-            pickupspawner.setDoneSpawn();
-            boatupgrade.upgradeShip();
+            if (boatupgrade.returnState() < 6)
+            {
+                lvlm.increaseLevel();
+                pickupspawner.spawnNextPickup();
+                pickupspawner.setDoneSpawn();
+                boatupgrade.upgradeShip();
+            } 
         }
         if (hashitkraken && !krakenspawner.krakenState())
         {
@@ -52,8 +55,13 @@ public class BoatCollision : MonoBehaviour
             {
                 //Debug.Log("wtf");
                 hashitkraken = true;
-                boatupgrade.downgradeShip();
-                pickupspawner.shipGotOuchie();
+                if (boatupgrade.returnState() > 0)
+                {
+                    //Debug.Log(boatupgrade.returnState());
+                    boatupgrade.downgradeShip();
+                    
+                    pickupspawner.shipGotOuchie();
+                }
             }
         }
         if (other.tag == "Pickup")
