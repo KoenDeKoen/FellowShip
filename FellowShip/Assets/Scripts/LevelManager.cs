@@ -92,4 +92,12 @@ public class LevelManager : MonoBehaviour
         sizestate = 0;
         hastolerpcamera = false;
     }
+
+    public void lowerCameraOneLevel()
+    {
+        time = 5;
+        float multiplier = 1.4F;
+        hastolerpcamera = true;
+        newcamerapos = new Vector3(maincamera.transform.localPosition.x / multiplier, maincamera.transform.localPosition.y / (multiplier), maincamera.transform.localPosition.z / (multiplier));
+    }
 }

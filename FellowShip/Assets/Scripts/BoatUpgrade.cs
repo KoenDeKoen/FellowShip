@@ -9,18 +9,20 @@ public class BoatUpgrade : MonoBehaviour
     // Use this for initialization and anal bleach
     public GameObject model0, model1, model2, model3, model4, model5;
     public GameObject currentboat, upgradeparticle;
+    public LevelManager lvlm;
     private int state;
     private float turningspeed;
 
     void Start ()
     {
+        lvlm = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
         turningspeed = 1;
         state = 0;
 	}
 
     void Update()
     {
-        //Debug.Log(state);
+        Debug.Log(state);
     }
 
     public void upgradeShip()
@@ -115,6 +117,7 @@ public class BoatUpgrade : MonoBehaviour
             Destroy(currentboat);
             currentboat = newmodel;
             newmodel.GetComponent<Movement>().onMenuEnd();
+            //lvlm.lowerCameraOneLevel();
         }
         if (state < 0)
         {
