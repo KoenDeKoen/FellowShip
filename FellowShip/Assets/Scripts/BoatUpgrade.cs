@@ -20,10 +20,10 @@ public class BoatUpgrade : MonoBehaviour
         state = 0;
 	}
 
-    void Update()
+    /*void Update()
     {
         Debug.Log(state);
-    }
+    }*/
 
     public void upgradeShip()
     {
@@ -61,8 +61,8 @@ public class BoatUpgrade : MonoBehaviour
             newmodel.GetComponent<Movement>().onMenuEnd();
             GameObject poofpang;
             poofpang = Instantiate(upgradeparticle);
-            poofpang.transform.parent = newmodel.transform;
-            poofpang.transform.localPosition = new Vector3(0, 1, 0);
+            //poofpang.transform.parent = newmodel.transform;
+            poofpang.transform.localPosition = new Vector3(newmodel.transform.position.x, newmodel.transform.position.y + 1, newmodel.transform.position.z);
         }
     }
     // le code is false
