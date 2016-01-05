@@ -1,4 +1,4 @@
-﻿//Made by Martijn Koekkoek
+﻿//Made by Martijn Koekkoek and Koen Brouwers
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,12 +34,16 @@ public class NewHighscore : MonoBehaviour {
 		playerName = "";
 		DisplayHighscore();
 		scores = new Dictionary<string, float>();
-		for (int i = 0; i<text.Length; i++)
-		{
-			float score = PlayerPrefs.GetFloat("PScore"+i);
-			string name = PlayerPrefs.GetString("PName"+i);
-			scores.Add(name, score);
-		}
+        for (int i = 0; i < text.Length; i++)
+        {
+            float score = PlayerPrefs.GetFloat("PScore" + i);
+            string name = PlayerPrefs.GetString("PName" + i);
+            if (!scores.ContainsKey(name))
+            {
+                scores.Add(name, score);
+            }
+            
+        }
 	}
 		
 	// Update is called once per frame
@@ -53,14 +57,16 @@ public class NewHighscore : MonoBehaviour {
 	{
 		if(ended)
 		{
+            tt.stopCounting();
             if (doneName)
             {
                 if (!finishednewscore)
                 {
                     EnterNewScore();
+                    DisplayHighscore();
                 }
                 
-                DisplayHighscore();
+                
                 if ((Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.D)) || pct1 >= 0.05 && pct2 >= 0.05)
                 {
                     finished = true;
@@ -125,7 +131,8 @@ public class NewHighscore : MonoBehaviour {
 		// Loop through keys.
 		scores = scores.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
 		List<string> keyList = new List<string>(scores.Keys);
-		for(int i=0; i<text.Length; i++)
+        Debug.Log(keyList.Count);
+		for(int i=0; i<keyList.Count; i++)
 		{
 			string scoreKey = "PScore"+i.ToString();
 		//float score = PlayerPrefs.GetFloat(scoreKey);
@@ -136,12 +143,11 @@ public class NewHighscore : MonoBehaviour {
             //string tmpName = PlayerPrefs.GetString(name);
             //float tmpScore = score;
             //Debug.Log(keyList[i]);
-            if (PlayerPrefs.GetString(name) != "")
-            {
+            //if (PlayerPrefs.GetString(name) != "")
+            //{
                 PlayerPrefs.SetString(name, keyList[i]);
                 PlayerPrefs.SetFloat(scoreKey, scores[keyList[i]]);
-            }
-			
+            //}
             finishednewscore = true;
 		//oldScore = score;
 		//playername = tmpName;

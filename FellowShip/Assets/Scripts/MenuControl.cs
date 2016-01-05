@@ -83,7 +83,8 @@ public class MenuControl : MonoBehaviour
 					nhs.finished = false;
 					nhs.doneName = false;
 					nhs.ended = false;
-				}
+                    tt.resetCounter();
+                }
             }
         }
         if (inmenu)

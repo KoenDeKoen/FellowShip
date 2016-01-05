@@ -43,4 +43,9 @@ public class TimeTrial : MonoBehaviour
     {
         start = false;
     }
+
+    public void resetCounter()
+    {
+        time = 0;
+    }
 }
