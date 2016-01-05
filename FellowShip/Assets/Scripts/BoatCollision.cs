@@ -91,7 +91,7 @@ public class BoatCollision : MonoBehaviour
                 PirateShip.state = 3;
                 boatupgrade.downgradeShip();
                 pickupspawner.shipGotOuchie();
-                Debug.Log("Pirate");
+                //Debug.Log("Pirate");
             }
 		}
 	}

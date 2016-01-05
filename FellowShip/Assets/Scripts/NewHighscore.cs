@@ -124,14 +124,14 @@ public class NewHighscore : MonoBehaviour {
 			
 		if (!scores.ContainsKey(playername))
 		{
-            Debug.Log(playername);
+            //Debug.Log(playername);
 			scores.Add (playername, currentScore);
 		}
 
 		// Loop through keys.
 		scores = scores.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
 		List<string> keyList = new List<string>(scores.Keys);
-        Debug.Log(keyList.Count);
+        //Debug.Log(keyList.Count);
 		for(int i=0; i<keyList.Count; i++)
 		{
 			string scoreKey = "PScore"+i.ToString();
@@ -162,7 +162,7 @@ public class NewHighscore : MonoBehaviour {
 		{
 			if(e.type == EventType.KeyDown && e.keyCode.ToString() != "None" && e.keyCode.ToString().Length == 1)
 			{
-				Debug.Log ( e.keyCode.ToString());
+				//Debug.Log ( e.keyCode.ToString());
 				playerName = playerName + e.keyCode.ToString();
 			}
 				
