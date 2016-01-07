@@ -21,6 +21,7 @@ public class MenuControl : MonoBehaviour
     public BoatUpgrade boatupgrade;
 	public NewHighscore nhs;
 	public PirateShip ps;
+    //public CameraManager cm;
 
 	float pct1;
 	float pct2;
@@ -55,7 +56,8 @@ public class MenuControl : MonoBehaviour
                 movement.onMenuStart();
                 inmenu = true;
                 //ss.resetSize();
-                lvlm.resetSize();
+                //lvlm.resetSize();
+                lvlm.setSmallLevel();
                 so.resetObstacles();
 				ps.DestoryShip();
                 //changeState(0);
@@ -78,8 +80,9 @@ public class MenuControl : MonoBehaviour
 					boatupgrade.resetShipModel();
 					movement.onMenuStart();
 					inmenu = true;
-					lvlm.resetSize();
-					so.resetObstacles();
+                    //lvlm.resetSize();
+                    lvlm.setSmallLevel();
+                    so.resetObstacles();
 					nhs.finished = false;
 					nhs.doneName = false;
 					nhs.ended = false;
@@ -184,6 +187,7 @@ public class MenuControl : MonoBehaviour
         pickupspawning.spawnFirstPickup();
         inmenu = false;
         tt.startCounting();
+        lvlm.setSmallLevel();
     }
 
     public void startNormalMode()
@@ -194,6 +198,7 @@ public class MenuControl : MonoBehaviour
         pickupspawning.resetGame();
         pickupspawning.spawnFirstPickup();
         movement.onMenuEnd();
+        lvlm.setSmallLevel();
         //movement.setTurningSpeedBegin(1);
         //pickupspawning.spawnNextPickup();
         inmenu = false;

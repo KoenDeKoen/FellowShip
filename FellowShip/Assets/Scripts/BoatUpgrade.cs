@@ -9,13 +9,12 @@ public class BoatUpgrade : MonoBehaviour
     // Use this for initialization and anal bleach
     public GameObject model0, model1, model2, model3, model4, model5;
     public GameObject currentboat, upgradeparticle;
-    public LevelManager lvlm;
+    public CameraManager cm;
     private int state;
     private float turningspeed;
 
     void Start ()
     {
-        lvlm = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
         turningspeed = 1;
         state = 0;
 	}
@@ -63,6 +62,8 @@ public class BoatUpgrade : MonoBehaviour
             poofpang = Instantiate(upgradeparticle);
             //poofpang.transform.parent = newmodel.transform;
             poofpang.transform.localPosition = new Vector3(newmodel.transform.position.x, newmodel.transform.position.y + 1, newmodel.transform.position.z);
+            cm.setNewPlayerBoat(newmodel);
+            cm.raiseCameraOneLevel();
         }
     }
     // le code is false
@@ -77,6 +78,8 @@ public class BoatUpgrade : MonoBehaviour
         newmodel.GetComponent<Movement>().onMenuStart();
         newmodel.transform.localPosition = new Vector3(-45, 0, -45);
         newmodel.transform.rotation = Quaternion.identity;
+        cm.setNewPlayerBoat(newmodel);
+        cm.resetCamera();
     }
 
     public void downgradeShip()
@@ -117,6 +120,8 @@ public class BoatUpgrade : MonoBehaviour
             Destroy(currentboat);
             currentboat = newmodel;
             newmodel.GetComponent<Movement>().onMenuEnd();
+            cm.setNewPlayerBoat(newmodel);
+            cm.lowerCameraOneLevel();
             //lvlm.lowerCameraOneLevel();
         }
         if (state < 0)

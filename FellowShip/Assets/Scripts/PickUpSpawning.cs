@@ -9,14 +9,16 @@ public class PickUpSpawning : MonoBehaviour {
     public Pickup pickup;
     public SpawnableSpots ss;
     private int pickupscollected, maxpickups;
-    private bool hasspawnednext, done;
+    private bool hasspawnednext, done, pickedupfirstpickup;
     public GameObject round1spots, round2spots, round3spots, round4spots, round5spots, round6spots;
     private List<Vector3> round1children, round2children, round3children, round4children, round5children, round6children;
     private Vector3 lastpos;
 	public NewHighscore nhs;
+    public LevelManager lvlm;
 
     void Start ()
     {
+        pickedupfirstpickup = false;
         maxpickups = 6;
         round1children = new List<Vector3>();
         round2children = new List<Vector3>();
@@ -137,7 +139,15 @@ public class PickUpSpawning : MonoBehaviour {
                 lastpos = newpos;
                 break;
         }
-        pickup.destroyPickup();    
+        pickup.destroyPickup();
+        if (pickupscollected == 2)
+        {
+            if (!pickedupfirstpickup)
+            {
+                lvlm.setBigLevel();
+                pickedupfirstpickup = true;
+            }
+        }
         if (pickupscollected <= maxpickups)
         {
             pickup.instPickup(newpos);
@@ -155,6 +165,7 @@ public class PickUpSpawning : MonoBehaviour {
         Vector3 newpos = new Vector3();
         newpos = round1children[Random.Range(0, round1children.Count)];
         pickup.instPickup(newpos);
+        pickedupfirstpickup = false;
         pickupscollected++;
     }
 
@@ -179,6 +190,7 @@ public class PickUpSpawning : MonoBehaviour {
         ss.resetSize();
         pickupscollected = 0;
         hasspawnednext = false;
+        pickedupfirstpickup = false;
         done = false;
     }
 

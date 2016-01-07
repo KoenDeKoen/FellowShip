@@ -8,7 +8,7 @@ public class BoatCollision : MonoBehaviour
 {
     private PickUpSpawning pickupspawner;
     private MenuControl menucontrols;
-    private LevelManager lvlm;
+    //private LevelManager lvlm;
 	private PirateShip ps;
     //private SpawnObstacles so;
     private BoatUpgrade boatupgrade;
@@ -21,7 +21,7 @@ public class BoatCollision : MonoBehaviour
         hashitkraken = true;
         pickupspawner = FindObjectOfType<PickUpSpawning>().GetComponent<PickUpSpawning>();
         menucontrols = FindObjectOfType<MenuControl>().GetComponent<MenuControl>();
-        lvlm = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
+        //lvlm = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
         krakenspawner = FindObjectOfType<KrakenSpawn>().GetComponent<KrakenSpawn>();
         //so = FindObjectOfType<SpawnObstacles>().GetComponent<SpawnObstacles>();
         boatupgrade = FindObjectOfType<BoatUpgrade>().GetComponent<BoatUpgrade>();
@@ -34,7 +34,7 @@ public class BoatCollision : MonoBehaviour
             spawnnext = false;
             //if (boatupgrade.returnState() < 6)
             //{
-                lvlm.increaseLevel();
+                //lvlm.increaseLevel();
                 pickupspawner.spawnNextPickup();
                 pickupspawner.setDoneSpawn();
                 boatupgrade.upgradeShip();

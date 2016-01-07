@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
 
     // Use this for initialization
     private int sizestate;
-    public GameObject wallL, wallR, wallU, wallD, seafloor;
+    public GameObject wallL, wallR, wallU, wallD, seafloor, bigwalls, smallwalls;
     public PickUpSpawning pickupspawning;
     public Camera maincamera;
     private bool hastolerpcamera;
@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
 
 	void Start ()
     {
-        hastolerpcamera = false;
+        //hastolerpcamera = false;
         sizestate = 0;
         startwallL = wallL.transform.localPosition;
         startwallR = wallR.transform.localPosition;
@@ -31,14 +31,14 @@ public class LevelManager : MonoBehaviour
         startscalewallU = wallU.transform.localScale;
         startscalewallD = wallD.transform.localScale;
         startscaleseafloor = seafloor.transform.localScale;
-        startcamerapos = maincamera.transform.position;
-        time = 5;
+        //startcamerapos = maincamera.transform.position;
+        //time = 5;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-	    if(hastolerpcamera)
+	    /*if(hastolerpcamera)
         {
             time -= Time.deltaTime;
             maincamera.transform.localPosition = Vector3.MoveTowards(maincamera.transform.localPosition, newcamerapos, Time.deltaTime * 25);
@@ -47,7 +47,7 @@ public class LevelManager : MonoBehaviour
                 hastolerpcamera = false;
                 time = 5;
             }
-        }
+        }*/
 	}
 
     public void raiseSizeByOne()
@@ -60,10 +60,10 @@ public class LevelManager : MonoBehaviour
         sizestate++;
         if(sizestate < pickupspawning.getMaxPickups())
         {
-            time = 5;
+            //time = 5;
             float multiplier = 1.4F;
-            hastolerpcamera = true;
-            newcamerapos = new Vector3(maincamera.transform.localPosition.x * multiplier, maincamera.transform.localPosition.y * (multiplier), maincamera.transform.localPosition.z * (multiplier));
+            //hastolerpcamera = true;
+            //newcamerapos = new Vector3(maincamera.transform.localPosition.x * multiplier, maincamera.transform.localPosition.y * (multiplier), maincamera.transform.localPosition.z * (multiplier));
             wallL.transform.localPosition = new Vector3(wallL.transform.position.x * multiplier, wallL.transform.position.y, wallL.transform.position.z);
             wallR.transform.localPosition = new Vector3(wallR.transform.position.x * multiplier, wallR.transform.position.y, wallR.transform.position.z);
             wallU.transform.localPosition = new Vector3(wallU.transform.position.x, wallU.transform.position.y, wallU.transform.position.z * multiplier);
@@ -93,11 +93,31 @@ public class LevelManager : MonoBehaviour
         hastolerpcamera = false;
     }
 
-    public void lowerCameraOneLevel()
+    /*public void lowerCameraOneLevel()
     {
         time = 5;
-        float multiplier = 1.4F;
+        float multiplier = 1.1F;
         hastolerpcamera = true;
         newcamerapos = new Vector3(maincamera.transform.localPosition.x / multiplier, maincamera.transform.localPosition.y / (multiplier), maincamera.transform.localPosition.z / (multiplier));
+    }
+
+    public void raiseCameraOneLevel()
+    {
+        time = 5;
+        float multiplier = 1.1f;
+        hastolerpcamera = true;
+        newcamerapos = new Vector3(maincamera.transform.localPosition.x * multiplier, maincamera.transform.localPosition.y * (multiplier), maincamera.transform.localPosition.z * (multiplier));
+    }*/
+
+    public void setBigLevel()
+    {
+        smallwalls.SetActive(false);
+        bigwalls.SetActive(true);
+    }
+
+    public void setSmallLevel()
+    {
+        bigwalls.SetActive(false);
+        smallwalls.SetActive(true);
     }
 }
