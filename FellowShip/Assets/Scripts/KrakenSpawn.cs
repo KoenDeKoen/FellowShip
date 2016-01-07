@@ -60,7 +60,7 @@ public class KrakenSpawn : MonoBehaviour
             if (despawntimer <= 0)
             {
                 destroyKraken();
-                despawntimer = 10;
+                despawntimer = 5;
             }
         }
         if(chance > 0 && !krakenisspawned && !hastospawn)

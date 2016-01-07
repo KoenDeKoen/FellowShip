@@ -13,8 +13,8 @@ public class LevelManager : MonoBehaviour
     public PickUpSpawning pickupspawning;
     public Camera maincamera;
     private bool hastolerpcamera;
-    private Vector3 newcamerapos, startwallL, startwallR, startwallU, startwallD, startscalewallL, 
-        startscalewallR, startscalewallU, startscalewallD, startscaleseafloor, startcamerapos;
+    private Vector3 newcamerapos, startwallL, startwallR, startwallU, startwallD, startscalewallL,
+        startscalewallR, startscalewallU, startscalewallD, startscaleseafloor;//, startcamerapos;
     public SpawnableSpots ss;
     private float time;
 
@@ -88,7 +88,7 @@ public class LevelManager : MonoBehaviour
         wallD.transform.localScale = startscalewallR;
         wallU.transform.localScale = startscalewallU;
         wallR.transform.localScale = startscalewallD;
-        maincamera.transform.localPosition = startcamerapos;
+        //maincamera.transform.localPosition = startcamerapos;
         sizestate = 0;
         hastolerpcamera = false;
     }
