@@ -88,36 +88,39 @@ public class PirateShip : MonoBehaviour {
 		dir = (target.transform.position - spawnedenemyship.transform.position).normalized;
 		RaycastHit hit = new RaycastHit();
 
-		if(Physics.Raycast(spawnedenemyship.transform.position, spawnedenemyship.transform.forward, out hit, 40f)) 
+		if(Physics.Raycast(spawnedenemyship.transform.position, spawnedenemyship.transform.forward, out hit, 45f)) 
 		{
-			//if (hit.transform != spawnedenemyship.transform)
-			if(hit.transform.tag != "Player")
+			if (hit.transform.tag != "Wall" && hit.transform.tag != "Player")
+			//if(hit.transform.tag != "Player")
 			{
+				Debug.Log("blue");
 				Debug.DrawLine(spawnedenemyship.transform.position, hit.point, Color.blue);
 				dir += hit.normal * 30;
 			}
 		}
 
-		Vector3 leftR = spawnedenemyship.transform.position - spawnedenemyship.transform.right * -5f;
-		Vector3 rightR = spawnedenemyship.transform.position - spawnedenemyship.transform.right * 5f;
+		Vector3 leftR = spawnedenemyship.transform.position - spawnedenemyship.transform.right * -7f;
+		Vector3 rightR = spawnedenemyship.transform.position - spawnedenemyship.transform.right * 7f;
 
 		if(Physics.Raycast(leftR, spawnedenemyship.transform.forward, out hit, 40f)) 
 		{
-			//if(hit.transform != spawnedenemyship.transform)
-			if(hit.transform.tag != "Player")
+			if(hit.transform.tag != "Wall" && hit.transform.tag != "Player")
+			//if(hit.transform.tag != "Player")
 			{
+				Debug.Log("red");
 				Debug.DrawLine(leftR, hit.point, Color.red);
-				dir += hit.normal * 30;
+				dir += hit.normal * 35f;
 			}
 		}
 	
 		if(Physics.Raycast(rightR, spawnedenemyship.transform.forward, out hit, 40f)) 
 		{                
+			if(hit.transform.tag != "Wall" && hit.transform.tag != "Player")
 			//if(hit.transform != spawnedenemyship.transform)
-			if(hit.transform.tag != "Player")
 			{
+				Debug.Log("yellow");
 				Debug.DrawLine(rightR, hit.point, Color.yellow);
-				dir += hit.normal * 30;
+				dir += hit.normal * 35f;
 			}
 		}
 		
