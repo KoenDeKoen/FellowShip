@@ -11,8 +11,6 @@ public class PirateShip : MonoBehaviour {
 	private GameObject spawnedenemyship;
 	GameObject currentBoat;
 
-	//RaycastHit hit;
-
 	public PirateshipSpawn pss;
 	public PickUpSpawning pus;
 	public BoatUpgrade bu;
@@ -20,7 +18,8 @@ public class PirateShip : MonoBehaviour {
 	float distance;
 	float moveSpeed;
 	float friction;
-	//Vector3 direction;
+
+	Vector3 dir;
 
 	public bool shipspawned;
 	public static int state;
@@ -41,14 +40,12 @@ public class PirateShip : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-
 		if(!shipspawned){
 			if (pus.getCurrentPickups() >= 3)
 			{
 				state = 1;
 			}
 		}
-
 
 		if(currentBoat == null)
 		{
@@ -70,8 +67,7 @@ public class PirateShip : MonoBehaviour {
 			
 		case 3:
 			LookAt(pss.returnSpawnPointPirate()[2]);
-			//Attack();
-			if(distance <= 10F)
+			if(Vector3.Distance(spawnedenemyship.transform.position, pss.returnSpawnPointPirate()[2].transform.position) <= 10f)
 			{
 				Destroy(spawnedenemyship);
 				shipspawned = false;
@@ -89,31 +85,26 @@ public class PirateShip : MonoBehaviour {
 //
 //		Quaternion rotation = Quaternion.LookRotation(target.transform.position - spawnedenemyship.transform.position);
 //		spawnedenemyship.transform.rotation = Quaternion.Slerp(spawnedenemyship.transform.rotation, rotation, Time.deltaTime * friction);
-
-		Vector3 dir = (target.transform.position - spawnedenemyship.transform.position).normalized;
+		dir = (target.transform.position - spawnedenemyship.transform.position).normalized;
 		RaycastHit hit = new RaycastHit();
 
 		if(Physics.Raycast(spawnedenemyship.transform.position, spawnedenemyship.transform.forward, out hit, 40f)) 
 		{
-				if (hit.transform != spawnedenemyship.transform)
-				{
-					Debug.DrawLine(spawnedenemyship.transform.position, hit.point, Color.blue);
-					dir += hit.normal * 30;
-				}
+			//if (hit.transform != spawnedenemyship.transform)
+			if(hit.transform.tag != "Player")
+			{
+				Debug.DrawLine(spawnedenemyship.transform.position, hit.point, Color.blue);
+				dir += hit.normal * 30;
+			}
 		}
 
-		Vector3 leftR = spawnedenemyship.transform.position;
-		Vector3 rightR = spawnedenemyship.transform.position;
-
-		Debug.Log("Left:" + leftR + "Right:" + rightR);
-
-
-		leftR.x -= 10f;
-		rightR.x += 10f;
+		Vector3 leftR = spawnedenemyship.transform.position - spawnedenemyship.transform.right * -5f;
+		Vector3 rightR = spawnedenemyship.transform.position - spawnedenemyship.transform.right * 5f;
 
 		if(Physics.Raycast(leftR, spawnedenemyship.transform.forward, out hit, 40f)) 
 		{
-			if (hit.transform != spawnedenemyship.transform)
+			//if(hit.transform != spawnedenemyship.transform)
+			if(hit.transform.tag != "Player")
 			{
 				Debug.DrawLine(leftR, hit.point, Color.red);
 				dir += hit.normal * 30;
@@ -122,7 +113,8 @@ public class PirateShip : MonoBehaviour {
 	
 		if(Physics.Raycast(rightR, spawnedenemyship.transform.forward, out hit, 40f)) 
 		{                
-			if (hit.transform != spawnedenemyship.transform)
+			//if(hit.transform != spawnedenemyship.transform)
+			if(hit.transform.tag != "Player")
 			{
 				Debug.DrawLine(rightR, hit.point, Color.yellow);
 				dir += hit.normal * 30;
