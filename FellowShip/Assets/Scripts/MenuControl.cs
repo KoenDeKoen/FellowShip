@@ -13,7 +13,7 @@ public class MenuControl : MonoBehaviour
     private float time;
     private Movement movement;
     public PickUpSpawning pickupspawning;
-    private bool inmenu;
+    private bool inmenu, buttonpressed, buttonreleased;
     public TimeTrial tt;
     public LevelManager lvlm;
     public SpawnObstacles so;
@@ -28,6 +28,8 @@ public class MenuControl : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        buttonreleased = false;
+        buttonpressed = false;
         mode = 0;
         inmenu = true;
         time = 1;
@@ -99,33 +101,28 @@ public class MenuControl : MonoBehaviour
 
     private void checkForPresses()
     {
-        if (Input.GetKey("a") || pct1 >= 0.05f)
+        if (Input.GetKey("a") || pct1 >= 0.05f || Input.GetKey("d") || pct1 >=0.05f)
         {
-            time -= Time.deltaTime;
-            if (time <= 0)
-            {
-                if (state < 4)
-                {
-                    changeState(1);
-                }
-                else
-                {
-                    changeState(-3);
-                }
-                time = 1;
-            }
-        }
-		else if (Input.GetKey("d") || pct2 >= 0.05f)
-        {
-            time -= Time.deltaTime;
+            buttonpressed = true;
+            time -= Time.deltaTime;  
             if (time <= 0)
             {
                 selectButton();
                 time = 1;
-            }
+            }   
         }
-        else
+		if (!Input.GetKey("d") && pct2 <= 0.01f && !Input.GetKey("a") && pct1 <= 0.01f && buttonpressed)
         {
+            buttonreleased = true;
+            buttonpressed = false;
+            if (state < 4)
+            {
+                changeState(1);
+            }
+            else
+            {
+                changeState(-3);
+            }
             time = 1;
         }
     }
