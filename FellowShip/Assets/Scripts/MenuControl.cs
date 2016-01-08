@@ -13,7 +13,7 @@ public class MenuControl : MonoBehaviour
     private float time;
     private Movement movement;
     public PickUpSpawning pickupspawning;
-    private bool inmenu, buttonpressed, buttonreleased;
+    private bool inmenu, buttonpressed;
     public TimeTrial tt;
     public LevelManager lvlm;
     public SpawnObstacles so;
@@ -113,7 +113,6 @@ public class MenuControl : MonoBehaviour
         }
 		if (!Input.GetKey("d") && pct2 <= 0.01f && !Input.GetKey("a") && pct1 <= 0.01f && buttonpressed)
         {
-            buttonreleased = true;
             buttonpressed = false;
             if (state < 4)
             {
