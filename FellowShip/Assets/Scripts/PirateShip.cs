@@ -86,44 +86,25 @@ public class PirateShip : MonoBehaviour {
 //		Quaternion rotation = Quaternion.LookRotation(target.transform.position - spawnedenemyship.transform.position);
 //		spawnedenemyship.transform.rotation = Quaternion.Slerp(spawnedenemyship.transform.rotation, rotation, Time.deltaTime * friction);
 		dir = (target.transform.position - spawnedenemyship.transform.position).normalized;
-		RaycastHit hit = new RaycastHit();
 
-		if(Physics.Raycast(spawnedenemyship.transform.position, spawnedenemyship.transform.forward, out hit, 45f)) 
-		{
-			if (hit.transform.tag != "Wall" && hit.transform.tag != "Player")
-			//if(hit.transform.tag != "Player")
-			{
-				Debug.Log("blue");
-				Debug.DrawLine(spawnedenemyship.transform.position, hit.point, Color.blue);
-				dir += hit.normal * 30;
-			}
-		}
+		CollisionDetection(spawnedenemyship.transform.position, 30f, 45f, Color.blue);
+//		if(Physics.Raycast(spawnedenemyship.transform.position, spawnedenemyship.transform.forward, out hit, 45f)) 
+//		{
+//			if (hit.transform.tag != "Wall" && hit.transform.tag != "Player")
+//			//if(hit.transform.tag != "Player")
+//			{
+//				Debug.Log("blue");
+//				Debug.DrawLine(spawnedenemyship.transform.position, hit.point, Color.blue);
+//				dir += hit.normal * 30;
+//			}
+//		}
 
-		Vector3 leftR = spawnedenemyship.transform.position - spawnedenemyship.transform.right * -7f;
-		Vector3 rightR = spawnedenemyship.transform.position - spawnedenemyship.transform.right * 7f;
+		Vector3 leftR = spawnedenemyship.transform.position - spawnedenemyship.transform.right * -10f;
+		Vector3 rightR = spawnedenemyship.transform.position - spawnedenemyship.transform.right * 10f;
 
-		if(Physics.Raycast(leftR, spawnedenemyship.transform.forward, out hit, 40f)) 
-		{
-			if(hit.transform.tag != "Wall" && hit.transform.tag != "Player")
-			//if(hit.transform.tag != "Player")
-			{
-				Debug.Log("red");
-				Debug.DrawLine(leftR, hit.point, Color.red);
-				dir += hit.normal * 35f;
-			}
-		}
-	
-		if(Physics.Raycast(rightR, spawnedenemyship.transform.forward, out hit, 40f)) 
-		{                
-			if(hit.transform.tag != "Wall" && hit.transform.tag != "Player")
-			//if(hit.transform != spawnedenemyship.transform)
-			{
-				Debug.Log("yellow");
-				Debug.DrawLine(rightR, hit.point, Color.yellow);
-				dir += hit.normal * 35f;
-			}
-		}
-		
+		CollisionDetection(leftR, 20f, 30f, Color.red);
+		CollisionDetection(rightR, 20f, 30f, Color.yellow);
+
 		Quaternion rot = Quaternion.LookRotation(dir);
 		spawnedenemyship.transform.rotation = Quaternion.Slerp(spawnedenemyship.transform.rotation, rot, Time.deltaTime);
 		spawnedenemyship.transform.position += spawnedenemyship.transform.forward * 20f * Time.deltaTime;
@@ -147,5 +128,19 @@ public class PirateShip : MonoBehaviour {
 		Destroy(spawnedenemyship);
 		shipspawned = true;
 		state = 0;
+	}
+
+	public void CollisionDetection(Vector3 DirectionRay, float turn, float Raylenght, Color color)
+	{
+		RaycastHit hit = new RaycastHit();
+
+		if(Physics.Raycast(DirectionRay, spawnedenemyship.transform.forward, out hit, Raylenght)) 
+		{     
+			if(hit.transform.tag != "Wall" && hit.transform.tag != "Player")
+			{
+				Debug.DrawLine(DirectionRay, hit.point, color);
+				dir += hit.normal * turn;
+			}
+		}
 	}
 }
