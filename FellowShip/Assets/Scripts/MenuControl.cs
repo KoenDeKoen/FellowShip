@@ -28,7 +28,6 @@ public class MenuControl : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        buttonreleased = false;
         buttonpressed = false;
         mode = 0;
         inmenu = true;
