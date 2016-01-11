@@ -13,7 +13,7 @@ public class MenuControl : MonoBehaviour
     private float time;
     private Movement movement;
     public PickUpSpawning pickupspawning;
-    private bool inmenu, buttonpressed;
+    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased;
     public TimeTrial tt;
     public LevelManager lvlm;
     public SpawnObstacles so;
@@ -28,6 +28,8 @@ public class MenuControl : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        pillocontrolreleased = true;
+        pillocontrol = true;
         buttonpressed = false;
         mode = 0;
         inmenu = true;
@@ -43,7 +45,7 @@ public class MenuControl : MonoBehaviour
     {
 		pct1 = PilloController.GetSensor (Pillo.PilloID.Pillo1);
 		pct2 = PilloController.GetSensor (Pillo.PilloID.Pillo2);
-
+        checkForControlSwitch();
         if (pickupspawning.checkForDone())
         {
             if (mode == 1)
@@ -100,28 +102,27 @@ public class MenuControl : MonoBehaviour
 
     private void checkForPresses()
     {
-        if (Input.GetKey("a") || pct1 >= 0.05f || Input.GetKey("d") || pct1 >=0.05f)
+        if (pillocontrol)
         {
-            buttonpressed = true;
-            time -= Time.deltaTime;  
-            if (time <= 0)
+            if (pct1 >= 0.03f || pct2 >= 0.03f)
             {
-                selectButton();
-                time = 1;
-            }   
+                buttonPressed();
+            }
+            if (pct2 <= 0.01f && pct1 <= 0.01f && buttonpressed)
+            {
+                buttonReleased();
+            }
         }
-		if (!Input.GetKey("d") && pct2 <= 0.01f && !Input.GetKey("a") && pct1 <= 0.01f && buttonpressed)
+        else
         {
-            buttonpressed = false;
-            if (state < 4)
+            if (Input.GetKey("a") || Input.GetKey("d"))
             {
-                changeState(1);
+                buttonPressed();
             }
-            else
+            if (!Input.GetKey("d") && !Input.GetKey("a") && buttonpressed)
             {
-                changeState(-3);
+                buttonReleased();
             }
-            time = 1;
         }
     }
 
@@ -198,5 +199,54 @@ public class MenuControl : MonoBehaviour
         //pickupspawning.spawnNextPickup();
         inmenu = false;
 		ps.shipspawned = false;
+    }
+
+    private void buttonPressed()
+    {
+        buttonpressed = true;
+        time -= Time.deltaTime;
+        if (time <= 0)
+        {
+            selectButton();
+            time = 1;
+        }
+    }
+
+    private void buttonReleased()
+    {
+        buttonpressed = false;
+        if (state < 4)
+        {
+            changeState(1);
+        }
+        else
+        {
+            changeState(-3);
+        }
+        time = 1;
+    }
+
+    private void checkForControlSwitch()
+    {
+        if (Input.GetKey("q") && Input.GetKey("w") && Input.GetKey("e"))
+        {
+            if (pillocontrolreleased)
+            {
+                if (pillocontrol)
+                {
+                    pillocontrol = false;
+                }
+                else
+                {
+                    pillocontrol = true;
+                }
+                pillocontrolreleased = false;
+            }
+        }
+    }
+
+    public bool returnControlState()
+    {
+        return pillocontrol;
     }
 }
