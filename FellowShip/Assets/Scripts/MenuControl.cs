@@ -243,6 +243,10 @@ public class MenuControl : MonoBehaviour
                 pillocontrolreleased = false;
             }
         }
+		if (!Input.GetKey("q") || !Input.GetKey("w") || !Input.GetKey("e"))
+		{
+			pillocontrolreleased = true;
+		}
     }
 
     public bool returnControlState()
