@@ -22,7 +22,8 @@ public class CameraManager : MonoBehaviour
     {
         if (playerboat != null)
         {
-            usedcamera.transform.position = new Vector3(playerboat.transform.position.x, usedcamera.transform.position.y, playerboat.transform.position.z -50);
+            usedcamera.transform.position = new Vector3(playerboat.transform.position.x, usedcamera.transform.position.y, playerboat.transform.position.z - 50);
+            Debug.Log("X: " + usedcamera.transform.position.x + "Y: " + usedcamera.transform.position.y + "Z: " + usedcamera.transform.position.z);
         }
         lerpThatCamera();
     }

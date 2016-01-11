@@ -9,17 +9,24 @@ public class Movement : MonoBehaviour
 	float speed;
 	float rotationSpeed;
 	float rotation;
-    private bool finishedmenu;
+    private bool finishedmenu, pillocontrol, pillocontrolreleased;
     private BoatUpgrade boatupgrade;
     private float turningspeed;
+    private MenuControl mc;
 
 	float pct1;
 	float pct2;
     int turnstate;
 
+    void Start()
+    {
+        pillocontrol = true;
+        pillocontrolreleased = true;
+        mc = FindObjectOfType<MenuControl>().GetComponent<MenuControl>();
+    }
+
 	void Awake ()
     {
-        
         turnstate = 0;
         finishedmenu = false;
 		rotationSpeed = 5f;
@@ -29,7 +36,7 @@ public class Movement : MonoBehaviour
         //Debug.Log(turningspeed);
     }
 
-	void Update ()
+	void FixedUpdate ()
 	{
 		pct1 = PilloController.GetSensor (Pillo.PilloID.Pillo1);
 		pct2 = PilloController.GetSensor (Pillo.PilloID.Pillo2);
@@ -42,76 +49,47 @@ public class Movement : MonoBehaviour
 
     private void Move()
     {
-        if ((Input.GetKey("a") && Input.GetKey("d")))// || (pct1 >= 0.05f && pct2 >= 0.05f))
+        checkForControlSwitch();
+        if (mc.returnControlState())
         {
-            rotation = speed * rotationSpeed * 1.5f;
-            rotation *= Time.deltaTime;
-            transform.Translate(0, 0, rotation);
-            switch (turnstate)
+            if (pct1 >= 0.03f && pct2 >= 0.03f)
             {
-                case 1:
-                    
-                    transform.GetChild(0).GetComponent<Animator>().Play("BoatBackR");
-                    turnstate = 0;
-                    break;
-
-                case 2:
-                    transform.GetChild(0).GetComponent<Animator>().Play("BoatBackL");
-                    turnstate = 0;
-                    break;
+                moveForward();
+            }
+            if (pct1 >= 0.03f && pct2 <= 0.002f)
+            {
+                turnLeft();
+            }
+            if (pct2 >= 0.03f && pct1 <= 0.002f)
+            {
+                turnRight();
+            }
+            else if (pct1 <= 0.002f && pct2 <= 0.002f)
+            {
+                stopMoving();
             }
         }
-		if ((Input.GetKey("a")/* || pct1 >= 0.05f*/) && (!Input.GetKey("d") /*|| pct2 <= 0.002f*/))
+        else
         {
-            rotation = speed * rotationSpeed;
-            rotation *= Time.deltaTime;
-            transform.Translate(0, 0, rotation);
-            transform.Rotate(0, (-rotation * 5) * turningspeed, 0);
-            turnstate = 1;
-            if (turnstate == 2)
+            if ((Input.GetKey("a") && Input.GetKey("d")))
             {
-                transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltRL");
-                
+                moveForward();
+                Debug.Log(1);
             }
-            else
+            if (Input.GetKey("a") && !Input.GetKey("d"))
             {
-                transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltR");
+                turnLeft();
+                Debug.Log(2);
             }
-        }
-
-        if ((Input.GetKey("d") /*|| pct2 >= 0.05f*/) && (!Input.GetKey("a") /*|| pct1 >= 0.05f*/))
-        {
-            rotation = speed * rotationSpeed;
-            rotation *= Time.deltaTime;
-            transform.Translate(0, 0, rotation);
-            transform.Rotate(0, (rotation * 5) * turningspeed, 0);
-            turnstate = 2;
-            if (turnstate == 1)
+            if (Input.GetKey("d") && !Input.GetKey("a"))
             {
-                transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltLR");
+                turnRight();
+                Debug.Log(3);
             }
-            else
+            else if (!Input.GetKey("a") && !Input.GetKey("d"))
             {
-                transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltL");
-                
-            }
-            
-            
-        }
-        else if((!Input.GetKey("a") && !Input.GetKey("d")) /*|| (pct1 <= 0.002f && pct2 <= 0.002f)*/)
-        {
-            switch (turnstate)
-            {
-                case 1:
-                    transform.GetChild(0).GetComponent<Animator>().Play("BoatBackR");
-                    
-                    turnstate = 0;
-                    break;
-
-                case 2:
-                    transform.GetChild(0).GetComponent<Animator>().Play("BoatBackL");
-                    turnstate = 0;
-                    break;
+                stopMoving();
+                Debug.Log(4);
             }
         }
     }
@@ -131,5 +109,99 @@ public class Movement : MonoBehaviour
         boatupgrade.resetShipModel();
         transform.position = new Vector3(-45,transform.position.y, -45);
         transform.rotation = Quaternion.identity;
+    }
+
+    private void moveForward()
+    {
+        rotation = speed * rotationSpeed * 1.5f;
+        rotation *= Time.deltaTime;
+        transform.Translate(0, 0, rotation);
+        switch (turnstate)
+        {
+            case 1:
+
+                transform.GetChild(0).GetComponent<Animator>().Play("BoatBackR");
+                turnstate = 0;
+                break;
+
+            case 2:
+                transform.GetChild(0).GetComponent<Animator>().Play("BoatBackL");
+                turnstate = 0;
+                break;
+        }
+    }
+
+    private void turnRight()
+    {
+        rotation = speed * rotationSpeed;
+        rotation *= Time.deltaTime;
+        transform.Translate(0, 0, rotation);
+        transform.Rotate(0, (rotation * 5) * turningspeed, 0);
+        turnstate = 2;
+        if (turnstate == 1)
+        {
+            transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltLR");
+        }
+        else
+        {
+            transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltL");
+
+        }
+    }
+
+    private void turnLeft()
+    {
+        rotation = speed * rotationSpeed;
+        rotation *= Time.deltaTime;
+        transform.Translate(0, 0, rotation);
+        transform.Rotate(0, (-rotation * 5) * turningspeed, 0);
+        turnstate = 1;
+        if (turnstate == 2)
+        {
+            transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltRL");
+
+        }
+        else
+        {
+            transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltR");
+        }
+    }
+
+    private void stopMoving()
+    {
+        switch (turnstate)
+        {
+            case 1:
+                transform.GetChild(0).GetComponent<Animator>().Play("BoatBackR");
+
+                turnstate = 0;
+                break;
+
+            case 2:
+                transform.GetChild(0).GetComponent<Animator>().Play("BoatBackL");
+                turnstate = 0;
+                break;
+        }
+    }
+    private void checkForControlSwitch()
+    {
+        if (Input.GetKey("q") && Input.GetKey("w") && Input.GetKey("e"))
+        {
+            if (pillocontrolreleased)
+            {
+                if (pillocontrol)
+                {
+                    pillocontrol = false;
+                }
+                else
+                {
+                    pillocontrol = true;
+                }
+            }
+        }
+        if (!Input.GetKey("q") || !Input.GetKey("w") || !Input.GetKey("e"))
+        {
+            pillocontrolreleased = true;
+        }
     }
 }
