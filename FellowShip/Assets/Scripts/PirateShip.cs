@@ -102,8 +102,14 @@ public class PirateShip : MonoBehaviour {
 		Vector3 leftR = spawnedenemyship.transform.position - spawnedenemyship.transform.right * -10f;
 		Vector3 rightR = spawnedenemyship.transform.position - spawnedenemyship.transform.right * 10f;
 
+		Vector3 leftS = spawnedenemyship.transform.position - spawnedenemyship.transform.forward * -10f;
+		Vector3 rightS = spawnedenemyship.transform.position - spawnedenemyship.transform.forward * 10f;
+
 		CollisionDetection(leftR, 20f, 30f, Color.red);
 		CollisionDetection(rightR, 20f, 30f, Color.yellow);
+
+//		CollisionDetection(leftS, 20f, 10f, Color.red);
+//		CollisionDetection(rightS, 20f, 10f, Color.yellow);
 
 		Quaternion rot = Quaternion.LookRotation(dir);
 		spawnedenemyship.transform.rotation = Quaternion.Slerp(spawnedenemyship.transform.rotation, rot, Time.deltaTime);
@@ -133,9 +139,11 @@ public class PirateShip : MonoBehaviour {
 	public void CollisionDetection(Vector3 DirectionRay, float turn, float Raylenght, Color color)
 	{
 		RaycastHit hit = new RaycastHit();
-
+		//Physics.Raycast(DirectionRay, spawnedenemyship.transform.forward, out hit, Raylenght);
+		//Debug.DrawLine(DirectionRay, spawnedenemyship.transform.position, color);
 		if(Physics.Raycast(DirectionRay, spawnedenemyship.transform.forward, out hit, Raylenght)) 
-		{     
+		{  
+			Debug.DrawLine(DirectionRay, hit.point, color);
 			if(hit.transform.tag != "Wall" && hit.transform.tag != "Player")
 			{
 				Debug.DrawLine(DirectionRay, hit.point, color);
