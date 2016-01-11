@@ -4,7 +4,7 @@ using System.Collections;
 public class Pickup : MonoBehaviour
 {
     public GameObject pickupmodel;
-    private GameObject currentpickup;
+    public GameObject currentpickup;
 
     void Start()
     {

@@ -12,7 +12,8 @@ public class PickUpSpawning : MonoBehaviour {
     private bool hasspawnednext, done, pickedupfirstpickup;
     public GameObject round1spots, round2spots, round3spots, round4spots, round5spots, round6spots;
     private List<Vector3> round1children, round2children, round3children, round4children, round5children, round6children;
-    private Vector3 lastpos;
+    public Vector3 lastpos;
+	public Vector3 currentPos;
 	public NewHighscore nhs;
     public LevelManager lvlm;
 
@@ -90,6 +91,7 @@ public class PickUpSpawning : MonoBehaviour {
                     newpos = round1children[Random.Range(0, round1children.Count)];
                 }
                 lastpos = newpos;
+				currentPos = newpos;
                 break;
 
             case 2:
@@ -100,6 +102,7 @@ public class PickUpSpawning : MonoBehaviour {
                     newpos = round2children[Random.Range(0, round2children.Count)];
                 }
                 lastpos = newpos;
+				currentPos = newpos;
                 break;
 
             case 3:
@@ -110,6 +113,7 @@ public class PickUpSpawning : MonoBehaviour {
                     newpos = round3children[Random.Range(0, round3children.Count)];
                 }
                 lastpos = newpos;
+				currentPos = newpos;
                 break;
 
             case 4:
@@ -119,6 +123,7 @@ public class PickUpSpawning : MonoBehaviour {
                     newpos = round4children[Random.Range(0, round4children.Count)];
                 }
                 lastpos = newpos;
+				currentPos = newpos;
                 break;
 
             case 5:
@@ -128,6 +133,7 @@ public class PickUpSpawning : MonoBehaviour {
                     newpos = round5children[Random.Range(0, round5children.Count)];
                 }
                 lastpos = newpos;
+				currentPos = newpos;
                 break;
 
             case 6:
@@ -137,6 +143,7 @@ public class PickUpSpawning : MonoBehaviour {
                     newpos = round6children[Random.Range(0, round6children.Count)];
                 }
                 lastpos = newpos;
+				currentPos = newpos;
                 break;
         }
         pickup.destroyPickup();
@@ -167,6 +174,7 @@ public class PickUpSpawning : MonoBehaviour {
         pickup.instPickup(newpos);
         pickedupfirstpickup = false;
         pickupscollected++;
+		currentPos = newpos;
     }
 
     public bool hasSpawnedNext()
