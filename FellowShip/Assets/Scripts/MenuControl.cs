@@ -100,11 +100,11 @@ public class MenuControl : MonoBehaviour
         }
         if (mode == 2 && !inmenu)
         {
-            try
-            {
+            //try
+            //{
                 timetext.GetComponent<Text>().text = "Time: " + tt.returnTimeInString();
-            }
-            catch {/*lol so ugly*/ }
+            //}
+            //catch {/*lol so ugly*/ }
             
         }
         if (inmenu)

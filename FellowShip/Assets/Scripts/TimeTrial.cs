@@ -13,7 +13,7 @@ public class TimeTrial : MonoBehaviour
 	void Start ()
     {
         start = false;
-	    time = 0;
+	    time = 00.01f;
 	}
 	
 	// Update is called once per frame
@@ -46,6 +46,6 @@ public class TimeTrial : MonoBehaviour
 
     public void resetCounter()
     {
-        time = 0;
+        time = 00.01f;
     }
 }
