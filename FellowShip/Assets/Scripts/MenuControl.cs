@@ -9,11 +9,11 @@ public class MenuControl : MonoBehaviour
 {
     private int state, mode;
     public Button startbtn, optionsbtn, calibrationbtn, quitbtn;
-    public GameObject mainmenupanel, modeselectpanel, highscorepanel;
+    public GameObject mainmenupanel, modeselectpanel, highscorepanel, optionspanel;
     private float time;
     private Movement movement;
     public PickUpSpawning pickupspawning;
-    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased;
+    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, inoptions;
     public TimeTrial tt;
     public LevelManager lvlm;
     public SpawnObstacles so;
@@ -21,6 +21,7 @@ public class MenuControl : MonoBehaviour
     public BoatUpgrade boatupgrade;
 	public NewHighscore nhs;
 	public PirateShip ps;
+    public Options options;
     //public CameraManager cm;
 
 	float pct1;
@@ -28,6 +29,7 @@ public class MenuControl : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        inoptions = false;
         pillocontrolreleased = true;
         pillocontrol = true;
         buttonpressed = false;
@@ -93,7 +95,7 @@ public class MenuControl : MonoBehaviour
                 }
             }
         }
-        if (inmenu)
+        if (inmenu && !inoptions)
         {
             
             checkForPresses();
@@ -126,9 +128,17 @@ public class MenuControl : MonoBehaviour
         }
     }
 
-    private void changeState(int amount)
+    //if adding to the current state, truenumber = false. if the amount is the desired state then truenumber = true
+    private void changeState(int amount, bool truenumber)
     {
-        state += amount;
+        if (!truenumber)
+        {
+            state += amount;
+        }
+        else
+        {
+            state = amount;
+        }
         switch (state)
         {
             case 1:
@@ -161,7 +171,8 @@ public class MenuControl : MonoBehaviour
                 break;
 
             case 2:
-                //load options
+                enableOptions();
+                mainmenupanel.SetActive(false);
                 break;
 
             case 3:
@@ -217,11 +228,11 @@ public class MenuControl : MonoBehaviour
         buttonpressed = false;
         if (state < 4)
         {
-            changeState(1);
+            changeState(1,false);
         }
         else
         {
-            changeState(-3);
+            changeState(-3,false);
         }
         time = 1;
     }
@@ -252,5 +263,19 @@ public class MenuControl : MonoBehaviour
     public bool returnControlState()
     {
         return pillocontrol;
+    }
+
+    private void enableOptions()
+    {
+        inoptions = true;
+        optionspanel.SetActive(true);
+        options.updateCheckBoxes();
+    }
+    public void disableOptions()
+    {
+        inoptions = false;
+        optionspanel.SetActive(false);
+        mainmenupanel.SetActive(true);
+        changeState(1,true);
     }
 }
