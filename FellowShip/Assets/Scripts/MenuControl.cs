@@ -178,6 +178,7 @@ public class MenuControl : MonoBehaviour
         {
             case 1:
                 movement.onMenuEnd();
+                inmenu = false;
                 mainmenupanel.SetActive(false);
                 modeselectpanel.SetActive(true);
                 break;
