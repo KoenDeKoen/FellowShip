@@ -13,7 +13,7 @@ public class MenuControl : MonoBehaviour
     private float time;
     private Movement movement;
     public PickUpSpawning pickupspawning;
-    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, inoptions, donewithintro;
+    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, inoptions, donewithintro, firstmenupress;
     public TimeTrial tt;
     public LevelManager lvlm;
     public SpawnObstacles so;
@@ -23,6 +23,7 @@ public class MenuControl : MonoBehaviour
 	public PirateShip ps;
     public Options options;
     public GameObject timetext;
+    public ParticleSystem particlesystem;
     //public CameraManager cm;
 
 	float pct1;
@@ -30,6 +31,7 @@ public class MenuControl : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        firstmenupress = false;
         donewithintro = false;
         inoptions = false;
         pillocontrolreleased = true;
@@ -100,6 +102,8 @@ public class MenuControl : MonoBehaviour
 
                     }
                 }
+                firstmenupress = true;
+
             }
             if (mode == 2 && !inmenu)
             {
@@ -231,27 +235,34 @@ public class MenuControl : MonoBehaviour
 
     private void buttonPressed()
     {
-        buttonpressed = true;
-        time -= Time.deltaTime;
-        if (time <= 0)
+        if (!firstmenupress)
         {
-            selectButton();
-            time = 1;
+            buttonpressed = true;
+            time -= Time.deltaTime;
+            if (time <= 0)
+            {
+                selectButton();
+                time = 1;
+            }
         }
     }
 
     private void buttonReleased()
     {
-        buttonpressed = false;
-        if (state < 4)
+        if (!firstmenupress)
         {
-            changeState(1,false);
+            buttonpressed = false;
+            if (state < 4)
+            {
+                changeState(1, false);
+            }
+            else
+            {
+                changeState(-3, false);
+            }
+            time = 1;
         }
-        else
-        {
-            changeState(-3,false);
-        }
-        time = 1;
+        firstmenupress = false;
     }
 
     private void checkForControlSwitch()
