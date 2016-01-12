@@ -13,7 +13,7 @@ public class MenuControl : MonoBehaviour
     private float time;
     private Movement movement;
     public PickUpSpawning pickupspawning;
-    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, inoptions;
+    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, inoptions, donewithintro;
     public TimeTrial tt;
     public LevelManager lvlm;
     public SpawnObstacles so;
@@ -30,6 +30,7 @@ public class MenuControl : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        donewithintro = false;
         inoptions = false;
         pillocontrolreleased = true;
         pillocontrol = true;
@@ -46,72 +47,74 @@ public class MenuControl : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		pct1 = PilloController.GetSensor (Pillo.PilloID.Pillo1);
-		pct2 = PilloController.GetSensor (Pillo.PilloID.Pillo2);
-        checkForControlSwitch();
-        if (pickupspawning.checkForDone())
+        if (donewithintro)
         {
-            if (mode == 1)
+            pct1 = PilloController.GetSensor(Pillo.PilloID.Pillo1);
+            pct2 = PilloController.GetSensor(Pillo.PilloID.Pillo2);
+            checkForControlSwitch();
+            if (pickupspawning.checkForDone())
             {
-                state = 1;
-                startbtn.Select();
-                pickupspawning.resetGame();
-                mainmenupanel.SetActive(true);
-                //movement.resetBoatPos();
-                boatupgrade.resetShipModel();
-                movement.onMenuStart();
-                inmenu = true;
-                //ss.resetSize();
-                //lvlm.resetSize();
-                lvlm.setSmallLevel();
-                so.resetObstacles();
-				ps.DestoryShip();
-                //changeState(0);
-                //ss.resetSize();
-            }
-
-            if (mode == 2)
-            {
-                tt.stopCounting();
-                highscorepanel.SetActive(true);
-                highscorepanel.GetComponentInChildren<Text>().text = tt.returnTimeInString();
-				nhs.ended = true;
-				if(nhs.finished == true)
-				{
-                    timetext.SetActive(false);
+                if (mode == 1)
+                {
                     state = 1;
-					highscorepanel.SetActive(false);
-					startbtn.Select();
-					pickupspawning.resetGame();
-					mainmenupanel.SetActive(true);
-					boatupgrade.resetShipModel();
-					movement.onMenuStart();
-					inmenu = true;
+                    startbtn.Select();
+                    pickupspawning.resetGame();
+                    mainmenupanel.SetActive(true);
+                    //movement.resetBoatPos();
+                    boatupgrade.resetShipModel();
+                    movement.onMenuStart();
+                    inmenu = true;
+                    //ss.resetSize();
                     //lvlm.resetSize();
                     lvlm.setSmallLevel();
                     so.resetObstacles();
-					nhs.finished = false;
-					nhs.doneName = false;
-					nhs.ended = false;
-                    tt.resetCounter();
-                    
+                    ps.DestoryShip();
+                    //changeState(0);
+                    //ss.resetSize();
+                }
+
+                if (mode == 2)
+                {
+                    tt.stopCounting();
+                    highscorepanel.SetActive(true);
+                    highscorepanel.GetComponentInChildren<Text>().text = tt.returnTimeInString();
+                    nhs.ended = true;
+                    if (nhs.finished == true)
+                    {
+                        timetext.SetActive(false);
+                        state = 1;
+                        highscorepanel.SetActive(false);
+                        startbtn.Select();
+                        pickupspawning.resetGame();
+                        mainmenupanel.SetActive(true);
+                        boatupgrade.resetShipModel();
+                        movement.onMenuStart();
+                        inmenu = true;
+                        //lvlm.resetSize();
+                        lvlm.setSmallLevel();
+                        so.resetObstacles();
+                        nhs.finished = false;
+                        nhs.doneName = false;
+                        nhs.ended = false;
+                        tt.resetCounter();
+
+                    }
                 }
             }
-        }
-        if (mode == 2 && !inmenu)
-        {
-            //try
-            //{
+            if (mode == 2 && !inmenu)
+            {
+                //try
+                //{
                 timetext.GetComponent<Text>().text = "Time: " + tt.returnTimeInString();
-            //}
-            //catch {/*lol so ugly*/ }
-            
+                //}
+                //catch {/*lol so ugly*/ }
+
+            }
+            if (inmenu)
+            {
+                checkForPresses();
+            }
         }
-        if (inmenu)
-        {
-            checkForPresses();
-        }
-        
     }
 
     private void checkForPresses()
@@ -293,5 +296,10 @@ public class MenuControl : MonoBehaviour
         optionspanel.SetActive(false);
         mainmenupanel.SetActive(true);
         changeState(1,true);
+    }
+
+    public void setIntroFinished()
+    {
+        donewithintro = true;
     }
 }
