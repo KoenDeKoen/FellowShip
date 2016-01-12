@@ -74,22 +74,22 @@ public class Movement : MonoBehaviour
             if ((Input.GetKey("a") && Input.GetKey("d")))
             {
                 moveForward();
-                Debug.Log(1);
+                //Debug.Log(1);
             }
             if (Input.GetKey("a") && !Input.GetKey("d"))
             {
                 turnLeft();
-                Debug.Log(2);
+                //Debug.Log(2);
             }
             if (Input.GetKey("d") && !Input.GetKey("a"))
             {
                 turnRight();
-                Debug.Log(3);
+                //Debug.Log(3);
             }
             else if (!Input.GetKey("a") && !Input.GetKey("d"))
             {
                 stopMoving();
-                Debug.Log(4);
+                //Debug.Log(4);
             }
         }
     }

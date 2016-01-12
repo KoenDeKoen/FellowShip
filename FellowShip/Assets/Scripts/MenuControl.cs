@@ -22,6 +22,7 @@ public class MenuControl : MonoBehaviour
 	public NewHighscore nhs;
 	public PirateShip ps;
     public Options options;
+    public GameObject timetext;
     //public CameraManager cm;
 
 	float pct1;
@@ -77,7 +78,8 @@ public class MenuControl : MonoBehaviour
 				nhs.ended = true;
 				if(nhs.finished == true)
 				{
-					state = 1;
+                    timetext.SetActive(false);
+                    state = 1;
 					highscorepanel.SetActive(false);
 					startbtn.Select();
 					pickupspawning.resetGame();
@@ -92,14 +94,24 @@ public class MenuControl : MonoBehaviour
 					nhs.doneName = false;
 					nhs.ended = false;
                     tt.resetCounter();
+                    
                 }
             }
         }
-        if (inmenu && !inoptions)
+        if (mode == 2 && !inmenu)
         {
+            try
+            {
+                timetext.GetComponent<Text>().text = "Time: " + tt.returnTimeInString();
+            }
+            catch {/*lol so ugly*/ }
             
+        }
+        if (inmenu)
+        {
             checkForPresses();
         }
+        
     }
 
     private void checkForPresses()
@@ -195,6 +207,7 @@ public class MenuControl : MonoBehaviour
         inmenu = false;
         tt.startCounting();
         lvlm.setSmallLevel();
+        timetext.SetActive(true);
     }
 
     public void startNormalMode()
@@ -267,12 +280,14 @@ public class MenuControl : MonoBehaviour
 
     private void enableOptions()
     {
+        inmenu = false;
         inoptions = true;
         optionspanel.SetActive(true);
         options.updateCheckBoxes();
     }
     public void disableOptions()
     {
+        inmenu = true;
         inoptions = false;
         optionspanel.SetActive(false);
         mainmenupanel.SetActive(true);
