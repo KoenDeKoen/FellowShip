@@ -367,7 +367,7 @@ public class MenuControl : MonoBehaviour
                 
             }
             pct1avarage = tempval / pct1smoother.Count;
-            pct1smoother = new List<float>();
+            pct1smoother.RemoveAt(0);
         }
     }
 
@@ -385,7 +385,7 @@ public class MenuControl : MonoBehaviour
                 tempval += pct2smoother[i];
             }
             pct2avarage = tempval / pct2smoother.Count;
-            pct2smoother = new List<float>();
+            pct2smoother.RemoveAt(0);
         }
     }
 }
