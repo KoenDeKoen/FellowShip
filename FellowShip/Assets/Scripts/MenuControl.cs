@@ -24,11 +24,8 @@ public class MenuControl : MonoBehaviour
     public Options options;
 	public CompassAim ca;
     public GameObject timetext;
-<<<<<<< HEAD
 	public GameObject compassBg;
-=======
     public ParticleSystem particlesystem;
->>>>>>> origin/master
     //public CameraManager cm;
 
 	float pct1;
@@ -49,11 +46,8 @@ public class MenuControl : MonoBehaviour
         time = 1;
         state = 1;
         startbtn.Select();
-<<<<<<< HEAD
 		compassBg.SetActive(false);
-=======
         ConfigureSensorRange(0x50, 0x6f);
->>>>>>> origin/master
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
     }
