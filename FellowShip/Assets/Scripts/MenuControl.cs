@@ -4,13 +4,14 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using Pillo;
+using System.Collections.Generic;
 
 public class MenuControl : MonoBehaviour
 {
     private int state, mode;
     public Button startbtn, optionsbtn, calibrationbtn, quitbtn;
-    public GameObject mainmenupanel, modeselectpanel, highscorepanel, optionspanel;
-    private float time, pillopressval, pilloreleaseval;
+    public GameObject mainmenupanel, modeselectpanel, highscorepanel, optionspanel, ingamepanel;
+    private float time, pillopressval, pilloreleaseval, pct1avarage, pct2avarage;
     private Movement movement;
     public PickUpSpawning pickupspawning;
     private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, inoptions, donewithintro, firstmenupress;
@@ -22,17 +23,28 @@ public class MenuControl : MonoBehaviour
 	public NewHighscore nhs;
 	public PirateShip ps;
     public Options options;
-	public CompassAim ca;
+	//public CompassAim ca;
     public GameObject timetext;
-	public GameObject compassBg;
-    public ParticleSystem particlesystem;
+	//public GameObject compassBg;
+    public UnityEngine.UI.Slider player1slider, player2slider;
+    private List<float> pct1smoother, pct2smoother;
+    //private float[] pct1smoother, pct2smoother;
     //public CameraManager cm;
+    //private ParticleSystem particlesys;
 
 	float pct1;
 	float pct2;
     // Use this for initialization
     void Start ()
     {
+        pct1smoother = new List<float>();
+        pct2smoother = new List<float>();
+        pct1avarage = 0f;
+        pct2avarage = 0f;
+        //particlesys.startSize = 0.1f;
+        
+        //pct1smoother = new float[10];
+        //pct2smoother = new float[10];
         pillopressval = 0.01f;
         pilloreleaseval = pillopressval / 10;
         firstmenupress = false;
@@ -46,10 +58,8 @@ public class MenuControl : MonoBehaviour
         time = 1;
         state = 1;
         startbtn.Select();
-		compassBg.SetActive(false);
+		//compassBg.SetActive(false);
         ConfigureSensorRange(0x50, 0x6f);
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
     }
 	
 	// Update is called once per frame
@@ -68,19 +78,15 @@ public class MenuControl : MonoBehaviour
                     startbtn.Select();
                     pickupspawning.resetGame();
                     mainmenupanel.SetActive(true);
-                    //movement.resetBoatPos();
                     boatupgrade.resetShipModel();
                     movement.onMenuStart();
                     inmenu = true;
-                    //ss.resetSize();
-                    //lvlm.resetSize();
                     lvlm.setSmallLevel();
                     so.resetObstacles();
                     ps.DestoryShip();
-					compassBg.SetActive(false);
-					ca.goalsAvailable = false;
-                    //changeState(0);
-                    //ss.resetSize();
+                    ingamepanel.SetActive(false);
+					//compassBg.SetActive(false);
+					//ca.goalsAvailable = false;
                 }
 
                 if (mode == 2)
@@ -100,15 +106,15 @@ public class MenuControl : MonoBehaviour
                         boatupgrade.resetShipModel();
                         movement.onMenuStart();
                         inmenu = true;
-                        //lvlm.resetSize();
                         lvlm.setSmallLevel();
+                        ingamepanel.SetActive(false);
                         so.resetObstacles();
                         nhs.finished = false;
                         nhs.doneName = false;
                         nhs.ended = false;
                         tt.resetCounter();
-						compassBg.SetActive(false);
-						ca.goalsAvailable = false;
+						//compassBg.SetActive(false);
+						//ca.goalsAvailable = false;
                     }
                 }
                 firstmenupress = true;
@@ -126,6 +132,10 @@ public class MenuControl : MonoBehaviour
             if (inmenu)
             {
                 checkForPresses();
+            }
+            if (!inmenu && pillocontrol)
+            {
+                updateSliderValues();
             }
         }
     }
@@ -197,6 +207,7 @@ public class MenuControl : MonoBehaviour
                 inmenu = false;
                 mainmenupanel.SetActive(false);
                 modeselectpanel.SetActive(true);
+                ingamepanel.SetActive(true);
                 break;
 
             case 2:
@@ -225,8 +236,8 @@ public class MenuControl : MonoBehaviour
         tt.startCounting();
         lvlm.setSmallLevel();
         timetext.SetActive(true);
-		compassBg.SetActive(true);
-		ca.goalsAvailable = true;
+		//compassBg.SetActive(true);
+		//ca.goalsAvailable = true;
 
     }
 
@@ -239,12 +250,10 @@ public class MenuControl : MonoBehaviour
         pickupspawning.spawnFirstPickup();
         movement.onMenuEnd();
         lvlm.setSmallLevel();
-        //movement.setTurningSpeedBegin(1);
-        //pickupspawning.spawnNextPickup();
         inmenu = false;
 		ps.shipspawned = false;
-		compassBg.SetActive(true);
-		ca.goalsAvailable = true;
+		//compassBg.SetActive(true);
+		//ca.goalsAvailable = true;
     }
 
     private void buttonPressed()
@@ -323,11 +332,60 @@ public class MenuControl : MonoBehaviour
     public void setIntroFinished()
     {
         donewithintro = true;
+        mainmenupanel.SetActive(true);
     }
 
     private static void ConfigureSensorRange(int min, int max)
     {
         PilloSender.SensorMin = min;
         PilloSender.SensorMax = max;
+    }
+
+    private void updateSliderValues()
+    {
+        addToP1Smoother(pct1);
+        addToP2Smoother(pct2);
+        player1slider.value = pct1avarage;
+        player2slider.value = pct2avarage;
+    }
+
+    private void addToP1Smoother(float val)
+    {
+        //Debug.Log(pct1smoother.Count);
+        if (pct1smoother.Count < 10)
+        {
+            pct1smoother.Add(val);
+            //Debug.Log(pct1smoother[pct1smoother.Count-1]);
+        }
+        if (pct1smoother.Count == 10)
+        {
+            float tempval = 0f;
+            for (int i = 0; i < pct1smoother.Count; i++)
+            {
+                
+                tempval += pct1smoother[i];
+                
+            }
+            pct1avarage = tempval / pct1smoother.Count;
+            pct1smoother = new List<float>();
+        }
+    }
+
+    private void addToP2Smoother(float val)
+    {
+        if (pct2smoother.Count < 10)
+        {
+            pct2smoother.Add(val);
+        }
+        if (pct2smoother.Count == 10)
+        {
+            float tempval = 0f;
+            for (int i = 0; i < pct2smoother.Count; i++)
+            {
+                tempval += pct2smoother[i];
+            }
+            pct2avarage = tempval / pct2smoother.Count;
+            pct2smoother = new List<float>();
+        }
     }
 }
