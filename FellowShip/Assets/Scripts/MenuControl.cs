@@ -22,7 +22,9 @@ public class MenuControl : MonoBehaviour
 	public NewHighscore nhs;
 	public PirateShip ps;
     public Options options;
+	public CompassAim ca;
     public GameObject timetext;
+	public GameObject compassBg;
     //public CameraManager cm;
 
 	float pct1;
@@ -40,6 +42,7 @@ public class MenuControl : MonoBehaviour
         time = 1;
         state = 1;
         startbtn.Select();
+		compassBg.SetActive(false);
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
 	}
@@ -69,6 +72,8 @@ public class MenuControl : MonoBehaviour
                     lvlm.setSmallLevel();
                     so.resetObstacles();
                     ps.DestoryShip();
+					compassBg.SetActive(false);
+					ca.goalsAvailable = false;
                     //changeState(0);
                     //ss.resetSize();
                 }
@@ -97,7 +102,8 @@ public class MenuControl : MonoBehaviour
                         nhs.doneName = false;
                         nhs.ended = false;
                         tt.resetCounter();
-
+						compassBg.SetActive(false);
+						ca.goalsAvailable = false;
                     }
                 }
             }
@@ -212,6 +218,9 @@ public class MenuControl : MonoBehaviour
         tt.startCounting();
         lvlm.setSmallLevel();
         timetext.SetActive(true);
+		compassBg.SetActive(true);
+		ca.goalsAvailable = true;
+
     }
 
     public void startNormalMode()
@@ -227,6 +236,8 @@ public class MenuControl : MonoBehaviour
         //pickupspawning.spawnNextPickup();
         inmenu = false;
 		ps.shipspawned = false;
+		compassBg.SetActive(true);
+		ca.goalsAvailable = true;
     }
 
     private void buttonPressed()
@@ -256,10 +267,8 @@ public class MenuControl : MonoBehaviour
 
     private void checkForControlSwitch()
     {
-        if (Input.GetKey("q") && Input.GetKey("w") && Input.GetKey("e"))
+        if (Input.GetKey("q") && Input.GetKey("w") && Input.GetKey("e") && pillocontrolreleased)
         {
-            if (pillocontrolreleased)
-            {
                 if (pillocontrol)
                 {
                     pillocontrol = false;
@@ -269,9 +278,8 @@ public class MenuControl : MonoBehaviour
                     pillocontrol = true;
                 }
                 pillocontrolreleased = false;
-            }
         }
-		if (!Input.GetKey("q") || !Input.GetKey("w") || !Input.GetKey("e"))
+		if ((!Input.GetKey("q") || !Input.GetKey("w") || !Input.GetKey("e")) && !pillocontrolreleased)
 		{
 			pillocontrolreleased = true;
 		}
