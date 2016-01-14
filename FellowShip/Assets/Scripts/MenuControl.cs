@@ -10,7 +10,7 @@ public class MenuControl : MonoBehaviour
     private int state, mode;
     public Button startbtn, optionsbtn, calibrationbtn, quitbtn;
     public GameObject mainmenupanel, modeselectpanel, highscorepanel, optionspanel;
-    private float time;
+    private float time, pillopressval, pilloreleaseval;
     private Movement movement;
     public PickUpSpawning pickupspawning;
     private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, inoptions, donewithintro, firstmenupress;
@@ -31,6 +31,8 @@ public class MenuControl : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        pillopressval = 0.01f;
+        pilloreleaseval = pillopressval / 10;
         firstmenupress = false;
         donewithintro = false;
         inoptions = false;
@@ -42,9 +44,10 @@ public class MenuControl : MonoBehaviour
         time = 1;
         state = 1;
         startbtn.Select();
+        ConfigureSensorRange(0x50, 0x6f);
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -125,11 +128,11 @@ public class MenuControl : MonoBehaviour
     {
         if (pillocontrol)
         {
-            if (pct1 >= 0.03f || pct2 >= 0.03f)
+            if (pct1 >= pillopressval || pct2 >= pillopressval)
             {
                 buttonPressed();
             }
-            if (pct2 <= 0.01f && pct1 <= 0.01f && buttonpressed)
+            if (pct2 <= pilloreleaseval && pct1 <= pilloreleaseval && buttonpressed)
             {
                 buttonReleased();
             }
@@ -312,5 +315,11 @@ public class MenuControl : MonoBehaviour
     public void setIntroFinished()
     {
         donewithintro = true;
+    }
+
+    private static void ConfigureSensorRange(int min, int max)
+    {
+        PilloSender.SensorMin = min;
+        PilloSender.SensorMax = max;
     }
 }

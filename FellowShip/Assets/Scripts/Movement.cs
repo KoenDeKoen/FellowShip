@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
 	float rotation;
     private bool finishedmenu, pillocontrol, pillocontrolreleased;
     private BoatUpgrade boatupgrade;
-    private float turningspeed;
+    private float turningspeed, pillopressval, pilloreleaseval;
     private MenuControl mc;
 
 	float pct1;
@@ -20,19 +20,24 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+
         pillocontrol = true;
         pillocontrolreleased = true;
         mc = FindObjectOfType<MenuControl>().GetComponent<MenuControl>();
+        //ConfigureSensorRange(0x50, 0x6f);
     }
 
 	void Awake ()
     {
+        pillopressval = 0.02f;
+        pilloreleaseval = pillopressval / 10;
         turnstate = 0;
         finishedmenu = false;
 		rotationSpeed = 5f;
 		speed = 5f;
         boatupgrade = FindObjectOfType<BoatUpgrade>().GetComponent<BoatUpgrade>();
         turningspeed = boatupgrade.getTurningSpeed();
+        
         //Debug.Log(turningspeed);
     }
 
@@ -52,19 +57,19 @@ public class Movement : MonoBehaviour
         checkForControlSwitch();
         if (mc.returnControlState())
         {
-            if (pct1 >= 0.03f && pct2 >= 0.03f)
+            if (pct1 >= pillopressval && pct2 >= pillopressval)
             {
                 moveForward();
             }
-            if (pct1 >= 0.03f && pct2 <= 0.002f)
+            if (pct1 >= pillopressval && pct2 <= pilloreleaseval)
             {
                 turnLeft();
             }
-            if (pct2 >= 0.03f && pct1 <= 0.002f)
+            if (pct2 >= pillopressval && pct1 <= pilloreleaseval)
             {
                 turnRight();
             }
-            else if (pct1 <= 0.002f && pct2 <= 0.002f)
+            else if (pct1 <= pilloreleaseval && pct2 <= pilloreleaseval)
             {
                 stopMoving();
             }
@@ -204,4 +209,10 @@ public class Movement : MonoBehaviour
             pillocontrolreleased = true;
         }
     }
+
+    /*private static void ConfigureSensorRange(int min, int max)
+    {
+        PilloSender.SensorMin = min;
+        PilloSender.SensorMax = max;
+    }*/
 }
