@@ -15,9 +15,12 @@ public class BoatCollision : MonoBehaviour
     private KrakenSpawn krakenspawner;
     private bool spawnnext;
     private bool hashitkraken;
+	public bool canHitPirate;
+	private float pirateTime;
 
     void Start()
     {
+		canHitPirate = true;
         hashitkraken = true;
         pickupspawner = FindObjectOfType<PickUpSpawning>().GetComponent<PickUpSpawning>();
         menucontrols = FindObjectOfType<MenuControl>().GetComponent<MenuControl>();
@@ -25,6 +28,7 @@ public class BoatCollision : MonoBehaviour
         krakenspawner = FindObjectOfType<KrakenSpawn>().GetComponent<KrakenSpawn>();
         //so = FindObjectOfType<SpawnObstacles>().GetComponent<SpawnObstacles>();
         boatupgrade = FindObjectOfType<BoatUpgrade>().GetComponent<BoatUpgrade>();
+		pirateTime = 4.0f;
     }
 
     void Update()
@@ -45,6 +49,15 @@ public class BoatCollision : MonoBehaviour
             //Debug.Log(hashitkraken + ", " + krakenspawner.krakenState());
             hashitkraken = false;
         }
+
+		if(!canHitPirate)
+		{
+			pirateTime -= Time.deltaTime;
+			if(pirateTime <= 0.0f)
+			{
+				canHitPirate = true;
+			}
+		}
     }
 
     void OnTriggerEnter(Collider other)
@@ -86,13 +99,18 @@ public class BoatCollision : MonoBehaviour
 	{
 		if(col.collider.tag  == "Pirate")
 		{
-            if (boatupgrade.returnState() > 0)
-            {
-                PirateShip.state = 3;
-                boatupgrade.downgradeShip();
-                pickupspawner.shipGotOuchie();
-                //Debug.Log("Pirate");
-            }
+			if(canHitPirate)
+			{
+            	if (boatupgrade.returnState() > 0)
+            	{
+                	PirateShip.state = 3;
+                	boatupgrade.downgradeShip();
+                	pickupspawner.shipGotOuchie();
+					canHitPirate = false;
+					pirateTime = 4.0f;
+                	//Debug.Log("Pirate");
+            	}
+			}
 		}
 	}
 }
