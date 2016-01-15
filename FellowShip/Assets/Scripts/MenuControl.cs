@@ -283,11 +283,11 @@ public class MenuControl : MonoBehaviour
 
                 case 4:
                     //load calibration
-
+                    //alles = true; (Nikya logic)
                     break;
 
                 case 5:
-                    //quit
+                    Application.Quit();
                     break;
             }
         }
@@ -358,7 +358,7 @@ public class MenuControl : MonoBehaviour
     {
         if (!firstmenupress)
         {
-            Debug.Log("LIES");
+           //Debug.Log("LIES");
             //Debug.Log("hai");
             buttonpressed = true;
             time -= Time.deltaTime;
@@ -405,6 +405,7 @@ public class MenuControl : MonoBehaviour
         else
         {
             firstmenupress = false;
+            buttonpressed = false;
         }
     }
 
