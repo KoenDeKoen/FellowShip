@@ -17,7 +17,7 @@ public class CompassAim : MonoBehaviour {
 
 	void Start()
 	{
-		focusRotate = new GameObject();
+		focusRotate = new GameObject("CompassNeedle");
 		goalsAvailable = false;
 		currentBoat = bu.currentboat;
 		focusRotate.transform.position = currentBoat.transform.position;
