@@ -8,13 +8,14 @@ using System.Collections.Generic;
 
 public class MenuControl : MonoBehaviour
 {
-    private int state, mode;
-    public Button startbtn, optionsbtn, calibrationbtn, quitbtn;
-    public GameObject mainmenupanel, modeselectpanel, highscorepanel, optionspanel, ingamepanel;
+    private int state, mode, tutorialstate, tutorialscreen;
+    public Sprite normalbtnsprite, highlightedsprite, tutorialfirstpage, tutorialsecondpage;
+    public GameObject startbtn, optionsbtn, calibrationbtn, quitbtn, tutorialbtn, tutorialmenubtn, tutorialnextbtn;
+    public GameObject mainmenupanel, modeselectpanel, highscorepanel, optionspanel, ingamepanel, tutorialpanel;
     private float time, pillopressval, pilloreleaseval, pct1avarage, pct2avarage;
     private Movement movement;
     public PickUpSpawning pickupspawning;
-    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, inoptions, donewithintro, firstmenupress;
+    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, inoptions, donewithintro, firstmenupress, intutorial;
     public TimeTrial tt;
     public LevelManager lvlm;
     public SpawnObstacles so;
@@ -28,6 +29,8 @@ public class MenuControl : MonoBehaviour
 	//public GameObject compassBg;
     public UnityEngine.UI.Slider player1slider, player2slider;
     private List<float> pct1smoother, pct2smoother;
+    private GameObject currentselectedbutton;
+    private Color selectedcolor, notselectedcolor;
     //private float[] pct1smoother, pct2smoother;
     //public CameraManager cm;
     //private ParticleSystem particlesys;
@@ -37,6 +40,11 @@ public class MenuControl : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        intutorial = false;
+        tutorialscreen = 1;
+        tutorialstate = 0;
+        notselectedcolor = new Color((1f/255f)*84f, (1f / 255f) * 47f, (1f / 255f) * 13f);
+        selectedcolor = new Color(1f,1f,1f);
         pct1smoother = new List<float>();
         pct2smoother = new List<float>();
         pct1avarage = 0f;
@@ -57,7 +65,6 @@ public class MenuControl : MonoBehaviour
         inmenu = true;
         time = 1;
         state = 1;
-        startbtn.Select();
 		//compassBg.SetActive(false);
         ConfigureSensorRange(0x50, 0x6f);
     }
@@ -65,6 +72,7 @@ public class MenuControl : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+
         if (donewithintro)
         {
             pct1 = PilloController.GetSensor(Pillo.PilloID.Pillo1);
@@ -75,7 +83,6 @@ public class MenuControl : MonoBehaviour
                 if (mode == 1)
                 {
                     state = 1;
-                    startbtn.Select();
                     pickupspawning.resetGame();
                     mainmenupanel.SetActive(true);
                     boatupgrade.resetShipModel();
@@ -100,7 +107,6 @@ public class MenuControl : MonoBehaviour
                         timetext.SetActive(false);
                         state = 1;
                         highscorepanel.SetActive(false);
-                        startbtn.Select();
                         pickupspawning.resetGame();
                         mainmenupanel.SetActive(true);
                         boatupgrade.resetShipModel();
@@ -122,18 +128,14 @@ public class MenuControl : MonoBehaviour
             }
             if (mode == 2 && !inmenu)
             {
-                //try
-                //{
                 timetext.GetComponent<Text>().text = "Time: " + tt.returnTimeInString();
-                //}
-                //catch {/*lol so ugly*/ }
-
             }
-            if (inmenu)
+            if (inmenu || intutorial)
             {
+                
                 checkForPresses();
             }
-            if (!inmenu && pillocontrol)
+            if (!inmenu && pillocontrol && !intutorial)
             {
                 updateSliderValues();
             }
@@ -155,12 +157,15 @@ public class MenuControl : MonoBehaviour
         }
         else
         {
+
             if (Input.GetKey("a") || Input.GetKey("d"))
             {
+                //Debug.Log("hai");
                 buttonPressed();
             }
             if (!Input.GetKey("d") && !Input.GetKey("a") && buttonpressed)
             {
+                
                 buttonReleased();
             }
         }
@@ -169,60 +174,154 @@ public class MenuControl : MonoBehaviour
     //if adding to the current state, truenumber = false. if the amount is the desired state then truenumber = true
     private void changeState(int amount, bool truenumber)
     {
-        if (!truenumber)
+        //Debug.Log("Tutorial: " + intutorial + " currentbutton: " + currentselectedbutton + " State: " + tutorialstate);
+        if (currentselectedbutton != null)
         {
-            state += amount;
+            currentselectedbutton.GetComponent<Image>().sprite = normalbtnsprite;
+            currentselectedbutton.GetComponentInChildren<Text>().color = notselectedcolor;
         }
-        else
+
+        //print(startbtn.GetComponentInChildren<Text>().color);
+        if (inmenu)
         {
-            state = amount;
+            if (!truenumber)
+            {
+                state += amount;
+            }
+            else
+            {
+                state = amount;
+            }
+            switch (state)
+            {
+
+                case 1:
+                    startbtn.GetComponent<Image>().sprite = highlightedsprite;
+                    startbtn.GetComponentInChildren<Text>().color = selectedcolor;
+                    currentselectedbutton = startbtn;
+                    break;
+
+                case 2:
+                    tutorialbtn.GetComponent<Image>().sprite = highlightedsprite;
+                    tutorialbtn.GetComponentInChildren<Text>().color = selectedcolor;
+                    currentselectedbutton = tutorialbtn;
+                    break;
+
+                case 3:
+                    optionsbtn.GetComponent<Image>().sprite = highlightedsprite;
+                    optionsbtn.GetComponentInChildren<Text>().color = selectedcolor;
+                    currentselectedbutton = optionsbtn;
+                    break;
+
+                case 4:
+                    calibrationbtn.GetComponent<Image>().sprite = highlightedsprite;
+                    calibrationbtn.GetComponentInChildren<Text>().color = selectedcolor;
+                    currentselectedbutton = calibrationbtn;
+                    break;
+
+                case 5:
+                    quitbtn.GetComponent<Image>().sprite = highlightedsprite;
+                    quitbtn.GetComponentInChildren<Text>().color = selectedcolor;
+                    currentselectedbutton = quitbtn;
+                    break;
+            }
         }
-        switch (state)
+        if (intutorial)
         {
-            case 1:
-                startbtn.Select();
-                break;
+            if (!truenumber)
+            {
+                tutorialstate += amount;
+            }
+            else
+            {
+                tutorialstate = amount;
+            }
+            switch (tutorialstate)
+            {
 
-            case 2:
-                optionsbtn.Select();
-                break;
+                case 1:
+                    //Debug.Log("hai");
+                    tutorialnextbtn.GetComponent<Image>().sprite = highlightedsprite;
+                    tutorialnextbtn.GetComponentInChildren<Text>().color = selectedcolor;
+                    currentselectedbutton = tutorialnextbtn;
+                    break;
 
-            case 3:
-                calibrationbtn.Select();
-                break;
+                case 2:
+                    //Debug.Log("hai2");
+                    tutorialmenubtn.GetComponent<Image>().sprite = highlightedsprite;
+                    tutorialmenubtn.GetComponentInChildren<Text>().color = selectedcolor;
+                    currentselectedbutton = tutorialmenubtn;
+                    break;
 
-            case 4:
-                quitbtn.Select();
-                break;
+            }
         }
     }
 
     private void selectButton()
     {
-        movement = FindObjectOfType<Movement>().GetComponent<Movement>();
-        switch (state)
+        if (inmenu)
         {
-            case 1:
-                movement.onMenuEnd();
-                inmenu = false;
-                mainmenupanel.SetActive(false);
-                modeselectpanel.SetActive(true);
-                ingamepanel.SetActive(true);
-                break;
+            movement = FindObjectOfType<Movement>().GetComponent<Movement>();
+            switch (state)
+            {
+                case 1:
+                    movement.onMenuEnd();
+                    inmenu = false;
+                    mainmenupanel.SetActive(false);
+                    modeselectpanel.SetActive(true);
+                    ingamepanel.SetActive(true);
+                    break;
 
-            case 2:
-                enableOptions();
-                mainmenupanel.SetActive(false);
-                break;
+                case 2:
+                    startTutorial();
+                    break;
 
-            case 3:
-                //load calibration
-                break;
+                case 3:
+                    enableOptions();
+                    mainmenupanel.SetActive(false);
+                    break;
 
-            case 4:
-                //quit
-                break;
+                case 4:
+                    //load calibration
+
+                    break;
+
+                case 5:
+                    //quit
+                    break;
+            }
         }
+        if (intutorial)
+        {
+            switch (tutorialstate)
+            {
+                case 1:
+                    switch (tutorialscreen)
+                    {
+                        case 0:
+                            tutorialpanel.GetComponent<Image>().sprite = tutorialfirstpage;
+                            tutorialscreen++;
+                            //Debug.Log("1");
+                            break;
+
+                        case 1:
+                            tutorialpanel.GetComponent<Image>().sprite = tutorialsecondpage;
+                            tutorialscreen++;
+                            //Debug.Log("2");
+                            break;
+
+                        case 2:
+                            backToMenuFromTutorial();
+                            break;
+                    }
+                    break;
+
+                case 2:
+                    backToMenuFromTutorial();
+                    break;
+            }
+        }
+        time = 1;
     }
 
     public void startTimeTrial()
@@ -260,32 +359,54 @@ public class MenuControl : MonoBehaviour
     {
         if (!firstmenupress)
         {
+            Debug.Log("LIES");
+            //Debug.Log("hai");
             buttonpressed = true;
             time -= Time.deltaTime;
             if (time <= 0)
             {
+                //Debug.Log("LIES");
                 selectButton();
                 time = 1;
+                firstmenupress = true;
             }
         }
     }
 
     private void buttonReleased()
     {
+        Debug.Log(firstmenupress);
         if (!firstmenupress)
         {
             buttonpressed = false;
-            if (state < 4)
+            if (inmenu)
             {
-                changeState(1, false);
+                if (state < 5)
+                {
+                    changeState(1, false);
+                }
+                else
+                {
+                    changeState(1, true);
+                }
             }
-            else
+            if (intutorial)
             {
-                changeState(-3, false);
+                if (tutorialstate < 2)
+                {
+                    changeState(1, false);
+                }
+                else
+                {
+                    changeState(1, true);
+                }
             }
             time = 1;
         }
-        firstmenupress = false;
+        else
+        {
+            firstmenupress = false;
+        }
     }
 
     private void checkForControlSwitch()
@@ -333,6 +454,7 @@ public class MenuControl : MonoBehaviour
     {
         donewithintro = true;
         mainmenupanel.SetActive(true);
+        changeState(1, true);
     }
 
     private static void ConfigureSensorRange(int min, int max)
@@ -387,5 +509,29 @@ public class MenuControl : MonoBehaviour
             pct2avarage = tempval / pct2smoother.Count;
             pct2smoother.RemoveAt(0);
         }
+    }
+
+    private void startTutorial()
+    {
+        tutorialbtn.GetComponentInChildren<Text>().color = notselectedcolor;
+        tutorialbtn.GetComponent<Image>().sprite = normalbtnsprite;
+        inmenu = false;
+        intutorial = true;
+        mainmenupanel.SetActive(false);
+        tutorialpanel.SetActive(true);
+        tutorialpanel.GetComponent<Image>().sprite = tutorialfirstpage;
+        currentselectedbutton = null;
+        changeState(1, true);
+        tutorialscreen = 0;
+    }
+
+    private void backToMenuFromTutorial()
+    {
+        intutorial = false;
+        inmenu = true;
+        mainmenupanel.SetActive(true);
+        tutorialpanel.SetActive(false);
+        currentselectedbutton = null;
+        changeState(1, true);
     }
 }
