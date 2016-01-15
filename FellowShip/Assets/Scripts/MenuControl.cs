@@ -15,7 +15,7 @@ public class MenuControl : MonoBehaviour
     private float time, pillopressval, pilloreleaseval, pct1avarage, pct2avarage;
     private Movement movement;
     public PickUpSpawning pickupspawning;
-    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, inoptions, donewithintro, firstmenupress, intutorial;
+    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, donewithintro, firstmenupress, intutorial;
     public TimeTrial tt;
     public LevelManager lvlm;
     public SpawnObstacles so;
@@ -57,7 +57,6 @@ public class MenuControl : MonoBehaviour
         pilloreleaseval = pillopressval / 10;
         firstmenupress = false;
         donewithintro = false;
-        inoptions = false;
         pillocontrolreleased = true;
         pillocontrol = true;
         buttonpressed = false;
@@ -437,14 +436,12 @@ public class MenuControl : MonoBehaviour
     private void enableOptions()
     {
         inmenu = false;
-        inoptions = true;
         optionspanel.SetActive(true);
         options.updateCheckBoxes();
     }
     public void disableOptions()
     {
         inmenu = true;
-        inoptions = false;
         optionspanel.SetActive(false);
         mainmenupanel.SetActive(true);
         changeState(1,true);

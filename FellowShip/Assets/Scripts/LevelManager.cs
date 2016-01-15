@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     public GameObject wallL, wallR, wallU, wallD, seafloor, bigwalls, smallwalls;
     public PickUpSpawning pickupspawning;
     public Camera maincamera;
-    private bool hastolerpcamera;
+    //private bool hastolerpcamera;
     private Vector3 newcamerapos, startwallL, startwallR, startwallU, startwallD, startscalewallL,
         startscalewallR, startscalewallU, startscalewallD, startscaleseafloor;//, startcamerapos;
     public SpawnableSpots ss;
@@ -90,7 +90,7 @@ public class LevelManager : MonoBehaviour
         wallR.transform.localScale = startscalewallD;
         //maincamera.transform.localPosition = startcamerapos;
         sizestate = 0;
-        hastolerpcamera = false;
+        //hastolerpcamera = false;
     }
 
     /*public void lowerCameraOneLevel()

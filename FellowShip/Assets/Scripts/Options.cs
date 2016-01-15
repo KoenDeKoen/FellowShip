@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Options : MonoBehaviour
 { 
     private int musicenabled;
-    private float musicvolume;
+    //private float musicvolume;
     private bool changingcheckbox;
     public GameObject musiccheckbox;
     public UnityEngine.UI.Slider volumeslider;
@@ -16,14 +16,14 @@ public class Options : MonoBehaviour
     {
         changingcheckbox = false;
         musicenabled = PlayerPrefs.GetInt("MusicEnabled", 1);
-        musicvolume = PlayerPrefs.GetFloat("MusicVolume", 50);
-        musicvolume = 0f;
+        //musicvolume = PlayerPrefs.GetFloat("MusicVolume", 50);
+        //musicvolume = 0f;
 	}
 
     public void onValueChanged(float volume)
     {
         //Debug.Log(volume);
-        musicvolume = volume;
+        //musicvolume = volume;
         PlayerPrefs.SetFloat("MusicVolume", volume);
     }
 
