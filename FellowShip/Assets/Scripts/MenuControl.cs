@@ -10,12 +10,12 @@ public class MenuControl : MonoBehaviour
 {
     private int state, mode, tutorialstate, tutorialscreen;
     public Sprite normalbtnsprite, highlightedsprite, tutorialfirstpage, tutorialsecondpage;
-    public GameObject startbtn, optionsbtn, calibrationbtn, quitbtn, tutorialbtn, tutorialmenubtn, tutorialnextbtn;
+    public GameObject startbtn, optionsbtn, calibrationbtn, quitbtn, tutorialbtn, tutorialmenubtn, tutorialnextbtn, optionsmenubtn;
     public GameObject mainmenupanel, modeselectpanel, highscorepanel, optionspanel, ingamepanel, tutorialpanel;
     private float time, pillopressval, pilloreleaseval, pct1avarage, pct2avarage;
     private Movement movement;
     public PickUpSpawning pickupspawning;
-    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, donewithintro, firstmenupress, intutorial;
+    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, donewithintro, firstmenupress, intutorial, inoptions;
     public TimeTrial tt;
     public LevelManager lvlm;
     public SpawnObstacles so;
@@ -40,6 +40,7 @@ public class MenuControl : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        inoptions = false;
         intutorial = false;
         tutorialscreen = 1;
         tutorialstate = 0;
@@ -437,6 +438,7 @@ public class MenuControl : MonoBehaviour
     {
         inmenu = false;
         optionspanel.SetActive(true);
+        optionsmenubtn.GetComponentInChildren<Text>().color = notselectedcolor;
         options.updateCheckBoxes();
     }
     public void disableOptions()
@@ -530,5 +532,15 @@ public class MenuControl : MonoBehaviour
         tutorialpanel.SetActive(false);
         currentselectedbutton = null;
         changeState(1, true);
+    }
+
+    public void changeOptionTextColorOnHoverOver()
+    {
+        optionsmenubtn.GetComponentInChildren<Text>().color = selectedcolor;
+    }
+
+    public void changeOptionTextColorOnHoverExit()
+    {
+        optionsmenubtn.GetComponentInChildren<Text>().color = notselectedcolor;
     }
 }
