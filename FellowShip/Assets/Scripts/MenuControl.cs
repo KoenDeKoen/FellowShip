@@ -24,9 +24,9 @@ public class MenuControl : MonoBehaviour
 	public NewHighscore nhs;
 	public PirateShip ps;
     public Options options;
-	//public CompassAim ca;
+	public CompassAim ca;
     public GameObject timetext;
-	//public GameObject compassBg;
+	public GameObject compassBg;
     public UnityEngine.UI.Slider player1slider, player2slider;
     private List<float> pct1smoother, pct2smoother;
     private GameObject currentselectedbutton;
@@ -65,7 +65,8 @@ public class MenuControl : MonoBehaviour
         inmenu = true;
         time = 1;
         state = 1;
-		//compassBg.SetActive(false);
+		ca.goalsAvailable = false;
+		compassBg.SetActive(false);
         ConfigureSensorRange(0x50, 0x6f);
     }
 	
@@ -92,8 +93,8 @@ public class MenuControl : MonoBehaviour
                     so.resetObstacles();
                     ps.DestoryShip();
                     ingamepanel.SetActive(false);
-					//compassBg.SetActive(false);
-					//ca.goalsAvailable = false;
+					ca.goalsAvailable = false;
+					compassBg.SetActive(false);
                 }
 
                 if (mode == 2)
@@ -102,6 +103,8 @@ public class MenuControl : MonoBehaviour
                     highscorepanel.SetActive(true);
                     highscorepanel.GetComponentInChildren<Text>().text = tt.returnTimeInString();
                     nhs.ended = true;
+					ca.goalsAvailable = false;
+					compassBg.SetActive(false);
                     if (nhs.finished == true)
                     {
                         timetext.SetActive(false);
@@ -119,8 +122,6 @@ public class MenuControl : MonoBehaviour
                         nhs.doneName = false;
                         nhs.ended = false;
                         tt.resetCounter();
-						//compassBg.SetActive(false);
-						//ca.goalsAvailable = false;
                     }
                 }
                 firstmenupress = true;
@@ -132,7 +133,6 @@ public class MenuControl : MonoBehaviour
             }
             if (inmenu || intutorial)
             {
-                
                 checkForPresses();
             }
             if (!inmenu && pillocontrol && !intutorial)
@@ -335,9 +335,8 @@ public class MenuControl : MonoBehaviour
         tt.startCounting();
         lvlm.setSmallLevel();
         timetext.SetActive(true);
-		//compassBg.SetActive(true);
-		//ca.goalsAvailable = true;
-
+		ca.goalsAvailable = true;
+		compassBg.SetActive(true);
     }
 
     public void startNormalMode()
@@ -351,8 +350,8 @@ public class MenuControl : MonoBehaviour
         lvlm.setSmallLevel();
         inmenu = false;
 		ps.shipspawned = false;
-		//compassBg.SetActive(true);
-		//ca.goalsAvailable = true;
+		ca.goalsAvailable = true;
+		compassBg.SetActive(true);
     }
 
     private void buttonPressed()

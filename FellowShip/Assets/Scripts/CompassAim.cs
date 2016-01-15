@@ -18,7 +18,6 @@ public class CompassAim : MonoBehaviour {
 	void Start()
 	{
 		focusRotate = new GameObject("CompassNeedle");
-		goalsAvailable = false;
 		currentBoat = bu.currentboat;
 		focusRotate.transform.position = currentBoat.transform.position;
 	}
@@ -30,15 +29,17 @@ public class CompassAim : MonoBehaviour {
 			currentPickUp = pu.currentpickup;
 			currentBoat = bu.currentboat;
 			focusRotate.transform.position = currentBoat.transform.position;
-			LookAt();
+			LookAt(currentPickUp);
 		}
 	}
 
-	public void LookAt()
+	private void LookAt(GameObject pickup)
 	{
-		Quaternion rot = Quaternion.LookRotation(currentPickUp.transform.position - focusRotate.transform.position);
-		focusRotate.transform.rotation = Quaternion.Slerp(focusRotate.transform.rotation, rot, Time.deltaTime * 10.0f);
-
+		if(goalsAvailable)
+		{
+			Quaternion rot = Quaternion.LookRotation(pickup.transform.position - focusRotate.transform.position);
+			focusRotate.transform.rotation = Quaternion.Slerp(focusRotate.transform.rotation, rot, Time.deltaTime * 10.0f);
+		}
 		float angle = focusRotate.transform.eulerAngles.y;
 		angle = -angle;
 
