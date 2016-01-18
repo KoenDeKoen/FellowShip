@@ -8,14 +8,16 @@ using System.Collections.Generic;
 
 public class MenuControl : MonoBehaviour
 {
-    private int state, mode, tutorialstate, tutorialscreen, optionstate;
+    private int state, mode, tutorialstate, tutorialscreen, optionstate, quitstate;
     public Sprite normalbtnsprite, highlightedsprite, tutorialfirstpage, tutorialsecondpage;
-    public GameObject startbtn, optionsbtn, calibrationbtn, quitbtn, tutorialbtn, tutorialmenubtn, tutorialnextbtn, optionsmenubtn;
-    public GameObject mainmenupanel, modeselectpanel, highscorepanel, optionspanel, ingamepanel, tutorialpanel;
+    public GameObject startbtn, optionsbtn, calibrationbtn, quitbtn, tutorialbtn, tutorialmenubtn, tutorialnextbtn, optionsmenubtn,
+        quityesbtn, quitnobtn;
+    public GameObject mainmenupanel, modeselectpanel, highscorepanel, optionspanel, ingamepanel, tutorialpanel, quitpanel;
     private float time, pillopressval, pilloreleaseval, pct1avarage, pct2avarage;
     private Movement movement;
     public PickUpSpawning pickupspawning;
-    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, donewithintro, firstmenupress, intutorial, inoptions;
+    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, donewithintro, firstmenupress, intutorial, inoptions, inquit,
+        quitfromingame;
     public TimeTrial tt;
     public LevelManager lvlm;
     public SpawnObstacles so;
@@ -36,6 +38,9 @@ public class MenuControl : MonoBehaviour
 	float pct2;
     void Start ()
     {
+        quitfromingame = false;
+        inquit = false;
+        quitstate = 0;
         optionstate = 0;
         inoptions = false;
         intutorial = false;
@@ -87,6 +92,7 @@ public class MenuControl : MonoBehaviour
                     ingamepanel.SetActive(false);
 					ca.goalsAvailable = false;
 					compassBg.SetActive(false);
+                    changeState(1, true);
                 }
 
                 if (mode == 2)
@@ -114,7 +120,9 @@ public class MenuControl : MonoBehaviour
                         nhs.doneName = false;
                         nhs.ended = false;
                         tt.resetCounter();
+                        changeState(1, true);
                     }
+
                 }
                 firstmenupress = true;
 
@@ -123,13 +131,17 @@ public class MenuControl : MonoBehaviour
             {
                 timetext.GetComponent<Text>().text = "Time: " + tt.returnTimeInString();
             }
-            if (inmenu || intutorial || inoptions)
+            if (inmenu || intutorial || inoptions || inquit)
             {
                 checkForPresses();
             }
             if (!inmenu && pillocontrol && !intutorial)
             {
                 updateSliderValues();
+            }
+            if (!inmenu)
+            {
+                checkForQuit();
             }
         }
     }
@@ -170,7 +182,33 @@ public class MenuControl : MonoBehaviour
             currentselectedbutton.GetComponent<Image>().sprite = normalbtnsprite;
             currentselectedbutton.GetComponentInChildren<Text>().color = notselectedcolor;
         }
-        if (inmenu)
+        if (inquit)
+        {
+            if (!truenumber)
+            {
+
+                quitstate += amount;
+            }
+            else
+            {
+                quitstate = amount;
+            }
+            switch (quitstate)
+            {
+                case 1:
+                    quitnobtn.GetComponent<Image>().sprite = highlightedsprite;
+                    quitnobtn.GetComponentInChildren<Text>().color = selectedcolor;
+                    currentselectedbutton = quitnobtn;
+                    break;
+
+                case 2:
+                    quityesbtn.GetComponent<Image>().sprite = highlightedsprite;
+                    quityesbtn.GetComponentInChildren<Text>().color = selectedcolor;
+                    currentselectedbutton = quityesbtn;
+                    break;
+            }
+        }
+        else if (inmenu)
         {
             if (!truenumber)
             {
@@ -214,7 +252,7 @@ public class MenuControl : MonoBehaviour
                     break;
             }
         }
-        if (intutorial)
+        else if (intutorial)
         {
             
             if (!truenumber)
@@ -225,7 +263,6 @@ public class MenuControl : MonoBehaviour
             {
                 tutorialstate = amount;
             }
-            //Debug.Log(tutorialstate);
             switch (tutorialstate)
             {
 
@@ -243,7 +280,7 @@ public class MenuControl : MonoBehaviour
 
             }
         }
-        if (inoptions)
+        else if (inoptions)
         {
             if (!truenumber)
             {
@@ -255,12 +292,23 @@ public class MenuControl : MonoBehaviour
                 optionstate = amount;
             }
         }
+        
     }
 
     private void selectButton()
     {
-        print("selectButton()");
-        if (inmenu)
+        if (inquit)
+        {
+            if (quitstate == 1)
+            {
+                cancelQuit();
+            }
+            if (quitstate == 2)
+            {
+                Application.Quit();
+            }
+        }
+        else if (inmenu)
         {
             movement = FindObjectOfType<Movement>().GetComponent<Movement>();
             switch (state)
@@ -270,8 +318,6 @@ public class MenuControl : MonoBehaviour
                     break;
 
                 case 2:
-                    //startTutorial();
-                    print("StartTut");
                     tutorialbtn.GetComponentInChildren<Text>().color = notselectedcolor;
                     tutorialbtn.GetComponent<Image>().sprite = normalbtnsprite;
                     inmenu = false;
@@ -294,13 +340,12 @@ public class MenuControl : MonoBehaviour
                     break;
 
                 case 5:
-                    Application.Quit();
+                    quitGame();
                     break;
             }
         }
-        if (intutorial)
+        else if (intutorial)
         {
-            Debug.Log("test");
             switch (tutorialstate)
             {
                 case 1:
@@ -308,19 +353,16 @@ public class MenuControl : MonoBehaviour
                     {
                         
                         case 0:
-                            print("Test1");
                             tutorialpanel.GetComponent<Image>().sprite = tutorialfirstpage;
                             tutorialscreen++;
                             break;
 
                         case 1:
-                            print("Test2");
                             tutorialpanel.GetComponent<Image>().sprite = tutorialsecondpage;
                             tutorialscreen++;
                             break;
 
                         case 2:
-                            print("Test3");
                             backToMenuFromTutorial();
                             break;
                     }
@@ -331,13 +373,14 @@ public class MenuControl : MonoBehaviour
                     break;
             }
         }
-        if (inoptions)
+        else if (inoptions)
         {
             if (optionstate == 1)
             {
                 disableOptions();
             }  
         }
+       
         time = 1;
     }
 
@@ -385,7 +428,6 @@ public class MenuControl : MonoBehaviour
                 }
                 firstmenupress = true;
                 selectButton();
-                //Debug.Log(123);
                 time = 1;
                 
             }
@@ -397,7 +439,18 @@ public class MenuControl : MonoBehaviour
         if (!firstmenupress)
         {
             buttonpressed = false;
-            if (inmenu)
+            if (inquit)
+            {
+                if (quitstate < 2)
+                {
+                    changeState(1, false);
+                }
+                else
+                {
+                    changeState(1, true);
+                }
+            }
+            else if (inmenu)
             {
                 if (state < 5)
                 {
@@ -408,7 +461,7 @@ public class MenuControl : MonoBehaviour
                     changeState(1, true);
                 }
             }
-            if (intutorial)
+            else if (intutorial)
             {
                 if (tutorialstate < 2)
                 {
@@ -419,6 +472,7 @@ public class MenuControl : MonoBehaviour
                     changeState(1, true);
                 }
             }
+            
             time = 1;
         }
         else
@@ -563,6 +617,46 @@ public class MenuControl : MonoBehaviour
         //changeState(1, true);
         //tutorialstate++;
         selectButton();
+    }
+
+    public void quitGame()
+    {
+        movement = FindObjectOfType<Movement>().GetComponent<Movement>();
+        movement.onMenuStart();
+        inquit = true;
+        //inmenu = false;
+        quitpanel.SetActive(true);
+        //currentselectedbutton = null;
+        changeState(1, true);
+
+    }
+
+    public void cancelQuit()
+    {
+        inquit = false;
+        //inmenu = true;
+        quitpanel.SetActive(false);
+        currentselectedbutton = null;
+        if (quitfromingame)
+        {
+            movement = FindObjectOfType<Movement>().GetComponent<Movement>();
+            movement.onMenuEnd();
+        }
+    }
+
+    public void confirmQuit()
+    {
+        Application.Quit();
+    }
+
+    public void checkForQuit()
+    {
+        if (Input.GetKey("q"))
+        {
+            currentselectedbutton = null;
+            quitfromingame = true;
+            quitGame();
+        }
     }
     /*public void changeOptionTextColorOnHoverOver()
     {
