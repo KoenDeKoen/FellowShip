@@ -8,16 +8,16 @@ using System.Collections.Generic;
 
 public class MenuControl : MonoBehaviour
 {
-    private int state, mode, tutorialstate, tutorialscreen, optionstate, quitstate;
+    private int state, mode, tutorialstate, tutorialscreen, optionstate, quitstate, esctomenustate;
     public Sprite normalbtnsprite, highlightedsprite, tutorialfirstpage, tutorialsecondpage;
     public GameObject startbtn, optionsbtn, calibrationbtn, quitbtn, tutorialbtn, tutorialmenubtn, tutorialnextbtn, optionsmenubtn,
-        quityesbtn, quitnobtn;
-    public GameObject mainmenupanel, modeselectpanel, highscorepanel, optionspanel, ingamepanel, tutorialpanel, quitpanel;
+        quityesbtn, quitnobtn, esctomenuyesbtn, escotomenunobtn;
+    public GameObject mainmenupanel, modeselectpanel, highscorepanel, optionspanel, ingamepanel, tutorialpanel, quitpanel, esctomenupanel;
     private float time, pillopressval, pilloreleaseval, pct1avarage, pct2avarage;
     private Movement movement;
     public PickUpSpawning pickupspawning;
     private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, donewithintro, firstmenupress, intutorial, inoptions, inquit,
-        quitfromingame;
+        quitfromingame, esctomenu;
     public TimeTrial tt;
     public LevelManager lvlm;
     public SpawnObstacles so;
@@ -38,6 +38,8 @@ public class MenuControl : MonoBehaviour
 	float pct2;
     void Start ()
     {
+        esctomenustate = 0;
+        esctomenu = false;
         quitfromingame = false;
         inquit = false;
         quitstate = 0;
@@ -131,7 +133,7 @@ public class MenuControl : MonoBehaviour
             {
                 timetext.GetComponent<Text>().text = "Time: " + tt.returnTimeInString();
             }
-            if (inmenu || intutorial || inoptions || inquit)
+            if (inmenu || intutorial || inoptions || inquit || esctomenu)
             {
                 checkForPresses();
             }
@@ -141,7 +143,14 @@ public class MenuControl : MonoBehaviour
             }
             if (!inmenu)
             {
-                checkForQuit();
+                if (!esctomenu)
+                {
+                    checkForQuit();
+                }
+                if (!inquit)
+                {
+                    checkForMenu();
+                }
             }
         }
     }
@@ -208,7 +217,34 @@ public class MenuControl : MonoBehaviour
                     break;
             }
         }
-        else if (inmenu)
+        if (esctomenu)
+        {
+            if (!truenumber)
+            {
+                esctomenustate += amount;
+            }
+            else
+            {
+                esctomenustate = amount;
+            }
+            Debug.Log("hai");
+            switch (esctomenustate)
+            {
+                
+                case 1:
+                    escotomenunobtn.GetComponent<Image>().sprite = highlightedsprite;
+                    escotomenunobtn.GetComponentInChildren<Text>().color = selectedcolor;
+                    currentselectedbutton = escotomenunobtn;
+                    break;
+
+                case 2:
+                    esctomenuyesbtn.GetComponent<Image>().sprite = highlightedsprite;
+                    esctomenuyesbtn.GetComponentInChildren<Text>().color = selectedcolor;
+                    currentselectedbutton = esctomenuyesbtn;
+                    break;
+            }
+        }
+        if (inmenu)
         {
             if (!truenumber)
             {
@@ -252,9 +288,9 @@ public class MenuControl : MonoBehaviour
                     break;
             }
         }
-        else if (intutorial)
+        if (intutorial)
         {
-            
+
             if (!truenumber)
             {
                 tutorialstate += amount;
@@ -280,11 +316,11 @@ public class MenuControl : MonoBehaviour
 
             }
         }
-        else if (inoptions)
+        if (inoptions)
         {
             if (!truenumber)
             {
-                
+
                 optionstate += amount;
             }
             else
@@ -308,7 +344,18 @@ public class MenuControl : MonoBehaviour
                 Application.Quit();
             }
         }
-        else if (inmenu)
+        if (esctomenu)
+        {
+            if (esctomenustate == 1)
+            {
+                cancelBackToMenu();
+            }
+            if (esctomenustate == 2)
+            {
+                returnToMainMenu();
+            }
+        }
+        if (inmenu)
         {
             movement = FindObjectOfType<Movement>().GetComponent<Movement>();
             switch (state)
@@ -344,14 +391,14 @@ public class MenuControl : MonoBehaviour
                     break;
             }
         }
-        else if (intutorial)
+        if (intutorial)
         {
             switch (tutorialstate)
             {
                 case 1:
                     switch (tutorialscreen)
                     {
-                        
+
                         case 0:
                             tutorialpanel.GetComponent<Image>().sprite = tutorialfirstpage;
                             tutorialscreen++;
@@ -373,12 +420,12 @@ public class MenuControl : MonoBehaviour
                     break;
             }
         }
-        else if (inoptions)
+        if (inoptions)
         {
             if (optionstate == 1)
             {
                 disableOptions();
-            }  
+            }
         }
        
         time = 1;
@@ -450,7 +497,18 @@ public class MenuControl : MonoBehaviour
                     changeState(1, true);
                 }
             }
-            else if (inmenu)
+            if (esctomenu)
+            {
+                if (esctomenustate < 2)
+                {
+                    changeState(1, false);
+                }
+                else
+                {
+                    changeState(1, true);
+                }
+            }
+            if (inmenu)
             {
                 if (state < 5)
                 {
@@ -461,7 +519,7 @@ public class MenuControl : MonoBehaviour
                     changeState(1, true);
                 }
             }
-            else if (intutorial)
+            if (intutorial)
             {
                 if (tutorialstate < 2)
                 {
@@ -614,8 +672,6 @@ public class MenuControl : MonoBehaviour
 
     public void nextButtonTutorialClicked()
     {
-        //changeState(1, true);
-        //tutorialstate++;
         selectButton();
     }
 
@@ -657,6 +713,54 @@ public class MenuControl : MonoBehaviour
             quitfromingame = true;
             quitGame();
         }
+    }
+
+    public void checkForMenu()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            currentselectedbutton = null;
+            backToMenu();
+        }
+    }
+
+    public void backToMenu()
+    {
+        movement = FindObjectOfType<Movement>().GetComponent<Movement>();
+        movement.onMenuStart();
+        esctomenu = true;
+        esctomenupanel.SetActive(true);
+        changeState(1, true);
+
+    }
+
+    public void cancelBackToMenu()
+    {
+        esctomenu = false;
+        esctomenupanel.SetActive(false);
+        currentselectedbutton = null;
+        movement = FindObjectOfType<Movement>().GetComponent<Movement>();
+        movement.onMenuEnd();
+    }
+
+    public void returnToMainMenu()
+    {
+        currentselectedbutton = null;
+        esctomenu = false;
+        esctomenupanel.SetActive(false);
+        state = 1;
+        pickupspawning.resetGame();
+        mainmenupanel.SetActive(true);
+        boatupgrade.resetShipModel();
+        movement.onMenuStart();
+        inmenu = true;
+        lvlm.setSmallLevel();
+        so.resetObstacles();
+        ps.DestoryShip();
+        ingamepanel.SetActive(false);
+        ca.goalsAvailable = false;
+        compassBg.SetActive(false);
+        changeState(1, true);
     }
     /*public void changeOptionTextColorOnHoverOver()
     {
