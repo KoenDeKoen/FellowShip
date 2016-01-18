@@ -66,7 +66,6 @@ public class MenuControl : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-
         if (donewithintro)
         {
             pct1 = PilloController.GetSensor(Pillo.PilloID.Pillo1);
@@ -217,6 +216,7 @@ public class MenuControl : MonoBehaviour
         }
         if (intutorial)
         {
+            
             if (!truenumber)
             {
                 tutorialstate += amount;
@@ -225,6 +225,7 @@ public class MenuControl : MonoBehaviour
             {
                 tutorialstate = amount;
             }
+            //Debug.Log(tutorialstate);
             switch (tutorialstate)
             {
 
@@ -258,26 +259,33 @@ public class MenuControl : MonoBehaviour
 
     private void selectButton()
     {
+        print("selectButton()");
         if (inmenu)
         {
             movement = FindObjectOfType<Movement>().GetComponent<Movement>();
             switch (state)
             {
                 case 1:
-                    movement.onMenuEnd();
-                    inmenu = false;
-                    mainmenupanel.SetActive(false);
-                    modeselectpanel.SetActive(true);
-                    ingamepanel.SetActive(true);
+                    startModeSelect();
                     break;
 
                 case 2:
-                    startTutorial();
+                    //startTutorial();
+                    print("StartTut");
+                    tutorialbtn.GetComponentInChildren<Text>().color = notselectedcolor;
+                    tutorialbtn.GetComponent<Image>().sprite = normalbtnsprite;
+                    inmenu = false;
+                    intutorial = true;
+                    mainmenupanel.SetActive(false);
+                    tutorialpanel.SetActive(true);
+                    tutorialpanel.GetComponent<Image>().sprite = tutorialfirstpage;
+                    currentselectedbutton = null;
+                    changeState(1, true);
+                    tutorialscreen = 0;
                     break;
 
                 case 3:
                     enableOptions();
-                    mainmenupanel.SetActive(false);
                     break;
 
                 case 4:
@@ -292,22 +300,27 @@ public class MenuControl : MonoBehaviour
         }
         if (intutorial)
         {
+            Debug.Log("test");
             switch (tutorialstate)
             {
                 case 1:
                     switch (tutorialscreen)
                     {
+                        
                         case 0:
+                            print("Test1");
                             tutorialpanel.GetComponent<Image>().sprite = tutorialfirstpage;
                             tutorialscreen++;
                             break;
 
                         case 1:
+                            print("Test2");
                             tutorialpanel.GetComponent<Image>().sprite = tutorialsecondpage;
                             tutorialscreen++;
                             break;
 
                         case 2:
+                            print("Test3");
                             backToMenuFromTutorial();
                             break;
                     }
@@ -370,9 +383,11 @@ public class MenuControl : MonoBehaviour
                 {
                     optionstate++;
                 }
-                selectButton();
-                time = 1;
                 firstmenupress = true;
+                selectButton();
+                //Debug.Log(123);
+                time = 1;
+                
             }
         }
     }
@@ -438,11 +453,12 @@ public class MenuControl : MonoBehaviour
         return pillocontrol;
     }
 
-    private void enableOptions()
+    public void enableOptions()
     {
         inmenu = false;
         inoptions = true;
         optionspanel.SetActive(true);
+        mainmenupanel.SetActive(false);
         optionsmenubtn.GetComponentInChildren<Text>().color = selectedcolor;
         optionsmenubtn.GetComponent<Image>().sprite = highlightedsprite;
         options.updateCheckBoxes();
@@ -516,21 +532,13 @@ public class MenuControl : MonoBehaviour
         }
     }
 
-    private void startTutorial()
+    public void startTutorial()
     {
-        tutorialbtn.GetComponentInChildren<Text>().color = notselectedcolor;
-        tutorialbtn.GetComponent<Image>().sprite = normalbtnsprite;
-        inmenu = false;
-        intutorial = true;
-        mainmenupanel.SetActive(false);
-        tutorialpanel.SetActive(true);
-        tutorialpanel.GetComponent<Image>().sprite = tutorialfirstpage;
-        currentselectedbutton = null;
-        changeState(1, true);
-        tutorialscreen = 0;
+        state = 2;
+        selectButton(); 
     }
 
-    private void backToMenuFromTutorial()
+    public void backToMenuFromTutorial()
     {
         intutorial = false;
         inmenu = true;
@@ -540,6 +548,22 @@ public class MenuControl : MonoBehaviour
         changeState(1, true);
     }
 
+    public void startModeSelect()
+    {
+        movement = FindObjectOfType<Movement>().GetComponent<Movement>();
+        movement.onMenuEnd();
+        inmenu = false;
+        mainmenupanel.SetActive(false);
+        modeselectpanel.SetActive(true);
+        ingamepanel.SetActive(true);
+    }
+
+    public void nextButtonTutorialClicked()
+    {
+        //changeState(1, true);
+        //tutorialstate++;
+        selectButton();
+    }
     /*public void changeOptionTextColorOnHoverOver()
     {
         optionsmenubtn.GetComponentInChildren<Text>().color = selectedcolor;
