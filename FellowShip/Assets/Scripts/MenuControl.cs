@@ -13,12 +13,13 @@ public class MenuControl : MonoBehaviour
     public GameObject startbtn, optionsbtn, calibrationbtn, quitbtn, tutorialbtn, tutorialmenubtn, tutorialnextbtn, optionsmenubtn,
         quityesbtn, quitnobtn, esctomenuyesbtn, escotomenunobtn;
     public GameObject mainmenupanel, modeselectpanel, highscorepanel, optionspanel, ingamepanel, tutorialpanel, quitpanel, esctomenupanel,
-        victorypanel;
+		victorypanel, calibrationpanel;
     private float time, pillopressval, pilloreleaseval, pct1avarage, pct2avarage;
     private Movement movement;
     public PickUpSpawning pickupspawning;
     private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, donewithintro, firstmenupress, intutorial, inoptions, inquit,
         quitfromingame, esctomenu, invictory;
+	public bool incalibration;
     public TimeTrial tt;
     public LevelManager lvlm;
     public SpawnObstacles so;
@@ -28,6 +29,7 @@ public class MenuControl : MonoBehaviour
 	public PirateShip ps;
     public Options options;
 	public CompassAim ca;
+	public PilloCalibration pc;
     public GameObject timetext;
 	public GameObject compassBg;
     public UnityEngine.UI.Slider player1slider, player2slider;
@@ -47,6 +49,7 @@ public class MenuControl : MonoBehaviour
         optionstate = 0;
         inoptions = false;
         intutorial = false;
+		incalibration = false;
         tutorialscreen = 1;
         tutorialstate = 0;
         notselectedcolor = new Color((1f/255f)*84f, (1f / 255f) * 47f, (1f / 255f) * 13f);
@@ -365,7 +368,8 @@ public class MenuControl : MonoBehaviour
 
                 case 4:
                     //load calibration
-                    //alles = true; (Nikya logic)
+					enableCalibration();
+					mainmenupanel.SetActive(false);
                     break;
 
                 case 5:
@@ -583,6 +587,24 @@ public class MenuControl : MonoBehaviour
         changeState(1,true);
         optionstate = 0;
     }
+
+	public void enableCalibration()
+	{
+		inmenu = false;
+		incalibration = true;
+		//pc.m_state = PilloCalibration.QuickCalibrationState.WaitingForSelection;
+		pc.StartCalibration();
+		calibrationpanel.SetActive(true);
+	}
+	
+	public void disableCalibration()
+	{
+		inmenu = true;
+		incalibration = false;
+		calibrationpanel.SetActive(false);
+		mainmenupanel.SetActive(true);
+		changeState(1,true);
+	}
 
     public void setIntroFinished()
     {
