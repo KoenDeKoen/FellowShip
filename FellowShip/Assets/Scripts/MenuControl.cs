@@ -12,12 +12,13 @@ public class MenuControl : MonoBehaviour
     public Sprite normalbtnsprite, highlightedsprite, tutorialfirstpage, tutorialsecondpage;
     public GameObject startbtn, optionsbtn, calibrationbtn, quitbtn, tutorialbtn, tutorialmenubtn, tutorialnextbtn, optionsmenubtn,
         quityesbtn, quitnobtn, esctomenuyesbtn, escotomenunobtn;
-    public GameObject mainmenupanel, modeselectpanel, highscorepanel, optionspanel, ingamepanel, tutorialpanel, quitpanel, esctomenupanel;
+    public GameObject mainmenupanel, modeselectpanel, highscorepanel, optionspanel, ingamepanel, tutorialpanel, quitpanel, esctomenupanel,
+        victorypanel;
     private float time, pillopressval, pilloreleaseval, pct1avarage, pct2avarage;
     private Movement movement;
     public PickUpSpawning pickupspawning;
     private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, donewithintro, firstmenupress, intutorial, inoptions, inquit,
-        quitfromingame, esctomenu;
+        quitfromingame, esctomenu, invictory;
     public TimeTrial tt;
     public LevelManager lvlm;
     public SpawnObstacles so;
@@ -82,19 +83,8 @@ public class MenuControl : MonoBehaviour
             {
                 if (mode == 1)
                 {
-                    state = 1;
-                    pickupspawning.resetGame();
-                    mainmenupanel.SetActive(true);
-                    boatupgrade.resetShipModel();
-                    movement.onMenuStart();
-                    inmenu = true;
-                    lvlm.setSmallLevel();
-                    so.resetObstacles();
-                    ps.DestoryShip();
-                    ingamepanel.SetActive(false);
-					ca.goalsAvailable = false;
-					compassBg.SetActive(false);
-                    changeState(1, true);
+                    enableVictoryScreen();
+                    //returnToMainMenu();
                 }
 
                 if (mode == 2)
@@ -133,9 +123,10 @@ public class MenuControl : MonoBehaviour
             {
                 timetext.GetComponent<Text>().text = "Time: " + tt.returnTimeInString();
             }
-            if (inmenu || intutorial || inoptions || inquit || esctomenu)
+            if (inmenu || intutorial || inoptions || inquit || esctomenu || invictory)
             {
                 checkForPresses();
+                Debug.Log("meh");
             }
             if (!inmenu && pillocontrol && !intutorial)
             {
@@ -333,6 +324,7 @@ public class MenuControl : MonoBehaviour
 
     private void selectButton()
     {
+        Debug.Log("hai");
         if (inquit)
         {
             if (quitstate == 1)
@@ -429,7 +421,10 @@ public class MenuControl : MonoBehaviour
                 disableOptions();
             }
         }
-       
+        if (invictory)
+        {
+            returnToMainMenu();
+        }
         time = 1;
     }
 
@@ -465,6 +460,7 @@ public class MenuControl : MonoBehaviour
 
     private void buttonPressed()
     {
+        Debug.Log(firstmenupress);
         if (!firstmenupress)
         {
             buttonpressed = true;
@@ -771,5 +767,22 @@ public class MenuControl : MonoBehaviour
     public void changeOptionTextColorOnHoverExit(Text buttontext)
     {
         buttontext.color = notselectedcolor;
+    }
+
+    public void enableVictoryScreen()
+    {
+        ca.goalsAvailable = false;
+        movement = FindObjectOfType<Movement>().GetComponent<Movement>();
+        movement.onMenuStart();
+        invictory = true;
+        victorypanel.SetActive(true);
+    }
+
+    public void disableVictoryScreen()
+    {
+        invictory = false;
+        inmenu = true;
+        victorypanel.SetActive(false);
+        returnToMainMenu();
     }
 }
