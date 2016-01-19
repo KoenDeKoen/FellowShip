@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour
 {
 	float speed;
 	float rotationSpeed;
+	float rotationRight;
+	float rotationLeft;
 	float rotation;
     private bool finishedmenu, pillocontrol, pillocontrolreleased;
     private BoatUpgrade boatupgrade;
@@ -45,6 +47,9 @@ public class Movement : MonoBehaviour
 	{
 		pct1 = PilloController.GetSensor (Pillo.PilloID.Pillo1);
 		pct2 = PilloController.GetSensor (Pillo.PilloID.Pillo2);
+
+		rotationLeft = pct1 * 5;
+		rotationRight = pct2 * 5;
 
         if (finishedmenu)
         {
@@ -118,9 +123,10 @@ public class Movement : MonoBehaviour
 
     private void moveForward()
     {
-        rotation = speed * rotationSpeed * 1.5f;
+		rotation = speed * rotationSpeed * 1.5f;
         rotation *= Time.deltaTime;
         transform.Translate(0, 0, rotation);
+		//transform.Rotate(0, (rotation * (rotationLeft - rotationRight)) * turningspeed, 0);
         switch (turnstate)
         {
             case 1:
@@ -138,10 +144,11 @@ public class Movement : MonoBehaviour
 
     private void turnRight()
     {
-        rotation = speed * rotationSpeed;
-        rotation *= Time.deltaTime;
+		rotation = speed * rotationSpeed;
+		rotation *= Time.deltaTime;
         transform.Translate(0, 0, rotation);
-        transform.Rotate(0, (rotation * 5) * turningspeed, 0);
+		//transform.Rotate(0, (rotation * rotationRight) * turningspeed, 0);
+		transform.Rotate(0, (rotation * 5) * turningspeed, 0);
         turnstate = 2;
         if (turnstate == 1)
         {
@@ -150,16 +157,16 @@ public class Movement : MonoBehaviour
         else
         {
             transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltL");
-
         }
     }
 
     private void turnLeft()
     {
-        rotation = speed * rotationSpeed;
+		rotation = speed * rotationSpeed;
         rotation *= Time.deltaTime;
         transform.Translate(0, 0, rotation);
-        transform.Rotate(0, (-rotation * 5) * turningspeed, 0);
+		//transform.Rotate(0, (-rotation * rotationLeft) * turningspeed, 0);
+		transform.Rotate(0, (-rotation * 5) * turningspeed, 0);
         turnstate = 1;
         if (turnstate == 2)
         {
@@ -188,6 +195,7 @@ public class Movement : MonoBehaviour
                 break;
         }
     }
+
     private void checkForControlSwitch()
     {
         if (Input.GetKey("q") && Input.GetKey("w") && Input.GetKey("e"))

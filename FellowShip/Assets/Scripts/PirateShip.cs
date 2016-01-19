@@ -29,7 +29,7 @@ public class PirateShip : MonoBehaviour {
 	{
 		shipspawned = false;
 		pss.Init();
-		moveSpeed = 20.0f;
+		moveSpeed = 15.0f;
 		friction = 5.0f;
 		state = 0;
 
