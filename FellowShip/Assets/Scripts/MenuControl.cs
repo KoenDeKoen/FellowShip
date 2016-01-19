@@ -8,14 +8,17 @@ using System.Collections.Generic;
 
 public class MenuControl : MonoBehaviour
 {
-    private int state, mode, tutorialstate, tutorialscreen;
+    private int state, mode, tutorialstate, tutorialscreen, optionstate, quitstate, esctomenustate;
     public Sprite normalbtnsprite, highlightedsprite, tutorialfirstpage, tutorialsecondpage;
-    public GameObject startbtn, optionsbtn, calibrationbtn, quitbtn, tutorialbtn, tutorialmenubtn, tutorialnextbtn, optionsmenubtn;
-    public GameObject mainmenupanel, modeselectpanel, highscorepanel, optionspanel, ingamepanel, tutorialpanel;
+    public GameObject startbtn, optionsbtn, calibrationbtn, quitbtn, tutorialbtn, tutorialmenubtn, tutorialnextbtn, optionsmenubtn,
+        quityesbtn, quitnobtn, esctomenuyesbtn, escotomenunobtn;
+    public GameObject mainmenupanel, modeselectpanel, highscorepanel, optionspanel, ingamepanel, tutorialpanel, quitpanel, esctomenupanel,
+        victorypanel;
     private float time, pillopressval, pilloreleaseval, pct1avarage, pct2avarage;
     private Movement movement;
     public PickUpSpawning pickupspawning;
-    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, donewithintro, firstmenupress, intutorial, inoptions;
+    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, donewithintro, firstmenupress, intutorial, inoptions, inquit,
+        quitfromingame, esctomenu, invictory;
     public TimeTrial tt;
     public LevelManager lvlm;
     public SpawnObstacles so;
@@ -31,15 +34,17 @@ public class MenuControl : MonoBehaviour
     private List<float> pct1smoother, pct2smoother;
     private GameObject currentselectedbutton;
     private Color selectedcolor, notselectedcolor;
-    //private float[] pct1smoother, pct2smoother;
-    //public CameraManager cm;
-    //private ParticleSystem particlesys;
 
 	float pct1;
 	float pct2;
-    // Use this for initialization
     void Start ()
     {
+        esctomenustate = 0;
+        esctomenu = false;
+        quitfromingame = false;
+        inquit = false;
+        quitstate = 0;
+        optionstate = 0;
         inoptions = false;
         intutorial = false;
         tutorialscreen = 1;
@@ -50,10 +55,6 @@ public class MenuControl : MonoBehaviour
         pct2smoother = new List<float>();
         pct1avarage = 0f;
         pct2avarage = 0f;
-        //particlesys.startSize = 0.1f;
-        
-        //pct1smoother = new float[10];
-        //pct2smoother = new float[10];
         pillopressval = 0.01f;
         pilloreleaseval = pillopressval / 10;
         firstmenupress = false;
@@ -73,7 +74,6 @@ public class MenuControl : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-
         if (donewithintro)
         {
             pct1 = PilloController.GetSensor(Pillo.PilloID.Pillo1);
@@ -83,18 +83,8 @@ public class MenuControl : MonoBehaviour
             {
                 if (mode == 1)
                 {
-                    state = 1;
-                    pickupspawning.resetGame();
-                    mainmenupanel.SetActive(true);
-                    boatupgrade.resetShipModel();
-                    movement.onMenuStart();
-                    inmenu = true;
-                    lvlm.setSmallLevel();
-                    so.resetObstacles();
-                    ps.DestoryShip();
-                    ingamepanel.SetActive(false);
-					ca.goalsAvailable = false;
-					compassBg.SetActive(false);
+                    enableVictoryScreen();
+                    //returnToMainMenu();
                 }
 
                 if (mode == 2)
@@ -122,7 +112,9 @@ public class MenuControl : MonoBehaviour
                         nhs.doneName = false;
                         nhs.ended = false;
                         tt.resetCounter();
+                        changeState(1, true);
                     }
+
                 }
                 firstmenupress = true;
 
@@ -131,13 +123,25 @@ public class MenuControl : MonoBehaviour
             {
                 timetext.GetComponent<Text>().text = "Time: " + tt.returnTimeInString();
             }
-            if (inmenu || intutorial)
+            if (inmenu || intutorial || inoptions || inquit || esctomenu || invictory)
             {
                 checkForPresses();
+                Debug.Log("meh");
             }
             if (!inmenu && pillocontrol && !intutorial)
             {
                 updateSliderValues();
+            }
+            if (!inmenu)
+            {
+                if (!esctomenu)
+                {
+                    checkForQuit();
+                }
+                if (!inquit)
+                {
+                    checkForMenu();
+                }
             }
         }
     }
@@ -160,7 +164,6 @@ public class MenuControl : MonoBehaviour
 
             if (Input.GetKey("a") || Input.GetKey("d"))
             {
-                //Debug.Log("hai");
                 buttonPressed();
             }
             if (!Input.GetKey("d") && !Input.GetKey("a") && buttonpressed)
@@ -174,14 +177,64 @@ public class MenuControl : MonoBehaviour
     //if adding to the current state, truenumber = false. if the amount is the desired state then truenumber = true
     private void changeState(int amount, bool truenumber)
     {
-        //Debug.Log("Tutorial: " + intutorial + " currentbutton: " + currentselectedbutton + " State: " + tutorialstate);
         if (currentselectedbutton != null)
         {
             currentselectedbutton.GetComponent<Image>().sprite = normalbtnsprite;
             currentselectedbutton.GetComponentInChildren<Text>().color = notselectedcolor;
         }
+        if (inquit)
+        {
+            if (!truenumber)
+            {
 
-        //print(startbtn.GetComponentInChildren<Text>().color);
+                quitstate += amount;
+            }
+            else
+            {
+                quitstate = amount;
+            }
+            switch (quitstate)
+            {
+                case 1:
+                    quitnobtn.GetComponent<Image>().sprite = highlightedsprite;
+                    quitnobtn.GetComponentInChildren<Text>().color = selectedcolor;
+                    currentselectedbutton = quitnobtn;
+                    break;
+
+                case 2:
+                    quityesbtn.GetComponent<Image>().sprite = highlightedsprite;
+                    quityesbtn.GetComponentInChildren<Text>().color = selectedcolor;
+                    currentselectedbutton = quityesbtn;
+                    break;
+            }
+        }
+        if (esctomenu)
+        {
+            if (!truenumber)
+            {
+                esctomenustate += amount;
+            }
+            else
+            {
+                esctomenustate = amount;
+            }
+            Debug.Log("hai");
+            switch (esctomenustate)
+            {
+                
+                case 1:
+                    escotomenunobtn.GetComponent<Image>().sprite = highlightedsprite;
+                    escotomenunobtn.GetComponentInChildren<Text>().color = selectedcolor;
+                    currentselectedbutton = escotomenunobtn;
+                    break;
+
+                case 2:
+                    esctomenuyesbtn.GetComponent<Image>().sprite = highlightedsprite;
+                    esctomenuyesbtn.GetComponentInChildren<Text>().color = selectedcolor;
+                    currentselectedbutton = esctomenuyesbtn;
+                    break;
+            }
+        }
         if (inmenu)
         {
             if (!truenumber)
@@ -228,6 +281,7 @@ public class MenuControl : MonoBehaviour
         }
         if (intutorial)
         {
+
             if (!truenumber)
             {
                 tutorialstate += amount;
@@ -240,14 +294,12 @@ public class MenuControl : MonoBehaviour
             {
 
                 case 1:
-                    //Debug.Log("hai");
                     tutorialnextbtn.GetComponent<Image>().sprite = highlightedsprite;
                     tutorialnextbtn.GetComponentInChildren<Text>().color = selectedcolor;
                     currentselectedbutton = tutorialnextbtn;
                     break;
 
                 case 2:
-                    //Debug.Log("hai2");
                     tutorialmenubtn.GetComponent<Image>().sprite = highlightedsprite;
                     tutorialmenubtn.GetComponentInChildren<Text>().color = selectedcolor;
                     currentselectedbutton = tutorialmenubtn;
@@ -255,30 +307,60 @@ public class MenuControl : MonoBehaviour
 
             }
         }
+        if (inoptions)
+        {
+            if (!truenumber)
+            {
+
+                optionstate += amount;
+            }
+            else
+            {
+                optionstate = amount;
+            }
+        }
+        
     }
 
     private void selectButton()
     {
+        Debug.Log("hai");
+        if (inquit)
+        {
+            if (quitstate == 1)
+            {
+                cancelQuit();
+            }
+            if (quitstate == 2)
+            {
+                Application.Quit();
+            }
+        }
+        
         if (inmenu)
         {
             movement = FindObjectOfType<Movement>().GetComponent<Movement>();
             switch (state)
             {
                 case 1:
-                    movement.onMenuEnd();
-                    inmenu = false;
-                    mainmenupanel.SetActive(false);
-                    modeselectpanel.SetActive(true);
-                    ingamepanel.SetActive(true);
+                    startModeSelect();
                     break;
 
                 case 2:
-                    startTutorial();
+                    tutorialbtn.GetComponentInChildren<Text>().color = notselectedcolor;
+                    tutorialbtn.GetComponent<Image>().sprite = normalbtnsprite;
+                    inmenu = false;
+                    intutorial = true;
+                    mainmenupanel.SetActive(false);
+                    tutorialpanel.SetActive(true);
+                    tutorialpanel.GetComponent<Image>().sprite = tutorialfirstpage;
+                    currentselectedbutton = null;
+                    changeState(1, true);
+                    tutorialscreen = 0;
                     break;
 
                 case 3:
                     enableOptions();
-                    mainmenupanel.SetActive(false);
                     break;
 
                 case 4:
@@ -287,8 +369,20 @@ public class MenuControl : MonoBehaviour
                     break;
 
                 case 5:
-                    Application.Quit();
+                    quitGame();
                     break;
+            }
+        }
+        if (esctomenu)
+        {
+            if (esctomenustate == 1)
+            {
+                cancelBackToMenu();
+            }
+            if (esctomenustate == 2)
+            {
+                returnToMainMenu();
+
             }
         }
         if (intutorial)
@@ -298,16 +392,15 @@ public class MenuControl : MonoBehaviour
                 case 1:
                     switch (tutorialscreen)
                     {
+
                         case 0:
                             tutorialpanel.GetComponent<Image>().sprite = tutorialfirstpage;
                             tutorialscreen++;
-                            //Debug.Log("1");
                             break;
 
                         case 1:
                             tutorialpanel.GetComponent<Image>().sprite = tutorialsecondpage;
                             tutorialscreen++;
-                            //Debug.Log("2");
                             break;
 
                         case 2:
@@ -320,6 +413,17 @@ public class MenuControl : MonoBehaviour
                     backToMenuFromTutorial();
                     break;
             }
+        }
+        if (inoptions)
+        {
+            if (optionstate == 1)
+            {
+                disableOptions();
+            }
+        }
+        if (invictory)
+        {
+            returnToMainMenu();
         }
         time = 1;
     }
@@ -356,28 +460,52 @@ public class MenuControl : MonoBehaviour
 
     private void buttonPressed()
     {
+        Debug.Log(firstmenupress);
         if (!firstmenupress)
         {
-           //Debug.Log("LIES");
-            //Debug.Log("hai");
             buttonpressed = true;
             time -= Time.deltaTime;
             if (time <= 0)
             {
-                //Debug.Log("LIES");
+                if (inoptions)
+                {
+                    optionstate++;
+                }
+                firstmenupress = true;
                 selectButton();
                 time = 1;
-                firstmenupress = true;
+                
             }
         }
     }
 
     private void buttonReleased()
     {
-        Debug.Log(firstmenupress);
         if (!firstmenupress)
         {
             buttonpressed = false;
+            if (inquit)
+            {
+                if (quitstate < 2)
+                {
+                    changeState(1, false);
+                }
+                else
+                {
+                    changeState(1, true);
+                }
+            }
+            if (esctomenu)
+            {
+                if (esctomenustate < 2)
+                {
+                    changeState(1, false);
+                }
+                else
+                {
+                    changeState(1, true);
+                }
+            }
             if (inmenu)
             {
                 if (state < 5)
@@ -400,6 +528,7 @@ public class MenuControl : MonoBehaviour
                     changeState(1, true);
                 }
             }
+            
             time = 1;
         }
         else
@@ -434,19 +563,24 @@ public class MenuControl : MonoBehaviour
         return pillocontrol;
     }
 
-    private void enableOptions()
+    public void enableOptions()
     {
         inmenu = false;
+        inoptions = true;
         optionspanel.SetActive(true);
-        optionsmenubtn.GetComponentInChildren<Text>().color = notselectedcolor;
+        mainmenupanel.SetActive(false);
+        optionsmenubtn.GetComponentInChildren<Text>().color = selectedcolor;
+        optionsmenubtn.GetComponent<Image>().sprite = highlightedsprite;
         options.updateCheckBoxes();
     }
     public void disableOptions()
     {
         inmenu = true;
+        inoptions = false;
         optionspanel.SetActive(false);
         mainmenupanel.SetActive(true);
         changeState(1,true);
+        optionstate = 0;
     }
 
     public void setIntroFinished()
@@ -472,11 +606,9 @@ public class MenuControl : MonoBehaviour
 
     private void addToP1Smoother(float val)
     {
-        //Debug.Log(pct1smoother.Count);
         if (pct1smoother.Count < 10)
         {
             pct1smoother.Add(val);
-            //Debug.Log(pct1smoother[pct1smoother.Count-1]);
         }
         if (pct1smoother.Count == 10)
         {
@@ -510,21 +642,13 @@ public class MenuControl : MonoBehaviour
         }
     }
 
-    private void startTutorial()
+    public void startTutorial()
     {
-        tutorialbtn.GetComponentInChildren<Text>().color = notselectedcolor;
-        tutorialbtn.GetComponent<Image>().sprite = normalbtnsprite;
-        inmenu = false;
-        intutorial = true;
-        mainmenupanel.SetActive(false);
-        tutorialpanel.SetActive(true);
-        tutorialpanel.GetComponent<Image>().sprite = tutorialfirstpage;
-        currentselectedbutton = null;
-        changeState(1, true);
-        tutorialscreen = 0;
+        state = 2;
+        selectButton(); 
     }
 
-    private void backToMenuFromTutorial()
+    public void backToMenuFromTutorial()
     {
         intutorial = false;
         inmenu = true;
@@ -534,13 +658,131 @@ public class MenuControl : MonoBehaviour
         changeState(1, true);
     }
 
-    public void changeOptionTextColorOnHoverOver()
+    public void startModeSelect()
     {
-        optionsmenubtn.GetComponentInChildren<Text>().color = selectedcolor;
+        movement = FindObjectOfType<Movement>().GetComponent<Movement>();
+        movement.onMenuEnd();
+        inmenu = false;
+        mainmenupanel.SetActive(false);
+        modeselectpanel.SetActive(true);
+        ingamepanel.SetActive(true);
     }
 
-    public void changeOptionTextColorOnHoverExit()
+    public void nextButtonTutorialClicked()
     {
-        optionsmenubtn.GetComponentInChildren<Text>().color = notselectedcolor;
+        selectButton();
+    }
+
+    public void quitGame()
+    {
+        movement = FindObjectOfType<Movement>().GetComponent<Movement>();
+        movement.onMenuStart();
+        inquit = true;
+        //inmenu = false;
+        quitpanel.SetActive(true);
+        //currentselectedbutton = null;
+        changeState(1, true);
+
+    }
+
+    public void cancelQuit()
+    {
+        inquit = false;
+        //inmenu = true;
+        quitpanel.SetActive(false);
+        currentselectedbutton = null;
+        if (quitfromingame)
+        {
+            movement = FindObjectOfType<Movement>().GetComponent<Movement>();
+            movement.onMenuEnd();
+        }
+    }
+
+    public void confirmQuit()
+    {
+        Application.Quit();
+    }
+
+    public void checkForQuit()
+    {
+        if (Input.GetKey("q"))
+        {
+            currentselectedbutton = null;
+            quitfromingame = true;
+            quitGame();
+        }
+    }
+
+    public void checkForMenu()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            currentselectedbutton = null;
+            backToMenu();
+        }
+    }
+
+    public void backToMenu()
+    {
+        movement = FindObjectOfType<Movement>().GetComponent<Movement>();
+        movement.onMenuStart();
+        esctomenu = true;
+        esctomenupanel.SetActive(true);
+        changeState(1, true);
+
+    }
+
+    public void cancelBackToMenu()
+    {
+        esctomenu = false;
+        esctomenupanel.SetActive(false);
+        currentselectedbutton = null;
+        movement = FindObjectOfType<Movement>().GetComponent<Movement>();
+        movement.onMenuEnd();
+    }
+
+    public void returnToMainMenu()
+    {
+        currentselectedbutton = null;
+        esctomenu = false;
+        esctomenupanel.SetActive(false);
+        pickupspawning.resetGame();
+        mainmenupanel.SetActive(true);
+        boatupgrade.resetShipModel();
+        movement.onMenuStart();
+        inmenu = true;
+        lvlm.setSmallLevel();
+        so.resetObstacles();
+        ps.DestoryShip();
+        ingamepanel.SetActive(false);
+        ca.goalsAvailable = false;
+        compassBg.SetActive(false);
+        changeState(1, true);
+    }
+    public void changeOptionTextColorOnHoverOver(Text buttontext)
+    {
+        buttontext.color = selectedcolor;
+    }
+
+    public void changeOptionTextColorOnHoverExit(Text buttontext)
+    {
+        buttontext.color = notselectedcolor;
+    }
+
+    public void enableVictoryScreen()
+    {
+        ca.goalsAvailable = false;
+        movement = FindObjectOfType<Movement>().GetComponent<Movement>();
+        movement.onMenuStart();
+        invictory = true;
+        victorypanel.SetActive(true);
+    }
+
+    public void disableVictoryScreen()
+    {
+        invictory = false;
+        inmenu = true;
+        victorypanel.SetActive(false);
+        returnToMainMenu();
     }
 }
