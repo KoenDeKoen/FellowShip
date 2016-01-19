@@ -344,17 +344,7 @@ public class MenuControl : MonoBehaviour
                 Application.Quit();
             }
         }
-        if (esctomenu)
-        {
-            if (esctomenustate == 1)
-            {
-                cancelBackToMenu();
-            }
-            if (esctomenustate == 2)
-            {
-                returnToMainMenu();
-            }
-        }
+        
         if (inmenu)
         {
             movement = FindObjectOfType<Movement>().GetComponent<Movement>();
@@ -389,6 +379,18 @@ public class MenuControl : MonoBehaviour
                 case 5:
                     quitGame();
                     break;
+            }
+        }
+        if (esctomenu)
+        {
+            if (esctomenustate == 1)
+            {
+                cancelBackToMenu();
+            }
+            if (esctomenustate == 2)
+            {
+                returnToMainMenu();
+
             }
         }
         if (intutorial)
@@ -748,7 +750,6 @@ public class MenuControl : MonoBehaviour
         currentselectedbutton = null;
         esctomenu = false;
         esctomenupanel.SetActive(false);
-        state = 1;
         pickupspawning.resetGame();
         mainmenupanel.SetActive(true);
         boatupgrade.resetShipModel();
@@ -762,13 +763,13 @@ public class MenuControl : MonoBehaviour
         compassBg.SetActive(false);
         changeState(1, true);
     }
-    /*public void changeOptionTextColorOnHoverOver()
+    public void changeOptionTextColorOnHoverOver(Text buttontext)
     {
-        optionsmenubtn.GetComponentInChildren<Text>().color = selectedcolor;
-    }*/
+        buttontext.color = selectedcolor;
+    }
 
-    /*public void changeOptionTextColorOnHoverExit()
+    public void changeOptionTextColorOnHoverExit(Text buttontext)
     {
-        optionsmenubtn.GetComponentInChildren<Text>().color = notselectedcolor;
-    }*/
+        buttontext.color = notselectedcolor;
+    }
 }
