@@ -116,7 +116,7 @@ public class MenuControl : MonoBehaviour
                     }
 
                 }
-                firstmenupress = true;
+                //firstmenupress = true;
 
             }
             if (mode == 2 && !inmenu)
@@ -423,7 +423,7 @@ public class MenuControl : MonoBehaviour
         }
         if (invictory)
         {
-            returnToMainMenu();
+            disableVictoryScreen();
         }
         time = 1;
     }
@@ -483,6 +483,7 @@ public class MenuControl : MonoBehaviour
     {
         if (!firstmenupress)
         {
+            Debug.Log("pfft");
             buttonpressed = false;
             if (inquit)
             {
