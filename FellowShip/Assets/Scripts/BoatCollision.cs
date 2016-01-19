@@ -17,6 +17,7 @@ public class BoatCollision : MonoBehaviour
     private bool hashitkraken;
 	public bool canHitPirate;
 	private float pirateTime;
+    GameObject collisionParticles;
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class BoatCollision : MonoBehaviour
         //so = FindObjectOfType<SpawnObstacles>().GetComponent<SpawnObstacles>();
         boatupgrade = FindObjectOfType<BoatUpgrade>().GetComponent<BoatUpgrade>();
 		pirateTime = 4.0f;
+        collisionParticles = GameObject.FindGameObjectWithTag("CollisionParticle");
     }
 
     void Update()
@@ -99,10 +101,13 @@ public class BoatCollision : MonoBehaviour
 	{
 		if(col.collider.tag  == "Pirate")
 		{
+            
 			if(canHitPirate)
 			{
+                
             	if (boatupgrade.returnState() > 0)
             	{
+                    collisionParticles.GetComponent<ParticleSystem>().Play();
                 	PirateShip.state = 3;
                 	boatupgrade.downgradeShip();
                 	pickupspawner.shipGotOuchie();

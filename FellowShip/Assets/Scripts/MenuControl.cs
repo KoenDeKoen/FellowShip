@@ -92,31 +92,7 @@ public class MenuControl : MonoBehaviour
 
                 if (mode == 2)
                 {
-                    tt.stopCounting();
-                    highscorepanel.SetActive(true);
-                    highscorepanel.GetComponentInChildren<Text>().text = tt.returnTimeInString();
-                    nhs.ended = true;
-					ca.goalsAvailable = false;
-					compassBg.SetActive(false);
-                    if (nhs.finished == true)
-                    {
-                        timetext.SetActive(false);
-                        state = 1;
-                        highscorepanel.SetActive(false);
-                        pickupspawning.resetGame();
-                        mainmenupanel.SetActive(true);
-                        boatupgrade.resetShipModel();
-                        movement.onMenuStart();
-                        inmenu = true;
-                        lvlm.setSmallLevel();
-                        ingamepanel.SetActive(false);
-                        so.resetObstacles();
-                        nhs.finished = false;
-                        nhs.doneName = false;
-                        nhs.ended = false;
-                        tt.resetCounter();
-                        changeState(1, true);
-                    }
+                    
 
                 }
                 //firstmenupress = true;
@@ -766,21 +742,52 @@ public class MenuControl : MonoBehaviour
 
     public void returnToMainMenu()
     {
-        currentselectedbutton = null;
-        esctomenu = false;
-        esctomenupanel.SetActive(false);
-        pickupspawning.resetGame();
-        mainmenupanel.SetActive(true);
-        boatupgrade.resetShipModel();
-        movement.onMenuStart();
-        inmenu = true;
-        lvlm.setSmallLevel();
-        so.resetObstacles();
-        ps.DestoryShip();
-        ingamepanel.SetActive(false);
-        ca.goalsAvailable = false;
-        compassBg.SetActive(false);
-        changeState(1, true);
+        if (mode == 1)
+        {
+            currentselectedbutton = null;
+            esctomenu = false;
+            esctomenupanel.SetActive(false);
+            pickupspawning.resetGame();
+            mainmenupanel.SetActive(true);
+            boatupgrade.resetShipModel();
+            movement.onMenuStart();
+            inmenu = true;
+            lvlm.setSmallLevel();
+            so.resetObstacles();
+            ps.DestoryShip();
+            ingamepanel.SetActive(false);
+            ca.goalsAvailable = false;
+            compassBg.SetActive(false);
+            changeState(1, true);
+        }
+
+        if (mode == 2)
+        {
+            tt.stopCounting();
+            highscorepanel.SetActive(true);
+            highscorepanel.GetComponentInChildren<Text>().text = tt.returnTimeInString();
+            nhs.ended = true;
+            ca.goalsAvailable = false;
+            compassBg.SetActive(false);
+            if (nhs.finished == true)
+            {
+                timetext.SetActive(false);
+                highscorepanel.SetActive(false);
+                pickupspawning.resetGame();
+                mainmenupanel.SetActive(true);
+                boatupgrade.resetShipModel();
+                movement.onMenuStart();
+                inmenu = true;
+                lvlm.setSmallLevel();
+                ingamepanel.SetActive(false);
+                so.resetObstacles();
+                nhs.finished = false;
+                nhs.doneName = false;
+                nhs.ended = false;
+                tt.resetCounter();
+                changeState(1, true);
+            }
+        }
     }
     public void changeOptionTextColorOnHoverOver(Text buttontext)
     {
