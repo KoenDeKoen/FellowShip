@@ -1,16 +1,20 @@
 fileFormatVersion: 2
-guid: 2860cb46d3e701840a9e116cf2068512
-timeCreated: 1449487626
+guid: 4e6214a52367c394e84da2e219c5dd25
+timeCreated: 1453114004
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Ocean_HigherPoly
+    100000: Ocean
+    100002: OceanJNT
+    100004: //RootNode
+    400000: Ocean
+    400002: OceanJNT
+    400004: //RootNode
+    4300000: Ocean
+    7400000: Take 001
     9500000: //RootNode
+    13700000: Ocean
   materials:
     importMaterials: 1
     materialName: 0
@@ -67,10 +71,8 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
-    hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
-  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
