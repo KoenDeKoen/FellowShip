@@ -170,8 +170,14 @@ public class PilloCalibration : MonoBehaviour {
 		infoText.text = "Going back to the main menu in 3 seconds: " +  (int)timer;
 		if (timer > 3.0f)
 		{
+			//m_state = QuickCalibrationState.WaitingForSelection;
 			mc.disableCalibration();
 			timer = 0.0f;
 		}
+	}
+
+	public void StartCalibration()
+	{
+		m_state = QuickCalibrationState.WaitingForSelection;
 	}
 }
