@@ -104,8 +104,8 @@ public class BoatCollision : MonoBehaviour
             
 			if(canHitPirate)
 			{
-                
-            	if (boatupgrade.returnState() > 0)
+
+                if (boatupgrade.returnState() > 0 && collisionParticles != null)
             	{
                     collisionParticles.GetComponent<ParticleSystem>().Play();
                 	PirateShip.state = 3;
