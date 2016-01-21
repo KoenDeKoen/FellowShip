@@ -48,8 +48,8 @@ public class Movement : MonoBehaviour
 		pct1 = PilloController.GetSensor (Pillo.PilloID.Pillo1);
 		pct2 = PilloController.GetSensor (Pillo.PilloID.Pillo2);
 
-		rotationLeft = pct1 * 5;
-		rotationRight = pct2 * 5;
+		rotationLeft = pct1 * 8;
+		rotationRight = pct2 * 8;
 
         if (finishedmenu)
         {
@@ -126,11 +126,10 @@ public class Movement : MonoBehaviour
 		rotation = speed * rotationSpeed * 1.5f;
         rotation *= Time.deltaTime;
         transform.Translate(0, 0, rotation);
-		//transform.Rotate(0, (rotation * (rotationLeft - rotationRight)) * turningspeed, 0);
+		transform.Rotate(0, (rotation * (rotationRight - rotationLeft)) * turningspeed, 0);
         switch (turnstate)
         {
             case 1:
-
                 transform.GetChild(0).GetComponent<Animator>().Play("BoatBackR");
                 turnstate = 0;
                 break;
@@ -144,10 +143,10 @@ public class Movement : MonoBehaviour
 
     private void turnRight()
     {
-		rotation = speed * rotationSpeed;
+		//rotation = speed * rotationSpeed;
+		rotation = speed * rotationRight;
 		rotation *= Time.deltaTime;
         transform.Translate(0, 0, rotation);
-		//transform.Rotate(0, (rotation * rotationRight) * turningspeed, 0);
 		transform.Rotate(0, (rotation * 5) * turningspeed, 0);
         turnstate = 2;
         if (turnstate == 1)
@@ -162,10 +161,10 @@ public class Movement : MonoBehaviour
 
     private void turnLeft()
     {
-		rotation = speed * rotationSpeed;
+		//rotation = speed * rotationSpeed;
+		rotation = speed * rotationLeft;
         rotation *= Time.deltaTime;
         transform.Translate(0, 0, rotation);
-		//transform.Rotate(0, (-rotation * rotationLeft) * turningspeed, 0);
 		transform.Rotate(0, (-rotation * 5) * turningspeed, 0);
         turnstate = 1;
         if (turnstate == 2)

@@ -578,6 +578,7 @@ public class MenuControl : MonoBehaviour
 	{
 		inmenu = false;
 		incalibration = true;
+		pc.pressed = true;
 		//pc.m_state = PilloCalibration.QuickCalibrationState.WaitingForSelection;
 		pc.StartCalibration();
 		calibrationpanel.SetActive(true);
@@ -587,6 +588,8 @@ public class MenuControl : MonoBehaviour
 	{
 		inmenu = true;
 		incalibration = false;
+		pc.pillo1 = false;
+		pc.pillo2 = false;
 		calibrationpanel.SetActive(false);
 		mainmenupanel.SetActive(true);
 		changeState(1,true);

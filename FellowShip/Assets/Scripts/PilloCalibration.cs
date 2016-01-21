@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Pillo;
 
 public class PilloCalibration : MonoBehaviour {
 
@@ -8,7 +9,8 @@ public class PilloCalibration : MonoBehaviour {
 	public QuickCalibrationState m_state;
 	public MenuControl mc;
 	int selectedPillo;
-	bool pillo1, pillo2;
+	public bool pillo1, pillo2, pressed;
+	float pct1, pct2;
 
 	public Text infoText;
 
@@ -24,11 +26,23 @@ public class PilloCalibration : MonoBehaviour {
 	void Start () {
 		pillo1 = false;
 		pillo2 = false;
+		pressed = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		pct1 = PilloController.GetSensor(Pillo.PilloID.Pillo1);
+		pct2 = PilloController.GetSensor(Pillo.PilloID.Pillo2);
+
 		if(mc.incalibration)
+		{
+			if((pct1 <= 0.2f && pct2 <= 0.2f))
+			{
+				pressed = false;
+			}
+		}
+
+		if(!pressed)
 		{
 			switch(m_state)
 			{
@@ -140,7 +154,7 @@ public class PilloCalibration : MonoBehaviour {
 
 	void DoCalibrationComplete()
 	{
-		if((pillo1 == false && pillo2 == false)||(pillo1 == false || pillo2 == false))
+		if(pillo1 == false || pillo2 == false)
 		{
 			timer += Time.deltaTime;
 			if (timer > 3.0f)
@@ -154,6 +168,9 @@ public class PilloCalibration : MonoBehaviour {
 			PilloController.SaveCalibrationValues ();
 			BackToMenu();
 		}
+
+		Debug.Log("Pillo1"+ pillo1);
+		Debug.Log("Pillo2"+ pillo2);
 	}
 
 	void SwitchToWaitingForSelection()
