@@ -87,14 +87,24 @@ public class MenuControl : MonoBehaviour
                 if (mode == 1)
                 {
                     enableVictoryScreen();
-                    //returnToMainMenu();
                 }
-
                 if (mode == 2)
                 {
-                    
-
+                    if (nhs.finished == true)
+                    {
+                        enableVictoryScreen();
+                    }
+                    movement = FindObjectOfType<Movement>().GetComponent<Movement>();
+                    movement.onMenuStart();
+                    tt.stopCounting();
+                    highscorepanel.SetActive(true);
+                    highscorepanel.GetComponentInChildren<Text>().text = tt.returnTimeInString();
+                    nhs.ended = true;
+                    ca.goalsAvailable = false;
+                    compassBg.SetActive(false);
                 }
+                //enableVictoryScreen();
+                
                 //firstmenupress = true;
 
             }
@@ -760,33 +770,24 @@ public class MenuControl : MonoBehaviour
             compassBg.SetActive(false);
             changeState(1, true);
         }
-
         if (mode == 2)
         {
-            tt.stopCounting();
-            highscorepanel.SetActive(true);
-            highscorepanel.GetComponentInChildren<Text>().text = tt.returnTimeInString();
-            nhs.ended = true;
-            ca.goalsAvailable = false;
-            compassBg.SetActive(false);
-            if (nhs.finished == true)
-            {
-                timetext.SetActive(false);
-                highscorepanel.SetActive(false);
-                pickupspawning.resetGame();
-                mainmenupanel.SetActive(true);
-                boatupgrade.resetShipModel();
-                movement.onMenuStart();
-                inmenu = true;
-                lvlm.setSmallLevel();
-                ingamepanel.SetActive(false);
-                so.resetObstacles();
-                nhs.finished = false;
-                nhs.doneName = false;
-                nhs.ended = false;
-                tt.resetCounter();
-                changeState(1, true);
-            }
+            timetext.SetActive(false);
+            highscorepanel.SetActive(false);
+            pickupspawning.resetGame();
+            mainmenupanel.SetActive(true);
+            boatupgrade.resetShipModel();
+            movement.onMenuStart();
+            inmenu = true;
+            lvlm.setSmallLevel();
+            ingamepanel.SetActive(false);
+            ps.DestoryShip();
+            so.resetObstacles();
+            nhs.finished = false;
+            nhs.doneName = false;
+            nhs.ended = false;
+            tt.resetCounter();
+            changeState(1, true);
         }
     }
     public void changeOptionTextColorOnHoverOver(Text buttontext)

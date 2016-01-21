@@ -67,11 +67,11 @@ public class NewHighscore : MonoBehaviour {
                 }
                 
                 
-                if ((Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.D)) || pct1 >= 0.05 && pct2 >= 0.05)
+                /*if ((Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.D)) || pct1 >= 0.05 && pct2 >= 0.05)
                 {
                     finished = true;
                     
-                }
+                }*/
             }
             else
             {
@@ -186,6 +186,7 @@ public class NewHighscore : MonoBehaviour {
 				doneName = true;
 				nameText.text = playerName;
                 finishednewscore = false;
+                finished = true;
             }
 
 			if(nameText != null)
