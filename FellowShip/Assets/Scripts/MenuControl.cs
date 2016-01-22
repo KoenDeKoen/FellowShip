@@ -137,6 +137,29 @@ public class MenuControl : MonoBehaviour
 
     private void checkForPresses()
     {
+        /*if (Input.GetKey(KeyCode.Return))
+        {
+            //Debug.Log("hoi");
+            selectButton();
+        }
+        if (Input.GetKey(KeyCode.UpArrow) && !buttonpressed)
+        {
+            buttonpressed = true;
+            changeState(-1, false);
+            pillocontrol = false;
+        }
+        if (Input.GetKey(KeyCode.DownArrow) && !buttonpressed)
+        {
+            buttonpressed = true;
+            changeState(1, false);
+            //buttonPressed();
+            pillocontrol = false;
+        }
+        if (!Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow) && buttonpressed)
+        {
+            buttonReleased();
+            pillocontrol = true;
+        }*/
         if (pillocontrol)
         {
             if (pct1 >= pillopressval || pct2 >= pillopressval)
@@ -157,9 +180,9 @@ public class MenuControl : MonoBehaviour
             }
             if (!Input.GetKey("d") && !Input.GetKey("a") && buttonpressed)
             {
-                
                 buttonReleased();
             }
+            
         }
     }
 
@@ -477,6 +500,10 @@ public class MenuControl : MonoBehaviour
             buttonpressed = false;
             if (inquit)
             {
+                if (quitstate < 0)
+                {
+                    changeState(2, true);
+                }
                 if (quitstate < 2)
                 {
                     changeState(1, false);
@@ -488,6 +515,10 @@ public class MenuControl : MonoBehaviour
             }
             if (esctomenu)
             {
+                if (quitstate < 0)
+                {
+                    changeState(2, true);
+                }
                 if (esctomenustate < 2)
                 {
                     changeState(1, false);
@@ -499,6 +530,10 @@ public class MenuControl : MonoBehaviour
             }
             if (inmenu)
             {
+                if (quitstate < 0)
+                {
+                    changeState(5, true);
+                }
                 if (state < 5)
                 {
                     changeState(1, false);
@@ -510,6 +545,10 @@ public class MenuControl : MonoBehaviour
             }
             if (intutorial)
             {
+                if (quitstate < 0)
+                {
+                    changeState(2, true);
+                }
                 if (tutorialstate < 2)
                 {
                     changeState(1, false);
@@ -531,7 +570,7 @@ public class MenuControl : MonoBehaviour
 
     private void checkForControlSwitch()
     {
-        if (Input.GetKey("q") && Input.GetKey("w") && Input.GetKey("e") && pillocontrolreleased)
+        if (Input.GetKey("w") && Input.GetKey("e") && pillocontrolreleased)
         {
                 if (pillocontrol)
                 {
@@ -543,7 +582,7 @@ public class MenuControl : MonoBehaviour
                 }
                 pillocontrolreleased = false;
         }
-		if ((!Input.GetKey("q") || !Input.GetKey("w") || !Input.GetKey("e")) && !pillocontrolreleased)
+		if ((!Input.GetKey("w") || !Input.GetKey("e")) && !pillocontrolreleased)
 		{
 			pillocontrolreleased = true;
 		}
