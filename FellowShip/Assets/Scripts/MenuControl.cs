@@ -603,6 +603,7 @@ public class MenuControl : MonoBehaviour
         optionsmenubtn.GetComponent<Image>().sprite = highlightedsprite;
         options.updateCheckBoxes();
     }
+
     public void disableOptions()
     {
         inmenu = true;

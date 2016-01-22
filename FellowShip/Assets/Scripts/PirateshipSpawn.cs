@@ -11,6 +11,7 @@ public class PirateshipSpawn : MonoBehaviour {
 	public GameObject pos3;
 	public GameObject pos4;
 
+	//Adds Gameobject position to list object
 	public void Init()
 	{
 		spawnPos = new List<GameObject> ();
@@ -20,6 +21,7 @@ public class PirateshipSpawn : MonoBehaviour {
 		spawnPos.Add (pos4);
 	}
 
+	//returns value to List spawnpos
 	public List<GameObject> returnSpawnPointPirate()
 	{
 		return spawnPos;
