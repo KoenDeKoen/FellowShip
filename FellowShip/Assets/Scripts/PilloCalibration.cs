@@ -4,26 +4,15 @@ using UnityEngine.UI;
 using Pillo;
 
 public class PilloCalibration : MonoBehaviour {
-
-	public float timer;
-	//public QuickCalibrationState m_state;
-	int m_state;
+	
 	public MenuControl mc;
-	int selectedPillo;
-	public bool pillo1, pillo2, pressed;
-	float pct1, pct2;
-
 	public Text infoText;
-
-//	public enum QuickCalibrationState
-//	{
-//		WaitingForSelection,
-//		CountdownToCalibration,
-//		CalibratingMaximum,
-//		CalibratingMinimum,
-//		CalibrationComplete,
-//	}
-	// Use this for initialization
+	public bool pillo1, pillo2, pressed;
+	public float timer;
+	float pct1, pct2;
+	int selectedPillo;
+	int m_state;
+	
 	void Start () {
 		pillo1 = false;
 		pillo2 = false;
@@ -36,14 +25,17 @@ public class PilloCalibration : MonoBehaviour {
 		pct1 = PilloController.GetSensor(Pillo.PilloID.Pillo1);
 		pct2 = PilloController.GetSensor(Pillo.PilloID.Pillo2);
 
+		//checks if calibrationpanel is active
 		if(mc.incalibration)
 		{
+			//prevents calibration without input
 			if((pct1 <= 0.2f && pct2 <= 0.2f))
 			{
 				pressed = false;
 			}
 		}
 
+		//goes through serveral funtions to calibrate the pillos
 		if(!pressed)
 		{
 			switch(m_state)
@@ -67,6 +59,7 @@ public class PilloCalibration : MonoBehaviour {
 		}
 	}
 
+	//checks which pillo is pressed and starts the calibration
 	void CheckForSelection()
 	{
 		if(PilloController.GetSensor(Pillo.PilloID.Pillo1,false) > PilloController.GetCalibratedMinimum(Pillo.PilloID.Pillo1))
@@ -96,6 +89,7 @@ public class PilloCalibration : MonoBehaviour {
 		timer = 0.0f;
 	}
 
+	//checks which pillo is pressed and countdown 
 	void DoCountdown()
 	{
 		timer += Time.deltaTime;
@@ -111,6 +105,7 @@ public class PilloCalibration : MonoBehaviour {
 		infoText.text = "Keep holding Pillo " + (selectedPillo + 1).ToString () + " as tight as possible!";
 	}
 
+	//set the pillos maximum
 	void DoMaximumCalibration()
 	{
 		timer += Time.deltaTime;
@@ -128,6 +123,7 @@ public class PilloCalibration : MonoBehaviour {
 		infoText.text = "Let go of Pillo " + (selectedPillo + 1).ToString () + " now!";
 	}
 
+	//set the pillos minimum
 	void DoMinimumCalibration ()
 	{
 		timer += Time.deltaTime;
@@ -137,7 +133,7 @@ public class PilloCalibration : MonoBehaviour {
 			SwitchToCalibrationComplete();
 		}
 	}
-
+	//checks if pillo are already calibrated or not
 	void SwitchToCalibrationComplete()
 	{
 		m_state = 5;
@@ -151,9 +147,9 @@ public class PilloCalibration : MonoBehaviour {
 		{
 			pillo2 = true;
 		}
-		Debug.Log(pillo1);
 	}
 
+	//if all pillos are set saves values and return to menu, if not return to first function
 	void DoCalibrationComplete()
 	{
 		if(pillo1 == false || pillo2 == false)
@@ -169,11 +165,11 @@ public class PilloCalibration : MonoBehaviour {
 			PilloController.SaveCalibrationValues ();
 			BackToMenu();
 		}
-
 		Debug.Log("Pillo1 "+ pillo1);
 		Debug.Log("Pillo2 "+ pillo2);
 	}
 
+	//saves the calibration and requests to press first pillo
 	void SwitchToWaitingForSelection()
 	{
 		m_state = 1;
@@ -181,14 +177,13 @@ public class PilloCalibration : MonoBehaviour {
 		timer = 0.0f;
 		infoText.text = "Press the Pillo you want to calibrate";
 	}
-
+	//function to return to the menu with a countdown
 	void BackToMenu()
 	{
 		timer += Time.deltaTime;
-		infoText.text = "Going back to the main menu in 3 seconds: " +  (int)timer;
+		infoText.text = "Going back to the main menu in " +  (int)timer;
 		if (timer > 3.0f)
 		{
-			//m_state = QuickCalibrationState.WaitingForSelection;
 			mc.disableCalibration();
 			timer = 0.0f;
 		}

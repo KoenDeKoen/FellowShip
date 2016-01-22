@@ -22,11 +22,11 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-
+		//booleans to check if pillos are used
         pillocontrol = true;
         pillocontrolreleased = true;
+
         mc = FindObjectOfType<MenuControl>().GetComponent<MenuControl>();
-        //ConfigureSensorRange(0x50, 0x6f);
     }
 
 	void Awake ()
@@ -39,15 +39,15 @@ public class Movement : MonoBehaviour
 		speed = 5f;
         boatupgrade = FindObjectOfType<BoatUpgrade>().GetComponent<BoatUpgrade>();
         turningspeed = boatupgrade.getTurningSpeed();
-        
-        //Debug.Log(turningspeed);
     }
 
 	void FixedUpdate ()
 	{
+		//update value of pillos inside
 		pct1 = PilloController.GetSensor (Pillo.PilloID.Pillo1);
 		pct2 = PilloController.GetSensor (Pillo.PilloID.Pillo2);
 
+		//rotation values of the ships(numbers are speed)
 		rotationLeft = pct1 * 8;
 		rotationRight = pct2 * 8;
 
@@ -57,9 +57,11 @@ public class Movement : MonoBehaviour
         }
 	}
 
+	//function that allows the use of both the pillo and the keyboard as control to move the player
     private void Move()
     {
         checkForControlSwitch();
+		//allows player to use the pillo as control
         if (mc.returnControlState())
         {
             if (pct1 >= pillopressval && pct2 >= pillopressval)
@@ -79,6 +81,7 @@ public class Movement : MonoBehaviour
                 stopMoving();
             }
         }
+		//allows player to use the keyboard as control
         else
         {
             if ((Input.GetKey("a") && Input.GetKey("d")))
@@ -121,6 +124,7 @@ public class Movement : MonoBehaviour
         transform.rotation = Quaternion.identity;
     }
 
+	//function for the forward movement of the ship(for keyboard)
     private void moveForward()
     {
 		rotation = speed * rotationSpeed * 1.5f;
@@ -139,7 +143,7 @@ public class Movement : MonoBehaviour
                 break;
         }
     }
-
+	//function for the forward movement of the ship(for pillo)
 	private void moveForwardPillo()
 	{
 		rotation = speed * rotationSpeed * 1.5f;
@@ -159,7 +163,7 @@ public class Movement : MonoBehaviour
 			break;
 		}
 	}
-	
+	//function for the turning movement to the right for the ship(for keyboard)
 	private void turnRight()
 	{
 		rotation = speed * rotationSpeed;
@@ -176,7 +180,7 @@ public class Movement : MonoBehaviour
             transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltL");
         }
     }
-
+	//function for the turning movement to the right for the ship(for pillo)
 	private void turnRightPillo()
 	{
 		rotation = speed * rotationRight;
@@ -193,7 +197,7 @@ public class Movement : MonoBehaviour
 			transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltL");
 		}
 	}
-	
+	//function for the turning movement to the left for the ship(for keyboard)
 	private void turnLeft()
 	{
 		rotation = speed * rotationSpeed;
@@ -211,7 +215,7 @@ public class Movement : MonoBehaviour
             transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltR");
         }
     }
-
+	//function for the turning movement to the left for the ship(for pillo)
 	private void turnLeftPillo()
 	{
 		rotation = speed * rotationLeft;
@@ -229,7 +233,7 @@ public class Movement : MonoBehaviour
 			transform.GetChild(0).GetComponent<Animator>().Play("BoatTiltR");
 		}
 	}
-	
+	//function that change animation back to stationary
 	private void stopMoving()
 	{
 		switch (turnstate)
@@ -246,7 +250,7 @@ public class Movement : MonoBehaviour
                 break;
         }
     }
-
+	//function changes the control between pillo and keyboard
     private void checkForControlSwitch()
     {
         if (Input.GetKey("q") && Input.GetKey("w") && Input.GetKey("e"))
