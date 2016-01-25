@@ -18,6 +18,11 @@ public class BoatCollision : MonoBehaviour
 	public bool canHitPirate;
 	private float pirateTime;
     GameObject collisionParticles;
+    AudioSource sfx;
+    public AudioClip pirateCollision;
+    public AudioClip islandCollision;
+    public AudioClip krakenCollision;
+    public AudioClip pickupCollision;
 
     void Start()
     {
@@ -31,6 +36,7 @@ public class BoatCollision : MonoBehaviour
         boatupgrade = FindObjectOfType<BoatUpgrade>().GetComponent<BoatUpgrade>();
 		pirateTime = 4.0f;
         collisionParticles = GameObject.FindGameObjectWithTag("CollisionParticle");
+        //sfx = GameObject.Find("SfxPlayer").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -68,6 +74,7 @@ public class BoatCollision : MonoBehaviour
         {
             if (!hashitkraken)
             {
+                //sfx.PlayOneShot(krakenCollision);
                 //Debug.Log("wtf");
                 hashitkraken = true;
                 if (boatupgrade.returnState() > 0)
@@ -83,10 +90,7 @@ public class BoatCollision : MonoBehaviour
         {
             spawnnext = true;
         }
-		if (other.tag == "Wall")
-		{
-			Debug.Log("Wall hit");
-		}
+		
         if (other.tag == "NormalMode")
         {
             menucontrols.startNormalMode();
@@ -99,15 +103,24 @@ public class BoatCollision : MonoBehaviour
 
 	void OnCollisionEnter(Collision col)
 	{
+        if (col.gameObject.tag == "Island")
+        {
+            Debug.Log("Island Collision");
+
+            //sfx.PlayOneShot(islandCollision);
+        }
+
+
 		if(col.collider.tag  == "Pirate")
 		{
-            
+            Debug.Log("Pirate");
 			if(canHitPirate)
 			{
-
-                if (boatupgrade.returnState() > 0 && collisionParticles != null)
+                
+            	if (boatupgrade.returnState() > 0 && collisionParticles != null)
             	{
                     collisionParticles.GetComponent<ParticleSystem>().Play();
+                    //sfx.PlayOneShot(pirateCollision);
                 	PirateShip.state = 3;
                 	boatupgrade.downgradeShip();
                 	pickupspawner.shipGotOuchie();
@@ -117,5 +130,11 @@ public class BoatCollision : MonoBehaviour
             	}
 			}
 		}
+        if (col.collider.tag == "Pickup")
+        {
+            Debug.Log("Pickup");
+            //sfx.PlayOneShot(pickupCollision);
+        }
+        
 	}
 }
