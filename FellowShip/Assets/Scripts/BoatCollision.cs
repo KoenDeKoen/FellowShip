@@ -17,7 +17,7 @@ public class BoatCollision : MonoBehaviour
     private bool hashitkraken;
 	public bool canHitPirate;
 	private float pirateTime;
-    GameObject collisionParticles;
+   	GameObject collisionParticles;
     AudioSource sfx;
     public AudioClip pirateCollision;
     public AudioClip islandCollision;
@@ -106,20 +106,24 @@ public class BoatCollision : MonoBehaviour
         if (col.gameObject.tag == "Island")
         {
             Debug.Log("Island Collision");
-
+			//boatupgrade.currentboat.GetComponent<Rigidbody>().isKinematic = true;
             //sfx.PlayOneShot(islandCollision);
         }
+		else
+		{
+			boatupgrade.currentboat.GetComponent<Rigidbody>().isKinematic = false;
+		}
 
 
-		if(col.collider.tag  == "Pirate")
+		if(col.gameObject.tag  == "Pirate")
 		{
             Debug.Log("Pirate");
 			if(canHitPirate)
 			{
                 
-            	if (boatupgrade.returnState() > 0 && collisionParticles != null)
+            	if (boatupgrade.returnState() > 0) //&& collisionParticles != null)
             	{
-                    collisionParticles.GetComponent<ParticleSystem>().Play();
+                    //collisionParticles.GetComponent<ParticleSystem>().Play();
                     //sfx.PlayOneShot(pirateCollision);
                 	PirateShip.state = 3;
                 	boatupgrade.downgradeShip();
