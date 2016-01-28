@@ -102,6 +102,7 @@ public class MenuControl : MonoBehaviour
                     nhs.ended = true;
                     ca.goalsAvailable = false;
                     compassBg.SetActive(false);
+
                 }
                 //enableVictoryScreen();
                 
@@ -614,7 +615,6 @@ public class MenuControl : MonoBehaviour
 		inmenu = false;
 		incalibration = true;
 		pc.pressed = true;
-		mainmenupanel.SetActive(false);
 		//pc.m_state = PilloCalibration.QuickCalibrationState.WaitingForSelection;
 		pc.StartCalibration();
 		calibrationpanel.SetActive(true);
