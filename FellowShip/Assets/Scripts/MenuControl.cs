@@ -115,7 +115,6 @@ public class MenuControl : MonoBehaviour
             if (inmenu || intutorial || inoptions || inquit || esctomenu || invictory)
             {
                 checkForPresses();
-                Debug.Log("meh");
             }
             if (!inmenu && pillocontrol && !intutorial)
             {
@@ -230,7 +229,6 @@ public class MenuControl : MonoBehaviour
             {
                 esctomenustate = amount;
             }
-            Debug.Log("hai");
             switch (esctomenustate)
             {
                 
@@ -336,7 +334,6 @@ public class MenuControl : MonoBehaviour
 
     private void selectButton()
     {
-        Debug.Log("hai");
         if (inquit)
         {
             if (quitstate == 1)
@@ -473,7 +470,6 @@ public class MenuControl : MonoBehaviour
 
     private void buttonPressed()
     {
-        Debug.Log(firstmenupress);
         if (!firstmenupress)
         {
             buttonpressed = true;
@@ -496,7 +492,6 @@ public class MenuControl : MonoBehaviour
     {
         if (!firstmenupress)
         {
-            Debug.Log("pfft");
             buttonpressed = false;
             if (inquit)
             {

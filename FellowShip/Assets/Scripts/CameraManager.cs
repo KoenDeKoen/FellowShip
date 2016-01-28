@@ -15,7 +15,7 @@ public class CameraManager : MonoBehaviour
     {
         startcameraposition = usedcamera.transform.position;
         hastolerpcamera = false;
-        time = 5;
+        time = 1;
     }
 
     void Update()
@@ -47,14 +47,14 @@ public class CameraManager : MonoBehaviour
             if (time <= 0)
             {
                 hastolerpcamera = false;
-                time = 5;
+                time = 1;
             }
         }
     }
 
     public void lowerCameraOneLevel()
     {
-        time = 5;
+        time = 1;
         float multiplier = 1.1F;
         hastolerpcamera = true;
         newcamerapos = new Vector3(usedcamera.transform.localPosition.x / multiplier, usedcamera.transform.localPosition.y / (multiplier), usedcamera.transform.localPosition.z / (multiplier));
@@ -62,7 +62,7 @@ public class CameraManager : MonoBehaviour
 
     public void raiseCameraOneLevel()
     {
-        time = 5;
+        time = 1;
         float multiplier = 1.1f;
         hastolerpcamera = true;
         newcamerapos = new Vector3(usedcamera.transform.localPosition.x * multiplier, usedcamera.transform.localPosition.y * (multiplier), usedcamera.transform.localPosition.z * (multiplier));
