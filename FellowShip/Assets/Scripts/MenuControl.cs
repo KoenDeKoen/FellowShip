@@ -13,33 +13,33 @@ public class MenuControl : MonoBehaviour
     public GameObject startbtn, optionsbtn, calibrationbtn, quitbtn, tutorialbtn, tutorialmenubtn, tutorialnextbtn, optionsmenubtn,
         quityesbtn, quitnobtn, esctomenuyesbtn, escotomenunobtn;
     public GameObject mainmenupanel, modeselectpanel, highscorepanel, optionspanel, ingamepanel, tutorialpanel, quitpanel, esctomenupanel,
-		victorypanel, calibrationpanel;
+        victorypanel, calibrationpanel;
     private float time, pillopressval, pilloreleaseval, pct1avarage, pct2avarage;
     private Movement movement;
     public PickUpSpawning pickupspawning;
-    private bool inmenu, buttonpressed, pillocontrol,pillocontrolreleased, donewithintro, firstmenupress, intutorial, inoptions, inquit,
+    private bool inmenu, buttonpressed, pillocontrol, pillocontrolreleased, donewithintro, firstmenupress, intutorial, inoptions, inquit,
         quitfromingame, esctomenu, invictory;
-	public bool incalibration;
+    public bool incalibration;
     public TimeTrial tt;
     public LevelManager lvlm;
     public SpawnObstacles so;
     public SpawnableSpots ss;
     public BoatUpgrade boatupgrade;
-	public NewHighscore nhs;
-	public PirateShip ps;
+    public NewHighscore nhs;
+    public PirateShip ps;
     public Options options;
-	public CompassAim ca;
-	public PilloCalibration pc;
+    public CompassAim ca;
+    public PilloCalibration pc;
     public GameObject timetext;
-	public GameObject compassBg;
+    public GameObject compassBg;
     public UnityEngine.UI.Slider player1slider, player2slider;
     private List<float> pct1smoother, pct2smoother;
     private GameObject currentselectedbutton;
     private Color selectedcolor, notselectedcolor;
 
-	float pct1;
-	float pct2;
-    void Start ()
+    float pct1;
+    float pct2;
+    void Start()
     {
         esctomenustate = 0;
         esctomenu = false;
@@ -49,11 +49,11 @@ public class MenuControl : MonoBehaviour
         optionstate = 0;
         inoptions = false;
         intutorial = false;
-		incalibration = false;
+        incalibration = false;
         tutorialscreen = 1;
         tutorialstate = 0;
-        notselectedcolor = new Color((1f/255f)*84f, (1f / 255f) * 47f, (1f / 255f) * 13f);
-        selectedcolor = new Color(1f,1f,1f);
+        notselectedcolor = new Color((1f / 255f) * 84f, (1f / 255f) * 47f, (1f / 255f) * 13f);
+        selectedcolor = new Color(1f, 1f, 1f);
         pct1smoother = new List<float>();
         pct2smoother = new List<float>();
         pct1avarage = 0f;
@@ -69,13 +69,13 @@ public class MenuControl : MonoBehaviour
         inmenu = true;
         time = 1;
         state = 1;
-		ca.goalsAvailable = false;
-		compassBg.SetActive(false);
+        ca.goalsAvailable = false;
+        compassBg.SetActive(false);
         ConfigureSensorRange(0x50, 0x6f);
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         if (donewithintro)
         {
@@ -105,7 +105,7 @@ public class MenuControl : MonoBehaviour
 
                 }
                 //enableVictoryScreen();
-                
+
                 //firstmenupress = true;
 
             }
@@ -120,6 +120,7 @@ public class MenuControl : MonoBehaviour
             if (!inmenu && pillocontrol && !intutorial)
             {
                 updateSliderValues();
+                rotateSliderHandles();
             }
             if (!inmenu)
             {
@@ -182,7 +183,7 @@ public class MenuControl : MonoBehaviour
             {
                 buttonReleased();
             }
-            
+
         }
     }
 
@@ -232,7 +233,7 @@ public class MenuControl : MonoBehaviour
             }
             switch (esctomenustate)
             {
-                
+
                 case 1:
                     escotomenunobtn.GetComponent<Image>().sprite = highlightedsprite;
                     escotomenunobtn.GetComponentInChildren<Text>().color = selectedcolor;
@@ -330,7 +331,7 @@ public class MenuControl : MonoBehaviour
                 optionstate = amount;
             }
         }
-        
+
     }
 
     private void selectButton()
@@ -346,7 +347,7 @@ public class MenuControl : MonoBehaviour
                 Application.Quit();
             }
         }
-        
+
         if (inmenu)
         {
             movement = FindObjectOfType<Movement>().GetComponent<Movement>();
@@ -375,8 +376,8 @@ public class MenuControl : MonoBehaviour
 
                 case 4:
                     //load calibration
-					enableCalibration();
-					mainmenupanel.SetActive(false);
+                    enableCalibration();
+                    mainmenupanel.SetActive(false);
                     break;
 
                 case 5:
@@ -450,8 +451,8 @@ public class MenuControl : MonoBehaviour
         tt.startCounting();
         lvlm.setSmallLevel();
         timetext.SetActive(true);
-		ca.goalsAvailable = true;
-		compassBg.SetActive(true);
+        ca.goalsAvailable = true;
+        compassBg.SetActive(true);
     }
 
     public void startNormalMode()
@@ -464,9 +465,9 @@ public class MenuControl : MonoBehaviour
         movement.onMenuEnd();
         lvlm.setSmallLevel();
         inmenu = false;
-		ps.shipspawned = false;
-		ca.goalsAvailable = true;
-		compassBg.SetActive(true);
+        ps.shipspawned = false;
+        ca.goalsAvailable = true;
+        compassBg.SetActive(true);
     }
 
     private void buttonPressed()
@@ -484,7 +485,7 @@ public class MenuControl : MonoBehaviour
                 firstmenupress = true;
                 selectButton();
                 time = 1;
-                
+
             }
         }
     }
@@ -554,7 +555,7 @@ public class MenuControl : MonoBehaviour
                     changeState(1, true);
                 }
             }
-            
+
             time = 1;
         }
         else
@@ -568,20 +569,20 @@ public class MenuControl : MonoBehaviour
     {
         if (Input.GetKey("w") && Input.GetKey("e") && pillocontrolreleased)
         {
-                if (pillocontrol)
-                {
-                    pillocontrol = false;
-                }
-                else
-                {
-                    pillocontrol = true;
-                }
-                pillocontrolreleased = false;
+            if (pillocontrol)
+            {
+                pillocontrol = false;
+            }
+            else
+            {
+                pillocontrol = true;
+            }
+            pillocontrolreleased = false;
         }
-		if ((!Input.GetKey("w") || !Input.GetKey("e")) && !pillocontrolreleased)
-		{
-			pillocontrolreleased = true;
-		}
+        if ((!Input.GetKey("w") || !Input.GetKey("e")) && !pillocontrolreleased)
+        {
+            pillocontrolreleased = true;
+        }
     }
 
     public bool returnControlState()
@@ -606,30 +607,30 @@ public class MenuControl : MonoBehaviour
         inoptions = false;
         optionspanel.SetActive(false);
         mainmenupanel.SetActive(true);
-        changeState(1,true);
+        changeState(1, true);
         optionstate = 0;
     }
 
-	public void enableCalibration()
-	{
-		inmenu = false;
-		incalibration = true;
-		pc.pressed = true;
-		//pc.m_state = PilloCalibration.QuickCalibrationState.WaitingForSelection;
-		pc.StartCalibration();
-		calibrationpanel.SetActive(true);
-	}
-	
-	public void disableCalibration()
-	{
-		inmenu = true;
-		incalibration = false;
-		pc.pillo1 = false;
-		pc.pillo2 = false;
-		calibrationpanel.SetActive(false);
-		mainmenupanel.SetActive(true);
-		changeState(1,true);
-	}
+    public void enableCalibration()
+    {
+        inmenu = false;
+        incalibration = true;
+        pc.pressed = true;
+        //pc.m_state = PilloCalibration.QuickCalibrationState.WaitingForSelection;
+        pc.StartCalibration();
+        calibrationpanel.SetActive(true);
+    }
+
+    public void disableCalibration()
+    {
+        inmenu = true;
+        incalibration = false;
+        pc.pillo1 = false;
+        pc.pillo2 = false;
+        calibrationpanel.SetActive(false);
+        mainmenupanel.SetActive(true);
+        changeState(1, true);
+    }
 
     public void setIntroFinished()
     {
@@ -663,9 +664,9 @@ public class MenuControl : MonoBehaviour
             float tempval = 0f;
             for (int i = 0; i < pct1smoother.Count; i++)
             {
-                
+
                 tempval += pct1smoother[i];
-                
+
             }
             pct1avarage = tempval / pct1smoother.Count;
             pct1smoother.RemoveAt(0);
@@ -693,7 +694,7 @@ public class MenuControl : MonoBehaviour
     public void startTutorial()
     {
         state = 2;
-        selectButton(); 
+        selectButton();
     }
 
     public void backToMenuFromTutorial()
@@ -854,5 +855,27 @@ public class MenuControl : MonoBehaviour
         inmenu = true;
         victorypanel.SetActive(false);
         returnToMainMenu();
+    }
+
+    private void rotateSliderHandles()
+    {
+        if (pct1avarage >= 0.001f)
+        {
+            player1slider.GetComponentInChildren<Animator>().Play("SliderRotationL");
+        }
+        else
+        {
+            player1slider.GetComponentInChildren<Animator>().Play("Idle");
+        }
+        if (pct2avarage >= 0.001f)
+        {
+            player2slider.GetComponentInChildren<Animator>().Play("SliderRotationR");
+        }
+        else
+        {
+            player2slider.GetComponentInChildren<Animator>().Play("Idle");
+        }
+        
+        
     }
 }
