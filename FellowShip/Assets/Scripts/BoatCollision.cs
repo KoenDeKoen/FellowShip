@@ -23,6 +23,8 @@ public class BoatCollision : MonoBehaviour
     public AudioClip islandCollision;
     public AudioClip krakenCollision;
     public AudioClip pickupCollision;
+	GameObject currentboat;
+	GameObject destruction;
 
     void Start()
     {
@@ -35,7 +37,7 @@ public class BoatCollision : MonoBehaviour
         //so = FindObjectOfType<SpawnObstacles>().GetComponent<SpawnObstacles>();
         boatupgrade = FindObjectOfType<BoatUpgrade>().GetComponent<BoatUpgrade>();
 		pirateTime = 4.0f;
-        collisionParticles = GameObject.FindGameObjectWithTag("CollisionParticle");
+		collisionParticles = GameObject.FindGameObjectWithTag("CollisionParticle");
         //sfx = GameObject.Find("SfxPlayer").GetComponent<AudioSource>();
     }
 
@@ -66,6 +68,8 @@ public class BoatCollision : MonoBehaviour
 				canHitPirate = true;
 			}
 		}
+
+		currentboat = boatupgrade.currentboat;
     }
 
     void OnTriggerEnter(Collider other)
@@ -109,20 +113,16 @@ public class BoatCollision : MonoBehaviour
 			//boatupgrade.currentboat.GetComponent<Rigidbody>().isKinematic = true;
             //sfx.PlayOneShot(islandCollision);
         }
-		else
-		{
-			boatupgrade.currentboat.GetComponent<Rigidbody>().isKinematic = false;
-		}
-
 
 		if(col.gameObject.tag  == "Pirate")
 		{
             Debug.Log("Pirate");
 			if(canHitPirate)
 			{
-                
             	if (boatupgrade.returnState() > 0) //&& collisionParticles != null)
             	{
+					destruction = Instantiate(collisionParticles);
+					destruction.transform.position = new Vector3(currentboat.transform.position.x, currentboat.transform.position.y, currentboat.transform.position.z);
                     //collisionParticles.GetComponent<ParticleSystem>().Play();
                     //sfx.PlayOneShot(pirateCollision);
                 	PirateShip.state = 3;

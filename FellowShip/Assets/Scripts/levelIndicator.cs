@@ -31,7 +31,7 @@ public class levelIndicator : MonoBehaviour {
 		state = bu.returnState();
 		endMarker = posMarker[state];
 	
-		indicator.localPosition = new Vector3(Mathf.Lerp(startMarker, endMarker, Time.time),-10,0);
+		indicator.localPosition = new Vector3(Mathf.Lerp(startMarker, endMarker, 4f),-10,0);
 
 		if(startMarker == endMarker)
 		{
