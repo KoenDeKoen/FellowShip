@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     public PickUpSpawning pickupspawning;
     public Camera maincamera;
     private Vector3 newcamerapos, startwallL, startwallR, startwallU, startwallD, startscalewallL,
-        startscalewallR, startscalewallU, startscalewallD, startscaleseafloor;
+        startscalewallR, startscalewallU, startscalewallD;
     public SpawnableSpots ss;
     private float time;
 
@@ -26,7 +26,6 @@ public class LevelManager : MonoBehaviour
         startscalewallR = wallR.transform.localScale;
         startscalewallU = wallU.transform.localScale;
         startscalewallD = wallD.transform.localScale;
-        startscaleseafloor = seafloor.transform.localScale;
     }
 
     public void raiseSizeByOne()
@@ -59,7 +58,6 @@ public class LevelManager : MonoBehaviour
         wallR.transform.localPosition = startwallR;
         wallU.transform.localPosition = startwallU;
         wallD.transform.localPosition = startwallD;
-        seafloor.transform.localScale = startscaleseafloor;
         wallL.transform.localScale = startscalewallL;
         wallD.transform.localScale = startscalewallR;
         wallU.transform.localScale = startscalewallU;
