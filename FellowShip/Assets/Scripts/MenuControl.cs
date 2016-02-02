@@ -861,19 +861,24 @@ public class MenuControl : MonoBehaviour
     {
         if (pct1avarage >= 0.001f)
         {
-            player1slider.GetComponentInChildren<Animator>().Play("SliderRotationL",-1);
+            player1slider.GetComponentInChildren<Animator>().SetBool("Turn", true);
+            //Debug.Log(player1slider.GetComponentInChildren<Animator>().GetBool("Turn"));
+            //player1slider.GetComponentInChildren<Animator>().Play("SliderRotationL",-1);
         }
         else
         {
-            player1slider.GetComponentInChildren<Animator>().Play("Idle",-1);
+            player1slider.GetComponentInChildren<Animator>().SetBool("Turn", false);
+            //player1slider.GetComponentInChildren<Animator>().Play("Idle",-1);
         }
         if (pct2avarage >= 0.001f)
         {
-            player2slider.GetComponentInChildren<Animator>().Play("SliderRotationR",-1);
+            player2slider.GetComponentInChildren<Animator>().SetBool("Turn", true);
+            //player2slider.GetComponentInChildren<Animator>().Play("SliderRotationR",-1);
         }
         else
         {
-            player2slider.GetComponentInChildren<Animator>().Play("Idle",-1);
+            player2slider.GetComponentInChildren<Animator>().SetBool("Turn", false);
+            //player2slider.GetComponentInChildren<Animator>().Play("Idle",-1);
         }
     }
 }
