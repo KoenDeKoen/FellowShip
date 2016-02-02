@@ -875,7 +875,5 @@ public class MenuControl : MonoBehaviour
         {
             player2slider.GetComponentInChildren<Animator>().Play("Idle",-1);
         }
-        
-        
     }
 }
