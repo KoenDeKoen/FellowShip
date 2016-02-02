@@ -35,14 +35,14 @@ public class SpawnObstacles : MonoBehaviour
         int randomnumber = Random.Range(places.Count, places.Count);
         for (int i = 0; i < randomnumber; i++)
         {
-            GameObject spawnedobstacle;
-            spawnedobstacle = Instantiate(obstacles.returnObstacles()[Random.Range(0, obstacles.returnObstacles().Count)]);
+            GameObject spawnedobstacle = Instantiate(obstacles.returnObstacles()[Random.Range(0, obstacles.returnObstacles().Count)]);
             int randomplace = Random.Range(0, places.Count);
             spawnedobstacle.transform.position = places[randomplace];
             
             spawnedobstacle.transform.rotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
             places.RemoveAt(randomplace);
             spawnedobstacles.Add(spawnedobstacle);
+            spawnedobstacle.transform.parent = GameObject.Find("Islands").transform;
         }
     }
 }

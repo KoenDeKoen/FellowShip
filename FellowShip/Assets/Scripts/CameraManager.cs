@@ -10,6 +10,7 @@ public class CameraManager : MonoBehaviour
     private float time;
     private bool hastolerpcamera;
     private Vector3 newcamerapos, startcameraposition;
+    private float multiplier = 1.1f;
 
     void Start()
     {
@@ -55,7 +56,6 @@ public class CameraManager : MonoBehaviour
     public void lowerCameraOneLevel()
     {
         time = 1;
-        float multiplier = 1.1F;
         hastolerpcamera = true;
         newcamerapos = new Vector3(usedcamera.transform.localPosition.x / multiplier, usedcamera.transform.localPosition.y / (multiplier), usedcamera.transform.localPosition.z / (multiplier));
     }
@@ -63,7 +63,6 @@ public class CameraManager : MonoBehaviour
     public void raiseCameraOneLevel()
     {
         time = 1;
-        float multiplier = 1.1f;
         hastolerpcamera = true;
         newcamerapos = new Vector3(usedcamera.transform.localPosition.x * multiplier, usedcamera.transform.localPosition.y * (multiplier), usedcamera.transform.localPosition.z * (multiplier));
     }
