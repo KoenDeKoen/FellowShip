@@ -117,7 +117,7 @@ public class MenuControl : MonoBehaviour
             {
                 checkForPresses();
             }
-            if (!inmenu && pillocontrol && !intutorial)
+            if (!inmenu && pillocontrol && !intutorial && !inoptions)
             {
                 updateSliderValues();
                 rotateSliderHandles();
@@ -861,19 +861,19 @@ public class MenuControl : MonoBehaviour
     {
         if (pct1avarage >= 0.001f)
         {
-            player1slider.GetComponentInChildren<Animator>().Play("SliderRotationL");
+            player1slider.GetComponentInChildren<Animator>().Play("SliderRotationL",-1);
         }
         else
         {
-            player1slider.GetComponentInChildren<Animator>().Play("Idle");
+            player1slider.GetComponentInChildren<Animator>().Play("Idle",-1);
         }
         if (pct2avarage >= 0.001f)
         {
-            player2slider.GetComponentInChildren<Animator>().Play("SliderRotationR");
+            player2slider.GetComponentInChildren<Animator>().Play("SliderRotationR",-1);
         }
         else
         {
-            player2slider.GetComponentInChildren<Animator>().Play("Idle");
+            player2slider.GetComponentInChildren<Animator>().Play("Idle",-1);
         }
         
         
