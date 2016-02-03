@@ -9,7 +9,7 @@ public class WaterFriction : MonoBehaviour {
         if (swap == false)
         {
             transform.Rotate(0, 0, Strength);
-            if (transform.rotation.z > 195)
+            if (transform.eulerAngles.z > 195)
             {
                 swap = true;
             }
@@ -18,7 +18,7 @@ public class WaterFriction : MonoBehaviour {
         if (swap == true)
         {
             transform.Rotate(0, 0, -Strength);
-            if (transform.rotation.z < 165)
+            if (transform.eulerAngles.z < 165)
             {
                 swap = false;
             }
