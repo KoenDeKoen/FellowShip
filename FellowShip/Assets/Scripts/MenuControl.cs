@@ -463,8 +463,6 @@ public class MenuControl : MonoBehaviour
         pickupspawning.resetGame();
         pickupspawning.spawnFirstPickup();
         movement.onMenuEnd();
-        lvlm.setSmallLevel();
-        inmenu = false;
         ps.shipspawned = false;
         ca.goalsAvailable = true;
         compassBg.SetActive(true);
@@ -709,12 +707,14 @@ public class MenuControl : MonoBehaviour
 
     public void startModeSelect()
     {
+        currentselectedbutton = null;
         movement = FindObjectOfType<Movement>().GetComponent<Movement>();
         movement.onMenuEnd();
         inmenu = false;
         mainmenupanel.SetActive(false);
         modeselectpanel.SetActive(true);
         ingamepanel.SetActive(true);
+        lvlm.setSmallLevel();
     }
 
     public void nextButtonTutorialClicked()
@@ -774,11 +774,10 @@ public class MenuControl : MonoBehaviour
     public void backToMenu()
     {
         movement = FindObjectOfType<Movement>().GetComponent<Movement>();
-        movement.onMenuStart();
-        esctomenu = true;
+        movement.onMenuStart();   
         esctomenupanel.SetActive(true);
+        esctomenu = true;
         changeState(1, true);
-
     }
 
     public void cancelBackToMenu()
@@ -792,7 +791,7 @@ public class MenuControl : MonoBehaviour
 
     public void returnToMainMenu()
     {
-        if (mode == 1)
+        if (mode == 1 || mode == 0)
         {
             currentselectedbutton = null;
             esctomenu = false;
