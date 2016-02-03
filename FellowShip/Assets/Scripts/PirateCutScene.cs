@@ -22,11 +22,5 @@ public class PirateCutScene : MonoBehaviour {
         {
             Clip();
         }
-
-        //
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            Cutscene.Stop();
-        }
     }
 }
