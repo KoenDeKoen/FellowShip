@@ -9,7 +9,7 @@ public class PirateCutScene : MonoBehaviour {
     public AudioClip CutsceneAudio;
     public AudioSource Audio;
 
-	void Clip () {
+	public void Clip (MovieTexture Cut, AudioClip Audi) {
         Screen.texture = Cutscene;
         Audio.clip = CutsceneAudio;
         Audio.Play();
@@ -17,10 +17,9 @@ public class PirateCutScene : MonoBehaviour {
     }
     void Update()
     {
-        //start a cutscene
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Clip();
+            Clip(Cutscene, CutsceneAudio);
         }
     }
 }
