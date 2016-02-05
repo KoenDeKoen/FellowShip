@@ -30,6 +30,7 @@ public class MenuControl : MonoBehaviour
     public Options options;
     public CompassAim ca;
     public PilloCalibration pc;
+    public SpawnSharks sharkspawner;
     public GameObject timetext;
     public GameObject compassBg;
     public UnityEngine.UI.Slider player1slider, player2slider;
@@ -72,6 +73,7 @@ public class MenuControl : MonoBehaviour
         ca.goalsAvailable = false;
         compassBg.SetActive(false);
         ConfigureSensorRange(0x50, 0x6f);
+        sharkspawner.resetSharks();
     }
 
     // Update is called once per frame
@@ -791,6 +793,7 @@ public class MenuControl : MonoBehaviour
 
     public void returnToMainMenu()
     {
+        sharkspawner.resetSharks();
         if (mode == 1 || mode == 0)
         {
             currentselectedbutton = null;
