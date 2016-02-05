@@ -73,7 +73,7 @@ public class MenuControl : MonoBehaviour
         ca.goalsAvailable = false;
         compassBg.SetActive(false);
         ConfigureSensorRange(0x50, 0x6f);
-        sharkspawner.resetSharks();
+        
     }
 
     // Update is called once per frame
@@ -717,6 +717,7 @@ public class MenuControl : MonoBehaviour
         modeselectpanel.SetActive(true);
         ingamepanel.SetActive(true);
         lvlm.setSmallLevel();
+        sharkspawner.resetSharks();
     }
 
     public void nextButtonTutorialClicked()
