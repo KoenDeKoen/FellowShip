@@ -14,7 +14,7 @@ public class Movement : MonoBehaviour
 	float rotation;
     private bool finishedmenu, pillocontrol, pillocontrolreleased;
     private BoatUpgrade boatupgrade;
-    private float turningspeed, pillopressval, pilloreleaseval;
+    private float turningspeed, pillopressval, pilloreleaseval, slowamount;
     private MenuControl mc;
 
 	float pct1;
@@ -23,6 +23,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        slowamount = 1;
 		//booleans to check if pillos are used
         pillocontrol = true;
         pillocontrolreleased = true;
@@ -128,7 +129,7 @@ public class Movement : MonoBehaviour
 	//function for the forward movement of the ship(for keyboard)
     private void moveForward()
     {
-		rotation = speed * rotationSpeed * 1.5f;
+		rotation = speed * rotationSpeed * 1.5f * slowamount;
 		rotation *= Time.deltaTime;
 		transform.Translate(0, 0, rotation);
         switch (turnstate)
@@ -147,7 +148,7 @@ public class Movement : MonoBehaviour
 	//function for the forward movement of the ship(for pillo)
 	private void moveForwardPillo()
 	{
-		rotation = speed * rotationSpeed * 1.5f;
+		rotation = speed * rotationSpeed * 1.5f * slowamount;
 		rotation *= Time.deltaTime;
 		transform.Translate(0, 0, rotation);
 		transform.Rotate(0, (rotation * (rotationRight - rotationLeft)) * turningspeed, 0);
@@ -167,7 +168,7 @@ public class Movement : MonoBehaviour
 	//function for the turning movement to the right for the ship(for keyboard)
 	private void turnRight()
 	{
-		rotation = speed * rotationSpeed;
+		rotation = speed * rotationSpeed * slowamount;
 		rotation *= Time.deltaTime;
 		transform.Translate(0, 0, rotation);
 		transform.Rotate(0, (rotation * 5) * turningspeed, 0);
@@ -184,7 +185,7 @@ public class Movement : MonoBehaviour
 	//function for the turning movement to the right for the ship(for pillo)
 	private void turnRightPillo()
 	{
-		rotation = speed * rotationRight;
+		rotation = speed * rotationRight * slowamount;
 		rotation *= Time.deltaTime;
 		transform.Translate(0, 0, rotation);
 		transform.Rotate(0, (rotation * 5) * turningspeed, 0);
@@ -201,7 +202,7 @@ public class Movement : MonoBehaviour
 	//function for the turning movement to the left for the ship(for keyboard)
 	private void turnLeft()
 	{
-		rotation = speed * rotationSpeed;
+		rotation = speed * rotationSpeed * slowamount;
 		rotation *= Time.deltaTime;
 		transform.Translate(0, 0, rotation);
 		transform.Rotate(0, (-rotation * 5) * turningspeed, 0);
@@ -219,7 +220,7 @@ public class Movement : MonoBehaviour
 	//function for the turning movement to the left for the ship(for pillo)
 	private void turnLeftPillo()
 	{
-		rotation = speed * rotationLeft;
+		rotation = speed * rotationLeft * slowamount;
 		rotation *= Time.deltaTime;
 		transform.Translate(0, 0, rotation);
 		transform.Rotate(0, (-rotation * 5) * turningspeed, 0);
@@ -271,6 +272,18 @@ public class Movement : MonoBehaviour
         if (!Input.GetKey("q") || !Input.GetKey("w") || !Input.GetKey("e"))
         {
             pillocontrolreleased = true;
+        }
+    }
+
+    public void enteredSharkTerritory(bool isthatso)
+    {
+        if (isthatso)
+        {
+            slowamount = 0.5f;
+        }
+        else
+        {
+            slowamount = 1f;
         }
     }
 

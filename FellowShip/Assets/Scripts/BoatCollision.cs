@@ -13,6 +13,7 @@ public class BoatCollision : MonoBehaviour
     //private SpawnObstacles so;
     private BoatUpgrade boatupgrade;
     private KrakenSpawn krakenspawner;
+    private Movement movement;
     private bool spawnnext;
     private bool hashitkraken;
 	public bool canHitPirate;
@@ -29,6 +30,7 @@ public class BoatCollision : MonoBehaviour
     {
         canHitPirate = false;
         hashitkraken = true;
+        movement = FindObjectOfType<Movement>().GetComponent<Movement>();
         pickupspawner = FindObjectOfType<PickUpSpawning>().GetComponent<PickUpSpawning>();
         menucontrols = FindObjectOfType<MenuControl>().GetComponent<MenuControl>();
         //lvlm = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
@@ -91,6 +93,10 @@ public class BoatCollision : MonoBehaviour
                 }
             }
         }
+        if (other.tag == "Shark")
+        {
+            movement.enteredSharkTerritory(true);
+        }
         if (other.tag == "Pickup")
         {
             spawnnext = true;
@@ -103,6 +109,14 @@ public class BoatCollision : MonoBehaviour
         if (other.tag == "TimeTrialMode")
         {
             menucontrols.startTimeTrial();
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Shark")
+        {
+            movement.enteredSharkTerritory(false);
         }
     }
 
