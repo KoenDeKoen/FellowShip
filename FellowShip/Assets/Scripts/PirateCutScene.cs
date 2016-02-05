@@ -8,15 +8,28 @@ public class PirateCutScene : MonoBehaviour {
     public MovieTexture Cutscene;
     public AudioClip CutsceneAudio;
     public AudioSource Audio;
+    private float timeLeft = 0;
 
 	public void Clip (MovieTexture Cut, AudioClip Audi) {
-        Screen.texture = Cutscene;
-        Audio.clip = CutsceneAudio;
+        Screen.texture = Cut;
+        Audio.clip = Audi;
         Audio.Play();
         Cutscene.Play();
+        timeLeft = Cut.duration;
     }
+
     void Update()
     {
+        if (timeLeft > 0)
+        {
+            Screen.enabled = true;
+            timeLeft -= Time.deltaTime;
+        }
+        else
+        {
+            Screen.enabled = false;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Clip(Cutscene, CutsceneAudio);
