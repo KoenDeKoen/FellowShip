@@ -25,10 +25,9 @@ public class BoatCollision : MonoBehaviour
     public AudioClip pickupCollision;
 	GameObject currentboat;
 	GameObject destruction;
-
     void Start()
     {
-		canHitPirate = true;
+        canHitPirate = false;
         hashitkraken = true;
         pickupspawner = FindObjectOfType<PickUpSpawning>().GetComponent<PickUpSpawning>();
         menucontrols = FindObjectOfType<MenuControl>().GetComponent<MenuControl>();
@@ -36,13 +35,14 @@ public class BoatCollision : MonoBehaviour
         krakenspawner = FindObjectOfType<KrakenSpawn>().GetComponent<KrakenSpawn>();
         //so = FindObjectOfType<SpawnObstacles>().GetComponent<SpawnObstacles>();
         boatupgrade = FindObjectOfType<BoatUpgrade>().GetComponent<BoatUpgrade>();
-		pirateTime = 4.0f;
+		pirateTime = 8.0f;
 		collisionParticles = GameObject.FindGameObjectWithTag("CollisionParticle");
         //sfx = GameObject.Find("SfxPlayer").GetComponent<AudioSource>();
     }
 
     void Update()
     {
+        Debug.Log(pirateTime);
         if (spawnnext && !pickupspawner.hasSpawnedNext())
         {
             spawnnext = false;
@@ -60,8 +60,9 @@ public class BoatCollision : MonoBehaviour
             hashitkraken = false;
         }
 
-		if(!canHitPirate)
+		if(canHitPirate == false)
 		{
+            canHitPirate = false;
 			pirateTime -= Time.deltaTime;
 			if(pirateTime <= 0.0f)
 			{
@@ -116,29 +117,21 @@ public class BoatCollision : MonoBehaviour
 
 		if(col.gameObject.tag  == "Pirate")
 		{
-            Debug.Log("Pirate");
 			if(canHitPirate)
 			{
             	if (boatupgrade.returnState() > 0) //&& collisionParticles != null)
             	{
-					destruction = Instantiate(collisionParticles);
+                    canHitPirate = false;
+                    pirateTime = 8.0f;
+                    destruction = Instantiate(collisionParticles);
 					destruction.transform.position = new Vector3(currentboat.transform.position.x, currentboat.transform.position.y, currentboat.transform.position.z);
                     //collisionParticles.GetComponent<ParticleSystem>().Play();
                     //sfx.PlayOneShot(pirateCollision);
                 	PirateShip.state = 3;
                 	boatupgrade.downgradeShip();
                 	pickupspawner.shipGotOuchie();
-					canHitPirate = false;
-					pirateTime = 4.0f;
-                	//Debug.Log("Pirate");
             	}
 			}
 		}
-        if (col.collider.tag == "Pickup")
-        {
-            Debug.Log("Pickup");
-            //sfx.PlayOneShot(pickupCollision);
-        }
-        
 	}
 }

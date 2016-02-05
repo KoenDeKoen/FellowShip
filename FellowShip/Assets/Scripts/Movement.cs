@@ -6,6 +6,7 @@ using Pillo;
 
 public class Movement : MonoBehaviour
 {
+    public GameObject WaterParticle;
 	float speed;
 	float rotationSpeed;
 	float rotationRight;
@@ -43,6 +44,7 @@ public class Movement : MonoBehaviour
 
 	void FixedUpdate ()
 	{
+        
 		//update value of pillos inside
 		pct1 = PilloController.GetSensor (Pillo.PilloID.Pillo1);
 		pct2 = PilloController.GetSensor (Pillo.PilloID.Pillo2);
@@ -50,7 +52,6 @@ public class Movement : MonoBehaviour
 		//rotation values of the ships(numbers are speed)
 		rotationLeft = pct1 * 8;
 		rotationRight = pct2 * 8;
-
         if (finishedmenu)
         {
             Move();
@@ -67,26 +68,26 @@ public class Movement : MonoBehaviour
             if (pct1 >= pillopressval && pct2 >= pillopressval)
             {
                 moveForwardPillo();
+                }
+                if (pct1 >= pillopressval && pct2 <= pilloreleaseval)
+                {
+                    turnLeftPillo();
+                }
+                if (pct2 >= pillopressval && pct1 <= pilloreleaseval)
+                {
+                    turnRightPillo();
+                }
+                else if (pct1 <= pilloreleaseval && pct2 <= pilloreleaseval)
+                {
+                    stopMoving();
+                }
             }
-            if (pct1 >= pillopressval && pct2 <= pilloreleaseval)
+            //allows player to use the keyboard as control
+            else
             {
-				turnLeftPillo();
-			}
-			if (pct2 >= pillopressval && pct1 <= pilloreleaseval)
-            {
-				turnRightPillo();
-			}
-			else if (pct1 <= pilloreleaseval && pct2 <= pilloreleaseval)
-            {
-                stopMoving();
-            }
-        }
-		//allows player to use the keyboard as control
-        else
-        {
-            if ((Input.GetKey("a") && Input.GetKey("d")))
-            {
-                moveForward();
+                if ((Input.GetKey("a") && Input.GetKey("d")))
+                {
+                    moveForward();
                 //Debug.Log(1);
             }
             if (Input.GetKey("a") && !Input.GetKey("d"))

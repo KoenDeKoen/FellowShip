@@ -3,7 +3,7 @@ using System.Collections;
 
 public class mist : MonoBehaviour {
     public float speed;
-    public float lifetime = 80;
+    public float lifetime;
 	// Use this for initialization
 	void Start () {
 	
@@ -19,6 +19,6 @@ public class mist : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        transform.position = new Vector3(transform.position.x - speed, 8, transform.position.z);
+        transform.position = new Vector3(transform.position.x - speed / 2, 8, transform.position.z - speed / 2);
 	}
 }
