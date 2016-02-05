@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿//Made by Koen Brouwers
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
